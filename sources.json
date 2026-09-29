@@ -41,6 +41,12 @@
       "category": "Robotics",
       "url": "https://news.mit.edu/topic/robotics",
       "rss_url": "https://news.mit.edu/rss/topic/robotics"
+    },
+    {
+      "name": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/",
+      "rss_url": "https://roboticlifestyle.com/api/rss/humanoids"
     }
   ]
 }
