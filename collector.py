@@ -1,19 +1,36 @@
 import json
 import feedparser
 from datetime import datetime, timezone
-from urllib.parse import urlsplit, urlunsplit
-
+from urllib.parse import urlsplit, urlunsplit, parse_qsl, urlencode
 
 def normalize_url(url):
     parts = urlsplit(url)
 
+    tracking_params = {
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_term",
+        "utm_content",
+        "fbclid",
+        "gclid"
+    }
+
+    query_params = [
+        (key, value)
+        for key, value in parse_qsl(parts.query, keep_blank_values=True)
+        if key.lower() not in tracking_params
+    ]
+
     return urlunsplit((
-        parts.scheme,
-        parts.netloc,
+        parts.scheme.lower(),
+        parts.netloc.lower(),
         parts.path.rstrip("/"),
-        "",
+        urlencode(query_params),
         ""
     ))
+
+    
 
 
 def collect_news():
