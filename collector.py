@@ -1,6 +1,19 @@
 import json
 import feedparser
 from datetime import datetime, timezone
+from urllib.parse import urlsplit, urlunsplit
+
+
+def normalize_url(url):
+    parts = urlsplit(url)
+
+    return urlunsplit((
+        parts.scheme,
+        parts.netloc,
+        parts.path.rstrip("/"),
+        "",
+        ""
+    ))
 
 
 def collect_news():
