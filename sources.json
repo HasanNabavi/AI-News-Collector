@@ -47,6 +47,18 @@
       "category": "Robotics",
       "url": "https://roboticlifestyle.com/",
       "rss_url": "https://roboticlifestyle.com/api/rss/humanoids"
+    },
+    {
+      "name": "The Verge AI",
+      "category": "AI",
+      "url": "https://www.theverge.com/ai-artificial-intelligence",
+      "rss_url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
+    },
+    {
+      "name": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/topic/robotics",
+      "rss_url": "https://spectrum.ieee.org/feeds/topic/robotics.rss"
     }
   ]
 }
