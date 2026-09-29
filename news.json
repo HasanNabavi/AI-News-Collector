@@ -1,0 +1,18 @@
+{
+  "news": [
+    {
+      "title": "Example AI News",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://example.com",
+      "date": "2026-09-29"
+    },
+    {
+      "title": "Example Robotics News",
+      "source": "IEEE Spectrum",
+      "category": "Robotics",
+      "url": "https://example.com",
+      "date": "2026-09-29"
+    }
+  ]
+}
