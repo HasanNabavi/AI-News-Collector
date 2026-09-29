@@ -74,7 +74,7 @@ def collect_news():
             if normalized_link in existing_urls:
                 continue
 
-existing_urls.add(normalized_link)
+            existing_urls.add(normalized_link)
             published_at = item.get("published", "")
 
             news_item = {
