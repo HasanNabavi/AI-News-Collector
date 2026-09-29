@@ -14,6 +14,16 @@
       "name": "TechCrunch",
       "category": "AI",
       "url": "https://techcrunch.com/"
+    },
+    {
+      "name": "The Robot Report",
+      "category": "Robotics",
+      "url": "https://www.therobotreport.com/"
+    },
+    {
+      "name": "VentureBeat",
+      "category": "AI",
+      "url": "https://venturebeat.com/"
     }
   ]
 }
