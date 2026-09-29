@@ -1,11 +1,23 @@
-name: Test Workflow
+name: RSS News Collector
 
 on:
   workflow_dispatch:
 
 jobs:
-  test:
+  collect-news:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Say hello
-        run: echo "Hello from GitHub Actions!"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run collector
+        run: python collector.py
