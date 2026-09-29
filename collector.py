@@ -42,8 +42,6 @@ def collect_news():
             existing_urls.add(link)
             published_at = item.get("published", "")
 
-            print("Published:", published_at)
-
             news_item = {
                 "title": title,
                 "source": source["name"],
