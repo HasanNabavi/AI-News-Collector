@@ -110,12 +110,22 @@ def collect_news():
                 continue
 
             existing_urls.add(normalized_link)
-            title_score = max(
-                [title_similarity(title, old_title) for old_title in existing_titles + new_titles],
-                default=0
-            )
+
+            all_existing_titles = existing_titles + new_titles
+
+            if all_existing_titles:
+                similar_title = max(
+                    all_existing_titles,
+                    key=lambda old_title: title_similarity(title, old_title)
+                )
+                title_score = title_similarity(title, similar_title)
+            else:
+                similar_title = ""
 
             print(f"Title similarity: {title_score:.2f} | {title}")
+
+            if title_score >= 0.50:
+                print(f"Similar title: {similar_title}")
             
             if title_score >= 0.85:
                 continue
