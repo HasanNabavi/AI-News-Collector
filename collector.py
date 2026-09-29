@@ -36,6 +36,8 @@ def collect_news():
             link = item.get("link", "No link")
             published_at = item.get("published", "")
 
+            print("Published:", published_at)
+
             news_item = {
                 "title": title,
                 "source": source["name"],
