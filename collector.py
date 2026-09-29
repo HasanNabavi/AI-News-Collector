@@ -105,10 +105,5 @@ existing_urls.add(normalized_link)
     print(f"New news: {len(new_news)}")
     print(f"Total stored news: {len(all_news)}")
 
-print(normalize_url("https://example.com/article/?utm_source=test&utm_medium=social"))
-print(normalize_url("https://example.com/article/"))
-print(normalize_url("https://example.com/article?id=123&utm_source=test"))
-
-
 if __name__ == "__main__":
     collect_news()
