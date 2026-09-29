@@ -1,4 +1,5 @@
 import json
+import re
 import feedparser
 from datetime import datetime, timezone
 from urllib.parse import urlsplit, urlunsplit, parse_qsl, urlencode
@@ -30,7 +31,47 @@ def normalize_url(url):
         ""
     ))
 
-    
+
+def title_similarity(title1, title2):
+    stop_words = {
+        "the", "a", "an", "and", "or", "of", "to", "in", "on",
+        "for", "with", "from", "new", "ai", "artificial",
+        "intelligence", "robot", "robots", "robotics"
+    }
+
+    words1 = {
+        word
+        for word in re.findall(r"\w+", title1.lower())
+        if word not in stop_words
+    }
+
+    words2 = {
+        word
+        for word in re.findall(r"\w+", title2.lower())
+        if word not in stop_words
+    }
+
+    if not words1 or not words2:
+        return 0
+
+    intersection = words1 & words2
+    union = words1 | words2
+
+    return len(intersection) / len(union)
+
+print(title_similarity(
+    "OpenAI releases new AI model",
+    "OpenAI releases a new artificial intelligence model"
+))
+print(title_similarity(
+    "Tesla announces new humanoid robot",
+    "Microsoft opens new data center"
+))
+print(title_similarity(
+    "OpenAI releases new AI model",
+    "OpenAI releases new AI model"
+))
+
 
 
 def collect_news():
