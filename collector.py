@@ -36,6 +36,10 @@ def collect_news():
         for item in feed.entries:
             title = item.get("title", "No title")
             link = item.get("link", "No link")
+            if link in existing_urls:
+               continue
+
+            existing_urls.add(link)
             published_at = item.get("published", "")
 
             print("Published:", published_at)
