@@ -781,6 +781,374 @@
       "url": "https://arstechnica.com/science/2026/02/unique-structure-of-elephant-whiskers-give-them-built-in-sensing-intelligence/",
       "published_at": "Thu, 12 Feb 2026 19:00:15 +0000",
       "collected_at": "2026-09-29T21:55:40.335135+00:00"
+    },
+    {
+      "title": "How Bipedal Robots Choose Safer Steps",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/how-bipedal-robots-choose-safer-steps-066123-698",
+      "published_at": "Tue, 29 Sep 2026 22:14:26 GMT",
+      "collected_at": "2026-09-29T22:16:49.508012+00:00"
+    },
+    {
+      "title": "Force Sensing Could Help Humanoids Handle Objects Safely",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/force-sensing-could-help-humanoids-handle-objects-safely-895457-571",
+      "published_at": "Tue, 29 Sep 2026 22:11:35 GMT",
+      "collected_at": "2026-09-29T22:16:49.508834+00:00"
+    },
+    {
+      "title": "HOI-Retarget Keeps Humanoid Hands on the Right Spot",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/hoi-retarget-keeps-humanoid-hands-on-the-right-spot-304231-678",
+      "published_at": "Tue, 29 Sep 2026 12:18:24 GMT",
+      "collected_at": "2026-09-29T22:16:49.509646+00:00"
+    },
+    {
+      "title": "How SocialHumanoid Turns Speech Into Robot Gestures",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/how-socialhumanoid-turns-speech-into-robot-gestures-221336-793",
+      "published_at": "Tue, 29 Sep 2026 12:17:01 GMT",
+      "collected_at": "2026-09-29T22:16:49.510430+00:00"
+    },
+    {
+      "title": "BeyondRetarget Maps Video Directly to Humanoid Motion",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/beyondretarget-maps-video-directly-to-humanoid-motion-655576-225",
+      "published_at": "Mon, 28 Sep 2026 22:14:15 GMT",
+      "collected_at": "2026-09-29T22:16:49.511217+00:00"
+    },
+    {
+      "title": "Separate Wrist Bones Let a Robot Shift Stiffness",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/separate-wrist-bones-let-a-robot-shift-stiffness-607754-120",
+      "published_at": "Mon, 28 Sep 2026 22:13:27 GMT",
+      "collected_at": "2026-09-29T22:16:49.512021+00:00"
+    },
+    {
+      "title": "Unitree Humanoids Perform With Dancers in Shanghai",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/unitree-humanoids-perform-with-dancers-in-shanghai-453594-609",
+      "published_at": "Fri, 25 Sep 2026 22:14:13 GMT",
+      "collected_at": "2026-09-29T22:16:49.512820+00:00"
+    },
+    {
+      "title": "Agility Robotics Is Exploring Robots With Wheels",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/agility-robotics-is-exploring-robots-with-wheels-317863-108",
+      "published_at": "Fri, 25 Sep 2026 22:11:57 GMT",
+      "collected_at": "2026-09-29T22:16:49.513586+00:00"
+    },
+    {
+      "title": "RoboBusiness 2026 Panel to Examine Humanoid Readiness",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/robobusiness-2026-panel-to-examine-humanoid-readiness-957574-463",
+      "published_at": "Thu, 24 Sep 2026 02:29:17 GMT",
+      "collected_at": "2026-09-29T22:16:49.514396+00:00"
+    },
+    {
+      "title": "How Attackers Can Make Robots Behave Badly",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/how-attackers-can-make-robots-behave-badly-040679-800",
+      "published_at": "Mon, 21 Sep 2026 12:17:20 GMT",
+      "collected_at": "2026-09-29T22:16:49.515202+00:00"
+    },
+    {
+      "title": "How OmniCalib Recalibrates a Humanoid Without Markers",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/how-omnicalib-recalibrates-a-humanoid-without-markers-886599-71",
+      "published_at": "Sat, 19 Sep 2026 22:11:26 GMT",
+      "collected_at": "2026-09-29T22:16:49.516008+00:00"
+    },
+    {
+      "title": "How RoM-Nav Helps a Humanoid Climb Between Floors",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/how-rom-nav-helps-a-humanoid-climb-between-floors-196178-819",
+      "published_at": "Sat, 19 Sep 2026 12:16:36 GMT",
+      "collected_at": "2026-09-29T22:16:49.516873+00:00"
+    },
+    {
+      "title": "UBTECH Claims Its Humanoid Factory Can Reach 10,000 Units",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/ubtech-claims-its-humanoid-factory-can-reach-10000-units-536313-658",
+      "published_at": "Fri, 18 Sep 2026 22:12:16 GMT",
+      "collected_at": "2026-09-29T22:16:49.517783+00:00"
+    },
+    {
+      "title": "ViLoMan Teaches a Humanoid to Close Doors",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/viloman-teaches-a-humanoid-to-close-doors-407219-565",
+      "published_at": "Fri, 18 Sep 2026 22:10:07 GMT",
+      "collected_at": "2026-09-29T22:16:49.518597+00:00"
+    },
+    {
+      "title": "A Humanoid Learns to Work Across Sloped Roofs",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/a-humanoid-learns-to-work-across-sloped-roofs-697258-917",
+      "published_at": "Fri, 18 Sep 2026 12:14:57 GMT",
+      "collected_at": "2026-09-29T22:16:49.519455+00:00"
+    },
+    {
+      "title": "Digit 5 Trades Speed for Strength at Work",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/digit-5-trades-speed-for-strength-at-work-065219-962",
+      "published_at": "Thu, 17 Sep 2026 22:11:05 GMT",
+      "collected_at": "2026-09-29T22:16:49.520327+00:00"
+    },
+    {
+      "title": "How PASSAGE Helps a Humanoid Move Through Clutter",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/how-passage-helps-a-humanoid-move-through-clutter-493956-980",
+      "published_at": "Thu, 17 Sep 2026 12:18:13 GMT",
+      "collected_at": "2026-09-29T22:16:49.521207+00:00"
+    },
+    {
+      "title": "RECAL Adds Collision Awareness to Humanoid Control",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/recal-adds-collision-awareness-to-humanoid-control-986509-953",
+      "published_at": "Wed, 16 Sep 2026 12:16:26 GMT",
+      "collected_at": "2026-09-29T22:16:49.522069+00:00"
+    },
+    {
+      "title": "Digit 5 Plans to Sit Down Around Workers",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/digit-5-plans-to-sit-down-around-workers-401407-616",
+      "published_at": "Tue, 15 Sep 2026 22:13:21 GMT",
+      "collected_at": "2026-09-29T22:16:49.522960+00:00"
+    },
+    {
+      "title": "Digit 5 Uses Stop, Step-Aside, and Squat Responses",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/digit-5-uses-stop-step-aside-and-squat-responses-362555-481",
+      "published_at": "Tue, 15 Sep 2026 22:12:42 GMT",
+      "collected_at": "2026-09-29T22:16:49.523912+00:00"
+    },
+    {
+      "title": "Agility Rebuilds Digit 5 for Factory Work",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/agility-rebuilds-digit-5-for-factory-work-546928-88",
+      "published_at": "Tue, 15 Sep 2026 12:15:46 GMT",
+      "collected_at": "2026-09-29T22:16:49.524801+00:00"
+    },
+    {
+      "title": "ETH Zurich Studies Humanoid Robot Monkey-Bar Traversal",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/eth-zurich-studies-humanoid-robot-monkey-bar-traversal-532938-61",
+      "published_at": "Fri, 11 Sep 2026 18:15:32 GMT",
+      "collected_at": "2026-09-29T22:16:49.525717+00:00"
+    },
+    {
+      "title": "HuRo Turns Human Videos Into Robot Training Data",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/huro-turns-human-videos-into-robot-training-data-008482-480",
+      "published_at": "Fri, 11 Sep 2026 17:16:48 GMT",
+      "collected_at": "2026-09-29T22:16:49.526639+00:00"
+    },
+    {
+      "title": "SwingBot Uses Wrist Hooks to Swing Between Overhead Bars",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/swingbot-makes-humanoid-brachiation-learnable-with-guided-reinforcement-learning-666538-28",
+      "published_at": "Thu, 10 Sep 2026 12:17:46 GMT",
+      "collected_at": "2026-09-29T22:16:49.527594+00:00"
+    },
+    {
+      "title": "AGIBOT Plans a Talk on Scaling Humanoid Robots",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/agibot-sets-out-the-supply-chain-and-software-hurdles-facing-humanoids-608709-665",
+      "published_at": "Thu, 10 Sep 2026 12:16:48 GMT",
+      "collected_at": "2026-09-29T22:16:49.528510+00:00"
+    },
+    {
+      "title": "Report: Unitree Shipped Thousands of Humanoids. Factory Use Is Unclear",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/unitrees-reported-humanoid-sales-now-face-a-harder-commercialization-test-576572-806",
+      "published_at": "Thu, 10 Sep 2026 12:16:16 GMT",
+      "collected_at": "2026-09-29T22:16:49.529523+00:00"
+    },
+    {
+      "title": "A Flying Humanoid Robot Walks Across a Ceiling",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/how-a-flying-humanoid-walks-across-a-ceiling-without-losing-thrust-138274-250",
+      "published_at": "Wed, 09 Sep 2026 18:55:38 GMT",
+      "collected_at": "2026-09-29T22:16:49.530445+00:00"
+    },
+    {
+      "title": "Why Humanoid Robots Need Smarter Joints",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/how-humanoid-joints-turn-ai-decisions-into-safe-physical-movement-089549-377",
+      "published_at": "Wed, 09 Sep 2026 18:54:49 GMT",
+      "collected_at": "2026-09-29T22:16:49.531340+00:00"
+    },
+    {
+      "title": "PGMT Helps a Humanoid Adapt Motion to Uneven Terrain",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/pgmt-lets-a-humanoid-change-footing-without-losing-motion-intent-422912-386",
+      "published_at": "Wed, 09 Sep 2026 18:27:02 GMT",
+      "collected_at": "2026-09-29T22:16:49.532322+00:00"
+    },
+    {
+      "title": "A Wider Robot View Helps Operators Find Dropped Objects",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/spot-gives-humanoid-teleoperators-a-wider-steadier-view-568867-370",
+      "published_at": "Wed, 09 Sep 2026 12:22:48 GMT",
+      "collected_at": "2026-09-29T22:16:49.533308+00:00"
+    },
+    {
+      "title": "Digit Robots Reach Nine Customer Sites",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/digit-has-reached-nine-customer-sites-as-agility-targets-thousands-more-514904-270",
+      "published_at": "Wed, 09 Sep 2026 12:21:54 GMT",
+      "collected_at": "2026-09-29T22:16:49.534221+00:00"
+    },
+    {
+      "title": "TANGO Helps a Humanoid Duck, Sidestep and Step Over Clutter",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/tango-maps-language-and-camera-views-to-humanoid-whole-body-actions-453061-67",
+      "published_at": "Wed, 09 Sep 2026 12:20:53 GMT",
+      "collected_at": "2026-09-29T22:16:49.535258+00:00"
+    },
+    {
+      "title": "A Humanoid Prototype Takes Voice Commands and Recognizes Gestures",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/vietnamjapan-team-builds-modular-humanoid-for-multimodal-interaction-626004-312",
+      "published_at": "Mon, 07 Sep 2026 12:20:26 GMT",
+      "collected_at": "2026-09-29T22:16:49.536290+00:00"
+    },
+    {
+      "title": "Lattice Proposes a Way for Robots to Recover From Hacks",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/lattice-proposes-hardware-roots-of-trust-for-humanoid-robot-security-222954-214",
+      "published_at": "Sun, 06 Sep 2026 17:53:42 GMT",
+      "collected_at": "2026-09-29T22:16:49.537327+00:00"
+    },
+    {
+      "title": "Robotics Startup Radar Opens Applications for 2026",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/robotics-startup-radar-opens-2026-submissions-for-young-companies-836210-473",
+      "published_at": "Sat, 05 Sep 2026 22:03:56 GMT",
+      "collected_at": "2026-09-29T22:16:49.538298+00:00"
+    },
+    {
+      "title": "Students Transfer Simulated Humanoid Behaviors to a Robot",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/oh-gym-students-moved-humanoid-behaviors-from-simulation-to-hardware-548088-202",
+      "published_at": "Sat, 05 Sep 2026 21:09:08 GMT",
+      "collected_at": "2026-09-29T22:16:49.539347+00:00"
+    },
+    {
+      "title": "A New Way to Make Human Moves Fit Humanoid Robots",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/how-umr-transfers-human-motion-across-different-humanoid-bodies-775682-266",
+      "published_at": "Sat, 05 Sep 2026 19:32:55 GMT",
+      "collected_at": "2026-09-29T22:16:49.540413+00:00"
+    },
+    {
+      "title": "How a Humanoid Study Would Measure the Human Side of Teamwork",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/hri-dataset-plan-adds-body-signals-417750-473",
+      "published_at": "Fri, 04 Sep 2026 12:20:17 GMT",
+      "collected_at": "2026-09-29T22:16:49.541579+00:00"
+    },
+    {
+      "title": "Lower-Limb Calibration Uses Foot Contact",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/lower-limb-calibration-uses-foot-contact-736082-525",
+      "published_at": "Thu, 03 Sep 2026 22:15:36 GMT",
+      "collected_at": "2026-09-29T22:16:49.542545+00:00"
+    },
+    {
+      "title": "Safer Stops Need a Feasibility Check",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/safer-stops-need-a-feasibility-check-073244-367",
+      "published_at": "Thu, 03 Sep 2026 12:21:13 GMT",
+      "collected_at": "2026-09-29T22:16:49.543665+00:00"
+    },
+    {
+      "title": "Humanoid System Targets Faster Task Changes",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/humanoid-system-targets-faster-task-changes-634759-294",
+      "published_at": "Wed, 02 Sep 2026 12:20:34 GMT",
+      "collected_at": "2026-09-29T22:16:49.544663+00:00"
+    },
+    {
+      "title": "Robot Safety Needs a Security Layer",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/robot-safety-needs-a-security-layer-732051-757",
+      "published_at": "Tue, 01 Sep 2026 22:12:12 GMT",
+      "collected_at": "2026-09-29T22:16:49.545614+00:00"
+    },
+    {
+      "title": "August Robotics: Capital, AI, and Cost Pressure",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/august-robotics-capital-ai-and-cost-pressure-726982-371",
+      "published_at": "Tue, 01 Sep 2026 22:12:06 GMT",
+      "collected_at": "2026-09-29T22:16:49.546626+00:00"
+    },
+    {
+      "title": "AnyWorld Targets Robot Learning Data Gaps",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/anyworld-targets-robot-learning-data-gaps-238397-966",
+      "published_at": "Tue, 01 Sep 2026 12:20:38 GMT",
+      "collected_at": "2026-09-29T22:16:49.547622+00:00"
+    },
+    {
+      "title": "Humanoid Learns Sparse Bar Traversal",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/humanoid-learns-sparse-bar-traversal-231711-662",
+      "published_at": "Tue, 01 Sep 2026 12:20:31 GMT",
+      "collected_at": "2026-09-29T22:16:49.548589+00:00"
+    },
+    {
+      "title": "Humanoid Chair Mobility Moves Beyond Standing",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/humanoid-chair-mobility-moves-beyond-standing-415742-353",
+      "published_at": "Mon, 31 Aug 2026 22:13:35 GMT",
+      "collected_at": "2026-09-29T22:16:49.549595+00:00"
     }
   ]
 }
