@@ -18,5 +18,17 @@
       "url": "https://www.therobotreport.com/",
       "rss_url": "https://www.therobotreport.com/feed"
     }
+    {
+      "name": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/tag/ai/",
+      "rss_url": "https://techcrunch.com/tag/ai/feed/"
+    },
+    {
+      "name": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/tag/robotics/",
+      "rss_url": "https://arstechnica.com/tag/robotics/feed/"
+    }
   ]
 }
