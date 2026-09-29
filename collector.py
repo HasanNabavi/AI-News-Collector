@@ -11,3 +11,6 @@ print()
 
 for source in sources:
     print(f"- {source['name']} ({source['category']})")
+
+print()
+print(f"Total sources: {len(sources)}")
