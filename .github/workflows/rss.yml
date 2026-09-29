@@ -21,3 +21,11 @@ jobs:
 
       - name: Run collector
         run: python collector.py
+
+      - name: Commit updated news
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add news.json
+          git commit -m "Update collected news" || echo "No changes to commit"
+          git push
