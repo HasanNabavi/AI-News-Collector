@@ -1,4 +1,5 @@
 import json
+import feedparser
 
 # Load news sources
 with open("sources.json", "r", encoding="utf-8") as file:
@@ -6,18 +7,12 @@ with open("sources.json", "r", encoding="utf-8") as file:
 
 sources = sources_data["sources"]
 
-# Load news
-with open("news.json", "r", encoding="utf-8") as file:
-    news_data = json.load(file)
-
-news = news_data["news"]
-
 print("News sources:")
 print()
 
 for source in sources:
-    print(f"- {source['name']} ({source['category']})")
+    print(f"- {source['name']}")
+    print(f"  RSS: {source['rss_url']}")
+    print()
 
-print()
 print(f"Total sources: {len(sources)}")
-print(f"Total news: {len(news)}")
