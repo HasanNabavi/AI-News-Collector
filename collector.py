@@ -34,12 +34,14 @@ def collect_news():
         for item in feed.entries:
             title = item.get("title", "No title")
             link = item.get("link", "No link")
+            published_at = item.get("published", "")
 
             news_item = {
                 "title": title,
                 "source": source["name"],
                 "category": source["category"],
                 "url": link,
+                "published_at": published_at,
                 "collected_at": datetime.now(timezone.utc).isoformat()
             }
 
