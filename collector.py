@@ -84,6 +84,15 @@ def collect_news():
     }
     new_news = []
 
+    new_titles = []
+
+    existing_titles = [
+    item.get("title", "")
+    for item in existing_news
+    if item.get("title")
+    ]
+
+    
     for source in sources:
         print()
         print(f"Source: {source['name']}")
@@ -101,6 +110,16 @@ def collect_news():
                 continue
 
             existing_urls.add(normalized_link)
+            title_score = max(
+                [title_similarity(title, old_title) for old_title in existing_titles + new_titles],
+                default=0
+            )
+
+            print(f"Title similarity: {title_score:.2f} | {title}")
+            
+            if title_score >= 0.85:
+                continue
+    
             published_at = item.get("published", "")
 
             news_item = {
@@ -112,6 +131,7 @@ def collect_news():
                 "collected_at": datetime.now(timezone.utc).isoformat()
             }
 
+            new_titles.append(title)
             new_news.append(news_item)
 
     # Add new news to existing news
