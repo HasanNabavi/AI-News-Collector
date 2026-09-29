@@ -1,29 +1,10 @@
 {
   "sources": [
     {
-      "name": "MIT Technology Review",
+      "name": "Example AI News",
       "category": "AI",
-      "url": "https://www.technologyreview.com/"
-    },
-    {
-      "name": "IEEE Spectrum",
-      "category": "Robotics",
-      "url": "https://spectrum.ieee.org/"
-    },
-    {
-      "name": "TechCrunch",
-      "category": "AI",
-      "url": "https://techcrunch.com/"
-    },
-    {
-      "name": "The Robot Report",
-      "category": "Robotics",
-      "url": "https://www.therobotreport.com/"
-    },
-    {
-      "name": "VentureBeat",
-      "category": "AI",
-      "url": "https://venturebeat.com/"
+      "url": "https://example.com/",
+      "rss_url": "https://example.com/rss"
     }
   ]
 }
