@@ -1,6 +1,6 @@
 name: RSS News Collector
 
-on:
+on: [workflow_dispatch]
   workflow_dispatch:
 
 jobs:
