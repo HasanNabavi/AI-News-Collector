@@ -29,6 +29,18 @@
       "category": "Robotics",
       "url": "https://arstechnica.com/tag/robotics/",
       "rss_url": "https://arstechnica.com/tag/robotics/feed/"
+    },
+    {
+      "name": "VentureBeat",
+      "category": "AI",
+      "url": "https://venturebeat.com/",
+      "rss_url": "https://venturebeat.com/feed/"
+    },
+    {
+      "name": "MIT News Robotics",
+      "category": "Robotics",
+      "url": "https://news.mit.edu/topic/robotics",
+      "rss_url": "https://news.mit.edu/rss/topic/robotics"
     }
   ]
 }
