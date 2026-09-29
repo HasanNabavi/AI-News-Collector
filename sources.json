@@ -1,0 +1,19 @@
+{
+  "sources": [
+    {
+      "name": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/"
+    },
+    {
+      "name": "IEEE Spectrum",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/"
+    },
+    {
+      "name": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/"
+    }
+  ]
+}
