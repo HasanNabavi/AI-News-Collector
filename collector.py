@@ -59,21 +59,6 @@ def title_similarity(title1, title2):
 
     return len(intersection) / len(union)
 
-print(title_similarity(
-    "OpenAI releases new AI model",
-    "OpenAI releases a new artificial intelligence model"
-))
-print(title_similarity(
-    "Tesla announces new humanoid robot",
-    "Microsoft opens new data center"
-))
-print(title_similarity(
-    "OpenAI releases new AI model",
-    "OpenAI releases new AI model"
-))
-
-
-
 def collect_news():
     # Load news sources
     with open("sources.json", "r", encoding="utf-8") as file:
