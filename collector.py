@@ -21,6 +21,8 @@ def collect_news():
     print("AI & Robotics News Collector")
     print("=" * 40)
 
+    existing_urls = {item.get("url") for item in existing_news}
+    
     new_news = []
 
     for source in sources:
