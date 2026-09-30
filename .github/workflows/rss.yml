@@ -1,10 +1,10 @@
-name: RSS News Collector
+name: AI News Pipeline
 
 on:
   workflow_dispatch:
 
 jobs:
-  collect-news:
+  run-pipeline:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,13 +19,13 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run collector
-        run: python collector.py
+      - name: Run AI News Pipeline
+        run: python A0_MAIN.py
 
       - name: Commit updated news
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add news.json
-          git commit -m "Update collected news" || echo "No changes to commit"
+          git add B1_News.json C1_NewsAfterLinkEquivalencyRun.json D1_NewsAfterTittleEquivalencyRun.json
+          git commit -m "Run AI news pipeline" || echo "No changes to commit"
           git push
