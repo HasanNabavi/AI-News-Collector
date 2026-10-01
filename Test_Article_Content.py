@@ -1,6 +1,7 @@
 import json
 import re
 import requests
+import feedparser
 from bs4 import BeautifulSoup
 
 
@@ -12,38 +13,28 @@ TEST_SOURCES = [
 
 
 def normalize_text(text):
-    text = re.sub(r"\s+", " ", text)
-    return text.strip()
+    return re.sub(r"\s+", " ", text).strip()
 
 
-def title_words(title):
-    return set(
-        re.findall(
-            r"\w+",
-            title.lower()
-        )
+def get_article_from_rss(source):
+
+    feed = feedparser.parse(
+        source["rss_url"]
     )
 
+    if not feed.entries:
+        return None
 
-def title_coverage(title, text):
-    title_set = title_words(title)
+    item = feed.entries[0]
 
-    if not title_set:
-        return 0
-
-    text_set = set(
-        re.findall(
-            r"\w+",
-            text.lower()
-        )
-    )
-
-    return len(
-        title_set & text_set
-    ) / len(title_set)
+    return {
+        "title": item.get("title", ""),
+        "url": item.get("link", "")
+    }
 
 
-def get_candidate_containers(soup):
+def get_candidates(soup):
+
     candidates = []
 
     for tag in soup.find_all(
@@ -53,8 +44,12 @@ def get_candidate_containers(soup):
         paragraphs = []
 
         for p in tag.find_all("p"):
+
             text = normalize_text(
-                p.get_text(" ", strip=True)
+                p.get_text(
+                    " ",
+                    strip=True
+                )
             )
 
             if len(text) >= 80:
@@ -63,7 +58,7 @@ def get_candidate_containers(soup):
         if len(paragraphs) < 5:
             continue
 
-        text = normalize_text(
+        full_text = normalize_text(
             " ".join(
                 p.get_text(
                     " ",
@@ -73,19 +68,44 @@ def get_candidate_containers(soup):
             )
         )
 
-        if len(text) < 1000:
+        if len(full_text) < 1000:
             continue
 
         candidates.append({
             "tag": tag,
             "paragraphs": paragraphs,
-            "text": text
+            "text": full_text
         })
 
     return candidates
 
 
-def paragraph_metadata(p):
+def title_coverage(title, text):
+
+    title_words = set(
+        re.findall(
+            r"\w+",
+            title.lower()
+        )
+    )
+
+    text_words = set(
+        re.findall(
+            r"\w+",
+            text.lower()
+        )
+    )
+
+    if not title_words:
+        return 0
+
+    return len(
+        title_words & text_words
+    ) / len(title_words)
+
+
+def describe_paragraph(p, number):
+
     text = normalize_text(
         p.get_text(
             " ",
@@ -93,204 +113,55 @@ def paragraph_metadata(p):
         )
     )
 
-    links = p.find_all("a")
+    links = len(
+        p.find_all("a")
+    )
 
     parent = p.parent
 
-    parent_tag = (
+    parent_name = (
         parent.name
         if parent
         else ""
     )
 
-    parent_id = (
-        parent.get("id", "")
-        if parent
-        else ""
-    )
+    parent_class = ""
 
-    parent_class = (
-        " ".join(
+    if parent:
+        parent_class = " ".join(
             parent.get(
                 "class",
                 []
             )
         )
-        if parent
-        else ""
-    )
-
-    ancestors = []
-
-    current = p.parent
-
-    for _ in range(4):
-
-        if current is None:
-            break
-
-        descriptor = current.name
-
-        if current.get("id"):
-            descriptor += (
-                f"#{current.get('id')}"
-            )
-
-        classes = current.get(
-            "class",
-            []
-        )
-
-        if classes:
-            descriptor += (
-                "."
-                + ".".join(classes[:2])
-            )
-
-        ancestors.append(
-            descriptor
-        )
-
-        current = current.parent
-
-    return {
-        "text": text,
-        "length": len(text),
-        "links": len(links),
-        "parent": (
-            f"{parent_tag}"
-            f"#{parent_id}"
-            f".{parent_class}"
-        ),
-        "ancestors": ancestors
-    }
-
-
-def print_candidate(
-    candidate_number,
-    candidate,
-    title
-):
-
-    paragraphs = candidate["paragraphs"]
-
-    coverage = title_coverage(
-        title,
-        candidate["text"]
-    )
-
-    tag = candidate["tag"]
-
-    tag_name = tag.name
-
-    tag_id = tag.get(
-        "id",
-        ""
-    )
-
-    tag_class = " ".join(
-        tag.get(
-            "class",
-            []
-        )
-    )
-
-    print()
-    print("=" * 100)
 
     print(
-        f"CANDIDATE #{candidate_number}"
+        f"{number:02d}. "
+        f"len={len(text):4d} "
+        f"links={links} "
+        f"parent={parent_name}"
+        f".{parent_class[:35]}"
     )
 
     print(
-        f"Container: "
-        f"{tag_name}"
-        f"#{tag_id}"
-        f".{tag_class}"
+        f"    {text[:220]}"
     )
 
-    print(
-        f"Paragraphs: "
-        f"{len(paragraphs)}"
-    )
 
-    print(
-        f"Total text: "
-        f"{len(candidate['text'])}"
-    )
-
-    print(
-        f"Title coverage: "
-        f"{coverage:.3f}"
-    )
-
-    print("=" * 100)
-
-    for index, p in enumerate(
-        paragraphs,
-        start=1
-    ):
-
-        metadata = paragraph_metadata(p)
-
-        print()
-        print(
-            f"[Paragraph {index}]"
-        )
-
-        print(
-            f"Length: "
-            f"{metadata['length']}"
-        )
-
-        print(
-            f"Links: "
-            f"{metadata['links']}"
-        )
-
-        print(
-            f"Parent: "
-            f"{metadata['parent']}"
-        )
-
-        print(
-            "Ancestors:"
-        )
-
-        for ancestor in metadata[
-            "ancestors"
-        ]:
-            print(
-                f"  - {ancestor}"
-            )
-
-        print(
-            "Text:"
-        )
-
-        print(
-            metadata["text"]
-        )
-
-
-def test_source(
-    source,
-    url
+def analyze_source(
+    source_name,
+    article
 ):
 
     print()
-    print()
-    print("#" * 100)
-
+    print("#" * 90)
     print(
-        f"SOURCE: {source}"
+        f"SOURCE: {source_name}"
     )
-
     print(
-        f"URL: {url}"
+        f"TITLE: {article['title']}"
     )
-
-    print("#" * 100)
+    print("#" * 90)
 
     headers = {
         "User-Agent": (
@@ -304,14 +175,13 @@ def test_source(
     }
 
     response = requests.get(
-        url,
+        article["url"],
         headers=headers,
         timeout=30
     )
 
     print(
-        f"HTTP status: "
-        f"{response.status_code}"
+        f"HTTP: {response.status_code}"
     )
 
     if response.status_code != 200:
@@ -322,66 +192,154 @@ def test_source(
         "html.parser"
     )
 
-    title_tag = soup.find("title")
-
-    title = normalize_text(
-        title_tag.get_text()
-        if title_tag
-        else ""
-    )
-
-    print(
-        f"Page title: {title}"
-    )
-
-    candidates = get_candidate_containers(
+    candidates = get_candidates(
         soup
     )
 
+    # Remove near-duplicate containers.
+    unique_candidates = []
+
+    seen = set()
+
+    for candidate in candidates:
+
+        paragraph_count = len(
+            candidate["paragraphs"]
+        )
+
+        text_length = len(
+            candidate["text"]
+        )
+
+        key = (
+            paragraph_count,
+            text_length
+        )
+
+        if key in seen:
+            continue
+
+        seen.add(key)
+
+        unique_candidates.append(
+            candidate
+        )
+
+    # Sort from smaller to larger.
+    unique_candidates.sort(
+        key=lambda x: len(
+            x["paragraphs"]
+        )
+    )
+
     print(
-        f"Candidate containers: "
-        f"{len(candidates)}"
+        f"Unique candidates: "
+        f"{len(unique_candidates)}"
     )
 
-    candidates.sort(
-        key=lambda item: len(
-            item["paragraphs"]
-        )
-    )
+    # We inspect only three candidates:
+    # small / middle / large.
 
-    # We intentionally inspect several
-    # different container sizes.
-    selected = []
+    indexes = []
 
-    if candidates:
+    if unique_candidates:
+        indexes.append(0)
 
-        selected.append(
-            candidates[0]
+    if len(unique_candidates) > 2:
+        indexes.append(
+            len(unique_candidates) // 2
         )
 
-        if len(candidates) > 1:
-            selected.append(
-                candidates[len(candidates) // 2]
-            )
+    if len(unique_candidates) > 1:
+        indexes.append(
+            len(unique_candidates) - 1
+        )
 
-        if len(candidates) > 2:
-            selected.append(
-                candidates[-1]
-            )
-
-    for index, candidate in enumerate(
-        selected,
+    for candidate_number, index in enumerate(
+        indexes,
         start=1
     ):
 
-        print_candidate(
-            index,
-            candidate,
-            title
+        candidate = unique_candidates[index]
+
+        tag = candidate["tag"]
+
+        tag_description = tag.name
+
+        if tag.get("id"):
+            tag_description += (
+                f"#{tag.get('id')}"
+            )
+
+        classes = tag.get(
+            "class",
+            []
         )
 
+        if classes:
+            tag_description += (
+                "."
+                + ".".join(classes[:3])
+            )
 
-def load_rss_sources():
+        coverage = title_coverage(
+            article["title"],
+            candidate["text"]
+        )
+
+        print()
+        print(
+            "-" * 90
+        )
+
+        print(
+            f"CANDIDATE {candidate_number}"
+        )
+
+        print(
+            f"Container: "
+            f"{tag_description[:100]}"
+        )
+
+        print(
+            f"Paragraphs: "
+            f"{len(candidate['paragraphs'])}"
+        )
+
+        print(
+            f"Text length: "
+            f"{len(candidate['text'])}"
+        )
+
+        print(
+            f"Title coverage: "
+            f"{coverage:.2f}"
+        )
+
+        print(
+            "Paragraphs:"
+        )
+
+        paragraphs = candidate[
+            "paragraphs"
+        ]
+
+        # Show ALL paragraphs, but only
+        # first 220 characters each.
+
+        for number, p in enumerate(
+            paragraphs,
+            start=1
+        ):
+            describe_paragraph(
+                p,
+                number
+            )
+
+
+def main():
+
+    sources = []
 
     with open(
         "A_Source.json",
@@ -389,62 +347,25 @@ def load_rss_sources():
         encoding="utf-8"
     ) as file:
 
-        data = json.load(file)
-
-    return data["sources"]
-
-
-def get_first_article(
-    source
-):
-
-    import feedparser
-
-    feed = feedparser.parse(
-        source["rss_url"]
-    )
-
-    if not feed.entries:
-        return None
-
-    item = feed.entries[0]
-
-    return {
-        "title": item.get(
-            "title",
-            ""
-        ),
-        "url": item.get(
-            "link",
-            ""
-        )
-    }
-
-
-def main():
-
-    sources = load_rss_sources()
+        sources = json.load(
+            file
+        )["sources"]
 
     for source in sources:
 
         if source["name"] not in TEST_SOURCES:
             continue
 
-        article = get_first_article(
+        article = get_article_from_rss(
             source
         )
 
         if article is None:
-            print(
-                f"No RSS article found: "
-                f"{source['name']}"
-            )
-
             continue
 
-        test_source(
+        analyze_source(
             source["name"],
-            article["url"]
+            article
         )
 
 
