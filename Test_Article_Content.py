@@ -13,6 +13,7 @@ URL = (
     "what-youre-looking-at/"
 )
 
+
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 "
@@ -224,6 +225,13 @@ def remove_non_article_elements(
     )
 
     for element in elements:
+
+        if not getattr(
+            element,
+            "attrs",
+            None
+        ):
+            continue
 
         classes = " ".join(
             element.get(
