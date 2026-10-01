@@ -1,202 +1,237 @@
 import requests
 import feedparser
 from bs4 import BeautifulSoup
+from urllib.parse import urljoin, urlsplit, urlunsplit, parse_qsl, urlencode
 
 
-RSS_URL = (
-    "https://www.technologyreview.com/feed"
-)
+RSS_URL = "https://www.technologyreview.com/feed"
 
-NUMBER_OF_ARTICLES = 5
-
-
-def download_page(url):
-
-    response = requests.get(
-        url,
-        headers={
-            "User-Agent": (
-                "Mozilla/5.0 "
-                "(Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 "
-                "(KHTML, like Gecko) "
-                "Chrome/120.0 Safari/537.36"
-            )
-        },
-        timeout=20
+HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 "
+        "(Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 "
+        "(KHTML, like Gecko) "
+        "Chrome/120.0 Safari/537.36"
     )
-
-    response.raise_for_status()
-
-    return response.text
+}
 
 
-def analyze_page(title, url):
+def normalize_url(url):
+    """
+    Remove tracking parameters from a URL.
+    """
 
-    print()
-    print("=" * 80)
-    print("PAGE")
-    print("=" * 80)
+    parts = urlsplit(url)
 
-    print()
-    print("Title:")
-    print(title)
+    tracking_params = {
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_term",
+        "utm_content",
+        "fbclid",
+        "gclid"
+    }
 
-    print()
-    print("URL:")
-    print(url)
-
-    try:
-        html = download_page(url)
-
-    except Exception as error:
-
-        print()
-        print(
-            f"DOWNLOAD ERROR: {error}"
+    query_params = [
+        (key, value)
+        for key, value in parse_qsl(
+            parts.query,
+            keep_blank_values=True
         )
+        if key.lower() not in tracking_params
+    ]
 
-        return
+    return urlunsplit((
+        parts.scheme.lower(),
+        parts.netloc.lower(),
+        parts.path.rstrip("/"),
+        urlencode(query_params),
+        ""
+    ))
 
-    soup = BeautifulSoup(
-        html,
-        "html.parser"
-    )
 
-    container = soup.find(
-        id="content--body"
-    )
+def is_download_newsletter(soup):
+    """
+    Detect MIT Technology Review's
+    'The Download' newsletter page.
+    """
 
-    if container is None:
-
-        print()
-        print(
-            "#content--body NOT FOUND"
-        )
-
-        return
-
-    print()
-    print(
-        "#content--body FOUND"
-    )
-
-    # --------------------------------------------------
-    # Headings
-    # --------------------------------------------------
-
-    headings = container.find_all(
-        ["h1", "h2", "h3", "h4"]
-    )
-
-    print()
-    print(
-        f"Headings found: "
-        f"{len(headings)}"
-    )
-
-    print()
-    print("-" * 80)
-    print("HEADINGS")
-    print("-" * 80)
-
-    for index, heading in enumerate(
-        headings,
-        1
-    ):
-
-        text = heading.get_text(
-            " ",
-            strip=True
-        )
-
-        if not text:
-            continue
-
-        print(
-            f"{index}. "
-            f"{heading.name}: "
-            f"{text[:250]}"
-        )
-
-    # --------------------------------------------------
-    # Newsletter indicators
-    # --------------------------------------------------
-
-    full_text = container.get_text(
+    text = soup.get_text(
         " ",
         strip=True
     )
 
-    newsletter_phrases = [
-        "This is today's edition of The Download",
-        "our weekday newsletter",
-        "This article is from The Spark",
-        "weekly climate newsletter",
-        "newsletter"
-    ]
+    return (
+        "This is today's edition of The Download" in text
+        and
+        "our weekday newsletter" in text
+    )
 
-    print()
-    print("-" * 80)
-    print("NEWSLETTER INDICATORS")
-    print("-" * 80)
 
-    for phrase in newsletter_phrases:
+def extract_newsletter_links(soup):
+    """
+    Test extraction of article links from
+    a MIT Technology Review newsletter page.
+    """
 
-        found = phrase.lower() in full_text.lower()
+    container = soup.select_one(
+        "#content--body"
+    )
 
-        print(
-            f"{phrase}: "
-            f"{'FOUND' if found else 'NOT FOUND'}"
+    if container is None:
+        return []
+
+    results = []
+
+    headings = container.find_all(
+        ["h2", "h3", "h4"]
+    )
+
+    for heading in headings:
+
+        heading_text = heading.get_text(
+            " ",
+            strip=True
         )
 
+        if not heading_text:
+            continue
 
-def main():
+        # --------------------------------------------------
+        # Method 1:
+        # Check if the heading itself contains a link
+        # --------------------------------------------------
+
+        links = heading.find_all(
+            "a",
+            href=True
+        )
+
+        # --------------------------------------------------
+        # Method 2:
+        # Check the parent element
+        # --------------------------------------------------
+
+        if not links:
+
+            parent = heading.parent
+
+            if parent is not None:
+                links = parent.find_all(
+                    "a",
+                    href=True
+                )
+
+        # --------------------------------------------------
+        # Method 3:
+        # Check the next few siblings
+        # --------------------------------------------------
+
+        if not links:
+
+            current = heading
+
+            for _ in range(4):
+
+                current = current.find_next_sibling()
+
+                if current is None:
+                    break
+
+                links = current.find_all(
+                    "a",
+                    href=True
+                )
+
+                if links:
+                    break
+
+        # --------------------------------------------------
+        # Save candidate links
+        # --------------------------------------------------
+
+        for link in links:
+
+            href = link.get(
+                "href",
+                ""
+            )
+
+            if not href:
+                continue
+
+            full_url = urljoin(
+                "https://www.technologyreview.com/",
+                href
+            )
+
+            full_url = normalize_url(
+                full_url
+            )
+
+            # Only MIT Technology Review article URLs
+            if (
+                "technologyreview.com/"
+                in full_url
+                and "/20" in full_url
+            ):
+                results.append({
+                    "heading": heading_text,
+                    "link_text": link.get_text(
+                        " ",
+                        strip=True
+                    ),
+                    "url": full_url
+                })
+
+    # Remove exact duplicate URLs
+    unique_results = []
+    seen_urls = set()
+
+    for item in results:
+
+        if item["url"] in seen_urls:
+            continue
+
+        seen_urls.add(
+            item["url"]
+        )
+
+        unique_results.append(
+            item
+        )
+
+    return unique_results
+
+
+def test():
 
     print(
         "MIT Technology Review"
     )
-
     print(
-        "Page Type Detection Test"
+        "Newsletter Article Link Test"
     )
-
     print(
-        "=" * 80
-    )
-
-    print()
-    print(
-        f"Reading first "
-        f"{NUMBER_OF_ARTICLES} RSS items..."
+        "=" * 60
     )
 
     feed = feedparser.parse(
         RSS_URL
     )
 
-    articles = feed.entries[
-        :NUMBER_OF_ARTICLES
-    ]
-
-    print()
     print(
         f"RSS items found: "
         f"{len(feed.entries)}"
     )
 
+    # Test first 5 RSS items
     for index, item in enumerate(
-        articles,
-        1
+        feed.entries[:5],
+        start=1
     ):
-
-        print()
-        print(
-            f"\n######## "
-            f"{index} / "
-            f"{len(articles)} "
-            f"########"
-        )
 
         title = item.get(
             "title",
@@ -208,19 +243,96 @@ def main():
             ""
         )
 
-        if not url:
+        print()
+        print(
+            "=" * 60
+        )
+        print(
+            f"ITEM {index}"
+        )
+        print(
+            "=" * 60
+        )
+
+        print(
+            f"RSS title: {title}"
+        )
+
+        print(
+            f"RSS URL: {url}"
+        )
+
+        try:
+
+            response = requests.get(
+                url,
+                headers=HEADERS,
+                timeout=20
+            )
+
+            response.raise_for_status()
+
+        except Exception as error:
 
             print(
-                "URL NOT FOUND"
+                f"ERROR: {error}"
             )
 
             continue
 
-        analyze_page(
-            title,
-            url
+        soup = BeautifulSoup(
+            response.text,
+            "html.parser"
         )
+
+        if is_download_newsletter(
+            soup
+        ):
+
+            print(
+                "Page type: THE DOWNLOAD NEWSLETTER"
+            )
+
+            links = extract_newsletter_links(
+                soup
+            )
+
+            print(
+                f"Candidate article links: "
+                f"{len(links)}"
+            )
+
+            for number, article in enumerate(
+                links,
+                start=1
+            ):
+
+                print()
+                print(
+                    f"[{number}]"
+                )
+
+                print(
+                    f"Heading: "
+                    f"{article['heading']}"
+                )
+
+                print(
+                    f"Link text: "
+                    f"{article['link_text']}"
+                )
+
+                print(
+                    f"URL: "
+                    f"{article['url']}"
+                )
+
+        else:
+
+            print(
+                "Page type: INDEPENDENT ARTICLE"
+            )
 
 
 if __name__ == "__main__":
-    main()
+    test()
