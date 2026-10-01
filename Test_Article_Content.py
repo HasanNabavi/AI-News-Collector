@@ -136,6 +136,10 @@ def extract_author(soup):
 
 def extract_published_at(soup):
 
+    # --------------------------------------------------
+    # 1. OpenGraph / standard metadata
+    # --------------------------------------------------
+
     published = get_meta_content(
         soup,
         property="article:published_time"
@@ -143,6 +147,10 @@ def extract_published_at(soup):
 
     if published:
         return published
+
+    # --------------------------------------------------
+    # 2. <time datetime="...">
+    # --------------------------------------------------
 
     time_element = soup.find(
         "time",
@@ -152,10 +160,152 @@ def extract_published_at(soup):
     )
 
     if time_element:
-        return time_element.get(
-            "datetime",
-            ""
+
+        datetime_value = clean_text(
+            time_element.get(
+                "datetime",
+                ""
+            )
         )
+
+        if datetime_value:
+            return datetime_value
+
+    # --------------------------------------------------
+    # 3. JSON-LD
+    # --------------------------------------------------
+
+    for script in soup.find_all(
+        "script",
+        type="application/ld+json"
+    ):
+
+        raw_json = script.string
+
+        if not raw_json:
+            continue
+
+        try:
+            data = json.loads(
+                raw_json
+            )
+
+        except (
+            json.JSONDecodeError,
+            TypeError
+        ):
+            continue
+
+        objects = []
+
+        if isinstance(
+            data,
+            dict
+        ):
+
+            objects.append(data)
+
+            graph = data.get(
+                "@graph"
+            )
+
+            if isinstance(
+                graph,
+                list
+            ):
+                objects.extend(graph)
+
+        elif isinstance(
+            data,
+            list
+        ):
+
+            objects.extend(data)
+
+        for obj in objects:
+
+            if not isinstance(
+                obj,
+                dict
+            ):
+                continue
+
+            published = (
+                obj.get(
+                    "datePublished"
+                )
+                or obj.get(
+                    "dateCreated"
+                )
+            )
+
+            if published:
+                return clean_text(
+                    str(published)
+                )
+
+    return ""
+
+
+def extract_standfirst(
+    soup
+):
+
+    # --------------------------------------------------
+    # 1. Common metadata fields
+    # --------------------------------------------------
+
+    metadata_candidates = [
+        get_meta_content(
+            soup,
+            name="description"
+        ),
+        get_meta_content(
+            soup,
+            property="og:description"
+        )
+    ]
+
+    for candidate in metadata_candidates:
+
+        if candidate:
+            return candidate
+
+    # --------------------------------------------------
+    # 2. Common MIT Technology Review
+    #    standfirst / dek selectors
+    # --------------------------------------------------
+
+    selectors = [
+        "[class*='standfirst']",
+        "[class*='dek']",
+        "[class*='subtitle']",
+        "[class*='description']",
+        "[class*='intro']"
+    ]
+
+    for selector in selectors:
+
+        element = soup.select_one(
+            selector
+        )
+
+        if not element:
+            continue
+
+        text = clean_text(
+            element.get_text(
+                " ",
+                strip=True
+            )
+        )
+
+        if (
+            text
+            and len(text) >= 20
+            and len(text) <= 500
+        ):
+            return text
 
     return ""
 
@@ -262,7 +412,8 @@ def remove_non_article_elements(
 
 
 def extract_article_text(
-    soup
+    soup,
+    standfirst=""
 ):
 
     container = soup.select_one(
@@ -322,6 +473,25 @@ def extract_article_text(
         cleaned_paragraphs.append(
             paragraph
         )
+
+    # --------------------------------------------------
+    # Add standfirst only if it is not already present
+    # --------------------------------------------------
+
+    if standfirst:
+
+        already_exists = any(
+            standfirst == paragraph
+            for paragraph
+            in cleaned_paragraphs
+        )
+
+        if not already_exists:
+
+            cleaned_paragraphs.insert(
+                0,
+                standfirst
+            )
 
     return "\n\n".join(
         cleaned_paragraphs
@@ -430,6 +600,7 @@ def extract_videos(
             )
 
             if video_url not in videos:
+
                 videos.append(
                     video_url
                 )
@@ -460,6 +631,7 @@ def extract_videos(
         ):
 
             if iframe_url not in videos:
+
                 videos.append(
                     iframe_url
                 )
@@ -529,8 +701,13 @@ def scrape(url):
         soup
     )
 
-    text = extract_article_text(
+    standfirst = extract_standfirst(
         soup
+    )
+
+    text = extract_article_text(
+        soup,
+        standfirst
     )
 
     main_image, images = extract_images(
@@ -549,6 +726,10 @@ def scrape(url):
 
     print(
         f"\nPublished:\n{published_at}"
+    )
+
+    print(
+        f"\nStandfirst:\n{standfirst}"
     )
 
     print(
@@ -601,6 +782,7 @@ def scrape(url):
         "text": text,
         "author": author,
         "published_at": published_at,
+        "standfirst": standfirst,
         "main_image": main_image,
         "images": images,
         "videos": videos,
