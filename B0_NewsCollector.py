@@ -3,6 +3,41 @@ import feedparser
 from datetime import datetime, timezone
 
 
+def parse_entry_time(item):
+    """
+    Convert RSS publication/update time to UTC datetime.
+    Prefer published time, then updated time.
+    """
+
+    time_struct = item.get("published_parsed")
+
+    if time_struct is None:
+        time_struct = item.get("updated_parsed")
+
+    if time_struct is None:
+        return None
+
+    return datetime(*time_struct[:6], tzinfo=timezone.utc)
+
+
+def load_last_successful_run():
+    """
+    Load the reference time of the last successful pipeline run.
+    """
+
+    with open("A1_RunState.json", "r", encoding="utf-8") as file:
+        state_data = json.load(file)
+
+    last_successful_run = state_data.get("last_successful_run", "")
+
+    if not last_successful_run:
+        return None
+
+    return datetime.fromisoformat(
+        last_successful_run.replace("Z", "+00:00")
+    )
+
+
 def collect_news():
     # Load news sources
     with open("A_Source.json", "r", encoding="utf-8") as file:
@@ -10,21 +45,16 @@ def collect_news():
 
     sources = sources_data["sources"]
 
-    # Load previously collected news
-    with open("B2_LastCollectedNews.json", "r", encoding="utf-8") as file:
-        last_news_data = json.load(file)
-
-    last_news = last_news_data.get("news", [])
-
-    # Create a set of previously collected URLs
-    previous_urls = {
-        item.get("url", "")
-        for item in last_news
-        if item.get("url", "")
-    }
+    # Load time reference
+    last_successful_run = load_last_successful_run()
 
     print("AI & Robotics News Collector")
     print("=" * 40)
+
+    if last_successful_run:
+        print(f"Last successful run: {last_successful_run.isoformat()}")
+    else:
+        print("Last successful run: None (first run)")
 
     new_news = []
 
@@ -39,11 +69,24 @@ def collect_news():
         for item in feed.entries:
             title = item.get("title", "No title")
             link = item.get("link", "")
+
             published_at = item.get("published", "")
 
-            # Skip news already collected in the previous run
-            if link in previous_urls:
-                continue
+            # Get parsed publication/update time
+            entry_time = parse_entry_time(item)
+
+            # Time Equivalency
+            if last_successful_run is not None:
+
+                # If the RSS item has no usable date,
+                # skip it because we cannot safely determine
+                # whether it is new.
+                if entry_time is None:
+                    continue
+
+                # Skip news published before or at the last run
+                if entry_time <= last_successful_run:
+                    continue
 
             news_item = {
                 "title": title,
