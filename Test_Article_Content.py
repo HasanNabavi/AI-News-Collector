@@ -70,6 +70,8 @@ def analyze_section(
 ):
 
     paragraphs = []
+    images = []
+    links = []
 
     current = heading.find_next()
 
@@ -88,6 +90,20 @@ def analyze_section(
             if len(text) >= 80:
                 paragraphs.append(text)
 
+        elif current.name == "img":
+
+            src = current.get("src", "")
+
+            if src:
+                images.append(src)
+
+        elif current.name == "a":
+
+            href = current.get("href", "")
+
+            if href:
+                links.append(href)
+
         current = current.find_next()
 
     total_characters = sum(
@@ -95,32 +111,34 @@ def analyze_section(
         for text in paragraphs
     )
 
-    return (
-        len(paragraphs),
-        total_characters
-    )
+    return {
+        "paragraphs": len(paragraphs),
+        "characters": total_characters,
+        "images": len(images),
+        "links": len(links),
+        "first_image": (
+            images[0]
+            if images
+            else ""
+        ),
+        "first_link": (
+            links[0]
+            if links
+            else ""
+        )
+    }
 
 
 def main():
 
     article = get_first_article()
 
-    print(
-        "RSS title:"
-    )
-
-    print(
-        article["title"]
-    )
+    print("RSS title:")
+    print(article["title"])
 
     print()
-    print(
-        "URL:"
-    )
-
-    print(
-        article["url"]
-    )
+    print("URL:")
+    print(article["url"])
 
     html = download_page(
         article["url"]
@@ -136,22 +154,19 @@ def main():
     )
 
     print()
-    print(
-        "=" * 80
-    )
+    print("=" * 80)
 
     print(
-        f"Content headings found: "
-        f"{len(headings)}"
+        "Analyzing first 2 sections"
     )
 
-    print(
-        "=" * 80
-    )
+    print("=" * 80)
 
-    for index, heading in enumerate(
-        headings
+    for index in range(
+        min(2, len(headings))
     ):
+
+        heading = headings[index]
 
         next_heading = None
 
@@ -165,11 +180,9 @@ def main():
             strip=True
         )
 
-        paragraph_count, character_count = (
-            analyze_section(
-                heading,
-                next_heading
-            )
+        result = analyze_section(
+            heading,
+            next_heading
         )
 
         print()
@@ -182,11 +195,33 @@ def main():
         )
 
         print(
-            f"Paragraphs: {paragraph_count}"
+            f"Paragraphs: "
+            f"{result['paragraphs']}"
         )
 
         print(
-            f"Characters: {character_count}"
+            f"Characters: "
+            f"{result['characters']}"
+        )
+
+        print(
+            f"Images: "
+            f"{result['images']}"
+        )
+
+        print(
+            f"Links: "
+            f"{result['links']}"
+        )
+
+        print(
+            f"First image: "
+            f"{result['first_image']}"
+        )
+
+        print(
+            f"First link: "
+            f"{result['first_link']}"
         )
 
 
