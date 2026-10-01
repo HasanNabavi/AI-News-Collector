@@ -10,7 +10,6 @@ ARTICLE_URL = (
 
 
 def download_page(url):
-
     response = requests.get(
         url,
         headers={
@@ -49,81 +48,62 @@ def main():
         "html.parser"
     )
 
-    print()
-    print("=" * 80)
-    print("HEADINGS")
-    print("=" * 80)
-
-    headings = soup.find_all(
-        ["h1", "h2", "h3", "h4"]
+    container = soup.find(
+        id="content--body"
     )
 
-    for index, heading in enumerate(
-        headings,
-        start=1
-    ):
-
-        text = heading.get_text(
-            " ",
-            strip=True
-        )
-
-        if not text:
-            continue
-
-        print()
-        print(
-            f"Heading #{index}"
-        )
-
-        print(
-            f"Tag: {heading.name}"
-        )
-
-        print(
-            f"Text: {text}"
-        )
-
-        print(
-            f"Class: "
-            f"{heading.get('class', [])}"
-        )
-
     print()
     print("=" * 80)
-    print("ARTICLE STRUCTURE")
+    print("CONTENT BODY")
     print("=" * 80)
 
-    paragraphs = soup.find_all("p")
+    if container is None:
+        print(
+            "content--body NOT FOUND"
+        )
+        return
 
-    usable_paragraphs = []
+    paragraphs = []
 
-    for paragraph in paragraphs:
+    for p in container.find_all("p"):
 
-        text = paragraph.get_text(
+        text = p.get_text(
             " ",
             strip=True
         )
 
         if len(text) >= 80:
-            usable_paragraphs.append(
+            paragraphs.append(
                 text
             )
 
-    print()
-    print(
-        f"Total usable paragraphs: "
-        f"{len(usable_paragraphs)}"
+    images = container.find_all(
+        "img"
     )
 
-    total_characters = sum(
-        len(text)
-        for text in usable_paragraphs
+    links = container.find_all(
+        "a",
+        href=True
     )
 
     print(
-        f"Total characters: "
-        f"{total_characters}"
+        f"Usable paragraphs: "
+        f"{len(paragraphs)}"
+    )
+
+    print(
+        f"Characters: "
+        f"{sum(len(t) for t in paragraphs)}"
+    )
+
+    print(
+        f"Images: "
+        f"{len(images)}"
+    )
+
+    print(
+        f"Links: "
+        f"{len(links)}"
     )
 
     print()
@@ -131,14 +111,14 @@ def main():
     print("FIRST 5 PARAGRAPHS")
     print("=" * 80)
 
-    for index, text in enumerate(
-        usable_paragraphs[:5],
-        start=1
+    for i, text in enumerate(
+        paragraphs[:5],
+        1
     ):
 
         print()
         print(
-            f"Paragraph {index}:"
+            f"Paragraph {i}:"
         )
 
         print(
