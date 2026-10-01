@@ -1,28 +1,46 @@
-import json
+import feedparser
 import requests
 from bs4 import BeautifulSoup
 
 
+RSS_URL = (
+    "https://www.technologyreview.com/feed/"
+)
+
+
 def test_article_content():
 
-    with open(
-        "B1_News.json",
-        "r",
-        encoding="utf-8"
-    ) as file:
-        news_data = json.load(file)
+    print("=" * 60)
+    print("ARTICLE CONTENT TEST")
+    print("=" * 60)
 
-    news = news_data.get(
-        "news",
-        []
+    # --------------------------------------------------
+    # Read RSS
+    # --------------------------------------------------
+
+    print()
+    print("Reading RSS...")
+
+    feed = feedparser.parse(
+        RSS_URL
     )
 
-    if not news:
-        print("No news available in B1_News.json")
+    print(
+        f"RSS entries found: "
+        f"{len(feed.entries)}"
+    )
+
+    if not feed.entries:
+        print(
+            "No RSS entries found."
+        )
         return
 
-    # Test only the first news item
-    item = news[0]
+    # --------------------------------------------------
+    # Select first RSS item
+    # --------------------------------------------------
+
+    item = feed.entries[0]
 
     title = item.get(
         "title",
@@ -30,21 +48,27 @@ def test_article_content():
     )
 
     url = item.get(
-        "url",
+        "link",
         ""
     )
 
-    print("=" * 60)
-    print("ARTICLE CONTENT TEST")
-    print("=" * 60)
-
     print()
-    print("Title:")
+    print("Selected article:")
     print(title)
 
     print()
     print("URL:")
     print(url)
+
+    if not url:
+        print(
+            "Article URL not found."
+        )
+        return
+
+    # --------------------------------------------------
+    # Request article page
+    # --------------------------------------------------
 
     print()
     print("Requesting article page...")
@@ -60,13 +84,13 @@ def test_article_content():
     }
 
     try:
+
         response = requests.get(
             url,
             headers=headers,
             timeout=20
         )
 
-        print()
         print(
             f"HTTP status: "
             f"{response.status_code}"
@@ -80,10 +104,7 @@ def test_article_content():
     except requests.RequestException as error:
 
         print()
-        print(
-            "Request failed:"
-        )
-
+        print("Request failed:")
         print(error)
 
         return
@@ -97,52 +118,67 @@ def test_article_content():
         "html.parser"
     )
 
+    # --------------------------------------------------
+    # HTML title
+    # --------------------------------------------------
+
     print()
     print("Page title:")
 
     if soup.title:
+
         print(
             soup.title.get_text(
                 strip=True
             )
         )
+
     else:
-        print("Not found")
+
+        print(
+            "Not found"
+        )
 
     # --------------------------------------------------
     # Open Graph image
     # --------------------------------------------------
+
+    print()
+    print("OG Image:")
 
     og_image = soup.find(
         "meta",
         property="og:image"
     )
 
-    print()
-    print("OG Image:")
-
     if og_image:
+
         print(
             og_image.get(
                 "content",
                 ""
             )
         )
+
     else:
-        print("Not found")
+
+        print(
+            "Not found"
+        )
 
     # --------------------------------------------------
     # Article tag
     # --------------------------------------------------
 
+    print()
+    print("Article tag:")
+
     article = soup.find(
         "article"
     )
 
-    print()
-    print("Article tag:")
-
     if article:
+
         article_text = article.get_text(
             " ",
             strip=True
@@ -155,17 +191,54 @@ def test_article_content():
 
         print()
         print(
-            "First 1000 characters:"
+            "First 1500 characters:"
         )
 
         print(
-            article_text[:1000]
+            article_text[:1500]
         )
 
     else:
+
         print(
             "Article tag not found"
         )
+
+    # --------------------------------------------------
+    # Video detection
+    # --------------------------------------------------
+
+    print()
+    print("Video elements:")
+
+    videos = soup.find_all(
+        "video"
+    )
+
+    print(
+        f"Video tags found: "
+        f"{len(videos)}"
+    )
+
+    # --------------------------------------------------
+    # Iframe detection
+    # --------------------------------------------------
+
+    print()
+    print("Iframe elements:")
+
+    iframes = soup.find_all(
+        "iframe"
+    )
+
+    print(
+        f"Iframes found: "
+        f"{len(iframes)}"
+    )
+
+    # --------------------------------------------------
+    # Test completed
+    # --------------------------------------------------
 
     print()
     print("=" * 60)
