@@ -28,13 +28,18 @@ def load_last_successful_run():
     with open("A1_RunState.json", "r", encoding="utf-8") as file:
         state_data = json.load(file)
 
-    last_successful_run = state_data.get("last_successful_run", "")
+    last_successful_run = state_data.get("last_successful_run", {})
 
     if not last_successful_run:
         return None
 
+    timestamp_utc = last_successful_run.get("timestamp_utc", "")
+
+    if not timestamp_utc:
+        return None
+
     return datetime.fromisoformat(
-        last_successful_run.replace("Z", "+00:00")
+        timestamp_utc.replace("Z", "+00:00")
     )
 
 
