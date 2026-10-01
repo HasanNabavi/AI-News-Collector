@@ -1,2 +1,4 @@
 feedparser
 jdatetime
+requests
+beautifulsoup4
