@@ -1,7 +1,6 @@
 import requests
 import feedparser
 from bs4 import BeautifulSoup
-from urllib.parse import urljoin, urlsplit, urlunsplit, parse_qsl, urlencode
 
 
 RSS_URL = "https://www.technologyreview.com/feed"
@@ -17,47 +16,7 @@ HEADERS = {
 }
 
 
-def normalize_url(url):
-    """
-    Remove tracking parameters from a URL.
-    """
-
-    parts = urlsplit(url)
-
-    tracking_params = {
-        "utm_source",
-        "utm_medium",
-        "utm_campaign",
-        "utm_term",
-        "utm_content",
-        "fbclid",
-        "gclid"
-    }
-
-    query_params = [
-        (key, value)
-        for key, value in parse_qsl(
-            parts.query,
-            keep_blank_values=True
-        )
-        if key.lower() not in tracking_params
-    ]
-
-    return urlunsplit((
-        parts.scheme.lower(),
-        parts.netloc.lower(),
-        parts.path.rstrip("/"),
-        urlencode(query_params),
-        ""
-    ))
-
-
 def is_download_newsletter(soup):
-    """
-    Detect MIT Technology Review's
-    'The Download' newsletter page.
-    """
-
     text = soup.get_text(
         " ",
         strip=True
@@ -70,26 +29,39 @@ def is_download_newsletter(soup):
     )
 
 
-def extract_newsletter_links(soup):
-    """
-    Test extraction of article links from
-    a MIT Technology Review newsletter page.
-    """
+def inspect_newsletter_structure(soup):
 
     container = soup.select_one(
         "#content--body"
     )
 
     if container is None:
-        return []
+        print(
+            "#content--body NOT FOUND"
+        )
+        return
 
-    results = []
+    print(
+        "#content--body FOUND"
+    )
+
+    print()
+    print(
+        "Newsletter headings and their structure:"
+    )
+
+    print(
+        "=" * 70
+    )
 
     headings = container.find_all(
         ["h2", "h3", "h4"]
     )
 
-    for heading in headings:
+    for index, heading in enumerate(
+        headings,
+        start=1
+    ):
 
         heading_text = heading.get_text(
             " ",
@@ -99,111 +71,128 @@ def extract_newsletter_links(soup):
         if not heading_text:
             continue
 
-        # --------------------------------------------------
-        # Method 1:
-        # Check if the heading itself contains a link
-        # --------------------------------------------------
+        print()
+        print(
+            f"HEADING {index}"
+        )
 
-        links = heading.find_all(
-            "a",
-            href=True
+        print(
+            f"Text: {heading_text}"
+        )
+
+        print(
+            f"Tag: <{heading.name}>"
         )
 
         # --------------------------------------------------
-        # Method 2:
-        # Check the parent element
+        # Parent information
         # --------------------------------------------------
 
-        if not links:
+        parent = heading.parent
 
-            parent = heading.parent
+        if parent is not None:
 
-            if parent is not None:
-                links = parent.find_all(
-                    "a",
-                    href=True
+            print(
+                f"Parent tag: <{parent.name}>"
+            )
+
+            parent_classes = parent.get(
+                "class",
+                []
+            )
+
+            if parent_classes:
+                print(
+                    "Parent classes: "
+                    + " ".join(parent_classes)
+                )
+
+            parent_links = parent.find_all(
+                "a",
+                href=True
+            )
+
+            print(
+                f"Links in parent: "
+                f"{len(parent_links)}"
+            )
+
+            for link in parent_links:
+
+                print(
+                    "  LINK:"
+                )
+
+                print(
+                    f"    Text: "
+                    f"{link.get_text(' ', strip=True)}"
+                )
+
+                print(
+                    f"    URL: "
+                    f"{link.get('href')}"
                 )
 
         # --------------------------------------------------
-        # Method 3:
-        # Check the next few siblings
+        # Grandparent information
         # --------------------------------------------------
 
-        if not links:
+        grandparent = None
 
-            current = heading
+        if parent is not None:
+            grandparent = parent.parent
 
-            for _ in range(4):
+        if grandparent is not None:
 
-                current = current.find_next_sibling()
+            print(
+                f"Grandparent tag: "
+                f"<{grandparent.name}>"
+            )
 
-                if current is None:
-                    break
+            grandparent_classes = grandparent.get(
+                "class",
+                []
+            )
 
-                links = current.find_all(
+            if grandparent_classes:
+                print(
+                    "Grandparent classes: "
+                    + " ".join(
+                        grandparent_classes
+                    )
+                )
+
+            grandparent_links = (
+                grandparent.find_all(
                     "a",
                     href=True
                 )
-
-                if links:
-                    break
-
-        # --------------------------------------------------
-        # Save candidate links
-        # --------------------------------------------------
-
-        for link in links:
-
-            href = link.get(
-                "href",
-                ""
             )
 
-            if not href:
-                continue
-
-            full_url = urljoin(
-                "https://www.technologyreview.com/",
-                href
+            print(
+                f"Links in grandparent: "
+                f"{len(grandparent_links)}"
             )
 
-            full_url = normalize_url(
-                full_url
-            )
+            for link in grandparent_links:
 
-            # Only MIT Technology Review article URLs
-            if (
-                "technologyreview.com/"
-                in full_url
-                and "/20" in full_url
-            ):
-                results.append({
-                    "heading": heading_text,
-                    "link_text": link.get_text(
-                        " ",
-                        strip=True
-                    ),
-                    "url": full_url
-                })
+                print(
+                    "  LINK:"
+                )
 
-    # Remove exact duplicate URLs
-    unique_results = []
-    seen_urls = set()
+                print(
+                    f"    Text: "
+                    f"{link.get_text(' ', strip=True)}"
+                )
 
-    for item in results:
+                print(
+                    f"    URL: "
+                    f"{link.get('href')}"
+                )
 
-        if item["url"] in seen_urls:
-            continue
-
-        seen_urls.add(
-            item["url"]
+        print(
+            "-" * 70
         )
-
-        unique_results.append(
-            item
-        )
-
-    return unique_results
 
 
 def test():
@@ -211,11 +200,13 @@ def test():
     print(
         "MIT Technology Review"
     )
+
     print(
-        "Newsletter Article Link Test"
+        "Newsletter Structure Test"
     )
+
     print(
-        "=" * 60
+        "=" * 70
     )
 
     feed = feedparser.parse(
@@ -227,7 +218,8 @@ def test():
         f"{len(feed.entries)}"
     )
 
-    # Test first 5 RSS items
+    # فقط اولین Newsletter را بررسی می‌کنیم
+    # چون هدف این تست شناخت ساختار HTML است.
     for index, item in enumerate(
         feed.entries[:5],
         start=1
@@ -235,7 +227,7 @@ def test():
 
         title = item.get(
             "title",
-            "No title"
+            ""
         )
 
         url = item.get(
@@ -245,21 +237,19 @@ def test():
 
         print()
         print(
-            "=" * 60
+            "=" * 70
         )
+
         print(
             f"ITEM {index}"
         )
+
         print(
-            "=" * 60
+            f"Title: {title}"
         )
 
         print(
-            f"RSS title: {title}"
-        )
-
-        print(
-            f"RSS URL: {url}"
+            f"URL: {url}"
         )
 
         try:
@@ -290,47 +280,22 @@ def test():
         ):
 
             print(
-                "Page type: THE DOWNLOAD NEWSLETTER"
+                "Page type: "
+                "THE DOWNLOAD NEWSLETTER"
             )
 
-            links = extract_newsletter_links(
+            inspect_newsletter_structure(
                 soup
             )
 
-            print(
-                f"Candidate article links: "
-                f"{len(links)}"
-            )
-
-            for number, article in enumerate(
-                links,
-                start=1
-            ):
-
-                print()
-                print(
-                    f"[{number}]"
-                )
-
-                print(
-                    f"Heading: "
-                    f"{article['heading']}"
-                )
-
-                print(
-                    f"Link text: "
-                    f"{article['link_text']}"
-                )
-
-                print(
-                    f"URL: "
-                    f"{article['url']}"
-                )
+            # فقط اولین Newsletter کافی است
+            break
 
         else:
 
             print(
-                "Page type: INDEPENDENT ARTICLE"
+                "Page type: "
+                "INDEPENDENT ARTICLE"
             )
 
 
