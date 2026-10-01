@@ -7,58 +7,16 @@
       "rss_url": "https://www.technologyreview.com/feed"
     },
     {
-      "name": "IEEE Spectrum",
-      "category": "AI & Robotics",
-      "url": "https://spectrum.ieee.org/",
-      "rss_url": "https://spectrum.ieee.org/feeds/feed.rss"
-    },
-    {
-      "name": "The Robot Report",
-      "category": "Robotics",
-      "url": "https://www.therobotreport.com/",
-      "rss_url": "https://www.therobotreport.com/feed"
-    },
-    {
       "name": "TechCrunch",
       "category": "AI",
       "url": "https://techcrunch.com/tag/ai/",
       "rss_url": "https://techcrunch.com/tag/ai/feed/"
     },
     {
-      "name": "Ars Technica",
-      "category": "Robotics",
-      "url": "https://arstechnica.com/tag/robotics/",
-      "rss_url": "https://arstechnica.com/tag/robotics/feed/"
-    },
-    {
-      "name": "VentureBeat",
-      "category": "AI",
-      "url": "https://venturebeat.com/",
-      "rss_url": "https://venturebeat.com/feed/"
-    },
-    {
-      "name": "MIT News Robotics",
-      "category": "Robotics",
-      "url": "https://news.mit.edu/topic/robotics",
-      "rss_url": "https://news.mit.edu/rss/topic/robotics"
-    },
-    {
-      "name": "Robotic Lifestyle",
-      "category": "Robotics",
-      "url": "https://roboticlifestyle.com/",
-      "rss_url": "https://roboticlifestyle.com/api/rss/humanoids"
-    },
-    {
-      "name": "The Verge AI",
-      "category": "AI",
-      "url": "https://www.theverge.com/ai-artificial-intelligence",
-      "rss_url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
-    },
-    {
-      "name": "IEEE Spectrum Robotics",
-      "category": "Robotics",
-      "url": "https://spectrum.ieee.org/topic/robotics",
-      "rss_url": "https://spectrum.ieee.org/feeds/topic/robotics.rss"
+      "name": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.com/news/technology",
+      "rss_url": "https://feeds.bbci.co.uk/news/technology/rss.xml"
     }
   ]
 }
