@@ -408,6 +408,15 @@ def test_source(source):
             paragraph_text[:500]
         )
 
+        print()
+        print(
+            "Last 1000 characters:"
+        )
+
+        print(
+            paragraph_text[-1000:]
+        )
+
     else:
 
         print(
