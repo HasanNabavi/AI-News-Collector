@@ -26,6 +26,6 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add B1_News.json B2_LastCollectedNews.json C1_NewsAfterLinkEquivalencyRun.json D1_NewsAfterTittleEquivalencyRun.json
+          git add A1_RunState.json B1_News.json C1_NewsAfterLinkEquivalencyRun.json D1_NewsAfterTittleEquivalencyRun.json
           git commit -m "Run AI news pipeline" || echo "No changes to commit"
           git push
