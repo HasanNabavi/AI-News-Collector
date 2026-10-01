@@ -1,3 +1,84 @@
 {
-  "news": []
+  "news": [
+    {
+      "title": "The Download: AI “mind-reading” and creative uses for small batteries",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/01/1145592/the-download-ai-mind-reading-small-batteries/",
+      "published_at": "Thu, 01 Oct 2026 12:10:00 +0000",
+      "collected_at": "2026-10-01T13:32:44.669458+00:00",
+      "title_similarity_score": 0,
+      "title_similarity_status": "Non-similar"
+    },
+    {
+      "title": "An AI “mind-reading” tool can reconstruct what you’re looking at based on a brain scan",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/01/1145588/ai-mind-reading-reconstructs-what-youre-looking-at/",
+      "published_at": "Thu, 01 Oct 2026 10:32:24 +0000",
+      "collected_at": "2026-10-01T13:32:44.669480+00:00",
+      "title_similarity_score": 0.1111,
+      "title_similarity_status": "Non-similar"
+    },
+    {
+      "title": "How smaller, distributed batteries could help the grid",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/01/1145435/distributed-batteries/",
+      "published_at": "Thu, 01 Oct 2026 10:00:00 +0000",
+      "collected_at": "2026-10-01T13:32:44.669489+00:00",
+      "title_similarity_score": 0.0769,
+      "title_similarity_status": "Non-similar"
+    },
+    {
+      "title": "Electricity Theft Is Rampant, but Delhi Found a Fix",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/electricity-theft",
+      "published_at": "Thu, 01 Oct 2026 12:00:02 +0000",
+      "collected_at": "2026-10-01T13:32:45.073714+00:00",
+      "title_similarity_score": 0,
+      "title_similarity_status": "Non-similar"
+    },
+    {
+      "title": "How Maven Robotics plans to automate industrial work, one task at a time",
+      "source": "The Robot Report",
+      "category": "Robotics",
+      "url": "https://www.therobotreport.com/how-maven-robotics-plans-automate-industrial-work-one-task-at-a-time/",
+      "published_at": "Thu, 01 Oct 2026 12:30:39 +0000",
+      "collected_at": "2026-10-01T13:32:45.408751+00:00",
+      "title_similarity_score": 0.0625,
+      "title_similarity_status": "Non-similar"
+    },
+    {
+      "title": "Fiatlux Tests Humanoids on a Fragile Ladder Job",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/fiatlux-tests-humanoids-on-a-fragile-ladder-job-253399-785",
+      "published_at": "Thu, 01 Oct 2026 12:20:53 GMT",
+      "collected_at": "2026-10-01T13:32:48.476366+00:00",
+      "title_similarity_score": 0,
+      "title_similarity_status": "Non-similar"
+    },
+    {
+      "title": "ECHO-G Helps One Humanoid Move With Speech",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/echo-g-helps-one-humanoid-move-with-speech-167486-410",
+      "published_at": "Thu, 01 Oct 2026 12:19:27 GMT",
+      "collected_at": "2026-10-01T13:32:48.476388+00:00",
+      "title_similarity_score": 0.0625,
+      "title_similarity_status": "Non-similar"
+    },
+    {
+      "title": "IronMind Learns Robot Skills From Human Camera Views",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/ironmind-learns-robot-skills-from-human-camera-views-109093-553",
+      "published_at": "Thu, 01 Oct 2026 12:18:29 GMT",
+      "collected_at": "2026-10-01T13:32:48.476394+00:00",
+      "title_similarity_score": 0,
+      "title_similarity_status": "Non-similar"
+    }
+  ]
 }
