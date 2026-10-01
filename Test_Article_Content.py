@@ -1,4 +1,3 @@
-import json
 import requests
 import feedparser
 from bs4 import BeautifulSoup
@@ -14,10 +13,6 @@ USER_AGENT = (
 
 
 def get_first_mit_article():
-    """
-    Get the first article URL from the MIT Technology Review RSS feed.
-    """
-
     rss_url = (
         "https://www.technologyreview.com/feed"
     )
@@ -46,10 +41,6 @@ def get_first_mit_article():
 
 
 def download_page(url):
-    """
-    Download the article HTML.
-    """
-
     response = requests.get(
         url,
         headers={
@@ -63,174 +54,152 @@ def download_page(url):
     return response.text
 
 
-def analyze_page(html, rss_title):
-    """
-    Analyze the page structure and show
-    possible article-content containers.
-    """
+def get_usable_paragraphs(soup):
+    paragraphs = []
 
-    soup = BeautifulSoup(
-        html,
-        "html.parser"
+    for paragraph in soup.find_all("p"):
+
+        text = paragraph.get_text(
+            " ",
+            strip=True
+        )
+
+        if len(text) < 80:
+            continue
+
+        paragraphs.append(
+            paragraph
+        )
+
+    return paragraphs
+
+
+def analyze_paragraph(paragraph, index):
+
+    text = paragraph.get_text(
+        " ",
+        strip=True
     )
 
     print()
     print(
-        "Page analysis"
+        f"PARAGRAPH #{index}"
     )
     print(
         "=" * 60
     )
 
     print(
-        f"RSS title:\n{rss_title}"
+        f"Text:\n{text}"
     )
 
     print()
+
     print(
-        f"HTML length: {len(html)}"
+        "HTML tag:"
+    )
+
+    print(
+        f"<{paragraph.name}>"
     )
 
     print()
 
-    candidates = []
+    print(
+        "Paragraph attributes:"
+    )
 
-    for tag in soup.find_all(
-        ["article", "main", "section", "div"]
-    ):
+    print(
+        paragraph.attrs
+    )
 
-        paragraphs = []
+    print()
 
-        for paragraph in tag.find_all("p"):
+    print(
+        "ANCESTOR STRUCTURE:"
+    )
 
-            text = paragraph.get_text(
-                " ",
-                strip=True
-            )
+    current = paragraph
 
-            if len(text) >= 80:
-                paragraphs.append(
-                    text
-                )
+    level = 0
 
-        if not paragraphs:
-            continue
+    while current is not None:
 
-        full_text = "\n".join(
-            paragraphs
+        if current.name is None:
+            break
+
+        tag = current.name
+
+        element_id = current.get(
+            "id",
+            ""
         )
 
-        candidates.append({
-            "tag": tag.name,
-            "id": tag.get(
-                "id",
-                ""
-            ),
-            "class": " ".join(
-                tag.get(
-                    "class",
-                    []
-                )
-            ),
-            "paragraphs": len(
-                paragraphs
-            ),
-            "text_length": len(
-                full_text
-            ),
-            "text": full_text
-        })
+        classes = current.get(
+            "class",
+            []
+        )
 
-    candidates.sort(
-        key=lambda x: (
-            x["paragraphs"],
-            x["text_length"]
-        ),
-        reverse=True
+        class_text = " ".join(
+            classes
+        )
+
+        print(
+            f"{level}. "
+            f"{tag}"
+            f"  id={element_id!r}"
+            f"  class={class_text!r}"
+        )
+
+        current = current.parent
+
+        level += 1
+
+        if level >= 12:
+            break
+
+
+def analyze_page(html):
+
+    soup = BeautifulSoup(
+        html,
+        "html.parser"
     )
 
-    print(
-        f"Candidates found: "
-        f"{len(candidates)}"
+    paragraphs = get_usable_paragraphs(
+        soup
     )
 
     print()
+    print(
+        "DOM STRUCTURE ANALYSIS"
+    )
+    print(
+        "=" * 60
+    )
 
-    for index, candidate in enumerate(
-        candidates[:10],
+    print(
+        f"Usable paragraphs: "
+        f"{len(paragraphs)}"
+    )
+
+    # Analyze the first 8 usable paragraphs.
+    for index, paragraph in enumerate(
+        paragraphs[:8],
         start=1
     ):
 
-        print(
-            f"Candidate #{index}"
+        analyze_paragraph(
+            paragraph,
+            index
         )
-
-        print(
-            "-" * 60
-        )
-
-        print(
-            f"Tag: {candidate['tag']}"
-        )
-
-        print(
-            f"ID: {candidate['id']}"
-        )
-
-        print(
-            f"Class: {candidate['class']}"
-        )
-
-        print(
-            f"Paragraphs: "
-            f"{candidate['paragraphs']}"
-        )
-
-        print(
-            f"Text length: "
-            f"{candidate['text_length']}"
-        )
-
-        print()
-
-        print(
-            "FIRST 3 PARAGRAPHS:"
-        )
-
-        first_paragraphs = (
-            candidate["text"]
-            .split("\n")[:3]
-        )
-
-        for paragraph in first_paragraphs:
-            print(
-                f"- {paragraph}"
-            )
-
-        print()
-
-        print(
-            "LAST 3 PARAGRAPHS:"
-        )
-
-        last_paragraphs = (
-            candidate["text"]
-            .split("\n")[-3:]
-        )
-
-        for paragraph in last_paragraphs:
-            print(
-                f"- {paragraph}"
-            )
-
-        print()
 
 
 def main():
 
     print(
         "MIT Technology Review "
-        "Scraper Test"
+        "DOM Structure Test"
     )
 
     print(
@@ -241,28 +210,25 @@ def main():
 
     print()
     print(
-        "RSS Article"
+        f"RSS title:\n{article['title']}"
     )
 
+    print()
     print(
-        "-" * 60
-    )
-
-    print(
-        f"Title: {article['title']}"
-    )
-
-    print(
-        f"URL: {article['url']}"
+        f"URL:\n{article['url']}"
     )
 
     html = download_page(
         article["url"]
     )
 
+    print()
+    print(
+        f"HTML length: {len(html)}"
+    )
+
     analyze_page(
-        html,
-        article["title"]
+        html
     )
 
 
