@@ -1,12 +1,13 @@
 import requests
+import feedparser
 from bs4 import BeautifulSoup
 
 
-ARTICLE_URL = (
-    "https://www.technologyreview.com/2026/10/01/"
-    "1145588/ai-mind-reading-reconstructs-"
-    "what-youre-looking-at/"
+RSS_URL = (
+    "https://www.technologyreview.com/feed"
 )
+
+NUMBER_OF_ARTICLES = 5
 
 
 def download_page(url):
@@ -29,14 +30,30 @@ def download_page(url):
     return response.text
 
 
-def main():
+def analyze_article(title, url):
 
-    print("Article URL:")
-    print(ARTICLE_URL)
+    print()
+    print("=" * 80)
+    print("ARTICLE")
+    print("=" * 80)
 
-    html = download_page(
-        ARTICLE_URL
-    )
+    print()
+    print("Title:")
+    print(title)
+
+    print()
+    print("URL:")
+    print(url)
+
+    try:
+        html = download_page(url)
+
+    except Exception as error:
+        print()
+        print(
+            f"DOWNLOAD ERROR: {error}"
+        )
+        return
 
     print()
     print(
@@ -53,14 +70,12 @@ def main():
     )
 
     print()
-    print("=" * 80)
-    print("CONTENT BODY")
-    print("=" * 80)
+    print(
+        f"#content--body: "
+        f"{'FOUND' if container else 'NOT FOUND'}"
+    )
 
     if container is None:
-        print(
-            "content--body NOT FOUND"
-        )
         return
 
     paragraphs = []
@@ -86,6 +101,7 @@ def main():
         href=True
     )
 
+    print()
     print(
         f"Usable paragraphs: "
         f"{len(paragraphs)}"
@@ -107,12 +123,12 @@ def main():
     )
 
     print()
-    print("=" * 80)
-    print("FIRST 5 PARAGRAPHS")
-    print("=" * 80)
+    print("-" * 80)
+    print("FIRST 2 PARAGRAPHS")
+    print("-" * 80)
 
     for i, text in enumerate(
-        paragraphs[:5],
+        paragraphs[:2],
         1
     ):
 
@@ -126,12 +142,14 @@ def main():
         )
 
     print()
-    print("=" * 80)
-    print("LAST 5 PARAGRAPHS")
-    print("=" * 80)
+    print("-" * 80)
+    print("LAST 2 PARAGRAPHS")
+    print("-" * 80)
+
+    last_paragraphs = paragraphs[-2:]
 
     for i, text in enumerate(
-        paragraphs[-5:],
+        last_paragraphs,
         1
     ):
 
@@ -142,6 +160,74 @@ def main():
 
         print(
             text[:500]
+        )
+
+
+def main():
+
+    print(
+        "MIT Technology Review RSS Test"
+    )
+
+    print(
+        "=" * 80
+    )
+
+    print()
+    print("RSS URL:")
+    print(RSS_URL)
+
+    print()
+    print(
+        f"Testing first "
+        f"{NUMBER_OF_ARTICLES} RSS items..."
+    )
+
+    feed = feedparser.parse(
+        RSS_URL
+    )
+
+    print()
+    print(
+        f"RSS items found: "
+        f"{len(feed.entries)}"
+    )
+
+    articles = feed.entries[
+        :NUMBER_OF_ARTICLES
+    ]
+
+    for index, item in enumerate(
+        articles,
+        1
+    ):
+
+        title = item.get(
+            "title",
+            "No title"
+        )
+
+        url = item.get(
+            "link",
+            ""
+        )
+
+        print()
+        print(
+            f"\n######## ARTICLE "
+            f"{index} / "
+            f"{len(articles)} ########"
+        )
+
+        if not url:
+            print(
+                "URL NOT FOUND"
+            )
+            continue
+
+        analyze_article(
+            title,
+            url
         )
 
 
