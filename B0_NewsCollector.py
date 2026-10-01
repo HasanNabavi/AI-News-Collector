@@ -10,6 +10,19 @@ def collect_news():
 
     sources = sources_data["sources"]
 
+    # Load previously collected news
+    with open("B2_LastCollectedNews.json", "r", encoding="utf-8") as file:
+        last_news_data = json.load(file)
+
+    last_news = last_news_data.get("news", [])
+
+    # Create a set of previously collected URLs
+    previous_urls = {
+        item.get("url", "")
+        for item in last_news
+        if item.get("url", "")
+    }
+
     print("AI & Robotics News Collector")
     print("=" * 40)
 
@@ -25,8 +38,12 @@ def collect_news():
 
         for item in feed.entries:
             title = item.get("title", "No title")
-            link = item.get("link", "No link")
+            link = item.get("link", "")
             published_at = item.get("published", "")
+
+            # Skip news already collected in the previous run
+            if link in previous_urls:
+                continue
 
             news_item = {
                 "title": title,
@@ -39,6 +56,7 @@ def collect_news():
 
             new_news.append(news_item)
 
+    # Save only newly collected news
     with open("B1_News.json", "w", encoding="utf-8") as file:
         json.dump(
             {"news": new_news},
