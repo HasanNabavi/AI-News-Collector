@@ -22,10 +22,17 @@ jobs:
       - name: Run AI News Pipeline
         run: python A0_MAIN.py
 
-      - name: Commit updated news
+      - name: Commit updated pipeline files
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add A1_RunState.json B1_News.json C1_NewsAfterLinkEquivalencyRun.json D1_NewsAfterTittleEquivalencyRun.json
+
+          git add A1_RunState.json
+          git add A2_RunCounter.json
+          git add B1_News.json
+          git add C1_NewsAfterLinkEquivalencyRun.json
+          git add D1_NewsAfterTittleEquivalencyRun.json
+
           git commit -m "Run AI news pipeline" || echo "No changes to commit"
+
           git push
