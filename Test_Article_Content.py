@@ -11,6 +11,7 @@ NUMBER_OF_ARTICLES = 5
 
 
 def download_page(url):
+
     response = requests.get(
         url,
         headers={
@@ -30,11 +31,11 @@ def download_page(url):
     return response.text
 
 
-def analyze_article(title, url):
+def analyze_page(title, url):
 
     print()
     print("=" * 80)
-    print("ARTICLE")
+    print("PAGE")
     print("=" * 80)
 
     print()
@@ -49,16 +50,13 @@ def analyze_article(title, url):
         html = download_page(url)
 
     except Exception as error:
+
         print()
         print(
             f"DOWNLOAD ERROR: {error}"
         )
-        return
 
-    print()
-    print(
-        f"HTML length: {len(html)}"
-    )
+        return
 
     soup = BeautifulSoup(
         html,
@@ -69,104 +67,98 @@ def analyze_article(title, url):
         id="content--body"
     )
 
-    print()
-    print(
-        f"#content--body: "
-        f"{'FOUND' if container else 'NOT FOUND'}"
-    )
-
     if container is None:
+
+        print()
+        print(
+            "#content--body NOT FOUND"
+        )
+
         return
 
-    paragraphs = []
+    print()
+    print(
+        "#content--body FOUND"
+    )
 
-    for p in container.find_all("p"):
+    # --------------------------------------------------
+    # Headings
+    # --------------------------------------------------
 
-        text = p.get_text(
+    headings = container.find_all(
+        ["h1", "h2", "h3", "h4"]
+    )
+
+    print()
+    print(
+        f"Headings found: "
+        f"{len(headings)}"
+    )
+
+    print()
+    print("-" * 80)
+    print("HEADINGS")
+    print("-" * 80)
+
+    for index, heading in enumerate(
+        headings,
+        1
+    ):
+
+        text = heading.get_text(
             " ",
             strip=True
         )
 
-        if len(text) >= 80:
-            paragraphs.append(
-                text
-            )
+        if not text:
+            continue
 
-    images = container.find_all(
-        "img"
+        print(
+            f"{index}. "
+            f"{heading.name}: "
+            f"{text[:250]}"
+        )
+
+    # --------------------------------------------------
+    # Newsletter indicators
+    # --------------------------------------------------
+
+    full_text = container.get_text(
+        " ",
+        strip=True
     )
 
-    links = container.find_all(
-        "a",
-        href=True
-    )
-
-    print()
-    print(
-        f"Usable paragraphs: "
-        f"{len(paragraphs)}"
-    )
-
-    print(
-        f"Characters: "
-        f"{sum(len(t) for t in paragraphs)}"
-    )
-
-    print(
-        f"Images: "
-        f"{len(images)}"
-    )
-
-    print(
-        f"Links: "
-        f"{len(links)}"
-    )
+    newsletter_phrases = [
+        "This is today's edition of The Download",
+        "our weekday newsletter",
+        "This article is from The Spark",
+        "weekly climate newsletter",
+        "newsletter"
+    ]
 
     print()
     print("-" * 80)
-    print("FIRST 2 PARAGRAPHS")
+    print("NEWSLETTER INDICATORS")
     print("-" * 80)
 
-    for i, text in enumerate(
-        paragraphs[:2],
-        1
-    ):
+    for phrase in newsletter_phrases:
 
-        print()
-        print(
-            f"Paragraph {i}:"
-        )
+        found = phrase.lower() in full_text.lower()
 
         print(
-            text[:500]
-        )
-
-    print()
-    print("-" * 80)
-    print("LAST 2 PARAGRAPHS")
-    print("-" * 80)
-
-    last_paragraphs = paragraphs[-2:]
-
-    for i, text in enumerate(
-        last_paragraphs,
-        1
-    ):
-
-        print()
-        print(
-            f"Paragraph {i}:"
-        )
-
-        print(
-            text[:500]
+            f"{phrase}: "
+            f"{'FOUND' if found else 'NOT FOUND'}"
         )
 
 
 def main():
 
     print(
-        "MIT Technology Review RSS Test"
+        "MIT Technology Review"
+    )
+
+    print(
+        "Page Type Detection Test"
     )
 
     print(
@@ -174,12 +166,8 @@ def main():
     )
 
     print()
-    print("RSS URL:")
-    print(RSS_URL)
-
-    print()
     print(
-        f"Testing first "
+        f"Reading first "
         f"{NUMBER_OF_ARTICLES} RSS items..."
     )
 
@@ -187,20 +175,28 @@ def main():
         RSS_URL
     )
 
+    articles = feed.entries[
+        :NUMBER_OF_ARTICLES
+    ]
+
     print()
     print(
         f"RSS items found: "
         f"{len(feed.entries)}"
     )
 
-    articles = feed.entries[
-        :NUMBER_OF_ARTICLES
-    ]
-
     for index, item in enumerate(
         articles,
         1
     ):
+
+        print()
+        print(
+            f"\n######## "
+            f"{index} / "
+            f"{len(articles)} "
+            f"########"
+        )
 
         title = item.get(
             "title",
@@ -212,20 +208,15 @@ def main():
             ""
         )
 
-        print()
-        print(
-            f"\n######## ARTICLE "
-            f"{index} / "
-            f"{len(articles)} ########"
-        )
-
         if not url:
+
             print(
                 "URL NOT FOUND"
             )
+
             continue
 
-        analyze_article(
+        analyze_page(
             title,
             url
         )
