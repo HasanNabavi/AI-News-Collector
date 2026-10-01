@@ -1,12 +1,772 @@
 {
   "news": [
     {
+      "title": "The Download: OpenAI’s chief research officer explains its hacking response",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/09/30/1145350/the-download-openai-chief-research-officer-hacking-response/",
+      "published_at": "Wed, 30 Sep 2026 12:10:00 +0000",
+      "collected_at": "2026-10-01T09:36:46.857175+00:00"
+    },
+    {
+      "title": "“We’re not going to shoot ourselves in the foot” over hack fallout, says OpenAI’s chief research officer",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/09/30/1145339/were-not-going-to-shoot-ourselves-in-the-foot-over-hugging-face-says-openais-chief-research-officer/",
+      "published_at": "Wed, 30 Sep 2026 10:40:30 +0000",
+      "collected_at": "2026-10-01T09:36:46.857194+00:00"
+    },
+    {
+      "title": "The Download: climate tech companies to watch and AI’s discovery problem",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/09/29/1145249/the-download-climate-tech-ai-scientific-discovery/",
+      "published_at": "Tue, 29 Sep 2026 12:10:00 +0000",
+      "collected_at": "2026-10-01T09:36:46.857201+00:00"
+    },
+    {
+      "title": "Coming soon: Our 2026 list of Climate Tech Companies to Watch",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/09/29/1145183/2026-climate-tech-companies-to-watch-preview/",
+      "published_at": "Tue, 29 Sep 2026 11:00:00 +0000",
+      "collected_at": "2026-10-01T09:36:46.857207+00:00"
+    },
+    {
+      "title": "Making AI an asset, not an expense",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/09/29/1145186/making-ai-an-asset-not-an-expense/",
+      "published_at": "Tue, 29 Sep 2026 10:43:45 +0000",
+      "collected_at": "2026-10-01T09:36:46.857212+00:00"
+    },
+    {
+      "title": "Roundtables: The Deadly Failures of The Virtual Border Wall",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/09/28/1144890/roundtables-the-deadly-failures-of-the-virtual-border-wall/",
+      "published_at": "Mon, 28 Sep 2026 22:17:07 +0000",
+      "collected_at": "2026-10-01T09:36:46.857217+00:00"
+    },
+    {
+      "title": "When can we say AI made a scientific discovery?",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/09/28/1145230/when-can-we-say-ai-made-a-scientific-discovery/",
+      "published_at": "Mon, 28 Sep 2026 17:03:16 +0000",
+      "collected_at": "2026-10-01T09:36:46.857223+00:00"
+    },
+    {
+      "title": "The Download: rogue agent liability and the AI Hype Index",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/09/28/1145202/the-download-rogue-agent-liability-and-the-ai-hype-index/",
+      "published_at": "Mon, 28 Sep 2026 12:10:00 +0000",
+      "collected_at": "2026-10-01T09:36:46.857228+00:00"
+    },
+    {
+      "title": "Who’s liable when AI agents go rogue?",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/09/28/1145197/whos-liable-when-ai-agents-go-rogue/",
+      "published_at": "Mon, 28 Sep 2026 08:06:22 +0000",
+      "collected_at": "2026-10-01T09:36:46.857232+00:00"
+    },
+    {
+      "title": "The Download: the Pentagon’s AI-powered lie detector and young organ limits",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/09/25/1145157/the-download-pentagon-ai-lie-detector-young-organ-limits/",
+      "published_at": "Fri, 25 Sep 2026 12:10:00 +0000",
+      "collected_at": "2026-10-01T09:36:46.857237+00:00"
+    },
+    {
+      "title": "IEEE Celebrates Innovators Shaping the Future",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/ieee-technical-field-awards-2027",
+      "published_at": "Wed, 30 Sep 2026 18:00:02 +0000",
+      "collected_at": "2026-10-01T09:36:47.212407+00:00"
+    },
+    {
+      "title": "A Brief History of the Bloomberg Terminal",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/bloomberg-terminal",
+      "published_at": "Wed, 30 Sep 2026 13:00:02 +0000",
+      "collected_at": "2026-10-01T09:36:47.212435+00:00"
+    },
+    {
+      "title": "Tech to Replace Animal Testing Is Almost Ready. Scientists Are Not",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/alternatives-to-animal-testing",
+      "published_at": "Tue, 29 Sep 2026 13:00:02 +0000",
+      "collected_at": "2026-10-01T09:36:47.212446+00:00"
+    },
+    {
+      "title": "Unveiling IC-STAR: Full-Flow Autonomy from Digital to Analog",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://event.on24.com/wcc/r/5507421/A45CEFBA43BC7B2A43F265520AFDBA32",
+      "published_at": "Tue, 29 Sep 2026 10:00:06 +0000",
+      "collected_at": "2026-10-01T09:36:47.212457+00:00"
+    },
+    {
+      "title": "A Day in the Life of a Roboticist: Charlie Kemp",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://robotsguide.com/learn/a-day-in-the-life-of-a-roboticist-charlie-kemp",
+      "published_at": "Mon, 28 Sep 2026 21:48:56 +0000",
+      "collected_at": "2026-10-01T09:36:47.212468+00:00"
+    },
+    {
+      "title": "A New IEEE STEM Book Series for Tweens from TryEngineering",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/ieee-stem-books-tweens-tryengineering",
+      "published_at": "Mon, 28 Sep 2026 18:00:03 +0000",
+      "collected_at": "2026-10-01T09:36:47.212479+00:00"
+    },
+    {
+      "title": "Here’s How Delhi Achieved Its Epic Power-Grid Fix",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/delhi-electricity-loss",
+      "published_at": "Mon, 28 Sep 2026 13:00:04 +0000",
+      "collected_at": "2026-10-01T09:36:47.212490+00:00"
+    },
+    {
+      "title": "Poetry for Engineers: The UI Designer’s Dream",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/poetry-user-interface-design",
+      "published_at": "Sun, 27 Sep 2026 13:00:03 +0000",
+      "collected_at": "2026-10-01T09:36:47.212499+00:00"
+    },
+    {
+      "title": "Social Media Bans Aren’t Enough to Make Children Safe",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/social-media-bans",
+      "published_at": "Fri, 25 Sep 2026 13:00:04 +0000",
+      "collected_at": "2026-10-01T09:36:47.212508+00:00"
+    },
+    {
+      "title": "Mexican EPICS in IEEE Team Builds Portable Educational Platform",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/epics-in-ieee-portable-educational",
+      "published_at": "Thu, 24 Sep 2026 18:00:04 +0000",
+      "collected_at": "2026-10-01T09:36:47.212517+00:00"
+    },
+    {
+      "title": "Measure Distant Asteroids With a DIY Rig",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/asteroid-shadow",
+      "published_at": "Thu, 24 Sep 2026 13:00:04 +0000",
+      "collected_at": "2026-10-01T09:36:47.212527+00:00"
+    },
+    {
+      "title": "Engineering the Substation Exit for Reliability, Capacity, and Expansion",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://content.knowledgehub.wiley.com/aerial-cable-systems-for-substation-exit-construction/",
+      "published_at": "Thu, 24 Sep 2026 10:00:06 +0000",
+      "collected_at": "2026-10-01T09:36:47.212538+00:00"
+    },
+    {
+      "title": "3 Skills That Will Matter More in the Age of AI",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/top-engineering-skills",
+      "published_at": "Wed, 23 Sep 2026 15:40:04 +0000",
+      "collected_at": "2026-10-01T09:36:47.212548+00:00"
+    },
+    {
+      "title": "Spain’s First Astronaut, Pedro Duque, Named IEEE Honorary Member",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/spain-astronaut-ieee-honorary-member",
+      "published_at": "Tue, 22 Sep 2026 18:00:05 +0000",
+      "collected_at": "2026-10-01T09:36:47.212558+00:00"
+    },
+    {
+      "title": "Barbara Mazzolai Wants to Build a New Field of Robotics",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/sustainability-robotics-barbara-mazzolai",
+      "published_at": "Tue, 22 Sep 2026 14:00:04 +0000",
+      "collected_at": "2026-10-01T09:36:47.212568+00:00"
+    },
+    {
+      "title": "The Future Is Fanless: 100% Heat Capture for Liquid Cooled AI Servers",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/fanless-liquid-cooled-ai-servers-coolit",
+      "published_at": "Tue, 22 Sep 2026 12:22:50 +0000",
+      "collected_at": "2026-10-01T09:36:47.212579+00:00"
+    },
+    {
+      "title": "This Digital Radio Gets Messages to the World’s Remotest Locations",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/hermes-shortwave-radio-digital-data",
+      "published_at": "Mon, 21 Sep 2026 13:00:04 +0000",
+      "collected_at": "2026-10-01T09:36:47.212590+00:00"
+    },
+    {
+      "title": "Parallel Reads and Write Optimization for Large-Scale Data Replication",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://content.knowledgehub.wiley.com/76-faster-replication-same-infrastructure/",
+      "published_at": "Fri, 18 Sep 2026 18:29:50 +0000",
+      "collected_at": "2026-10-01T09:36:47.212601+00:00"
+    },
+    {
+      "title": "Turning Tech Talent Into Leadership Legacy",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/tech-talent-into-leadership-legacy",
+      "published_at": "Fri, 18 Sep 2026 18:00:04 +0000",
+      "collected_at": "2026-10-01T09:36:47.212611+00:00"
+    },
+    {
+      "title": "Rethinking Robot Safety in the Age of AI",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/physical-ai-robot-cybersecurity-vicone",
+      "published_at": "Wed, 16 Sep 2026 16:51:02 +0000",
+      "collected_at": "2026-10-01T09:36:47.212622+00:00"
+    },
+    {
+      "title": "Single-Phase Direct Liquid Cooling Is Proven for the Next Decade of Ultra-Dense Compute",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://content.knowledgehub.wiley.com/single-phase-direct-liquid-cooling-is-proven-for-the-next-decade-of-ultra-dense-compute/",
+      "published_at": "Wed, 16 Sep 2026 13:24:18 +0000",
+      "collected_at": "2026-10-01T09:36:47.212633+00:00"
+    },
+    {
+      "title": "The AI Inference Revolution Is Here",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/inference-hardware-revolution",
+      "published_at": "Tue, 15 Sep 2026 13:00:05 +0000",
+      "collected_at": "2026-10-01T09:36:47.212644+00:00"
+    },
+    {
+      "title": "The Mind-bending Joyrides That Gave Rise to Tesla",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/elon-musk-tesla",
+      "published_at": "Tue, 15 Sep 2026 12:13:58 +0000",
+      "collected_at": "2026-10-01T09:36:47.212654+00:00"
+    },
+    {
+      "title": "Countries Seek to Curb Social Media Addiction for Kids",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/countries-seek-to-curb-social-media-addiction-for-kids",
+      "published_at": "Mon, 14 Sep 2026 18:00:04 +0000",
+      "collected_at": "2026-10-01T09:36:47.212692+00:00"
+    },
+    {
+      "title": "Responsible AI for Higher Education",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://webinars.on24.com/wileyevents/ResponsibleAI",
+      "published_at": "Mon, 14 Sep 2026 14:18:11 +0000",
+      "collected_at": "2026-10-01T09:36:47.212705+00:00"
+    },
+    {
+      "title": "IEEE to Reward Sections for High Voter Turnout in Annual Election",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/ieee-to-reward-sections",
+      "published_at": "Fri, 11 Sep 2026 18:00:02 +0000",
+      "collected_at": "2026-10-01T09:36:47.212715+00:00"
+    },
+    {
+      "title": "Codeveloper of Ethernet Predecessor Dies at 91",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/codeveloper-of-ethernet-predecessor-dies",
+      "published_at": "Thu, 10 Sep 2026 20:00:04 +0000",
+      "collected_at": "2026-10-01T09:36:47.212726+00:00"
+    },
+    {
+      "title": "Andrew Ng: Unbiggen AI",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/andrew-ng-data-centric-ai",
+      "published_at": "Wed, 09 Feb 2022 15:31:12 +0000",
+      "collected_at": "2026-10-01T09:36:47.212737+00:00"
+    },
+    {
+      "title": "How AI Will Change Chip Design",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/ai-chip-design-matlab",
+      "published_at": "Tue, 08 Feb 2022 14:00:01 +0000",
+      "collected_at": "2026-10-01T09:36:47.212747+00:00"
+    },
+    {
+      "title": "Atomically Thin Materials Significantly Shrink Qubits",
+      "source": "IEEE Spectrum",
+      "category": "AI & Robotics",
+      "url": "https://spectrum.ieee.org/2d-hbn-qubit",
+      "published_at": "Mon, 07 Feb 2022 16:12:05 +0000",
+      "collected_at": "2026-10-01T09:36:47.212756+00:00"
+    },
+    {
+      "title": "ANYbotics launches Shift to streamline robot fleet operations, scale inspections",
+      "source": "The Robot Report",
+      "category": "Robotics",
+      "url": "https://www.therobotreport.com/anybotics-launches-shift-streamline-robot-fleet-operations-scale-autonomous-inspections/",
+      "published_at": "Thu, 01 Oct 2026 07:59:59 +0000",
+      "collected_at": "2026-10-01T09:36:47.539153+00:00"
+    },
+    {
+      "title": "The Robot Report parent Arrowfly launches AI for Engineers platform, events for engineers navigating AI",
+      "source": "The Robot Report",
+      "category": "Robotics",
+      "url": "https://www.therobotreport.com/robot-report-parent-arrowfly-launches-ai-for-engineers-platform-events-engineers-navigating-ai/",
+      "published_at": "Wed, 30 Sep 2026 14:03:31 +0000",
+      "collected_at": "2026-10-01T09:36:47.539173+00:00"
+    },
+    {
+      "title": "Innodata opens motion-capture lab to help humanoids move more like people",
+      "source": "The Robot Report",
+      "category": "Robotics",
+      "url": "https://www.therobotreport.com/innodata-opens-motion-capture-lab-help-humanoids-move-more-like-people/",
+      "published_at": "Wed, 30 Sep 2026 12:59:12 +0000",
+      "collected_at": "2026-10-01T09:36:47.539180+00:00"
+    },
+    {
+      "title": "Tackling construction labor shortages: ASI and SoftBank partner on autonomous fleets",
+      "source": "The Robot Report",
+      "category": "Robotics",
+      "url": "https://www.therobotreport.com/tackling-construction-labor-shortages-asi-softbank-partner-autonomous-fleets/",
+      "published_at": "Wed, 30 Sep 2026 12:30:17 +0000",
+      "collected_at": "2026-10-01T09:36:47.539186+00:00"
+    },
+    {
+      "title": "ForceN to give a crash course on force and torque sensing for humanoids at RoboBusiness",
+      "source": "The Robot Report",
+      "category": "Robotics",
+      "url": "https://www.therobotreport.com/forcen-gives-crash-course-force-torque-sensing-humanoids-robobusiness-2026/",
+      "published_at": "Tue, 29 Sep 2026 19:52:46 +0000",
+      "collected_at": "2026-10-01T09:36:47.539191+00:00"
+    },
+    {
+      "title": "Meet Flourish One, the Raspberry Pi-powered humanoid built for busy parents",
+      "source": "The Robot Report",
+      "category": "Robotics",
+      "url": "https://www.therobotreport.com/meet-flourish-one-raspberry-pi-powered-humanoid-built-busy-parents/",
+      "published_at": "Tue, 29 Sep 2026 14:00:12 +0000",
+      "collected_at": "2026-10-01T09:36:47.539197+00:00"
+    },
+    {
+      "title": "State of Robots in Manufacturing",
+      "source": "The Robot Report",
+      "category": "Robotics",
+      "url": "https://www.therobotreport.com/state-of-robots-in-manufacturing/",
+      "published_at": "Tue, 29 Sep 2026 13:22:56 +0000",
+      "collected_at": "2026-10-01T09:36:47.539203+00:00"
+    },
+    {
+      "title": "Gecko Robotics works with NVIDIA to add AI agent security and control",
+      "source": "The Robot Report",
+      "category": "Robotics",
+      "url": "https://www.therobotreport.com/gecko-robotics-works-with-nvidia-adds-ai-agent-security-and-control/",
+      "published_at": "Mon, 28 Sep 2026 17:41:32 +0000",
+      "collected_at": "2026-10-01T09:36:47.539208+00:00"
+    },
+    {
+      "title": "Robonomics on the threshold: Economic autonomy, smart cities, and crypto wallets for humanoids",
+      "source": "The Robot Report",
+      "category": "Robotics",
+      "url": "https://www.therobotreport.com/robotics-threshold-economic-autonomy-crypto-wallets-humanoids/",
+      "published_at": "Mon, 28 Sep 2026 13:56:56 +0000",
+      "collected_at": "2026-10-01T09:36:47.539213+00:00"
+    },
+    {
+      "title": "Raise Robotics to discuss scaling field robots at RoboBusiness",
+      "source": "The Robot Report",
+      "category": "Robotics",
+      "url": "https://www.therobotreport.com/raise-robotics-discuss-scaling-field-robots-robobusiness/",
+      "published_at": "Mon, 28 Sep 2026 13:22:53 +0000",
+      "collected_at": "2026-10-01T09:36:47.539219+00:00"
+    },
+    {
+      "title": "Asimov’s laws are not enough to keep robotics and AI safe",
+      "source": "The Robot Report",
+      "category": "Robotics",
+      "url": "https://www.therobotreport.com/asimovs-laws-are-not-enough-keep-robotics-ai-safe/",
+      "published_at": "Sun, 27 Sep 2026 12:26:44 +0000",
+      "collected_at": "2026-10-01T09:36:47.539223+00:00"
+    },
+    {
+      "title": "From 14 cities to 15,000: What it will take to scale robotaxis?",
+      "source": "The Robot Report",
+      "category": "Robotics",
+      "url": "https://www.therobotreport.com/from-14-cities-to-15000-what-it-will-take-to-scale-robotaxis/",
+      "published_at": "Sat, 26 Sep 2026 12:34:55 +0000",
+      "collected_at": "2026-10-01T09:36:47.539228+00:00"
+    },
+    {
+      "title": "Amazon to invest $100M in new Indiana manufacturing facility",
+      "source": "The Robot Report",
+      "category": "Robotics",
+      "url": "https://www.therobotreport.com/amazon-to-invest-100m-in-new-indiana-manufacturing-facility/",
+      "published_at": "Fri, 25 Sep 2026 18:59:01 +0000",
+      "collected_at": "2026-10-01T09:36:47.539233+00:00"
+    },
+    {
+      "title": "General Robotics is betting on modular intelligence, not one robot brain",
+      "source": "The Robot Report",
+      "category": "Robotics",
+      "url": "https://www.therobotreport.com/general-robotics-is-betting-on-modular-intelligence-not-one-robot-brain/",
+      "published_at": "Fri, 25 Sep 2026 18:43:22 +0000",
+      "collected_at": "2026-10-01T09:36:47.539238+00:00"
+    },
+    {
+      "title": "Agility Robotics, maker of Digit humanoid, exploring wheeled robots",
+      "source": "The Robot Report",
+      "category": "Robotics",
+      "url": "https://www.therobotreport.com/agility-robotics-maker-of-digit-humanoid-exploring-wheeled-robots/",
+      "published_at": "Fri, 25 Sep 2026 14:08:27 +0000",
+      "collected_at": "2026-10-01T09:36:47.539242+00:00"
+    },
+    {
+      "title": "Reddit is killing RSS feeds and ending public API access because of AI bots",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/09/30/reddit-is-killing-rss-feeds-ending-public-api-access-because-of-ai-bots/",
+      "published_at": "Wed, 30 Sep 2026 17:45:00 +0000",
+      "collected_at": "2026-10-01T09:36:47.708603+00:00"
+    },
+    {
+      "title": "a16z-backed EliseAI raises $350M, doubles valuation to $4B",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/09/29/a16z-backed-eliseai-raises-350m-doubles-valuation-to-4b/",
+      "published_at": "Tue, 29 Sep 2026 21:51:36 +0000",
+      "collected_at": "2026-10-01T09:36:47.708619+00:00"
+    },
+    {
+      "title": "MAVI bets on the AI boom creating demand for a new kind of accountant",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/09/28/mavi-bets-on-the-ai-boom-creating-demand-for-a-new-kind-of-accountant/",
+      "published_at": "Mon, 28 Sep 2026 15:26:46 +0000",
+      "collected_at": "2026-10-01T09:36:47.708627+00:00"
+    },
+    {
+      "title": "Google Photos ‘Clueless’-inspired virtual closet is now available on Android and iOS",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/09/24/google-photos-clueless-inspired-virtual-closet-is-now-available-on-android-and-ios/",
+      "published_at": "Thu, 24 Sep 2026 17:00:00 +0000",
+      "collected_at": "2026-10-01T09:36:47.708633+00:00"
+    },
+    {
+      "title": "YouTube doubles down on video shopping with AI-powered ‘Ask YouTube’ feature",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/09/23/youtube-doubles-down-on-video-shopping-with-ai-powered-ask-youtube-feature/",
+      "published_at": "Wed, 23 Sep 2026 14:30:00 +0000",
+      "collected_at": "2026-10-01T09:36:47.708638+00:00"
+    },
+    {
+      "title": "Family offices are clamoring for AI investments",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/09/18/family-offices-are-clamoring-for-ai-investments/",
+      "published_at": "Fri, 18 Sep 2026 16:00:00 +0000",
+      "collected_at": "2026-10-01T09:36:47.708643+00:00"
+    },
+    {
+      "title": "How AI could make it harder for governments to use hacking tools",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/08/31/how-ai-could-make-it-harder-for-governments-to-use-hacking-tools/",
+      "published_at": "Mon, 31 Aug 2026 15:19:32 +0000",
+      "collected_at": "2026-10-01T09:36:47.708648+00:00"
+    },
+    {
+      "title": "Caterpillar is bringing to AI deployment what it learned from automating mining",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/08/30/caterpillar-is-bringing-to-ai-deployment-what-it-learned-from-automating-mining/",
+      "published_at": "Sun, 30 Aug 2026 15:00:00 +0000",
+      "collected_at": "2026-10-01T09:36:47.708653+00:00"
+    },
+    {
+      "title": "Amazon hikes hardware prices by 60%, blaming memory shortage",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/08/24/amazon-hikes-hardware-prices-by-60-percent-blaming-memory-shortage/",
+      "published_at": "Mon, 24 Aug 2026 19:54:50 +0000",
+      "collected_at": "2026-10-01T09:36:47.708677+00:00"
+    },
+    {
+      "title": "Apple is reportedly cutting hundreds of jobs from Siri, Vision Pro teams",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/08/21/apple-is-reportedly-cutting-hundreds-of-jobs-from-siri-vision-pro-teams/",
+      "published_at": "Fri, 21 Aug 2026 20:58:07 +0000",
+      "collected_at": "2026-10-01T09:36:47.708684+00:00"
+    },
+    {
+      "title": "AI data giant Alation confirms cyberattack",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/08/20/ai-data-giant-alation-confirms-cyberattack/",
+      "published_at": "Thu, 20 Aug 2026 13:01:24 +0000",
+      "collected_at": "2026-10-01T09:36:47.708690+00:00"
+    },
+    {
+      "title": "AI was supposed to win people over by now — it hasn’t",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/08/19/ai-was-supposed-to-win-people-over-by-now-it-hasnt/",
+      "published_at": "Wed, 19 Aug 2026 19:11:40 +0000",
+      "collected_at": "2026-10-01T09:36:47.708695+00:00"
+    },
+    {
+      "title": "Chinese AI model Kimi escaped its cybersecurity testing environment, researchers say",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/08/07/chinese-ai-model-kimi-escaped-its-cybersecurity-testing-environment-researchers-say/",
+      "published_at": "Fri, 07 Aug 2026 14:28:31 +0000",
+      "collected_at": "2026-10-01T09:36:47.708700+00:00"
+    },
+    {
+      "title": "Monday.com is the latest tech company to blame AI for layoffs — here are 20 others",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/07/25/the-running-list-major-tech-layoffs-in-2026-where-employers-cited-ai/",
+      "published_at": "Sun, 26 Jul 2026 01:30:00 +0000",
+      "collected_at": "2026-10-01T09:36:47.708705+00:00"
+    },
+    {
+      "title": "Anthropic’s new Claude feature is quietly selling you on AI",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/07/09/anthropics-new-claude-feature-is-quietly-selling-you-on-ai/",
+      "published_at": "Thu, 09 Jul 2026 14:53:09 +0000",
+      "collected_at": "2026-10-01T09:36:47.708710+00:00"
+    },
+    {
+      "title": "Meta wants its AI glasses to seem less creepy. Its AI strategy says otherwise.",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/07/08/meta-wants-its-ai-glasses-to-seem-less-creepy-its-ai-strategy-says-otherwise/",
+      "published_at": "Wed, 08 Jul 2026 17:11:18 +0000",
+      "collected_at": "2026-10-01T09:36:47.708715+00:00"
+    },
+    {
+      "title": "OpenAI releases new voice models for more natural live conversations",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/07/08/openai-releases-new-voice-models-for-more-natural-live-conversations/",
+      "published_at": "Wed, 08 Jul 2026 17:00:00 +0000",
+      "collected_at": "2026-10-01T09:36:47.708719+00:00"
+    },
+    {
+      "title": "Why everyone from OpenAI to SpaceX is building their own chips (and turning up the heat on Nvidia)",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/video/why-everyone-from-openai-to-spacex-is-building-their-own-chips-and-turning-up-the-heat-on-nvidia/",
+      "published_at": "Fri, 26 Jun 2026 17:43:22 +0000",
+      "collected_at": "2026-10-01T09:36:47.708724+00:00"
+    },
+    {
+      "title": "OpenAI’s Jalapeño chip is Big Tech’s spiciest move away from Nvidia",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/podcast/openais-jalapeno-chip-is-big-techs-spiciest-move-away-from-nvidia/",
+      "published_at": "Fri, 26 Jun 2026 14:00:00 +0000",
+      "collected_at": "2026-10-01T09:36:47.708729+00:00"
+    },
+    {
+      "title": "Beyond Siri: Here are the practical AI features coming to your iPhone in iOS 27",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/06/21/beyond-siri-here-are-the-practical-ai-features-coming-to-your-iphone-in-ios-27/",
+      "published_at": "Sun, 21 Jun 2026 14:40:28 +0000",
+      "collected_at": "2026-10-01T09:36:47.708733+00:00"
+    },
+    {
+      "title": "Agility’s new humanoid robot will stop, squat to avoid harming human coworkers",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/ai/2026/09/agilitys-new-humanoid-robot-will-stop-squat-to-avoid-harming-human-coworkers/",
+      "published_at": "Tue, 15 Sep 2026 18:33:02 +0000",
+      "collected_at": "2026-10-01T09:36:48.493015+00:00"
+    },
+    {
+      "title": "Research roundup: 7 cool science stories we almost missed",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/science/2026/09/august-research-roundup-7-cool-science-stories-we-almost-missed/",
+      "published_at": "Tue, 01 Sep 2026 19:06:10 +0000",
+      "collected_at": "2026-10-01T09:36:48.493030+00:00"
+    },
+    {
+      "title": "World humanoid robot games show runners breaking records, bursting into flames",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/ai/2026/08/world-humanoid-robot-games-show-runners-breaking-records-bursting-into-flames/",
+      "published_at": "Tue, 25 Aug 2026 20:59:03 +0000",
+      "collected_at": "2026-10-01T09:36:48.493037+00:00"
+    },
+    {
+      "title": "US distributor of China’s most popular humanoid robots pivots after US ban",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/gadgets/2026/08/us-distributor-of-chinas-most-popular-humanoid-robots-pivots-after-us-ban/",
+      "published_at": "Thu, 20 Aug 2026 22:00:11 +0000",
+      "collected_at": "2026-10-01T09:36:48.493042+00:00"
+    },
+    {
+      "title": "Research roundup: 6 cool science stories we almost missed",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/science/2026/08/research-roundup-6-cool-science-stories-we-almost-missed-5/",
+      "published_at": "Mon, 03 Aug 2026 20:13:37 +0000",
+      "collected_at": "2026-10-01T09:36:48.493048+00:00"
+    },
+    {
+      "title": "Google reveals Gemini Robotics 2.0, promising improved dexterity and safety",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/ai/2026/07/google-reveals-gemini-robotics-2-0-promising-improved-dexterity-and-safety/",
+      "published_at": "Thu, 30 Jul 2026 17:58:02 +0000",
+      "collected_at": "2026-10-01T09:36:48.493052+00:00"
+    },
+    {
+      "title": "Who wins and who loses after US bans foreign robots?",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/ai/2026/07/who-wins-and-who-loses-after-us-bans-foreign-robots/",
+      "published_at": "Wed, 29 Jul 2026 20:03:42 +0000",
+      "collected_at": "2026-10-01T09:36:48.493057+00:00"
+    },
+    {
+      "title": "Robot snakes searched for Venezuela earthquake survivors in collapsed buildings",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/gadgets/2026/07/robot-snakes-searched-for-venezuela-earthquake-survivors-in-collapsed-buildings/",
+      "published_at": "Fri, 24 Jul 2026 11:20:43 +0000",
+      "collected_at": "2026-10-01T09:36:48.493062+00:00"
+    },
+    {
+      "title": "Simulating everything, sort of: The promise and limits of world models",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/ai/2026/07/simulating-everything-sort-of-the-promise-and-limits-of-world-models/",
+      "published_at": "Mon, 13 Jul 2026 11:00:51 +0000",
+      "collected_at": "2026-10-01T09:36:48.493066+00:00"
+    },
+    {
+      "title": "How AI could enable autonomous robot workers in workplaces—and maybe homes",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/ai/2026/07/robot-workers-rising-how-ai-may-drive-general-purpose-autonomy-in-robotics/",
+      "published_at": "Tue, 07 Jul 2026 11:00:18 +0000",
+      "collected_at": "2026-10-01T09:36:48.493071+00:00"
+    },
+    {
+      "title": "AI coding agents taught robots how to install GPUs and cut zip ties",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/ai/2026/06/ai-coding-agents-can-autonomously-direct-robot-training/",
+      "published_at": "Wed, 17 Jun 2026 19:25:19 +0000",
+      "collected_at": "2026-10-01T09:36:48.493075+00:00"
+    },
+    {
+      "title": "The skeptic’s guide to humanoid robots going viral on the Internet",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/ai/2026/06/the-skeptics-guide-to-humanoid-robots-going-viral-on-the-internet/",
+      "published_at": "Thu, 04 Jun 2026 22:23:36 +0000",
+      "collected_at": "2026-10-01T09:36:48.493080+00:00"
+    },
+    {
+      "title": "Allegedly trashing Airbnbs to test robots puts startup in legal trouble",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/ai/2026/06/allegedly-trashing-airbnbs-to-test-robots-puts-startup-in-legal-trouble/",
+      "published_at": "Mon, 01 Jun 2026 17:17:55 +0000",
+      "collected_at": "2026-10-01T09:36:48.493084+00:00"
+    },
+    {
+      "title": "3D-printable humanoid legs let robotics experiments run wild",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/ai/2026/05/3d-printable-humanoid-legs-let-robotics-experiments-run-wild/",
+      "published_at": "Tue, 26 May 2026 17:16:07 +0000",
+      "collected_at": "2026-10-01T09:36:48.493089+00:00"
+    },
+    {
+      "title": "The Internet can't stop watching Figure AI's humanoid robots handling packages",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/ai/2026/05/the-internet-cant-stop-watching-figure-ais-humanoid-robots-handling-packages/",
+      "published_at": "Wed, 20 May 2026 11:00:34 +0000",
+      "collected_at": "2026-10-01T09:36:48.493093+00:00"
+    },
+    {
+      "title": "Humanoid robots start sorting luggage in Tokyo airport test amid labor shortage",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/ai/2026/04/japan-airlines-tests-having-robots-instead-of-humans-handle-travelers-luggage/",
+      "published_at": "Tue, 28 Apr 2026 18:01:36 +0000",
+      "collected_at": "2026-10-01T09:36:48.493097+00:00"
+    },
+    {
+      "title": "New robotic control software avoids jamming their joints",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/science/2026/04/kinematic-intelligence-helps-robots-learn-their-limits/",
+      "published_at": "Sun, 26 Apr 2026 11:09:29 +0000",
+      "collected_at": "2026-10-01T09:36:48.493102+00:00"
+    },
+    {
+      "title": "Robot runner handily beats humans in half-marathon, setting new record",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/ai/2026/04/robot-runner-handily-beats-humans-in-half-marathon-setting-new-record/",
+      "published_at": "Mon, 20 Apr 2026 17:56:27 +0000",
+      "collected_at": "2026-10-01T09:36:48.493106+00:00"
+    },
+    {
+      "title": "From folding boxes to fixing vacuums, GEN-1 robotics model hits 99% reliability",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/ai/2026/04/generalists-new-physical-robotics-ai-brings-production-level-success-rates/",
+      "published_at": "Mon, 06 Apr 2026 22:18:33 +0000",
+      "collected_at": "2026-10-01T09:36:48.493111+00:00"
+    },
+    {
+      "title": "Unique structure of elephant whiskers give them built-in sensing \"intelligence\"",
+      "source": "Ars Technica",
+      "category": "Robotics",
+      "url": "https://arstechnica.com/science/2026/02/unique-structure-of-elephant-whiskers-give-them-built-in-sensing-intelligence/",
+      "published_at": "Thu, 12 Feb 2026 19:00:15 +0000",
+      "collected_at": "2026-10-01T09:36:48.493116+00:00"
+    },
+    {
       "title": "A Virtual Slope Helps Humanoids Learn Leaner Walking",
       "source": "Robotic Lifestyle",
       "category": "Robotics",
       "url": "https://roboticlifestyle.com/article/a-virtual-slope-helps-humanoids-learn-leaner-walking-615137-642",
       "published_at": "Wed, 30 Sep 2026 22:16:55 GMT",
-      "collected_at": "2026-10-01T08:08:19.590359+00:00"
+      "collected_at": "2026-10-01T09:36:50.521019+00:00"
     },
     {
       "title": "Innodata Opens Lab for More Precise Humanoid Data",
@@ -14,7 +774,375 @@
       "category": "Robotics",
       "url": "https://roboticlifestyle.com/article/innodata-opens-lab-for-more-precise-humanoid-data-400917-491",
       "published_at": "Wed, 30 Sep 2026 22:13:20 GMT",
-      "collected_at": "2026-10-01T08:08:19.590381+00:00"
+      "collected_at": "2026-10-01T09:36:50.521036+00:00"
+    },
+    {
+      "title": "How Humanoids Combine Movements and Preserve Contacts",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/how-humanoids-combine-movements-and-preserve-contacts-080630-200",
+      "published_at": "Wed, 30 Sep 2026 12:24:40 GMT",
+      "collected_at": "2026-10-01T09:36:50.521042+00:00"
+    },
+    {
+      "title": "How Bipedal Robots Choose Safer Steps",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/how-bipedal-robots-choose-safer-steps-066123-698",
+      "published_at": "Tue, 29 Sep 2026 22:14:26 GMT",
+      "collected_at": "2026-10-01T09:36:50.521048+00:00"
+    },
+    {
+      "title": "Force Sensing Could Help Humanoids Handle Objects Safely",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/force-sensing-could-help-humanoids-handle-objects-safely-895457-571",
+      "published_at": "Tue, 29 Sep 2026 22:11:35 GMT",
+      "collected_at": "2026-10-01T09:36:50.521053+00:00"
+    },
+    {
+      "title": "HOI-Retarget Keeps Humanoid Hands on the Right Spot",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/hoi-retarget-keeps-humanoid-hands-on-the-right-spot-304231-678",
+      "published_at": "Tue, 29 Sep 2026 12:18:24 GMT",
+      "collected_at": "2026-10-01T09:36:50.521058+00:00"
+    },
+    {
+      "title": "How SocialHumanoid Turns Speech Into Robot Gestures",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/how-socialhumanoid-turns-speech-into-robot-gestures-221336-793",
+      "published_at": "Tue, 29 Sep 2026 12:17:01 GMT",
+      "collected_at": "2026-10-01T09:36:50.521063+00:00"
+    },
+    {
+      "title": "BeyondRetarget Maps Video Directly to Humanoid Motion",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/beyondretarget-maps-video-directly-to-humanoid-motion-655576-225",
+      "published_at": "Mon, 28 Sep 2026 22:14:15 GMT",
+      "collected_at": "2026-10-01T09:36:50.521068+00:00"
+    },
+    {
+      "title": "Separate Wrist Bones Let a Robot Shift Stiffness",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/separate-wrist-bones-let-a-robot-shift-stiffness-607754-120",
+      "published_at": "Mon, 28 Sep 2026 22:13:27 GMT",
+      "collected_at": "2026-10-01T09:36:50.521073+00:00"
+    },
+    {
+      "title": "Unitree Humanoids Perform With Dancers in Shanghai",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/unitree-humanoids-perform-with-dancers-in-shanghai-453594-609",
+      "published_at": "Fri, 25 Sep 2026 22:14:13 GMT",
+      "collected_at": "2026-10-01T09:36:50.521078+00:00"
+    },
+    {
+      "title": "Agility Robotics Is Exploring Robots With Wheels",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/agility-robotics-is-exploring-robots-with-wheels-317863-108",
+      "published_at": "Fri, 25 Sep 2026 22:11:57 GMT",
+      "collected_at": "2026-10-01T09:36:50.521083+00:00"
+    },
+    {
+      "title": "RoboBusiness 2026 Panel to Examine Humanoid Readiness",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/robobusiness-2026-panel-to-examine-humanoid-readiness-957574-463",
+      "published_at": "Thu, 24 Sep 2026 02:29:17 GMT",
+      "collected_at": "2026-10-01T09:36:50.521088+00:00"
+    },
+    {
+      "title": "How Attackers Can Make Robots Behave Badly",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/how-attackers-can-make-robots-behave-badly-040679-800",
+      "published_at": "Mon, 21 Sep 2026 12:17:20 GMT",
+      "collected_at": "2026-10-01T09:36:50.521093+00:00"
+    },
+    {
+      "title": "How OmniCalib Recalibrates a Humanoid Without Markers",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/how-omnicalib-recalibrates-a-humanoid-without-markers-886599-71",
+      "published_at": "Sat, 19 Sep 2026 22:11:26 GMT",
+      "collected_at": "2026-10-01T09:36:50.521098+00:00"
+    },
+    {
+      "title": "How RoM-Nav Helps a Humanoid Climb Between Floors",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/how-rom-nav-helps-a-humanoid-climb-between-floors-196178-819",
+      "published_at": "Sat, 19 Sep 2026 12:16:36 GMT",
+      "collected_at": "2026-10-01T09:36:50.521103+00:00"
+    },
+    {
+      "title": "UBTECH Claims Its Humanoid Factory Can Reach 10,000 Units",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/ubtech-claims-its-humanoid-factory-can-reach-10000-units-536313-658",
+      "published_at": "Fri, 18 Sep 2026 22:12:16 GMT",
+      "collected_at": "2026-10-01T09:36:50.521108+00:00"
+    },
+    {
+      "title": "ViLoMan Teaches a Humanoid to Close Doors",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/viloman-teaches-a-humanoid-to-close-doors-407219-565",
+      "published_at": "Fri, 18 Sep 2026 22:10:07 GMT",
+      "collected_at": "2026-10-01T09:36:50.521112+00:00"
+    },
+    {
+      "title": "A Humanoid Learns to Work Across Sloped Roofs",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/a-humanoid-learns-to-work-across-sloped-roofs-697258-917",
+      "published_at": "Fri, 18 Sep 2026 12:14:57 GMT",
+      "collected_at": "2026-10-01T09:36:50.521117+00:00"
+    },
+    {
+      "title": "Digit 5 Trades Speed for Strength at Work",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/digit-5-trades-speed-for-strength-at-work-065219-962",
+      "published_at": "Thu, 17 Sep 2026 22:11:05 GMT",
+      "collected_at": "2026-10-01T09:36:50.521122+00:00"
+    },
+    {
+      "title": "How PASSAGE Helps a Humanoid Move Through Clutter",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/how-passage-helps-a-humanoid-move-through-clutter-493956-980",
+      "published_at": "Thu, 17 Sep 2026 12:18:13 GMT",
+      "collected_at": "2026-10-01T09:36:50.521127+00:00"
+    },
+    {
+      "title": "RECAL Adds Collision Awareness to Humanoid Control",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/recal-adds-collision-awareness-to-humanoid-control-986509-953",
+      "published_at": "Wed, 16 Sep 2026 12:16:26 GMT",
+      "collected_at": "2026-10-01T09:36:50.521131+00:00"
+    },
+    {
+      "title": "Digit 5 Plans to Sit Down Around Workers",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/digit-5-plans-to-sit-down-around-workers-401407-616",
+      "published_at": "Tue, 15 Sep 2026 22:13:21 GMT",
+      "collected_at": "2026-10-01T09:36:50.521136+00:00"
+    },
+    {
+      "title": "Digit 5 Uses Stop, Step-Aside, and Squat Responses",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/digit-5-uses-stop-step-aside-and-squat-responses-362555-481",
+      "published_at": "Tue, 15 Sep 2026 22:12:42 GMT",
+      "collected_at": "2026-10-01T09:36:50.521141+00:00"
+    },
+    {
+      "title": "Agility Rebuilds Digit 5 for Factory Work",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/agility-rebuilds-digit-5-for-factory-work-546928-88",
+      "published_at": "Tue, 15 Sep 2026 12:15:46 GMT",
+      "collected_at": "2026-10-01T09:36:50.521145+00:00"
+    },
+    {
+      "title": "ETH Zurich Studies Humanoid Robot Monkey-Bar Traversal",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/eth-zurich-studies-humanoid-robot-monkey-bar-traversal-532938-61",
+      "published_at": "Fri, 11 Sep 2026 18:15:32 GMT",
+      "collected_at": "2026-10-01T09:36:50.521150+00:00"
+    },
+    {
+      "title": "HuRo Turns Human Videos Into Robot Training Data",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/huro-turns-human-videos-into-robot-training-data-008482-480",
+      "published_at": "Fri, 11 Sep 2026 17:16:48 GMT",
+      "collected_at": "2026-10-01T09:36:50.521155+00:00"
+    },
+    {
+      "title": "SwingBot Uses Wrist Hooks to Swing Between Overhead Bars",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/swingbot-makes-humanoid-brachiation-learnable-with-guided-reinforcement-learning-666538-28",
+      "published_at": "Thu, 10 Sep 2026 12:17:46 GMT",
+      "collected_at": "2026-10-01T09:36:50.521160+00:00"
+    },
+    {
+      "title": "AGIBOT Plans a Talk on Scaling Humanoid Robots",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/agibot-sets-out-the-supply-chain-and-software-hurdles-facing-humanoids-608709-665",
+      "published_at": "Thu, 10 Sep 2026 12:16:48 GMT",
+      "collected_at": "2026-10-01T09:36:50.521165+00:00"
+    },
+    {
+      "title": "Report: Unitree Shipped Thousands of Humanoids. Factory Use Is Unclear",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/unitrees-reported-humanoid-sales-now-face-a-harder-commercialization-test-576572-806",
+      "published_at": "Thu, 10 Sep 2026 12:16:16 GMT",
+      "collected_at": "2026-10-01T09:36:50.521170+00:00"
+    },
+    {
+      "title": "A Flying Humanoid Robot Walks Across a Ceiling",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/how-a-flying-humanoid-walks-across-a-ceiling-without-losing-thrust-138274-250",
+      "published_at": "Wed, 09 Sep 2026 18:55:38 GMT",
+      "collected_at": "2026-10-01T09:36:50.521174+00:00"
+    },
+    {
+      "title": "Why Humanoid Robots Need Smarter Joints",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/how-humanoid-joints-turn-ai-decisions-into-safe-physical-movement-089549-377",
+      "published_at": "Wed, 09 Sep 2026 18:54:49 GMT",
+      "collected_at": "2026-10-01T09:36:50.521179+00:00"
+    },
+    {
+      "title": "PGMT Helps a Humanoid Adapt Motion to Uneven Terrain",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/pgmt-lets-a-humanoid-change-footing-without-losing-motion-intent-422912-386",
+      "published_at": "Wed, 09 Sep 2026 18:27:02 GMT",
+      "collected_at": "2026-10-01T09:36:50.521183+00:00"
+    },
+    {
+      "title": "A Wider Robot View Helps Operators Find Dropped Objects",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/spot-gives-humanoid-teleoperators-a-wider-steadier-view-568867-370",
+      "published_at": "Wed, 09 Sep 2026 12:22:48 GMT",
+      "collected_at": "2026-10-01T09:36:50.521188+00:00"
+    },
+    {
+      "title": "Digit Robots Reach Nine Customer Sites",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/digit-has-reached-nine-customer-sites-as-agility-targets-thousands-more-514904-270",
+      "published_at": "Wed, 09 Sep 2026 12:21:54 GMT",
+      "collected_at": "2026-10-01T09:36:50.521193+00:00"
+    },
+    {
+      "title": "TANGO Helps a Humanoid Duck, Sidestep and Step Over Clutter",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/tango-maps-language-and-camera-views-to-humanoid-whole-body-actions-453061-67",
+      "published_at": "Wed, 09 Sep 2026 12:20:53 GMT",
+      "collected_at": "2026-10-01T09:36:50.521198+00:00"
+    },
+    {
+      "title": "A Humanoid Prototype Takes Voice Commands and Recognizes Gestures",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/vietnamjapan-team-builds-modular-humanoid-for-multimodal-interaction-626004-312",
+      "published_at": "Mon, 07 Sep 2026 12:20:26 GMT",
+      "collected_at": "2026-10-01T09:36:50.521202+00:00"
+    },
+    {
+      "title": "Lattice Proposes a Way for Robots to Recover From Hacks",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/lattice-proposes-hardware-roots-of-trust-for-humanoid-robot-security-222954-214",
+      "published_at": "Sun, 06 Sep 2026 17:53:42 GMT",
+      "collected_at": "2026-10-01T09:36:50.521207+00:00"
+    },
+    {
+      "title": "Robotics Startup Radar Opens Applications for 2026",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/robotics-startup-radar-opens-2026-submissions-for-young-companies-836210-473",
+      "published_at": "Sat, 05 Sep 2026 22:03:56 GMT",
+      "collected_at": "2026-10-01T09:36:50.521211+00:00"
+    },
+    {
+      "title": "Students Transfer Simulated Humanoid Behaviors to a Robot",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/oh-gym-students-moved-humanoid-behaviors-from-simulation-to-hardware-548088-202",
+      "published_at": "Sat, 05 Sep 2026 21:09:08 GMT",
+      "collected_at": "2026-10-01T09:36:50.521216+00:00"
+    },
+    {
+      "title": "A New Way to Make Human Moves Fit Humanoid Robots",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/how-umr-transfers-human-motion-across-different-humanoid-bodies-775682-266",
+      "published_at": "Sat, 05 Sep 2026 19:32:55 GMT",
+      "collected_at": "2026-10-01T09:36:50.521220+00:00"
+    },
+    {
+      "title": "How a Humanoid Study Would Measure the Human Side of Teamwork",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/hri-dataset-plan-adds-body-signals-417750-473",
+      "published_at": "Fri, 04 Sep 2026 12:20:17 GMT",
+      "collected_at": "2026-10-01T09:36:50.521225+00:00"
+    },
+    {
+      "title": "Lower-Limb Calibration Uses Foot Contact",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/lower-limb-calibration-uses-foot-contact-736082-525",
+      "published_at": "Thu, 03 Sep 2026 22:15:36 GMT",
+      "collected_at": "2026-10-01T09:36:50.521229+00:00"
+    },
+    {
+      "title": "Safer Stops Need a Feasibility Check",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/safer-stops-need-a-feasibility-check-073244-367",
+      "published_at": "Thu, 03 Sep 2026 12:21:13 GMT",
+      "collected_at": "2026-10-01T09:36:50.521234+00:00"
+    },
+    {
+      "title": "Humanoid System Targets Faster Task Changes",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/humanoid-system-targets-faster-task-changes-634759-294",
+      "published_at": "Wed, 02 Sep 2026 12:20:34 GMT",
+      "collected_at": "2026-10-01T09:36:50.521238+00:00"
+    },
+    {
+      "title": "Robot Safety Needs a Security Layer",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/robot-safety-needs-a-security-layer-732051-757",
+      "published_at": "Tue, 01 Sep 2026 22:12:12 GMT",
+      "collected_at": "2026-10-01T09:36:50.521243+00:00"
+    },
+    {
+      "title": "August Robotics: Capital, AI, and Cost Pressure",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/august-robotics-capital-ai-and-cost-pressure-726982-371",
+      "published_at": "Tue, 01 Sep 2026 22:12:06 GMT",
+      "collected_at": "2026-10-01T09:36:50.521248+00:00"
+    },
+    {
+      "title": "AnyWorld Targets Robot Learning Data Gaps",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/anyworld-targets-robot-learning-data-gaps-238397-966",
+      "published_at": "Tue, 01 Sep 2026 12:20:38 GMT",
+      "collected_at": "2026-10-01T09:36:50.521252+00:00"
+    },
+    {
+      "title": "Humanoid Learns Sparse Bar Traversal",
+      "source": "Robotic Lifestyle",
+      "category": "Robotics",
+      "url": "https://roboticlifestyle.com/article/humanoid-learns-sparse-bar-traversal-231711-662",
+      "published_at": "Tue, 01 Sep 2026 12:20:31 GMT",
+      "collected_at": "2026-10-01T09:36:50.521257+00:00"
     },
     {
       "title": "Elon Musk’s Grokipedia has a ‘newly refreshed’ design",
@@ -22,7 +1150,7 @@
       "category": "AI",
       "url": "https://www.theverge.com/tech/1003068/elon-musk-grokipedia-v-0-3-spacexai",
       "published_at": "2026-09-30T20:23:45-04:00",
-      "collected_at": "2026-10-01T08:08:19.784698+00:00"
+      "collected_at": "2026-10-01T09:36:50.654996+00:00"
     },
     {
       "title": "Google announces Gemini 4 and says it&#8217;s so capable that only &#8216;trusted cyber defenders&#8217; can have it right now",
@@ -30,7 +1158,311 @@
       "category": "AI",
       "url": "https://www.theverge.com/tech/1002980/google-gemini-4-argon",
       "published_at": "2026-09-30T16:41:41-04:00",
-      "collected_at": "2026-10-01T08:08:19.784712+00:00"
+      "collected_at": "2026-10-01T09:36:50.655014+00:00"
+    },
+    {
+      "title": "The AI Tamagotchis are coming",
+      "source": "The Verge AI",
+      "category": "AI",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1002779/openai-dots-meta-muse-ai-agents-hardware-devices",
+      "published_at": "2026-09-30T14:07:38-04:00",
+      "collected_at": "2026-10-01T09:36:50.655020+00:00"
+    },
+    {
+      "title": "Here&#8217;s what AI leaders are saying about Trump’s new safety plan",
+      "source": "The Verge AI",
+      "category": "AI",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1002636/ai-execs-trump-self-policing-deal-comments",
+      "published_at": "2026-09-30T13:15:49-04:00",
+      "collected_at": "2026-10-01T09:36:50.655025+00:00"
+    },
+    {
+      "title": "All the latest news on Meta’s cute, creepy Muse AI agent",
+      "source": "The Verge AI",
+      "category": "AI",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1002671/meta-muse-ai",
+      "published_at": "2026-09-30T11:18:49-04:00",
+      "collected_at": "2026-10-01T09:36:50.655030+00:00"
+    },
+    {
+      "title": "Google reportedly tests paying publishers for AI search results",
+      "source": "The Verge AI",
+      "category": "AI",
+      "url": "https://www.theverge.com/tech/1002665/google-paying-publishers-ai-search-features",
+      "published_at": "2026-09-30T10:51:49-04:00",
+      "collected_at": "2026-10-01T09:36:50.655034+00:00"
+    },
+    {
+      "title": "Instagram is adding an AI ‘assistant’ to tell you how to post",
+      "source": "The Verge AI",
+      "category": "AI",
+      "url": "https://www.theverge.com/tech/1002402/instagram-ai-edits-assistant-creators-analytics-youtube",
+      "published_at": "2026-09-30T10:30:00-04:00",
+      "collected_at": "2026-10-01T09:36:50.655040+00:00"
+    },
+    {
+      "title": "Here’s how tech leaders will self-police AI safety under Trump’s deal",
+      "source": "The Verge AI",
+      "category": "AI",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1002584/trump-us-ai-safety-deal-self-regulation-tech-execs",
+      "published_at": "2026-09-30T08:24:32-04:00",
+      "collected_at": "2026-10-01T09:36:50.655045+00:00"
+    },
+    {
+      "title": "Sam Altman says OpenAI won’t go public until its models are safe",
+      "source": "The Verge AI",
+      "category": "AI",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1002505/sam-altman-openai-ipo-devday-ai-safety",
+      "published_at": "2026-09-29T20:19:13-04:00",
+      "collected_at": "2026-10-01T09:36:50.655049+00:00"
+    },
+    {
+      "title": "Trump orders US government to call AI ‘Super Intelligence’",
+      "source": "The Verge AI",
+      "category": "AI",
+      "url": "https://www.theverge.com/policy/1002468/trump-ai-superintelligence-executive-order-ai",
+      "published_at": "2026-09-29T18:25:45-04:00",
+      "collected_at": "2026-10-01T09:36:50.655054+00:00"
+    },
+    {
+      "title": "A Day in the Life of a Roboticist: Charlie Kemp",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://robotsguide.com/learn/a-day-in-the-life-of-a-roboticist-charlie-kemp",
+      "published_at": "Mon, 28 Sep 2026 21:48:56 +0000",
+      "collected_at": "2026-10-01T09:36:50.913442+00:00"
+    },
+    {
+      "title": "Video Friday: Life’s Better With a Little Robot Goose",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/video-friday-goose-household-robots",
+      "published_at": "Fri, 25 Sep 2026 16:00:04 +0000",
+      "collected_at": "2026-10-01T09:36:50.913458+00:00"
+    },
+    {
+      "title": "Mexican EPICS in IEEE Team Builds Portable Educational Platform",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/epics-in-ieee-portable-educational",
+      "published_at": "Thu, 24 Sep 2026 18:00:04 +0000",
+      "collected_at": "2026-10-01T09:36:50.913464+00:00"
+    },
+    {
+      "title": "Barbara Mazzolai Wants to Build a New Field of Robotics",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/sustainability-robotics-barbara-mazzolai",
+      "published_at": "Tue, 22 Sep 2026 14:00:04 +0000",
+      "collected_at": "2026-10-01T09:36:50.913470+00:00"
+    },
+    {
+      "title": "Video Friday: Two Birotors Make a Quadrotor",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/video-friday-quadrotor-from-birotor",
+      "published_at": "Fri, 18 Sep 2026 16:01:05 +0000",
+      "collected_at": "2026-10-01T09:36:50.913475+00:00"
+    },
+    {
+      "title": "Rethinking Robot Safety in the Age of AI",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/physical-ai-robot-cybersecurity-vicone",
+      "published_at": "Wed, 16 Sep 2026 16:51:02 +0000",
+      "collected_at": "2026-10-01T09:36:50.913480+00:00"
+    },
+    {
+      "title": "Digit 5 May Be the First Humanoid Robot Worker That’s Truly Safe",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/humanoid-robot-safety",
+      "published_at": "Tue, 15 Sep 2026 15:22:30 +0000",
+      "collected_at": "2026-10-01T09:36:50.913484+00:00"
+    },
+    {
+      "title": "Video Friday: Humanoid Robot Takes On Monkey Bars",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/video-friday-disaster-response-robots",
+      "published_at": "Fri, 11 Sep 2026 15:30:04 +0000",
+      "collected_at": "2026-10-01T09:36:50.913489+00:00"
+    },
+    {
+      "title": "Robots Are Learning to Feel",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/tactile-data-robots",
+      "published_at": "Thu, 10 Sep 2026 18:22:35 +0000",
+      "collected_at": "2026-10-01T09:36:50.913494+00:00"
+    },
+    {
+      "title": "This Robot Will Draw Your Blood Now",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/blood-draw-robot-vitestro-aletta",
+      "published_at": "Mon, 07 Sep 2026 13:00:01 +0000",
+      "collected_at": "2026-10-01T09:36:50.913499+00:00"
+    },
+    {
+      "title": "Cyborg Roaches Can Stab You With Needles",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/cyborg-rescue-roach",
+      "published_at": "Sat, 05 Sep 2026 13:00:04 +0000",
+      "collected_at": "2026-10-01T09:36:50.913504+00:00"
+    },
+    {
+      "title": "Video Friday: Digit Redecorates",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/video-friday-agility-robotics-digit",
+      "published_at": "Fri, 04 Sep 2026 16:00:05 +0000",
+      "collected_at": "2026-10-01T09:36:50.913509+00:00"
+    },
+    {
+      "title": "Protecting Dynamic Industrial Robot Cable Carriers",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/industrial-robot-cable-carrier-protection",
+      "published_at": "Thu, 03 Sep 2026 12:18:21 +0000",
+      "collected_at": "2026-10-01T09:36:50.913514+00:00"
+    },
+    {
+      "title": "The Best Way to Explore Lunar Craters Is a Giant Robot Ball",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/moon-ball-robot",
+      "published_at": "Thu, 03 Sep 2026 12:00:01 +0000",
+      "collected_at": "2026-10-01T09:36:50.913518+00:00"
+    },
+    {
+      "title": "Video Friday: Meet Microduck",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/video-friday-microduck-robot",
+      "published_at": "Fri, 28 Aug 2026 16:00:03 +0000",
+      "collected_at": "2026-10-01T09:36:50.913524+00:00"
+    },
+    {
+      "title": "AI Companion Robots Are Closing the Human Connection in Modern Homes",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/ollobot-ai-companion-robot",
+      "published_at": "Tue, 25 Aug 2026 10:00:03 +0000",
+      "collected_at": "2026-10-01T09:36:50.913529+00:00"
+    },
+    {
+      "title": "Video Friday: Do We Need Superhuman Humanoid Robots?",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/video-friday-unitree-superhuman",
+      "published_at": "Fri, 21 Aug 2026 16:00:01 +0000",
+      "collected_at": "2026-10-01T09:36:50.913533+00:00"
+    },
+    {
+      "title": "Drones With Claws Perch on Arctic Icebergs",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/arctic-iceberg-drones",
+      "published_at": "Tue, 18 Aug 2026 13:00:01 +0000",
+      "collected_at": "2026-10-01T09:36:50.913538+00:00"
+    },
+    {
+      "title": "Is Shipyard Welding the Right First Job for Humanoid Robots?",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/persona-ai-humanoid-robot-welding",
+      "published_at": "Mon, 17 Aug 2026 15:33:42 +0000",
+      "collected_at": "2026-10-01T09:36:50.913543+00:00"
+    },
+    {
+      "title": "Video Friday: Lift Happens",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/video-friday-darpa-heavy-lift-challenge",
+      "published_at": "Fri, 14 Aug 2026 17:00:01 +0000",
+      "collected_at": "2026-10-01T09:36:50.913547+00:00"
+    },
+    {
+      "title": "Robot Recycler Salvages Parts From Broken Machines",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/recycling-robot",
+      "published_at": "Mon, 10 Aug 2026 18:01:25 +0000",
+      "collected_at": "2026-10-01T09:36:50.913553+00:00"
+    },
+    {
+      "title": "Video Friday: Drones Go Heavy in DARPA Lift Challenge",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/video-friday-heavy-lift-drone",
+      "published_at": "Fri, 07 Aug 2026 16:00:01 +0000",
+      "collected_at": "2026-10-01T09:36:50.913558+00:00"
+    },
+    {
+      "title": "What Robotics Companies Think About the U.S. Foreign Robot Ban",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/fcc-covered-list-mobile-robots",
+      "published_at": "Tue, 04 Aug 2026 11:00:01 +0000",
+      "collected_at": "2026-10-01T09:36:50.913563+00:00"
+    },
+    {
+      "title": "Walden Robotics Partners With Toyota on Practical Humanoids",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/humanoid-robots-walden-robotics-toyota",
+      "published_at": "Mon, 03 Aug 2026 16:05:39 +0000",
+      "collected_at": "2026-10-01T09:36:50.913567+00:00"
+    },
+    {
+      "title": "Video Friday: Meet Google DeepMind’s Gemini Robotics 2",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/video-robot-gemini2-ai-robot",
+      "published_at": "Fri, 31 Jul 2026 16:00:03 +0000",
+      "collected_at": "2026-10-01T09:36:50.913572+00:00"
+    },
+    {
+      "title": "Robot Finger Feels in Color",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/robot-finger",
+      "published_at": "Tue, 28 Jul 2026 15:00:03 +0000",
+      "collected_at": "2026-10-01T09:36:50.913576+00:00"
+    },
+    {
+      "title": "Optical Tech Would Update a Robot’s AI on the Fly",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/ai-in-robotics",
+      "published_at": "Sun, 26 Jul 2026 13:00:01 +0000",
+      "collected_at": "2026-10-01T09:36:50.913581+00:00"
+    },
+    {
+      "title": "Video Friday: An Italian Humanoid Comes to Life",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/video-friday-physical-ai-robotics",
+      "published_at": "Fri, 24 Jul 2026 15:30:01 +0000",
+      "collected_at": "2026-10-01T09:36:50.913586+00:00"
+    },
+    {
+      "title": "This Graduate Student Equips NASA’s Robots With Assembly Skills",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/graduate-student-nasas-robots-assembly",
+      "published_at": "Fri, 17 Jul 2026 18:00:01 +0000",
+      "collected_at": "2026-10-01T09:36:50.913591+00:00"
+    },
+    {
+      "title": "Video Friday: Your Robot Surgeon Will See You Now",
+      "source": "IEEE Spectrum Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/video-friday-robotic-surgery",
+      "published_at": "Fri, 17 Jul 2026 16:00:01 +0000",
+      "collected_at": "2026-10-01T09:36:50.913595+00:00"
     }
   ]
 }
