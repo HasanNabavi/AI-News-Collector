@@ -1,3 +1,4 @@
+import json
 import feedparser
 import requests
 from bs4 import BeautifulSoup
@@ -6,6 +7,104 @@ from bs4 import BeautifulSoup
 RSS_URL = (
     "https://www.technologyreview.com/feed/"
 )
+
+
+def extract_json_ld_article_body(soup):
+
+    scripts = soup.find_all(
+        "script",
+        type="application/ld+json"
+    )
+
+    for script in scripts:
+
+        try:
+            data = json.loads(
+                script.string or script.get_text()
+            )
+
+        except (
+            json.JSONDecodeError,
+            TypeError
+        ):
+            continue
+
+        objects = []
+
+        if isinstance(data, dict):
+            objects.append(data)
+
+            graph = data.get(
+                "@graph",
+                []
+            )
+
+            if isinstance(graph, list):
+                objects.extend(graph)
+
+        elif isinstance(data, list):
+            objects.extend(data)
+
+        for obj in objects:
+
+            if not isinstance(obj, dict):
+                continue
+
+            article_body = obj.get(
+                "articleBody"
+            )
+
+            if (
+                isinstance(article_body, str)
+                and len(article_body.strip()) > 300
+            ):
+                return article_body.strip()
+
+    return None
+
+
+def extract_paragraphs(soup):
+
+    selectors = [
+        '[itemprop="articleBody"]',
+        '[class*="article-body"]',
+        '[class*="story-body"]',
+        "article",
+        "main"
+    ]
+
+    for selector in selectors:
+
+        containers = soup.select(
+            selector
+        )
+
+        for container in containers:
+
+            paragraphs = container.find_all(
+                "p"
+            )
+
+            texts = []
+
+            for paragraph in paragraphs:
+
+                text = paragraph.get_text(
+                    " ",
+                    strip=True
+                )
+
+                if len(text) >= 40:
+                    texts.append(text)
+
+            combined_text = "\n\n".join(
+                texts
+            )
+
+            if len(combined_text) >= 300:
+                return combined_text
+
+    return None
 
 
 def test_article_content():
@@ -119,7 +218,7 @@ def test_article_content():
     )
 
     # --------------------------------------------------
-    # HTML title
+    # Page title
     # --------------------------------------------------
 
     print()
@@ -140,7 +239,7 @@ def test_article_content():
         )
 
     # --------------------------------------------------
-    # Open Graph image
+    # OG Image
     # --------------------------------------------------
 
     print()
@@ -167,26 +266,25 @@ def test_article_content():
         )
 
     # --------------------------------------------------
-    # Article tag
+    # Method 1: JSON-LD articleBody
     # --------------------------------------------------
 
     print()
-    print("Article tag:")
+    print("Method 1: JSON-LD articleBody")
 
-    article = soup.find(
-        "article"
+    json_ld_text = extract_json_ld_article_body(
+        soup
     )
 
-    if article:
+    if json_ld_text:
 
-        article_text = article.get_text(
-            " ",
-            strip=True
+        print(
+            "SUCCESS"
         )
 
         print(
             f"Text length: "
-            f"{len(article_text)}"
+            f"{len(json_ld_text)}"
         )
 
         print()
@@ -195,13 +293,50 @@ def test_article_content():
         )
 
         print(
-            article_text[:1500]
+            json_ld_text[:1500]
         )
 
     else:
 
         print(
-            "Article tag not found"
+            "No usable articleBody found."
+        )
+
+    # --------------------------------------------------
+    # Method 2: HTML paragraphs
+    # --------------------------------------------------
+
+    print()
+    print("Method 2: HTML paragraph extraction")
+
+    paragraph_text = extract_paragraphs(
+        soup
+    )
+
+    if paragraph_text:
+
+        print(
+            "SUCCESS"
+        )
+
+        print(
+            f"Text length: "
+            f"{len(paragraph_text)}"
+        )
+
+        print()
+        print(
+            "First 1500 characters:"
+        )
+
+        print(
+            paragraph_text[:1500]
+        )
+
+    else:
+
+        print(
+            "No usable article text found."
         )
 
     # --------------------------------------------------
