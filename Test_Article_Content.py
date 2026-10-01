@@ -1,26 +1,16 @@
 import requests
-import feedparser
 from bs4 import BeautifulSoup
 
 
-RSS_URL = "https://www.technologyreview.com/feed"
-
-
-def get_first_article():
-    feed = feedparser.parse(RSS_URL)
-
-    if not feed.entries:
-        raise RuntimeError("No RSS entries found.")
-
-    entry = feed.entries[0]
-
-    return {
-        "title": entry.get("title", ""),
-        "url": entry.get("link", "")
-    }
+ARTICLE_URL = (
+    "https://www.technologyreview.com/2026/10/01/"
+    "1145588/ai-mind-reading-reconstructs-"
+    "what-youre-looking-at/"
+)
 
 
 def download_page(url):
+
     response = requests.get(
         url,
         headers={
@@ -40,108 +30,18 @@ def download_page(url):
     return response.text
 
 
-def find_content_headings(soup):
-
-    headings = []
-
-    for heading in soup.find_all(
-        ["h2", "h3", "h4"]
-    ):
-
-        if "wp-block-heading" not in (
-            heading.get("class") or []
-        ):
-            continue
-
-        text = heading.get_text(
-            " ",
-            strip=True
-        )
-
-        if text:
-            headings.append(heading)
-
-    return headings
-
-
-def analyze_section(
-    heading,
-    next_heading
-):
-
-    paragraphs = []
-    images = []
-    links = []
-
-    current = heading.find_next()
-
-    while current is not None:
-
-        if current == next_heading:
-            break
-
-        if current.name == "p":
-
-            text = current.get_text(
-                " ",
-                strip=True
-            )
-
-            if len(text) >= 80:
-                paragraphs.append(text)
-
-        elif current.name == "img":
-
-            src = current.get("src", "")
-
-            if src:
-                images.append(src)
-
-        elif current.name == "a":
-
-            href = current.get("href", "")
-
-            if href:
-                links.append(href)
-
-        current = current.find_next()
-
-    total_characters = sum(
-        len(text)
-        for text in paragraphs
-    )
-
-    return {
-        "paragraphs": len(paragraphs),
-        "characters": total_characters,
-        "images": len(images),
-        "links": len(links),
-        "first_image": (
-            images[0]
-            if images
-            else ""
-        ),
-        "first_link": (
-            links[0]
-            if links
-            else ""
-        )
-    }
-
-
 def main():
 
-    article = get_first_article()
-
-    print("RSS title:")
-    print(article["title"])
-
-    print()
-    print("URL:")
-    print(article["url"])
+    print("Article URL:")
+    print(ARTICLE_URL)
 
     html = download_page(
-        article["url"]
+        ARTICLE_URL
+    )
+
+    print()
+    print(
+        f"HTML length: {len(html)}"
     )
 
     soup = BeautifulSoup(
@@ -149,79 +49,100 @@ def main():
         "html.parser"
     )
 
-    headings = find_content_headings(
-        soup
-    )
-
     print()
     print("=" * 80)
-
-    print(
-        "Analyzing first 2 sections"
-    )
-
+    print("HEADINGS")
     print("=" * 80)
 
-    for index in range(
-        min(2, len(headings))
+    headings = soup.find_all(
+        ["h1", "h2", "h3", "h4"]
+    )
+
+    for index, heading in enumerate(
+        headings,
+        start=1
     ):
 
-        heading = headings[index]
-
-        next_heading = None
-
-        if index + 1 < len(headings):
-            next_heading = headings[
-                index + 1
-            ]
-
-        title = heading.get_text(
+        text = heading.get_text(
             " ",
             strip=True
         )
 
-        result = analyze_section(
-            heading,
-            next_heading
-        )
+        if not text:
+            continue
 
         print()
         print(
-            f"SECTION {index + 1}"
+            f"Heading #{index}"
         )
 
         print(
-            f"Title: {title}"
+            f"Tag: {heading.name}"
         )
 
         print(
-            f"Paragraphs: "
-            f"{result['paragraphs']}"
+            f"Text: {text}"
         )
 
         print(
-            f"Characters: "
-            f"{result['characters']}"
+            f"Class: "
+            f"{heading.get('class', [])}"
+        )
+
+    print()
+    print("=" * 80)
+    print("ARTICLE STRUCTURE")
+    print("=" * 80)
+
+    paragraphs = soup.find_all("p")
+
+    usable_paragraphs = []
+
+    for paragraph in paragraphs:
+
+        text = paragraph.get_text(
+            " ",
+            strip=True
+        )
+
+        if len(text) >= 80:
+            usable_paragraphs.append(
+                text
+            )
+
+    print()
+    print(
+        f"Total usable paragraphs: "
+        f"{len(usable_paragraphs)}"
+    )
+
+    total_characters = sum(
+        len(text)
+        for text in usable_paragraphs
+    )
+
+    print(
+        f"Total characters: "
+        f"{total_characters}"
+    )
+
+    print()
+    print("=" * 80)
+    print("FIRST 5 PARAGRAPHS")
+    print("=" * 80)
+
+    for index, text in enumerate(
+        usable_paragraphs[:5],
+        start=1
+    ):
+
+        print()
+        print(
+            f"Paragraph {index}:"
         )
 
         print(
-            f"Images: "
-            f"{result['images']}"
-        )
-
-        print(
-            f"Links: "
-            f"{result['links']}"
-        )
-
-        print(
-            f"First image: "
-            f"{result['first_image']}"
-        )
-
-        print(
-            f"First link: "
-            f"{result['first_link']}"
+            text[:500]
         )
 
 
