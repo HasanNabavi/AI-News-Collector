@@ -17,20 +17,75 @@ def parse_entry_time(item):
     if time_struct is None:
         return None
 
-    return datetime(*time_struct[:6], tzinfo=timezone.utc)
+    return datetime(
+        *time_struct[:6],
+        tzinfo=timezone.utc
+    )
 
 
 def load_last_successful_run():
     """
-    Load the reference time of the last successful pipeline run.
+    Load the timestamp of the most recent successful run.
 
     Supports both:
-    - Old A1_RunState.json format
-    - New A1_RunState.json format
+    - New A1 format with run history
+    - Old A1 format during migration
     """
 
-    with open("A1_RunState.json", "r", encoding="utf-8") as file:
+    with open(
+        "A1_RunState.json",
+        "r",
+        encoding="utf-8"
+    ) as file:
         state_data = json.load(file)
+
+    # --------------------------------------------------
+    # New A1 format
+    # --------------------------------------------------
+    #
+    # {
+    #   "runs": [
+    #       {
+    #           "run_number": 10,
+    #           "timestamp_utc": "...",
+    #           ...
+    #       }
+    #   ]
+    # }
+    #
+
+    runs = state_data.get(
+        "runs",
+        []
+    )
+
+    if runs:
+        latest_run = runs[0]
+
+        timestamp_utc = latest_run.get(
+            "timestamp_utc",
+            ""
+        )
+
+        if timestamp_utc:
+            return datetime.fromisoformat(
+                timestamp_utc.replace(
+                    "Z",
+                    "+00:00"
+                )
+            )
+
+    # --------------------------------------------------
+    # Old A1 format
+    # --------------------------------------------------
+    #
+    # {
+    #   "last_successful_run": {
+    #       "timestamp_utc": "...",
+    #       ...
+    #   }
+    # }
+    #
 
     last_successful_run = state_data.get(
         "last_successful_run",
@@ -40,20 +95,17 @@ def load_last_successful_run():
     if not last_successful_run:
         return None
 
-    # New format:
-    # "last_successful_run": {
-    #     "timestamp_utc": "...",
-    #     "iran": "...",
-    #     "gregorian_utc": "..."
-    # }
-    if isinstance(last_successful_run, dict):
+    # Old format with dictionary
+    if isinstance(
+        last_successful_run,
+        dict
+    ):
         timestamp_utc = last_successful_run.get(
             "timestamp_utc",
             ""
         )
 
-    # Old format:
-    # "last_successful_run": "2026-10-01T13:32:44..."
+    # Very old format with direct string
     else:
         timestamp_utc = last_successful_run
 
@@ -61,26 +113,45 @@ def load_last_successful_run():
         return None
 
     return datetime.fromisoformat(
-        timestamp_utc.replace("Z", "+00:00")
+        timestamp_utc.replace(
+            "Z",
+            "+00:00"
+        )
     )
 
 
 def collect_news():
+    # --------------------------------------------------
     # Load news sources
-    with open("A_Source.json", "r", encoding="utf-8") as file:
+    # --------------------------------------------------
+
+    with open(
+        "A_Source.json",
+        "r",
+        encoding="utf-8"
+    ) as file:
         sources_data = json.load(file)
 
     sources = sources_data["sources"]
 
+    # --------------------------------------------------
     # Load time reference
-    last_successful_run = load_last_successful_run()
+    # --------------------------------------------------
 
-    print("AI & Robotics News Collector")
-    print("=" * 40)
+    last_successful_run = (
+        load_last_successful_run()
+    )
+
+    print(
+        "AI & Robotics News Collector"
+    )
+    print(
+        "=" * 40
+    )
 
     if last_successful_run:
         print(
-            f"Last successful run: "
+            "Last successful run: "
             f"{last_successful_run.isoformat()}"
         )
     else:
@@ -91,9 +162,16 @@ def collect_news():
 
     new_news = []
 
+    # --------------------------------------------------
+    # Collect news from all sources
+    # --------------------------------------------------
+
     for source in sources:
+
         print()
-        print(f"Source: {source['name']}")
+        print(
+            f"Source: {source['name']}"
+        )
 
         feed = feedparser.parse(
             source["rss_url"]
@@ -105,6 +183,7 @@ def collect_news():
         )
 
         for item in feed.entries:
+
             title = item.get(
                 "title",
                 "No title"
@@ -120,10 +199,18 @@ def collect_news():
                 ""
             )
 
-            # Get parsed publication/update time
-            entry_time = parse_entry_time(item)
+            # --------------------------------------------------
+            # Parse RSS publication/update time
+            # --------------------------------------------------
 
+            entry_time = parse_entry_time(
+                item
+            )
+
+            # --------------------------------------------------
             # Time Equivalency
+            # --------------------------------------------------
+
             if last_successful_run is not None:
 
                 # If the RSS item has no usable date,
@@ -137,6 +224,10 @@ def collect_news():
                 if entry_time <= last_successful_run:
                     continue
 
+            # --------------------------------------------------
+            # Create news item
+            # --------------------------------------------------
+
             news_item = {
                 "title": title,
                 "source": source["name"],
@@ -148,16 +239,23 @@ def collect_news():
                 ).isoformat()
             }
 
-            new_news.append(news_item)
+            new_news.append(
+                news_item
+            )
 
-    # Save only newly collected news
+    # --------------------------------------------------
+    # Save only news collected during this run
+    # --------------------------------------------------
+
     with open(
         "B1_News.json",
         "w",
         encoding="utf-8"
     ) as file:
         json.dump(
-            {"news": new_news},
+            {
+                "news": new_news
+            },
             file,
             ensure_ascii=False,
             indent=2
