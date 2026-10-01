@@ -1,39 +1,97 @@
 import json
-import re
 import requests
 import feedparser
 from bs4 import BeautifulSoup
 
 
-TEST_SOURCES = [
-    "MIT Technology Review",
-    "TechCrunch",
-    "BBC Technology"
-]
+USER_AGENT = (
+    "Mozilla/5.0 "
+    "(Windows NT 10.0; Win64; x64) "
+    "AppleWebKit/537.36 "
+    "(KHTML, like Gecko) "
+    "Chrome/120.0 Safari/537.36"
+)
 
 
-def normalize_text(text):
-    return re.sub(r"\s+", " ", text).strip()
+def get_first_mit_article():
+    """
+    Get the first article URL from the MIT Technology Review RSS feed.
+    """
 
-
-def get_article_from_rss(source):
+    rss_url = (
+        "https://www.technologyreview.com/feed"
+    )
 
     feed = feedparser.parse(
-        source["rss_url"]
+        rss_url
     )
 
     if not feed.entries:
-        return None
+        raise RuntimeError(
+            "No RSS entries found."
+        )
 
     item = feed.entries[0]
 
     return {
-        "title": item.get("title", ""),
-        "url": item.get("link", "")
+        "title": item.get(
+            "title",
+            ""
+        ),
+        "url": item.get(
+            "link",
+            ""
+        )
     }
 
 
-def get_candidates(soup):
+def download_page(url):
+    """
+    Download the article HTML.
+    """
+
+    response = requests.get(
+        url,
+        headers={
+            "User-Agent": USER_AGENT
+        },
+        timeout=20
+    )
+
+    response.raise_for_status()
+
+    return response.text
+
+
+def analyze_page(html, rss_title):
+    """
+    Analyze the page structure and show
+    possible article-content containers.
+    """
+
+    soup = BeautifulSoup(
+        html,
+        "html.parser"
+    )
+
+    print()
+    print(
+        "Page analysis"
+    )
+    print(
+        "=" * 60
+    )
+
+    print(
+        f"RSS title:\n{rss_title}"
+    )
+
+    print()
+    print(
+        f"HTML length: {len(html)}"
+    )
+
+    print()
 
     candidates = []
 
@@ -43,330 +101,169 @@ def get_candidates(soup):
 
         paragraphs = []
 
-        for p in tag.find_all("p"):
+        for paragraph in tag.find_all("p"):
 
-            text = normalize_text(
-                p.get_text(
-                    " ",
-                    strip=True
-                )
+            text = paragraph.get_text(
+                " ",
+                strip=True
             )
 
             if len(text) >= 80:
-                paragraphs.append(p)
+                paragraphs.append(
+                    text
+                )
 
-        if len(paragraphs) < 5:
+        if not paragraphs:
             continue
 
-        full_text = normalize_text(
-            " ".join(
-                p.get_text(
-                    " ",
-                    strip=True
-                )
-                for p in paragraphs
-            )
+        full_text = "\n".join(
+            paragraphs
         )
 
-        if len(full_text) < 1000:
-            continue
-
         candidates.append({
-            "tag": tag,
-            "paragraphs": paragraphs,
+            "tag": tag.name,
+            "id": tag.get(
+                "id",
+                ""
+            ),
+            "class": " ".join(
+                tag.get(
+                    "class",
+                    []
+                )
+            ),
+            "paragraphs": len(
+                paragraphs
+            ),
+            "text_length": len(
+                full_text
+            ),
             "text": full_text
         })
 
-    return candidates
-
-
-def title_coverage(title, text):
-
-    title_words = set(
-        re.findall(
-            r"\w+",
-            title.lower()
-        )
-    )
-
-    text_words = set(
-        re.findall(
-            r"\w+",
-            text.lower()
-        )
-    )
-
-    if not title_words:
-        return 0
-
-    return len(
-        title_words & text_words
-    ) / len(title_words)
-
-
-def describe_paragraph(p, number):
-
-    text = normalize_text(
-        p.get_text(
-            " ",
-            strip=True
-        )
-    )
-
-    links = len(
-        p.find_all("a")
-    )
-
-    parent = p.parent
-
-    parent_name = (
-        parent.name
-        if parent
-        else ""
-    )
-
-    parent_class = ""
-
-    if parent:
-        parent_class = " ".join(
-            parent.get(
-                "class",
-                []
-            )
-        )
-
-    print(
-        f"{number:02d}. "
-        f"len={len(text):4d} "
-        f"links={links} "
-        f"parent={parent_name}"
-        f".{parent_class[:35]}"
+    candidates.sort(
+        key=lambda x: (
+            x["paragraphs"],
+            x["text_length"]
+        ),
+        reverse=True
     )
 
     print(
-        f"    {text[:220]}"
+        f"Candidates found: "
+        f"{len(candidates)}"
     )
-
-
-def analyze_source(
-    source_name,
-    article
-):
 
     print()
-    print("#" * 90)
-    print(
-        f"SOURCE: {source_name}"
-    )
-    print(
-        f"TITLE: {article['title']}"
-    )
-    print("#" * 90)
 
-    headers = {
-        "User-Agent": (
-            "Mozilla/5.0 "
-            "(Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 "
-            "(KHTML, like Gecko) "
-            "Chrome/140.0.0.0 "
-            "Safari/537.36"
-        )
-    }
-
-    response = requests.get(
-        article["url"],
-        headers=headers,
-        timeout=30
-    )
-
-    print(
-        f"HTTP: {response.status_code}"
-    )
-
-    if response.status_code != 200:
-        return
-
-    soup = BeautifulSoup(
-        response.text,
-        "html.parser"
-    )
-
-    candidates = get_candidates(
-        soup
-    )
-
-    # Remove near-duplicate containers.
-    unique_candidates = []
-
-    seen = set()
-
-    for candidate in candidates:
-
-        paragraph_count = len(
-            candidate["paragraphs"]
-        )
-
-        text_length = len(
-            candidate["text"]
-        )
-
-        key = (
-            paragraph_count,
-            text_length
-        )
-
-        if key in seen:
-            continue
-
-        seen.add(key)
-
-        unique_candidates.append(
-            candidate
-        )
-
-    # Sort from smaller to larger.
-    unique_candidates.sort(
-        key=lambda x: len(
-            x["paragraphs"]
-        )
-    )
-
-    print(
-        f"Unique candidates: "
-        f"{len(unique_candidates)}"
-    )
-
-    # We inspect only three candidates:
-    # small / middle / large.
-
-    indexes = []
-
-    if unique_candidates:
-        indexes.append(0)
-
-    if len(unique_candidates) > 2:
-        indexes.append(
-            len(unique_candidates) // 2
-        )
-
-    if len(unique_candidates) > 1:
-        indexes.append(
-            len(unique_candidates) - 1
-        )
-
-    for candidate_number, index in enumerate(
-        indexes,
+    for index, candidate in enumerate(
+        candidates[:10],
         start=1
     ):
 
-        candidate = unique_candidates[index]
-
-        tag = candidate["tag"]
-
-        tag_description = tag.name
-
-        if tag.get("id"):
-            tag_description += (
-                f"#{tag.get('id')}"
-            )
-
-        classes = tag.get(
-            "class",
-            []
-        )
-
-        if classes:
-            tag_description += (
-                "."
-                + ".".join(classes[:3])
-            )
-
-        coverage = title_coverage(
-            article["title"],
-            candidate["text"]
-        )
-
-        print()
         print(
-            "-" * 90
+            f"Candidate #{index}"
         )
 
         print(
-            f"CANDIDATE {candidate_number}"
+            "-" * 60
         )
 
         print(
-            f"Container: "
-            f"{tag_description[:100]}"
+            f"Tag: {candidate['tag']}"
+        )
+
+        print(
+            f"ID: {candidate['id']}"
+        )
+
+        print(
+            f"Class: {candidate['class']}"
         )
 
         print(
             f"Paragraphs: "
-            f"{len(candidate['paragraphs'])}"
+            f"{candidate['paragraphs']}"
         )
 
         print(
             f"Text length: "
-            f"{len(candidate['text'])}"
+            f"{candidate['text_length']}"
         )
+
+        print()
 
         print(
-            f"Title coverage: "
-            f"{coverage:.2f}"
+            "FIRST 3 PARAGRAPHS:"
         )
 
-        print(
-            "Paragraphs:"
+        first_paragraphs = (
+            candidate["text"]
+            .split("\n")[:3]
         )
 
-        paragraphs = candidate[
-            "paragraphs"
-        ]
-
-        # Show ALL paragraphs, but only
-        # first 220 characters each.
-
-        for number, p in enumerate(
-            paragraphs,
-            start=1
-        ):
-            describe_paragraph(
-                p,
-                number
+        for paragraph in first_paragraphs:
+            print(
+                f"- {paragraph}"
             )
+
+        print()
+
+        print(
+            "LAST 3 PARAGRAPHS:"
+        )
+
+        last_paragraphs = (
+            candidate["text"]
+            .split("\n")[-3:]
+        )
+
+        for paragraph in last_paragraphs:
+            print(
+                f"- {paragraph}"
+            )
+
+        print()
 
 
 def main():
 
-    sources = []
+    print(
+        "MIT Technology Review "
+        "Scraper Test"
+    )
 
-    with open(
-        "A_Source.json",
-        "r",
-        encoding="utf-8"
-    ) as file:
+    print(
+        "=" * 60
+    )
 
-        sources = json.load(
-            file
-        )["sources"]
+    article = get_first_mit_article()
 
-    for source in sources:
+    print()
+    print(
+        "RSS Article"
+    )
 
-        if source["name"] not in TEST_SOURCES:
-            continue
+    print(
+        "-" * 60
+    )
 
-        article = get_article_from_rss(
-            source
-        )
+    print(
+        f"Title: {article['title']}"
+    )
 
-        if article is None:
-            continue
+    print(
+        f"URL: {article['url']}"
+    )
 
-        analyze_source(
-            source["name"],
-            article
-        )
+    html = download_page(
+        article["url"]
+    )
+
+    analyze_page(
+        html,
+        article["title"]
+    )
 
 
 if __name__ == "__main__":
