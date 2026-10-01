@@ -125,6 +125,25 @@ def main():
             text[:500]
         )
 
+    print()
+    print("=" * 80)
+    print("LAST 5 PARAGRAPHS")
+    print("=" * 80)
+
+    for i, text in enumerate(
+        paragraphs[-5:],
+        1
+    ):
+
+        print()
+        print(
+            f"Paragraph {i}:"
+        )
+
+        print(
+            text[:500]
+        )
+
 
 if __name__ == "__main__":
     main()
