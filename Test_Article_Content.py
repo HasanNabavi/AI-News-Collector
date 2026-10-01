@@ -4,9 +4,20 @@ import requests
 from bs4 import BeautifulSoup
 
 
-RSS_URL = (
-    "https://www.technologyreview.com/feed/"
-)
+TEST_SOURCES = [
+    {
+        "name": "MIT Technology Review",
+        "rss_url": "https://www.technologyreview.com/feed/"
+    },
+    {
+        "name": "TechCrunch",
+        "rss_url": "https://techcrunch.com/feed/"
+    },
+    {
+        "name": "BBC Technology",
+        "rss_url": "https://feeds.bbci.co.uk/news/technology/rss.xml"
+    }
+]
 
 
 def extract_json_ld_article_body(soup):
@@ -32,6 +43,7 @@ def extract_json_ld_article_body(soup):
         objects = []
 
         if isinstance(data, dict):
+
             objects.append(data)
 
             graph = data.get(
@@ -43,6 +55,7 @@ def extract_json_ld_article_body(soup):
                 objects.extend(graph)
 
         elif isinstance(data, list):
+
             objects.extend(data)
 
         for obj in objects:
@@ -63,12 +76,18 @@ def extract_json_ld_article_body(soup):
     return None
 
 
-def extract_paragraphs(soup):
+def extract_html_paragraphs(soup):
 
     selectors = [
         '[itemprop="articleBody"]',
         '[class*="article-body"]',
+        '[class*="articleBody"]',
         '[class*="story-body"]',
+        '[class*="storyBody"]',
+        '[class*="article-content"]',
+        '[class*="articleContent"]',
+        '[class*="story-content"]',
+        '[class*="storyContent"]',
         "article",
         "main"
     ]
@@ -102,26 +121,72 @@ def extract_paragraphs(soup):
             )
 
             if len(combined_text) >= 300:
-                return combined_text
 
-    return None
+                return (
+                    combined_text,
+                    selector
+                )
+
+    return None, None
 
 
-def test_article_content():
+def extract_images(soup):
 
-    print("=" * 60)
-    print("ARTICLE CONTENT TEST")
-    print("=" * 60)
+    images = []
+
+    # OG image
+
+    og_image = soup.find(
+        "meta",
+        property="og:image"
+    )
+
+    if og_image:
+
+        image_url = og_image.get(
+            "content",
+            ""
+        )
+
+        if image_url:
+            images.append(image_url)
+
+    # Standard images
+
+    for image in soup.find_all(
+        "img"
+    ):
+
+        src = (
+            image.get("src")
+            or image.get("data-src")
+            or ""
+        )
+
+        if src and src not in images:
+            images.append(src)
+
+    return images
+
+
+def test_source(source):
+
+    print()
+    print("=" * 70)
+    print(
+        f"SOURCE: {source['name']}"
+    )
+    print("=" * 70)
 
     # --------------------------------------------------
-    # Read RSS
+    # RSS
     # --------------------------------------------------
 
     print()
     print("Reading RSS...")
 
     feed = feedparser.parse(
-        RSS_URL
+        source["rss_url"]
     )
 
     print(
@@ -130,13 +195,15 @@ def test_article_content():
     )
 
     if not feed.entries:
+
         print(
             "No RSS entries found."
         )
+
         return
 
     # --------------------------------------------------
-    # Select first RSS item
+    # Select first article
     # --------------------------------------------------
 
     item = feed.entries[0]
@@ -160,13 +227,15 @@ def test_article_content():
     print(url)
 
     if not url:
+
         print(
             "Article URL not found."
         )
+
         return
 
     # --------------------------------------------------
-    # Request article page
+    # Request page
     # --------------------------------------------------
 
     print()
@@ -234,53 +303,52 @@ def test_article_content():
 
     else:
 
-        print(
-            "Not found"
-        )
+        print("Not found")
 
     # --------------------------------------------------
-    # OG Image
+    # Image
     # --------------------------------------------------
 
     print()
-    print("OG Image:")
+    print("Images:")
 
-    og_image = soup.find(
-        "meta",
-        property="og:image"
+    images = extract_images(
+        soup
     )
 
-    if og_image:
+    print(
+        f"Images found: "
+        f"{len(images)}"
+    )
+
+    if images:
 
         print(
-            og_image.get(
-                "content",
-                ""
-            )
+            "First image:"
         )
 
-    else:
-
         print(
-            "Not found"
+            images[0]
         )
 
     # --------------------------------------------------
-    # Method 1: JSON-LD articleBody
+    # JSON-LD
     # --------------------------------------------------
 
     print()
-    print("Method 1: JSON-LD articleBody")
+    print(
+        "Method 1: JSON-LD articleBody"
+    )
 
-    json_ld_text = extract_json_ld_article_body(
-        soup
+    json_ld_text = (
+        extract_json_ld_article_body(
+            soup
+        )
     )
 
     if json_ld_text:
 
-        print(
-            "SUCCESS"
-        )
+        print("SUCCESS")
 
         print(
             f"Text length: "
@@ -289,11 +357,11 @@ def test_article_content():
 
         print()
         print(
-            "First 1500 characters:"
+            "First 500 characters:"
         )
 
         print(
-            json_ld_text[:1500]
+            json_ld_text[:500]
         )
 
     else:
@@ -303,20 +371,27 @@ def test_article_content():
         )
 
     # --------------------------------------------------
-    # Method 2: HTML paragraphs
+    # HTML paragraphs
     # --------------------------------------------------
 
     print()
-    print("Method 2: HTML paragraph extraction")
+    print(
+        "Method 2: HTML paragraph extraction"
+    )
 
-    paragraph_text = extract_paragraphs(
-        soup
+    paragraph_text, selector = (
+        extract_html_paragraphs(
+            soup
+        )
     )
 
     if paragraph_text:
 
+        print("SUCCESS")
+
         print(
-            "SUCCESS"
+            f"Selector: "
+            f"{selector}"
         )
 
         print(
@@ -326,11 +401,11 @@ def test_article_content():
 
         print()
         print(
-            "First 1500 characters:"
+            "First 500 characters:"
         )
 
         print(
-            paragraph_text[:1500]
+            paragraph_text[:500]
         )
 
     else:
@@ -340,11 +415,11 @@ def test_article_content():
         )
 
     # --------------------------------------------------
-    # Video detection
+    # Video
     # --------------------------------------------------
 
     print()
-    print("Video elements:")
+    print("Video:")
 
     videos = soup.find_all(
         "video"
@@ -356,11 +431,11 @@ def test_article_content():
     )
 
     # --------------------------------------------------
-    # Iframe detection
+    # Iframe
     # --------------------------------------------------
 
     print()
-    print("Iframe elements:")
+    print("Iframe:")
 
     iframes = soup.find_all(
         "iframe"
@@ -371,15 +446,25 @@ def test_article_content():
         f"{len(iframes)}"
     )
 
-    # --------------------------------------------------
-    # Test completed
-    # --------------------------------------------------
+
+def main():
 
     print()
-    print("=" * 60)
-    print("TEST COMPLETED")
-    print("=" * 60)
+    print("=" * 70)
+    print("MULTI-SOURCE ARTICLE CONTENT TEST")
+    print("=" * 70)
+
+    for source in TEST_SOURCES:
+
+        test_source(
+            source
+        )
+
+    print()
+    print("=" * 70)
+    print("ALL TESTS COMPLETED")
+    print("=" * 70)
 
 
 if __name__ == "__main__":
-    test_article_content()
+    main()
