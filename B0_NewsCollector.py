@@ -23,17 +23,39 @@ def parse_entry_time(item):
 def load_last_successful_run():
     """
     Load the reference time of the last successful pipeline run.
+
+    Supports both:
+    - Old A1_RunState.json format
+    - New A1_RunState.json format
     """
 
     with open("A1_RunState.json", "r", encoding="utf-8") as file:
         state_data = json.load(file)
 
-    last_successful_run = state_data.get("last_successful_run", {})
+    last_successful_run = state_data.get(
+        "last_successful_run",
+        ""
+    )
 
     if not last_successful_run:
         return None
 
-    timestamp_utc = last_successful_run.get("timestamp_utc", "")
+    # New format:
+    # "last_successful_run": {
+    #     "timestamp_utc": "...",
+    #     "iran": "...",
+    #     "gregorian_utc": "..."
+    # }
+    if isinstance(last_successful_run, dict):
+        timestamp_utc = last_successful_run.get(
+            "timestamp_utc",
+            ""
+        )
+
+    # Old format:
+    # "last_successful_run": "2026-10-01T13:32:44..."
+    else:
+        timestamp_utc = last_successful_run
 
     if not timestamp_utc:
         return None
@@ -57,9 +79,15 @@ def collect_news():
     print("=" * 40)
 
     if last_successful_run:
-        print(f"Last successful run: {last_successful_run.isoformat()}")
+        print(
+            f"Last successful run: "
+            f"{last_successful_run.isoformat()}"
+        )
     else:
-        print("Last successful run: None (first run)")
+        print(
+            "Last successful run: "
+            "None (first run)"
+        )
 
     new_news = []
 
@@ -67,15 +95,30 @@ def collect_news():
         print()
         print(f"Source: {source['name']}")
 
-        feed = feedparser.parse(source["rss_url"])
+        feed = feedparser.parse(
+            source["rss_url"]
+        )
 
-        print(f"News found: {len(feed.entries)}")
+        print(
+            f"News found: "
+            f"{len(feed.entries)}"
+        )
 
         for item in feed.entries:
-            title = item.get("title", "No title")
-            link = item.get("link", "")
+            title = item.get(
+                "title",
+                "No title"
+            )
 
-            published_at = item.get("published", "")
+            link = item.get(
+                "link",
+                ""
+            )
+
+            published_at = item.get(
+                "published",
+                ""
+            )
 
             # Get parsed publication/update time
             entry_time = parse_entry_time(item)
@@ -89,7 +132,8 @@ def collect_news():
                 if entry_time is None:
                     continue
 
-                # Skip news published before or at the last run
+                # Skip news published before or at
+                # the last successful run.
                 if entry_time <= last_successful_run:
                     continue
 
@@ -99,13 +143,19 @@ def collect_news():
                 "category": source["category"],
                 "url": link,
                 "published_at": published_at,
-                "collected_at": datetime.now(timezone.utc).isoformat()
+                "collected_at": datetime.now(
+                    timezone.utc
+                ).isoformat()
             }
 
             new_news.append(news_item)
 
     # Save only newly collected news
-    with open("B1_News.json", "w", encoding="utf-8") as file:
+    with open(
+        "B1_News.json",
+        "w",
+        encoding="utf-8"
+    ) as file:
         json.dump(
             {"news": new_news},
             file,
@@ -114,7 +164,10 @@ def collect_news():
         )
 
     print()
-    print(f"New news: {len(new_news)}")
+    print(
+        f"New news: "
+        f"{len(new_news)}"
+    )
 
 
 if __name__ == "__main__":
