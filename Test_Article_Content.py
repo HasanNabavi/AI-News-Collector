@@ -40,29 +40,22 @@ def download_page(url):
     return response.text
 
 
-def print_heading_structure(html):
-    soup = BeautifulSoup(
-        html,
-        "html.parser"
-    )
+def find_content_headings(soup):
+    """
+    Find headings that appear to belong to the main
+    Gutenberg article content.
+    """
 
-    headings = soup.find_all(
-        ["h1", "h2", "h3", "h4", "h5", "h6"]
-    )
+    headings = []
 
-    print()
-    print("=" * 80)
-    print("HEADINGS")
-    print("=" * 80)
-
-    print(
-        f"Total headings found: {len(headings)}"
-    )
-
-    for index, heading in enumerate(
-        headings,
-        start=1
+    for heading in soup.find_all(
+        ["h2", "h3", "h4"]
     ):
+
+        if "wp-block-heading" not in (
+            heading.get("class") or []
+        ):
+            continue
 
         text = heading.get_text(
             " ",
@@ -72,58 +65,64 @@ def print_heading_structure(html):
         if not text:
             continue
 
-        print()
-        print(
-            f"Heading #{index}"
+        headings.append(
+            heading
         )
 
-        print(
-            f"Tag: {heading.name}"
-        )
+    return headings
 
-        print(
-            f"Text: {text}"
-        )
 
-        print(
-            f"ID: {heading.get('id', '')}"
-        )
+def extract_between_headings(
+    heading,
+    next_heading
+):
+    """
+    Extract elements appearing after one content heading
+    and before the next content heading.
+    """
 
-        print(
-            f"Class: {heading.get('class', [])}"
-        )
+    elements = []
 
-        print(
-            "Parent chain:"
-        )
+    current = heading.find_next()
 
-        current = heading
+    while current is not None:
 
-        for level in range(8):
+        if current == next_heading:
+            break
 
-            if current is None:
-                break
+        if current.name in {
+            "p",
+            "img",
+            "figure",
+            "a"
+        }:
 
-            tag = current.name
+            text = current.get_text(
+                " ",
+                strip=True
+            )
 
-            element_id = current.get(
-                "id",
+            src = current.get(
+                "src",
                 ""
             )
 
-            classes = current.get(
-                "class",
-                []
+            href = current.get(
+                "href",
+                ""
             )
 
-            print(
-                f"  {level}: "
-                f"{tag} "
-                f"id={element_id} "
-                f"class={classes}"
-            )
+            if text or src or href:
+                elements.append({
+                    "tag": current.name,
+                    "text": text,
+                    "src": src,
+                    "href": href
+                })
 
-            current = current.parent
+        current = current.find_next()
+
+    return elements
 
 
 def main():
@@ -151,14 +150,92 @@ def main():
         article["url"]
     )
 
-    print()
-    print(
-        f"HTML length: {len(html)}"
+    soup = BeautifulSoup(
+        html,
+        "html.parser"
     )
 
-    print_heading_structure(
-        html
+    headings = find_content_headings(
+        soup
     )
+
+    print()
+    print(
+        "=" * 80
+    )
+
+    print(
+        f"Content headings found: "
+        f"{len(headings)}"
+    )
+
+    print(
+        "=" * 80
+    )
+
+    for index, heading in enumerate(
+        headings
+    ):
+
+        next_heading = None
+
+        if index + 1 < len(headings):
+            next_heading = headings[
+                index + 1
+            ]
+
+        title = heading.get_text(
+            " ",
+            strip=True
+        )
+
+        print()
+        print(
+            "#" * 80
+        )
+
+        print(
+            f"SECTION {index + 1}"
+        )
+
+        print(
+            f"TITLE: {title}"
+        )
+
+        print(
+            "#" * 80
+        )
+
+        elements = extract_between_headings(
+            heading,
+            next_heading
+        )
+
+        for element_index, element in enumerate(
+            elements,
+            start=1
+        ):
+
+            print()
+            print(
+                f"[{element_index}] "
+                f"{element['tag']}"
+            )
+
+            if element["text"]:
+                print(
+                    f"TEXT: {element['text']}"
+                )
+
+            if element["src"]:
+                print(
+                    f"SRC: {element['src']}"
+                )
+
+            if element["href"]:
+                print(
+                    f"HREF: {element['href']}"
+                )
 
 
 if __name__ == "__main__":
