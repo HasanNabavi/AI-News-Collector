@@ -41,10 +41,6 @@ def download_page(url):
 
 
 def find_content_headings(soup):
-    """
-    Find headings that appear to belong to the main
-    Gutenberg article content.
-    """
 
     headings = []
 
@@ -62,26 +58,18 @@ def find_content_headings(soup):
             strip=True
         )
 
-        if not text:
-            continue
-
-        headings.append(
-            heading
-        )
+        if text:
+            headings.append(heading)
 
     return headings
 
 
-def extract_between_headings(
+def analyze_section(
     heading,
     next_heading
 ):
-    """
-    Extract elements appearing after one content heading
-    and before the next content heading.
-    """
 
-    elements = []
+    paragraphs = []
 
     current = heading.find_next()
 
@@ -90,39 +78,27 @@ def extract_between_headings(
         if current == next_heading:
             break
 
-        if current.name in {
-            "p",
-            "img",
-            "figure",
-            "a"
-        }:
+        if current.name == "p":
 
             text = current.get_text(
                 " ",
                 strip=True
             )
 
-            src = current.get(
-                "src",
-                ""
-            )
-
-            href = current.get(
-                "href",
-                ""
-            )
-
-            if text or src or href:
-                elements.append({
-                    "tag": current.name,
-                    "text": text,
-                    "src": src,
-                    "href": href
-                })
+            if len(text) >= 80:
+                paragraphs.append(text)
 
         current = current.find_next()
 
-    return elements
+    total_characters = sum(
+        len(text)
+        for text in paragraphs
+    )
+
+    return (
+        len(paragraphs),
+        total_characters
+    )
 
 
 def main():
@@ -189,53 +165,29 @@ def main():
             strip=True
         )
 
-        print()
-        print(
-            "#" * 80
+        paragraph_count, character_count = (
+            analyze_section(
+                heading,
+                next_heading
+            )
         )
 
+        print()
         print(
             f"SECTION {index + 1}"
         )
 
         print(
-            f"TITLE: {title}"
+            f"Title: {title}"
         )
 
         print(
-            "#" * 80
+            f"Paragraphs: {paragraph_count}"
         )
 
-        elements = extract_between_headings(
-            heading,
-            next_heading
+        print(
+            f"Characters: {character_count}"
         )
-
-        for element_index, element in enumerate(
-            elements,
-            start=1
-        ):
-
-            print()
-            print(
-                f"[{element_index}] "
-                f"{element['tag']}"
-            )
-
-            if element["text"]:
-                print(
-                    f"TEXT: {element['text']}"
-                )
-
-            if element["src"]:
-                print(
-                    f"SRC: {element['src']}"
-                )
-
-            if element["href"]:
-                print(
-                    f"HREF: {element['href']}"
-                )
 
 
 if __name__ == "__main__":
