@@ -31,7 +31,6 @@ jobs:
           git add A2_RunCounter.json
           git add B1_News.json
           git add C1_NewsAfterLinkEquivalencyRun.json
-          git add D1_NewsAfterTittleEquivalencyRun.json
 
           git commit -m "Run AI news pipeline" || echo "No changes to commit"
 
