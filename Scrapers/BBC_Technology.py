@@ -387,6 +387,37 @@ def extract_article_text(article, standfirst):
         if not text:
             continue
 
+        # Remove paragraphs whose entire meaningful
+        # content consists of links. These are typically
+        # related-story or navigation links.
+        links = element.find_all(
+            "a",
+            href=True
+        )
+
+        if links:
+            link_text_parts = []
+
+            for link in links:
+                link_text = clean_text(
+                    link.get_text(
+                        " ",
+                        strip=True
+                    )
+                )
+
+                if link_text:
+                    link_text_parts.append(
+                        link_text
+                    )
+
+            link_text = clean_text(
+                " ".join(link_text_parts)
+            )
+
+            if link_text == text:
+                continue
+
         # Remove obvious video-player status messages.
         video_messages = {
             "this video can not be played",
