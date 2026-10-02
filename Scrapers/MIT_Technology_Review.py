@@ -276,30 +276,38 @@ def remove_non_article_elements(content):
         "promo"
     ]
 
-    for element in content.find_all(
-        True
-    ):
+    for element in content.find_all(True):
 
-        classes = " ".join(
-            element.get(
-                "class",
-                []
-            )
-        ).lower()
+        attributes = element.attrs or {}
 
-        element_id = (
-            element.get(
-                "id",
-                ""
+        classes = attributes.get(
+            "class",
+            []
+        )
+
+        if isinstance(classes, list):
+            classes = " ".join(
+                classes
             )
-            or ""
-        ).lower()
+
+        else:
+            classes = str(
+                classes
+            )
+
+        element_id = attributes.get(
+            "id",
+            ""
+        )
+
+        if element_id is None:
+            element_id = ""
 
         combined = (
             classes
             + " "
-            + element_id
-        )
+            + str(element_id)
+        ).lower()
 
         if any(
             keyword in combined
