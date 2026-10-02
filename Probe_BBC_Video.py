@@ -16,203 +16,134 @@ def clean_text(text):
     return re.sub(r"\s+", " ", text or "").strip()
 
 
-def get_context(element, levels=3):
-    context = []
-    current = element
+def extract_urls(text):
+    patterns = [
+        r'https?://[^\s"\'<>]+',
+        r'//[^\s"\'<>]+'
+    ]
 
-    for level in range(levels + 1):
-        if current is None:
-            break
+    urls = []
 
-        context.append({
-            "level": level,
-            "tag": current.name,
-            "attrs": dict(current.attrs),
-            "text": clean_text(current.get_text(" ", strip=True))[:2000],
-            "html_start": str(current)[:5000]
-        })
+    for pattern in patterns:
+        urls.extend(re.findall(pattern, text))
 
-        current = current.parent
-
-    return context
+    return list(dict.fromkeys(urls))
 
 
 def inspect_page(url):
-    print()
-    print("=" * 80)
-    print(f"URL: {url}")
+    print(f"Inspecting: {url}")
 
     response = requests.get(
         url,
         headers={
             "User-Agent": (
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "AppleWebKit/537.36 "
+                "(KHTML, like Gecko) "
                 "Chrome/140.0 Safari/537.36"
             )
         },
         timeout=30
     )
 
-    print(f"Status: {response.status_code}")
-    print(f"HTML size: {len(response.text)}")
-
     soup = BeautifulSoup(response.text, "html.parser")
 
-    results = {
+    result = {
         "url": url,
         "status_code": response.status_code,
         "html_size": len(response.text),
-        "elements": {},
-        "scripts_with_video_keywords": [],
-        "video_like_elements": []
+        "video_elements": [],
+        "video_like_elements": [],
+        "video_scripts": []
     }
 
-    # ---------------------------------------------------------
-    # 1. Direct media-related HTML elements
-    # ---------------------------------------------------------
+    # --------------------------------------------------
+    # 1. Direct video-related elements
+    # --------------------------------------------------
 
     selectors = [
         "video",
         "source",
         "iframe",
-        "audio",
-        "track",
         "[data-component*='video']",
-        "[data-component*='Video']",
         "[data-testid*='video']",
-        "[data-testid*='Video']",
         "[class*='video']",
-        "[class*='Video']",
         "[id*='video']",
-        "[id*='Video']",
     ]
 
+    seen_elements = set()
+
     for selector in selectors:
-        elements = soup.select(selector)
+        for element in soup.select(selector):
 
-        if not elements:
-            continue
+            html = str(element)
 
-        print()
-        print(f"SELECTOR: {selector}")
-        print(f"COUNT: {len(elements)}")
+            key = html[:3000]
 
-        selector_results = []
+            if key in seen_elements:
+                continue
 
-        for index, element in enumerate(elements):
+            seen_elements.add(key)
+
             item = {
-                "index": index,
+                "selector": selector,
                 "tag": element.name,
                 "attrs": dict(element.attrs),
                 "text": clean_text(
                     element.get_text(" ", strip=True)
-                )[:2000],
-                "html": str(element)[:10000],
-                "context": get_context(element, levels=3)
+                )[:500],
+                "html": html[:5000],
+                "urls": extract_urls(html)
             }
 
-            selector_results.append(item)
+            result["video_elements"].append(item)
 
-            print(
-                f"  [{index}] "
-                f"<{element.name}> "
-                f"attrs={dict(element.attrs)}"
-            )
-
-        results["elements"][selector] = selector_results
-
-    # ---------------------------------------------------------
-    # 2. Search all HTML elements for video-like attributes
-    # ---------------------------------------------------------
-
-    interesting_attributes = [
-        "src",
-        "srcset",
-        "data-src",
-        "data-url",
-        "data-video",
-        "data-video-id",
-        "data-media",
-        "data-media-id",
-        "data-testid",
-        "data-component",
-        "data-e2e",
-        "data-id",
-    ]
-
-    seen = set()
+    # --------------------------------------------------
+    # 2. Any element whose attributes suggest media/video
+    # --------------------------------------------------
 
     for element in soup.find_all(True):
-        attrs = element.attrs
 
-        serialized = json.dumps(
-            attrs,
+        attrs_text = json.dumps(
+            dict(element.attrs),
             ensure_ascii=False,
-            sort_keys=True,
             default=str
         )
 
         if not re.search(
             r"(video|media|player|playlist|m3u8|mp4)",
-            serialized,
+            attrs_text,
             re.IGNORECASE
         ):
             continue
 
-        key = (
-            element.name,
-            serialized
-        )
-
-        if key in seen:
-            continue
-
-        seen.add(key)
+        html = str(element)
 
         item = {
             "tag": element.name,
-            "attrs": dict(attrs),
+            "attrs": dict(element.attrs),
             "text": clean_text(
                 element.get_text(" ", strip=True)
-            )[:2000],
-            "html": str(element)[:10000],
-            "context": get_context(element, levels=3)
+            )[:500],
+            "html": html[:5000],
+            "urls": extract_urls(html)
         }
 
-        results["video_like_elements"].append(item)
+        result["video_like_elements"].append(item)
 
-    print()
-    print(
-        f"Video-like elements found: "
-        f"{len(results['video_like_elements'])}"
-    )
+    # --------------------------------------------------
+    # 3. Scripts containing video/media information
+    # --------------------------------------------------
 
-    # ---------------------------------------------------------
-    # 3. Search scripts for video-related data
-    # ---------------------------------------------------------
+    for index, script in enumerate(soup.find_all("script")):
 
-    keywords = [
-        "video",
-        "media",
-        "player",
-        "playlist",
-        "m3u8",
-        "mp4",
-        "manifest",
-        "urn:bbc",
-    ]
-
-    for index, script in enumerate(
-        soup.find_all("script")
-    ):
         script_text = script.string or script.get_text()
 
         if not script_text:
             continue
 
         if not re.search(
-            r"(video|media|player|playlist|m3u8|mp4|manifest|urn:bbc)",
+            r"(video|media|player|playlist|m3u8|mp4|manifest)",
             script_text,
             re.IGNORECASE
         ):
@@ -220,53 +151,50 @@ def inspect_page(url):
 
         matches = []
 
-        for keyword in keywords:
-            for match in re.finditer(
-                keyword,
-                script_text,
-                re.IGNORECASE
-            ):
-                start = max(0, match.start() - 1000)
-                end = min(
-                    len(script_text),
-                    match.end() + 3000
-                )
+        for match in re.finditer(
+            r"(video|media|player|playlist|m3u8|mp4|manifest)",
+            script_text,
+            re.IGNORECASE
+        ):
 
-                snippet = script_text[start:end]
+            start = max(0, match.start() - 300)
+            end = min(len(script_text), match.end() + 1000)
 
-                matches.append({
-                    "keyword": keyword,
-                    "snippet": snippet
-                })
+            snippet = script_text[start:end]
 
-        item = {
+            matches.append({
+                "keyword": match.group(0),
+                "snippet": snippet,
+                "urls": extract_urls(snippet)
+            })
+
+            # فقط چند نمونه کافی است
+            if len(matches) >= 10:
+                break
+
+        result["video_scripts"].append({
             "script_index": index,
             "type": script.get("type"),
-            "attrs": dict(script.attrs),
-            "matches": matches[:20]
-        }
+            "matches": matches
+        })
 
-        results["scripts_with_video_keywords"].append(item)
-
-        print()
-        print(
-            f"SCRIPT {index}: "
-            f"{len(matches)} keyword matches"
-        )
-
-    return results
+    return result
 
 
 def main():
-    all_results = []
+
+    results = []
 
     for url in URLS:
+
         try:
-            result = inspect_page(url)
-            all_results.append(result)
+            results.append(
+                inspect_page(url)
+            )
 
         except Exception as error:
-            all_results.append({
+
+            results.append({
                 "url": url,
                 "status": "error",
                 "error": str(error)
@@ -277,17 +205,16 @@ def main():
         "w",
         encoding="utf-8"
     ) as file:
+
         json.dump(
-            all_results,
+            results,
             file,
             ensure_ascii=False,
             indent=2
         )
 
     print()
-    print("=" * 80)
-    print("Probe completed.")
-    print(f"Output: {OUTPUT_FILE}")
+    print(f"Output saved to: {OUTPUT_FILE}")
 
 
 if __name__ == "__main__":
