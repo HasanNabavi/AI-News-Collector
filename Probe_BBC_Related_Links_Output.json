@@ -1,0 +1,838 @@
+{
+  "probe": "BBC Related Links Structural Probe",
+  "targets": [
+    "Three takeaways from Trump's 'Super Intelligence' summit",
+    "OpenAI says its rogue AI tried to hack other companies",
+    "OpenAI scraps rollout of new model over safety concerns",
+    "Brutal crypto attack on couple prompts £10k reward",
+    "How crypto criminals stole $700 million from people - often using age-old tricks"
+  ],
+  "urls": [
+    {
+      "url": "https://www.bbc.co.uk/news/articles/c6y9z9r4ejzwo",
+      "http_status": 200,
+      "final_url": "https://www.bbc.co.uk/news/articles/c6y9z9r4ejzwo",
+      "html_size": 390775,
+      "error": "",
+      "targets": [
+        {
+          "target_text": "Three takeaways from Trump's 'Super Intelligence' summit",
+          "link": {
+            "text": "Three takeaways from Trump's 'Super Intelligence' summit",
+            "href": "/news/articles/cme30dz5vkzko",
+            "attributes": {
+              "href": "/news/articles/cme30dz5vkzko",
+              "class": [
+                "ssrcss-kth21g-LinkAnchor",
+                "e3eyuya2"
+              ]
+            }
+          },
+          "parents": [
+            {
+              "tag": "a",
+              "attributes": {
+                "href": "/news/articles/cme30dz5vkzko",
+                "class": [
+                  "ssrcss-kth21g-LinkAnchor",
+                  "e3eyuya2"
+                ]
+              },
+              "text": "Three takeaways from Trump's 'Super Intelligence' summit",
+              "links": [],
+              "level_from_link": 0
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "spacing": "4",
+                "class": [
+                  "ssrcss-1gccci3-Stack",
+                  "e1y4nx260"
+                ]
+              },
+              "text": "Three takeaways from Trump's 'Super Intelligence' summit Published 2 days ago",
+              "links": [
+                {
+                  "text": "Three takeaways from Trump's 'Super Intelligence' summit",
+                  "href": "/news/articles/cme30dz5vkzko"
+                }
+              ],
+              "level_from_link": 1
+            },
+            {
+              "tag": "li",
+              "attributes": {
+                "class": [
+                  "ssrcss-qzx51b-LinkItem",
+                  "e3eyuya1"
+                ]
+              },
+              "text": "Three takeaways from Trump's 'Super Intelligence' summit Published 2 days ago",
+              "links": [
+                {
+                  "text": "Three takeaways from Trump's 'Super Intelligence' summit",
+                  "href": "/news/articles/cme30dz5vkzko"
+                }
+              ],
+              "level_from_link": 2
+            },
+            {
+              "tag": "ul",
+              "attributes": {
+                "role": "list",
+                "spacing": "2",
+                "class": [
+                  "ssrcss-94r6ik-Stack",
+                  "e1y4nx260"
+                ]
+              },
+              "text": "Three takeaways from Trump's 'Super Intelligence' summit Published 2 days ago OpenAI says its rogue AI tried to hack other companies Published 29 July OpenAI scraps rollout of new model over safety concerns Published 3 days ago",
+              "links": [
+                {
+                  "text": "Three takeaways from Trump's 'Super Intelligence' summit",
+                  "href": "/news/articles/cme30dz5vkzko"
+                },
+                {
+                  "text": "OpenAI says its rogue AI tried to hack other companies",
+                  "href": "/news/articles/c2el319vzr3o"
+                },
+                {
+                  "text": "OpenAI scraps rollout of new model over safety concerns",
+                  "href": "/news/articles/cm5y5nynl75ko"
+                }
+              ],
+              "level_from_link": 3
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "spacing": "4",
+                "class": [
+                  "ssrcss-1gccci3-Stack",
+                  "e1y4nx260"
+                ]
+              },
+              "text": "Three takeaways from Trump's 'Super Intelligence' summit Published 2 days ago OpenAI says its rogue AI tried to hack other companies Published 29 July OpenAI scraps rollout of new model over safety concerns Published 3 days ago",
+              "links": [
+                {
+                  "text": "Three takeaways from Trump's 'Super Intelligence' summit",
+                  "href": "/news/articles/cme30dz5vkzko"
+                },
+                {
+                  "text": "OpenAI says its rogue AI tried to hack other companies",
+                  "href": "/news/articles/c2el319vzr3o"
+                },
+                {
+                  "text": "OpenAI scraps rollout of new model over safety concerns",
+                  "href": "/news/articles/cm5y5nynl75ko"
+                }
+              ],
+              "level_from_link": 4
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": [
+                  "ssrcss-126h8e-Spacer",
+                  "e1aon0op0"
+                ]
+              },
+              "text": "Three takeaways from Trump's 'Super Intelligence' summit Published 2 days ago OpenAI says its rogue AI tried to hack other companies Published 29 July OpenAI scraps rollout of new model over safety concerns Published 3 days ago",
+              "links": [
+                {
+                  "text": "Three takeaways from Trump's 'Super Intelligence' summit",
+                  "href": "/news/articles/cme30dz5vkzko"
+                },
+                {
+                  "text": "OpenAI says its rogue AI tried to hack other companies",
+                  "href": "/news/articles/c2el319vzr3o"
+                },
+                {
+                  "text": "OpenAI scraps rollout of new model over safety concerns",
+                  "href": "/news/articles/cm5y5nynl75ko"
+                }
+              ],
+              "level_from_link": 5
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "data-block": "links",
+                "class": [
+                  "ssrcss-vxwoax-ComponentWrapper",
+                  "e1aon0op1"
+                ]
+              },
+              "text": "Three takeaways from Trump's 'Super Intelligence' summit Published 2 days ago OpenAI says its rogue AI tried to hack other companies Published 29 July OpenAI scraps rollout of new model over safety concerns Published 3 days ago",
+              "links": [
+                {
+                  "text": "Three takeaways from Trump's 'Super Intelligence' summit",
+                  "href": "/news/articles/cme30dz5vkzko"
+                },
+                {
+                  "text": "OpenAI says its rogue AI tried to hack other companies",
+                  "href": "/news/articles/c2el319vzr3o"
+                },
+                {
+                  "text": "OpenAI scraps rollout of new model over safety concerns",
+                  "href": "/news/articles/cm5y5nynl75ko"
+                }
+              ],
+              "level_from_link": 6
+            }
+          ]
+        },
+        {
+          "target_text": "OpenAI says its rogue AI tried to hack other companies",
+          "link": {
+            "text": "OpenAI says its rogue AI tried to hack other companies",
+            "href": "/news/articles/c2el319vzr3o",
+            "attributes": {
+              "href": "/news/articles/c2el319vzr3o",
+              "class": [
+                "ssrcss-kth21g-LinkAnchor",
+                "e3eyuya2"
+              ]
+            }
+          },
+          "parents": [
+            {
+              "tag": "a",
+              "attributes": {
+                "href": "/news/articles/c2el319vzr3o",
+                "class": [
+                  "ssrcss-kth21g-LinkAnchor",
+                  "e3eyuya2"
+                ]
+              },
+              "text": "OpenAI says its rogue AI tried to hack other companies",
+              "links": [],
+              "level_from_link": 0
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "spacing": "4",
+                "class": [
+                  "ssrcss-1gccci3-Stack",
+                  "e1y4nx260"
+                ]
+              },
+              "text": "OpenAI says its rogue AI tried to hack other companies Published 29 July",
+              "links": [
+                {
+                  "text": "OpenAI says its rogue AI tried to hack other companies",
+                  "href": "/news/articles/c2el319vzr3o"
+                }
+              ],
+              "level_from_link": 1
+            },
+            {
+              "tag": "li",
+              "attributes": {
+                "class": [
+                  "ssrcss-qzx51b-LinkItem",
+                  "e3eyuya1"
+                ]
+              },
+              "text": "OpenAI says its rogue AI tried to hack other companies Published 29 July",
+              "links": [
+                {
+                  "text": "OpenAI says its rogue AI tried to hack other companies",
+                  "href": "/news/articles/c2el319vzr3o"
+                }
+              ],
+              "level_from_link": 2
+            },
+            {
+              "tag": "ul",
+              "attributes": {
+                "role": "list",
+                "spacing": "2",
+                "class": [
+                  "ssrcss-94r6ik-Stack",
+                  "e1y4nx260"
+                ]
+              },
+              "text": "Three takeaways from Trump's 'Super Intelligence' summit Published 2 days ago OpenAI says its rogue AI tried to hack other companies Published 29 July OpenAI scraps rollout of new model over safety concerns Published 3 days ago",
+              "links": [
+                {
+                  "text": "Three takeaways from Trump's 'Super Intelligence' summit",
+                  "href": "/news/articles/cme30dz5vkzko"
+                },
+                {
+                  "text": "OpenAI says its rogue AI tried to hack other companies",
+                  "href": "/news/articles/c2el319vzr3o"
+                },
+                {
+                  "text": "OpenAI scraps rollout of new model over safety concerns",
+                  "href": "/news/articles/cm5y5nynl75ko"
+                }
+              ],
+              "level_from_link": 3
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "spacing": "4",
+                "class": [
+                  "ssrcss-1gccci3-Stack",
+                  "e1y4nx260"
+                ]
+              },
+              "text": "Three takeaways from Trump's 'Super Intelligence' summit Published 2 days ago OpenAI says its rogue AI tried to hack other companies Published 29 July OpenAI scraps rollout of new model over safety concerns Published 3 days ago",
+              "links": [
+                {
+                  "text": "Three takeaways from Trump's 'Super Intelligence' summit",
+                  "href": "/news/articles/cme30dz5vkzko"
+                },
+                {
+                  "text": "OpenAI says its rogue AI tried to hack other companies",
+                  "href": "/news/articles/c2el319vzr3o"
+                },
+                {
+                  "text": "OpenAI scraps rollout of new model over safety concerns",
+                  "href": "/news/articles/cm5y5nynl75ko"
+                }
+              ],
+              "level_from_link": 4
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": [
+                  "ssrcss-126h8e-Spacer",
+                  "e1aon0op0"
+                ]
+              },
+              "text": "Three takeaways from Trump's 'Super Intelligence' summit Published 2 days ago OpenAI says its rogue AI tried to hack other companies Published 29 July OpenAI scraps rollout of new model over safety concerns Published 3 days ago",
+              "links": [
+                {
+                  "text": "Three takeaways from Trump's 'Super Intelligence' summit",
+                  "href": "/news/articles/cme30dz5vkzko"
+                },
+                {
+                  "text": "OpenAI says its rogue AI tried to hack other companies",
+                  "href": "/news/articles/c2el319vzr3o"
+                },
+                {
+                  "text": "OpenAI scraps rollout of new model over safety concerns",
+                  "href": "/news/articles/cm5y5nynl75ko"
+                }
+              ],
+              "level_from_link": 5
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "data-block": "links",
+                "class": [
+                  "ssrcss-vxwoax-ComponentWrapper",
+                  "e1aon0op1"
+                ]
+              },
+              "text": "Three takeaways from Trump's 'Super Intelligence' summit Published 2 days ago OpenAI says its rogue AI tried to hack other companies Published 29 July OpenAI scraps rollout of new model over safety concerns Published 3 days ago",
+              "links": [
+                {
+                  "text": "Three takeaways from Trump's 'Super Intelligence' summit",
+                  "href": "/news/articles/cme30dz5vkzko"
+                },
+                {
+                  "text": "OpenAI says its rogue AI tried to hack other companies",
+                  "href": "/news/articles/c2el319vzr3o"
+                },
+                {
+                  "text": "OpenAI scraps rollout of new model over safety concerns",
+                  "href": "/news/articles/cm5y5nynl75ko"
+                }
+              ],
+              "level_from_link": 6
+            }
+          ]
+        },
+        {
+          "target_text": "OpenAI scraps rollout of new model over safety concerns",
+          "link": {
+            "text": "OpenAI scraps rollout of new model over safety concerns",
+            "href": "/news/articles/cm5y5nynl75ko",
+            "attributes": {
+              "href": "/news/articles/cm5y5nynl75ko",
+              "class": [
+                "ssrcss-kth21g-LinkAnchor",
+                "e3eyuya2"
+              ]
+            }
+          },
+          "parents": [
+            {
+              "tag": "a",
+              "attributes": {
+                "href": "/news/articles/cm5y5nynl75ko",
+                "class": [
+                  "ssrcss-kth21g-LinkAnchor",
+                  "e3eyuya2"
+                ]
+              },
+              "text": "OpenAI scraps rollout of new model over safety concerns",
+              "links": [],
+              "level_from_link": 0
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "spacing": "4",
+                "class": [
+                  "ssrcss-1gccci3-Stack",
+                  "e1y4nx260"
+                ]
+              },
+              "text": "OpenAI scraps rollout of new model over safety concerns Published 3 days ago",
+              "links": [
+                {
+                  "text": "OpenAI scraps rollout of new model over safety concerns",
+                  "href": "/news/articles/cm5y5nynl75ko"
+                }
+              ],
+              "level_from_link": 1
+            },
+            {
+              "tag": "li",
+              "attributes": {
+                "class": [
+                  "ssrcss-qzx51b-LinkItem",
+                  "e3eyuya1"
+                ]
+              },
+              "text": "OpenAI scraps rollout of new model over safety concerns Published 3 days ago",
+              "links": [
+                {
+                  "text": "OpenAI scraps rollout of new model over safety concerns",
+                  "href": "/news/articles/cm5y5nynl75ko"
+                }
+              ],
+              "level_from_link": 2
+            },
+            {
+              "tag": "ul",
+              "attributes": {
+                "role": "list",
+                "spacing": "2",
+                "class": [
+                  "ssrcss-94r6ik-Stack",
+                  "e1y4nx260"
+                ]
+              },
+              "text": "Three takeaways from Trump's 'Super Intelligence' summit Published 2 days ago OpenAI says its rogue AI tried to hack other companies Published 29 July OpenAI scraps rollout of new model over safety concerns Published 3 days ago",
+              "links": [
+                {
+                  "text": "Three takeaways from Trump's 'Super Intelligence' summit",
+                  "href": "/news/articles/cme30dz5vkzko"
+                },
+                {
+                  "text": "OpenAI says its rogue AI tried to hack other companies",
+                  "href": "/news/articles/c2el319vzr3o"
+                },
+                {
+                  "text": "OpenAI scraps rollout of new model over safety concerns",
+                  "href": "/news/articles/cm5y5nynl75ko"
+                }
+              ],
+              "level_from_link": 3
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "spacing": "4",
+                "class": [
+                  "ssrcss-1gccci3-Stack",
+                  "e1y4nx260"
+                ]
+              },
+              "text": "Three takeaways from Trump's 'Super Intelligence' summit Published 2 days ago OpenAI says its rogue AI tried to hack other companies Published 29 July OpenAI scraps rollout of new model over safety concerns Published 3 days ago",
+              "links": [
+                {
+                  "text": "Three takeaways from Trump's 'Super Intelligence' summit",
+                  "href": "/news/articles/cme30dz5vkzko"
+                },
+                {
+                  "text": "OpenAI says its rogue AI tried to hack other companies",
+                  "href": "/news/articles/c2el319vzr3o"
+                },
+                {
+                  "text": "OpenAI scraps rollout of new model over safety concerns",
+                  "href": "/news/articles/cm5y5nynl75ko"
+                }
+              ],
+              "level_from_link": 4
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": [
+                  "ssrcss-126h8e-Spacer",
+                  "e1aon0op0"
+                ]
+              },
+              "text": "Three takeaways from Trump's 'Super Intelligence' summit Published 2 days ago OpenAI says its rogue AI tried to hack other companies Published 29 July OpenAI scraps rollout of new model over safety concerns Published 3 days ago",
+              "links": [
+                {
+                  "text": "Three takeaways from Trump's 'Super Intelligence' summit",
+                  "href": "/news/articles/cme30dz5vkzko"
+                },
+                {
+                  "text": "OpenAI says its rogue AI tried to hack other companies",
+                  "href": "/news/articles/c2el319vzr3o"
+                },
+                {
+                  "text": "OpenAI scraps rollout of new model over safety concerns",
+                  "href": "/news/articles/cm5y5nynl75ko"
+                }
+              ],
+              "level_from_link": 5
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "data-block": "links",
+                "class": [
+                  "ssrcss-vxwoax-ComponentWrapper",
+                  "e1aon0op1"
+                ]
+              },
+              "text": "Three takeaways from Trump's 'Super Intelligence' summit Published 2 days ago OpenAI says its rogue AI tried to hack other companies Published 29 July OpenAI scraps rollout of new model over safety concerns Published 3 days ago",
+              "links": [
+                {
+                  "text": "Three takeaways from Trump's 'Super Intelligence' summit",
+                  "href": "/news/articles/cme30dz5vkzko"
+                },
+                {
+                  "text": "OpenAI says its rogue AI tried to hack other companies",
+                  "href": "/news/articles/c2el319vzr3o"
+                },
+                {
+                  "text": "OpenAI scraps rollout of new model over safety concerns",
+                  "href": "/news/articles/cm5y5nynl75ko"
+                }
+              ],
+              "level_from_link": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://www.bbc.co.uk/news/articles/c6eq84eygz0qo",
+      "http_status": 200,
+      "final_url": "https://www.bbc.co.uk/news/articles/c6eq84eygz0qo",
+      "html_size": 422456,
+      "error": "",
+      "targets": [
+        {
+          "target_text": "Brutal crypto attack on couple prompts £10k reward",
+          "link": {
+            "text": "Brutal crypto attack on couple prompts £10k reward",
+            "href": "/news/articles/c60qxvngnjj8o",
+            "attributes": {
+              "href": "/news/articles/c60qxvngnjj8o",
+              "class": [
+                "ssrcss-kth21g-LinkAnchor",
+                "e3eyuya2"
+              ]
+            }
+          },
+          "parents": [
+            {
+              "tag": "a",
+              "attributes": {
+                "href": "/news/articles/c60qxvngnjj8o",
+                "class": [
+                  "ssrcss-kth21g-LinkAnchor",
+                  "e3eyuya2"
+                ]
+              },
+              "text": "Brutal crypto attack on couple prompts £10k reward",
+              "links": [],
+              "level_from_link": 0
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "spacing": "4",
+                "class": [
+                  "ssrcss-1gccci3-Stack",
+                  "e1y4nx260"
+                ]
+              },
+              "text": "Brutal crypto attack on couple prompts £10k reward Published 24 September",
+              "links": [
+                {
+                  "text": "Brutal crypto attack on couple prompts £10k reward",
+                  "href": "/news/articles/c60qxvngnjj8o"
+                }
+              ],
+              "level_from_link": 1
+            },
+            {
+              "tag": "li",
+              "attributes": {
+                "class": [
+                  "ssrcss-qzx51b-LinkItem",
+                  "e3eyuya1"
+                ]
+              },
+              "text": "Brutal crypto attack on couple prompts £10k reward Published 24 September",
+              "links": [
+                {
+                  "text": "Brutal crypto attack on couple prompts £10k reward",
+                  "href": "/news/articles/c60qxvngnjj8o"
+                }
+              ],
+              "level_from_link": 2
+            },
+            {
+              "tag": "ul",
+              "attributes": {
+                "role": "list",
+                "spacing": "2",
+                "class": [
+                  "ssrcss-94r6ik-Stack",
+                  "e1y4nx260"
+                ]
+              },
+              "text": "Brutal crypto attack on couple prompts £10k reward Published 24 September How crypto criminals stole $700 million from people - often using age-old tricks Published 19 January",
+              "links": [
+                {
+                  "text": "Brutal crypto attack on couple prompts £10k reward",
+                  "href": "/news/articles/c60qxvngnjj8o"
+                },
+                {
+                  "text": "How crypto criminals stole $700 million from people - often using age-old tricks",
+                  "href": "/news/articles/c93w30gl5jno"
+                }
+              ],
+              "level_from_link": 3
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "spacing": "4",
+                "class": [
+                  "ssrcss-1gccci3-Stack",
+                  "e1y4nx260"
+                ]
+              },
+              "text": "Brutal crypto attack on couple prompts £10k reward Published 24 September How crypto criminals stole $700 million from people - often using age-old tricks Published 19 January",
+              "links": [
+                {
+                  "text": "Brutal crypto attack on couple prompts £10k reward",
+                  "href": "/news/articles/c60qxvngnjj8o"
+                },
+                {
+                  "text": "How crypto criminals stole $700 million from people - often using age-old tricks",
+                  "href": "/news/articles/c93w30gl5jno"
+                }
+              ],
+              "level_from_link": 4
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": [
+                  "ssrcss-126h8e-Spacer",
+                  "e1aon0op0"
+                ]
+              },
+              "text": "Brutal crypto attack on couple prompts £10k reward Published 24 September How crypto criminals stole $700 million from people - often using age-old tricks Published 19 January",
+              "links": [
+                {
+                  "text": "Brutal crypto attack on couple prompts £10k reward",
+                  "href": "/news/articles/c60qxvngnjj8o"
+                },
+                {
+                  "text": "How crypto criminals stole $700 million from people - often using age-old tricks",
+                  "href": "/news/articles/c93w30gl5jno"
+                }
+              ],
+              "level_from_link": 5
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "data-block": "links",
+                "class": [
+                  "ssrcss-vxwoax-ComponentWrapper",
+                  "e1aon0op1"
+                ]
+              },
+              "text": "Brutal crypto attack on couple prompts £10k reward Published 24 September How crypto criminals stole $700 million from people - often using age-old tricks Published 19 January",
+              "links": [
+                {
+                  "text": "Brutal crypto attack on couple prompts £10k reward",
+                  "href": "/news/articles/c60qxvngnjj8o"
+                },
+                {
+                  "text": "How crypto criminals stole $700 million from people - often using age-old tricks",
+                  "href": "/news/articles/c93w30gl5jno"
+                }
+              ],
+              "level_from_link": 6
+            }
+          ]
+        },
+        {
+          "target_text": "How crypto criminals stole $700 million from people - often using age-old tricks",
+          "link": {
+            "text": "How crypto criminals stole $700 million from people - often using age-old tricks",
+            "href": "/news/articles/c93w30gl5jno",
+            "attributes": {
+              "href": "/news/articles/c93w30gl5jno",
+              "class": [
+                "ssrcss-kth21g-LinkAnchor",
+                "e3eyuya2"
+              ]
+            }
+          },
+          "parents": [
+            {
+              "tag": "a",
+              "attributes": {
+                "href": "/news/articles/c93w30gl5jno",
+                "class": [
+                  "ssrcss-kth21g-LinkAnchor",
+                  "e3eyuya2"
+                ]
+              },
+              "text": "How crypto criminals stole $700 million from people - often using age-old tricks",
+              "links": [],
+              "level_from_link": 0
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "spacing": "4",
+                "class": [
+                  "ssrcss-1gccci3-Stack",
+                  "e1y4nx260"
+                ]
+              },
+              "text": "How crypto criminals stole $700 million from people - often using age-old tricks Published 19 January",
+              "links": [
+                {
+                  "text": "How crypto criminals stole $700 million from people - often using age-old tricks",
+                  "href": "/news/articles/c93w30gl5jno"
+                }
+              ],
+              "level_from_link": 1
+            },
+            {
+              "tag": "li",
+              "attributes": {
+                "class": [
+                  "ssrcss-qzx51b-LinkItem",
+                  "e3eyuya1"
+                ]
+              },
+              "text": "How crypto criminals stole $700 million from people - often using age-old tricks Published 19 January",
+              "links": [
+                {
+                  "text": "How crypto criminals stole $700 million from people - often using age-old tricks",
+                  "href": "/news/articles/c93w30gl5jno"
+                }
+              ],
+              "level_from_link": 2
+            },
+            {
+              "tag": "ul",
+              "attributes": {
+                "role": "list",
+                "spacing": "2",
+                "class": [
+                  "ssrcss-94r6ik-Stack",
+                  "e1y4nx260"
+                ]
+              },
+              "text": "Brutal crypto attack on couple prompts £10k reward Published 24 September How crypto criminals stole $700 million from people - often using age-old tricks Published 19 January",
+              "links": [
+                {
+                  "text": "Brutal crypto attack on couple prompts £10k reward",
+                  "href": "/news/articles/c60qxvngnjj8o"
+                },
+                {
+                  "text": "How crypto criminals stole $700 million from people - often using age-old tricks",
+                  "href": "/news/articles/c93w30gl5jno"
+                }
+              ],
+              "level_from_link": 3
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "spacing": "4",
+                "class": [
+                  "ssrcss-1gccci3-Stack",
+                  "e1y4nx260"
+                ]
+              },
+              "text": "Brutal crypto attack on couple prompts £10k reward Published 24 September How crypto criminals stole $700 million from people - often using age-old tricks Published 19 January",
+              "links": [
+                {
+                  "text": "Brutal crypto attack on couple prompts £10k reward",
+                  "href": "/news/articles/c60qxvngnjj8o"
+                },
+                {
+                  "text": "How crypto criminals stole $700 million from people - often using age-old tricks",
+                  "href": "/news/articles/c93w30gl5jno"
+                }
+              ],
+              "level_from_link": 4
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": [
+                  "ssrcss-126h8e-Spacer",
+                  "e1aon0op0"
+                ]
+              },
+              "text": "Brutal crypto attack on couple prompts £10k reward Published 24 September How crypto criminals stole $700 million from people - often using age-old tricks Published 19 January",
+              "links": [
+                {
+                  "text": "Brutal crypto attack on couple prompts £10k reward",
+                  "href": "/news/articles/c60qxvngnjj8o"
+                },
+                {
+                  "text": "How crypto criminals stole $700 million from people - often using age-old tricks",
+                  "href": "/news/articles/c93w30gl5jno"
+                }
+              ],
+              "level_from_link": 5
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "data-block": "links",
+                "class": [
+                  "ssrcss-vxwoax-ComponentWrapper",
+                  "e1aon0op1"
+                ]
+              },
+              "text": "Brutal crypto attack on couple prompts £10k reward Published 24 September How crypto criminals stole $700 million from people - often using age-old tricks Published 19 January",
+              "links": [
+                {
+                  "text": "Brutal crypto attack on couple prompts £10k reward",
+                  "href": "/news/articles/c60qxvngnjj8o"
+                },
+                {
+                  "text": "How crypto criminals stole $700 million from people - often using age-old tricks",
+                  "href": "/news/articles/c93w30gl5jno"
+                }
+              ],
+              "level_from_link": 6
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
