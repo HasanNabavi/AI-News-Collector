@@ -314,15 +314,32 @@ def extract_article_text(article, standfirst):
     ):
         element.decompose()
 
-    # Remove obvious promotional and related-story blocks.
+    # BBC Related Articles / link blocks.
     #
-    # A related-story card on BBC pages is often composed
-    # mainly or entirely of links. We remove containers where
-    # the meaningful text is fully represented by their links.
+    # The BBC page structure uses:
     #
-    # This is intentionally conservative: normal article
-    # paragraphs that merely contain a link are preserved.
+    # <div data-block="links">
+    #     ...
+    #     <ul>
+    #         <li><a>...</a></li>
+    #         ...
+    #     </ul>
+    # </div>
+    #
+    # These blocks are not part of the article body.
+    # Remove them structurally instead of trying to
+    # identify them from their text content.
+    for element in article.find_all(
+        attrs={"data-block": "links"}
+    ):
+        element.decompose()
 
+    # Remove remaining obvious promotional and
+    # related-story containers.
+    #
+    # This is intentionally conservative and acts only
+    # when the entire meaningful text of a container is
+    # represented by its links.
     for element in article.find_all(
         ["section", "aside", "div"]
     ):
@@ -388,8 +405,7 @@ def extract_article_text(article, standfirst):
             continue
 
         # Remove paragraphs whose entire meaningful
-        # content consists of links. These are typically
-        # related-story or navigation links.
+        # content consists of links.
         links = element.find_all(
             "a",
             href=True
