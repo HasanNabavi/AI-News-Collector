@@ -3,7 +3,7 @@ import importlib.util
 from pathlib import Path
 
 
-INPUT_FILE = "D1_NewsAfterTittleEquivalencyRun.json"
+INPUT_FILE = "C1_NewsAfterLinkEquivalencyRun.json"
 OUTPUT_FILE = "E1_NewsAfterScrapingRun.json"
 SCRAPERS_DIR = Path("Scrapers")
 
@@ -118,11 +118,6 @@ def scrape_manager():
     processed_news = []
 
     for index, news_item in enumerate(news, start=1):
-        status = news_item.get(
-            "title_similarity_status",
-            ""
-        )
-
         title = news_item.get(
             "title",
             "No title"
@@ -136,16 +131,6 @@ def scrape_manager():
         print()
         print(f"[{index}/{len(news)}] {source}")
         print(f"Title: {title}")
-        print(f"Similarity status: {status}")
-
-        if status == "Duplicate":
-            print("Action: skipped (Duplicate)")
-            continue
-
-        if status not in {"New", "Suspicious"}:
-            print("Action: skipped (unknown status)")
-            continue
-
         print("Action: scraping...")
 
         result_item = scrape_news_item(news_item)
@@ -188,10 +173,6 @@ def scrape_manager():
     print("=" * 40)
     print(f"Input news: {len(news)}")
     print(f"Output news: {len(processed_news)}")
-    print(
-        f"Skipped duplicates: "
-        f"{sum(1 for item in news if item.get('title_similarity_status') == 'Duplicate')}"
-    )
     print("Scraper Manager completed.")
 
 
