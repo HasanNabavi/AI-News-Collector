@@ -1,79 +1,80 @@
 import requests
-import re
-import json
-from urllib.parse import urljoin
-
 from bs4 import BeautifulSoup
 
 
 HEADERS = {
     "User-Agent": (
-        "Mozilla/5.0 "
-        "(Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 "
-        "(KHTML, like Gecko) "
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/120.0 Safari/537.36"
     )
 }
 
 
 def clean_text(text):
-    if not text:
+    """
+    Clean and normalize extracted text.
+    """
+
+    return " ".join(
+        text.split()
+    )
+
+
+def get_meta_content(soup, name=None, property_name=None):
+    """
+    Get content from a meta tag.
+    """
+
+    if name:
+        tag = soup.find(
+            "meta",
+            attrs={"name": name}
+        )
+
+    elif property_name:
+        tag = soup.find(
+            "meta",
+            attrs={"property": property_name}
+        )
+
+    else:
         return ""
 
-    text = re.sub(
-        r"\s+",
-        " ",
-        text
-    )
-
-    return text.strip()
-
-
-def get_meta_content(
-    soup,
-    **kwargs
-):
-    tag = soup.find(
-        "meta",
-        attrs=kwargs
-    )
-
     if tag:
-        return clean_text(
-            tag.get(
-                "content",
-                ""
-            )
-        )
+        return tag.get(
+            "content",
+            ""
+        ).strip()
 
     return ""
 
 
 def extract_title(soup):
+    """
+    Extract article title.
+    """
 
     title = get_meta_content(
         soup,
-        property="og:title"
+        property_name="og:title"
     )
 
     if title:
         return title
 
-    h1 = soup.find("h1")
-
-    if h1:
+    if soup.title:
         return clean_text(
-            h1.get_text(
-                " ",
-                strip=True
-            )
+            soup.title.get_text()
         )
 
     return ""
 
 
 def extract_author(soup):
+    """
+    Extract article author.
+    """
 
     author = get_meta_content(
         soup,
@@ -85,174 +86,112 @@ def extract_author(soup):
 
     author = get_meta_content(
         soup,
-        property="article:author"
+        property_name="article:author"
     )
 
     if author:
         return author
 
-    selectors = [
-        "[class*='author']",
-        "[class*='byline']"
-    ]
-
-    for selector in selectors:
-
-        element = soup.select_one(
-            selector
-        )
-
-        if not element:
-            continue
-
-        text = clean_text(
-            element.get_text(
-                " ",
-                strip=True
-            )
-        )
-
-        if text:
-
-            text = re.sub(
-                r"^by\s+",
-                "",
-                text,
-                flags=re.IGNORECASE
-            )
-
-            return text
-
     return ""
 
 
 def extract_published_at(soup):
+    """
+    Extract article publication date.
+    """
 
-    published = get_meta_content(
+    # Method 1: article:published_time
+    published_at = get_meta_content(
         soup,
-        property="article:published_time"
+        property_name="article:published_time"
     )
 
-    if published:
-        return published
+    if published_at:
+        return published_at
 
-    time_element = soup.find(
+    # Method 2: <time datetime="...">
+    time_tag = soup.find(
         "time",
+        attrs={"datetime": True}
+    )
+
+    if time_tag:
+        return time_tag.get(
+            "datetime",
+            ""
+        ).strip()
+
+    # Method 3: JSON-LD
+    json_ld_blocks = soup.find_all(
+        "script",
         attrs={
-            "datetime": True
+            "type": "application/ld+json"
         }
     )
 
-    if time_element:
-
-        datetime_value = clean_text(
-            time_element.get(
-                "datetime",
-                ""
-            )
-        )
-
-        if datetime_value:
-            return datetime_value
-
-    for script in soup.find_all(
-        "script",
-        type="application/ld+json"
-    ):
-
-        raw_json = script.string
-
-        if not raw_json:
-            continue
+    for block in json_ld_blocks:
 
         try:
+            import json
+
             data = json.loads(
-                raw_json
+                block.string
+                or block.get_text()
             )
 
-        except (
-            json.JSONDecodeError,
-            TypeError
-        ):
+            if isinstance(data, dict):
+
+                published_at = (
+                    data.get("datePublished")
+                    or data.get("dateCreated")
+                )
+
+                if published_at:
+                    return published_at
+
+        except Exception:
             continue
-
-        objects = []
-
-        if isinstance(
-            data,
-            dict
-        ):
-
-            objects.append(data)
-
-            graph = data.get(
-                "@graph"
-            )
-
-            if isinstance(
-                graph,
-                list
-            ):
-                objects.extend(graph)
-
-        elif isinstance(
-            data,
-            list
-        ):
-
-            objects.extend(data)
-
-        for obj in objects:
-
-            if not isinstance(
-                obj,
-                dict
-            ):
-                continue
-
-            published = (
-                obj.get(
-                    "datePublished"
-                )
-                or obj.get(
-                    "dateCreated"
-                )
-            )
-
-            if published:
-                return clean_text(
-                    str(published)
-                )
 
     return ""
 
 
-def extract_standfirst(
-    soup
-):
+def extract_standfirst(soup):
+    """
+    Extract article standfirst / dek / subtitle.
+    """
 
-    metadata_candidates = [
-        get_meta_content(
-            soup,
-            name="description"
-        ),
-        get_meta_content(
-            soup,
-            property="og:description"
+    # Method 1: meta description
+    standfirst = get_meta_content(
+        soup,
+        name="description"
+    )
+
+    if standfirst:
+        return clean_text(
+            standfirst
         )
-    ]
 
-    for candidate in metadata_candidates:
+    # Method 2: Open Graph description
+    standfirst = get_meta_content(
+        soup,
+        property_name="og:description"
+    )
 
-        if candidate:
-            return candidate
+    if standfirst:
+        return clean_text(
+            standfirst
+        )
 
+    # Method 3: page elements
     selectors = [
         "[class*='standfirst']",
+        "[class*='Standfirst']",
         "[class*='dek']",
+        "[class*='Dek']",
         "[class*='subtitle']",
-        "[class*='description']",
-        "[class*='intro']"
+        "[class*='Subtitle']",
+        "[class*='intro']",
+        "[class*='Intro']"
     ]
 
     for selector in selectors:
@@ -261,46 +200,41 @@ def extract_standfirst(
             selector
         )
 
-        if not element:
-            continue
-
-        text = clean_text(
-            element.get_text(
-                " ",
-                strip=True
+        if element:
+            text = clean_text(
+                element.get_text(
+                    " ",
+                    strip=True
+                )
             )
-        )
 
-        if (
-            text
-            and len(text) >= 20
-            and len(text) <= 500
-        ):
-            return text
+            if text:
+                return text
 
     return ""
 
 
-def is_newsletter_page(
-    soup,
-    title
-):
+def is_newsletter_page(soup, title):
+    """
+    Detect MIT Technology Review newsletter / digest pages.
 
-    normalized_title = clean_text(
-        title
-    ).lower()
+    These pages are intentionally skipped because they
+    aggregate multiple stories rather than representing
+    one independent news article.
+    """
 
-    newsletter_titles = [
-        "the download:",
-        "the spark:",
-        "the algorithm:"
+    title_lower = title.lower()
+
+    newsletter_words = [
+        "the download",
+        "newsletter",
+        "morning briefing",
+        "daily newsletter"
     ]
 
-    for newsletter_title in newsletter_titles:
+    for word in newsletter_words:
 
-        if normalized_title.startswith(
-            newsletter_title
-        ):
+        if word in title_lower:
             return True
 
     page_text = clean_text(
@@ -310,14 +244,13 @@ def is_newsletter_page(
         )
     ).lower()
 
-    markers = [
-        "this is today's edition of the download",
-        "our weekday newsletter",
-        "this article is from the spark",
-        "weekly climate newsletter"
+    newsletter_markers = [
+        "subscribe to the download",
+        "sign up for the newsletter",
+        "subscribe to our newsletter"
     ]
 
-    for marker in markers:
+    for marker in newsletter_markers:
 
         if marker in page_text:
             return True
@@ -325,34 +258,27 @@ def is_newsletter_page(
     return False
 
 
-def remove_non_article_elements(
-    container
-):
+def remove_non_article_elements(content):
+    """
+    Remove elements that should not be included
+    in the article body.
+    """
 
-    keywords = [
+    unwanted_keywords = [
         "related",
-        "popular",
-        "deepdive",
-        "deep-dive",
-        "share",
+        "recommended",
         "newsletter",
-        "stay-connected",
-        "footer",
-        "recommended"
+        "subscribe",
+        "social",
+        "share",
+        "author",
+        "advert",
+        "promo"
     ]
 
-    elements = container.find_all(
+    for element in content.find_all(
         True
-    )
-
-    for element in elements:
-
-        if not getattr(
-            element,
-            "attrs",
-            None
-        ):
-            continue
+    ):
 
         classes = " ".join(
             element.get(
@@ -377,35 +303,33 @@ def remove_non_article_elements(
 
         if any(
             keyword in combined
-            for keyword in keywords
+            for keyword in unwanted_keywords
         ):
             element.decompose()
 
 
 def extract_article_text(
     soup,
-    standfirst=""
+    standfirst
 ):
+    """
+    Extract the main article text.
+    """
 
-    container = soup.select_one(
+    content = soup.select_one(
         "#content--body"
     )
 
-    if container is None:
+    if content is None:
         return ""
 
-    container = BeautifulSoup(
-        str(container),
-        "html.parser"
-    )
-
     remove_non_article_elements(
-        container
+        content
     )
 
     paragraphs = []
 
-    for element in container.find_all(
+    for element in content.find_all(
         [
             "p",
             "blockquote",
@@ -420,83 +344,58 @@ def extract_article_text(
             )
         )
 
-        if not text:
-            continue
-
-        if len(text) < 20:
-            continue
-
-        paragraphs.append(
-            text
-        )
-
-    cleaned_paragraphs = []
-
-    for paragraph in paragraphs:
-
-        if (
-            cleaned_paragraphs
-            and paragraph
-            == cleaned_paragraphs[-1]
-        ):
-            continue
-
-        cleaned_paragraphs.append(
-            paragraph
-        )
-
-    if standfirst:
-
-        already_exists = any(
-            standfirst == paragraph
-            for paragraph
-            in cleaned_paragraphs
-        )
-
-        if not already_exists:
-
-            cleaned_paragraphs.insert(
-                0,
-                standfirst
+        if text:
+            paragraphs.append(
+                text
             )
 
-    return "\n\n".join(
-        cleaned_paragraphs
+    text = "\n\n".join(
+        paragraphs
     )
 
+    if (
+        standfirst
+        and standfirst not in text
+    ):
+        text = (
+            standfirst
+            + "\n\n"
+            + text
+        )
 
-def extract_images(
-    soup,
-    article_url
-):
+    return text
+
+
+def extract_images(soup):
+    """
+    Extract article images.
+    """
 
     images = []
 
-    og_image = get_meta_content(
+    # Main Open Graph image
+    main_image = get_meta_content(
         soup,
-        property="og:image"
+        property_name="og:image"
     )
 
-    if og_image:
-
+    if main_image:
         images.append(
-            urljoin(
-                article_url,
-                og_image
-            )
+            main_image
         )
 
-    container = soup.select_one(
+    # Images inside article body
+    content = soup.select_one(
         "#content--body"
     )
 
-    if container:
+    if content:
 
-        for image in container.find_all(
+        for image in content.find_all(
             "img"
         ):
 
-            image_url = (
+            src = (
                 image.get("src")
                 or image.get(
                     "data-src"
@@ -504,117 +403,129 @@ def extract_images(
                 or image.get(
                     "data-lazy-src"
                 )
-                or ""
             )
 
-            if not image_url:
-                continue
-
-            image_url = urljoin(
-                article_url,
-                image_url
-            )
-
-            if image_url not in images:
-
+            if src:
                 images.append(
-                    image_url
+                    src
                 )
 
-    main_image = (
-        images[0]
-        if images
-        else ""
-    )
+    # Remove duplicates
+    unique_images = []
 
-    return main_image, images
+    for image in images:
+
+        if image not in unique_images:
+            unique_images.append(
+                image
+            )
+
+    return unique_images
 
 
-def extract_videos(
-    soup,
-    article_url
-):
+def extract_videos(soup):
+    """
+    Extract video URLs.
+    """
 
     videos = []
 
+    # HTML5 video
     for video in soup.find_all(
         "video"
     ):
 
-        source = video.find(
-            "source"
+        src = video.get(
+            "src"
         )
 
-        video_url = ""
-
-        if source:
-            video_url = source.get(
-                "src",
-                ""
+        if src:
+            videos.append(
+                src
             )
 
-        if not video_url:
-            video_url = video.get(
-                "src",
-                ""
+        for source in video.find_all(
+            "source"
+        ):
+
+            source_url = source.get(
+                "src"
             )
 
-        if video_url:
-
-            video_url = urljoin(
-                article_url,
-                video_url
-            )
-
-            if video_url not in videos:
-
+            if source_url:
                 videos.append(
-                    video_url
+                    source_url
                 )
 
+    # YouTube / Vimeo iframes
     for iframe in soup.find_all(
         "iframe"
     ):
 
-        iframe_url = iframe.get(
+        src = iframe.get(
             "src",
             ""
         )
 
-        if not iframe_url:
-            continue
-
-        iframe_url = urljoin(
-            article_url,
-            iframe_url
-        )
-
-        lowered = iframe_url.lower()
-
         if (
-            "youtube.com" in lowered
-            or "youtu.be" in lowered
-            or "vimeo.com" in lowered
+            "youtube.com"
+            in src
+            or "youtu.be"
+            in src
+            or "vimeo.com"
+            in src
         ):
+            videos.append(
+                src
+            )
 
-            if iframe_url not in videos:
+    # Remove duplicates
+    unique_videos = []
 
-                videos.append(
-                    iframe_url
-                )
+    for video in videos:
 
-    return videos
+        if video not in unique_videos:
+            unique_videos.append(
+                video
+            )
+
+    return unique_videos
 
 
 def scrape(url):
+    """
+    Scrape one MIT Technology Review article.
 
-    response = requests.get(
-        url,
-        headers=HEADERS,
-        timeout=20
-    )
+    Returns a standardized dictionary that can later
+    be used by the Scraper Manager.
+    """
 
-    response.raise_for_status()
+    try:
+
+        response = requests.get(
+            url,
+            headers=HEADERS,
+            timeout=30
+        )
+
+        response.raise_for_status()
+
+    except requests.RequestException as error:
+
+        return {
+            "page_type": "",
+            "title": "",
+            "text": "",
+            "author": "",
+            "published_at": "",
+            "standfirst": "",
+            "main_image": "",
+            "images": [],
+            "videos": [],
+            "url": url,
+            "status": "error",
+            "error": str(error)
+        }
 
     soup = BeautifulSoup(
         response.text,
@@ -625,6 +536,7 @@ def scrape(url):
         soup
     )
 
+    # Skip newsletter / digest pages
     if is_newsletter_page(
         soup,
         title
@@ -661,14 +573,18 @@ def scrape(url):
         standfirst
     )
 
-    main_image, images = extract_images(
-        soup,
-        url
+    images = extract_images(
+        soup
     )
 
     videos = extract_videos(
-        soup,
-        url
+        soup
+    )
+
+    main_image = (
+        images[0]
+        if images
+        else ""
     )
 
     return {
