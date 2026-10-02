@@ -12,36 +12,11 @@ URLS = [
 OUTPUT_FILE = "Probe_BBC_Video_Output.json"
 
 
-def clean_text(text):
-    return re.sub(r"\s+", " ", text or "").strip()
-
-
-def extract_urls(text):
-    patterns = [
-        r'https?://[^\s"\'<>]+',
-        r'//[^\s"\'<>]+'
-    ]
-
-    urls = []
-
-    for pattern in patterns:
-        urls.extend(re.findall(pattern, text))
-
-    return list(dict.fromkeys(urls))
-
-
 def inspect_page(url):
-    print(f"Inspecting: {url}")
-
     response = requests.get(
         url,
         headers={
-            "User-Agent": (
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 "
-                "(KHTML, like Gecko) "
-                "Chrome/140.0 Safari/537.36"
-            )
+            "User-Agent": "Mozilla/5.0"
         },
         timeout=30
     )
@@ -51,15 +26,14 @@ def inspect_page(url):
     result = {
         "url": url,
         "status_code": response.status_code,
-        "html_size": len(response.text),
         "video_elements": [],
-        "video_like_elements": [],
+        "video_attributes": [],
         "video_scripts": []
     }
 
-    # --------------------------------------------------
-    # 1. Direct video-related elements
-    # --------------------------------------------------
+    # -----------------------------
+    # Direct video-related elements
+    # -----------------------------
 
     selectors = [
         "video",
@@ -71,41 +45,44 @@ def inspect_page(url):
         "[id*='video']",
     ]
 
-    seen_elements = set()
+    seen = set()
 
     for selector in selectors:
+
         for element in soup.select(selector):
 
-            html = str(element)
+            attrs = dict(element.attrs)
 
-            key = html[:3000]
+            key = (
+                element.name,
+                json.dumps(
+                    attrs,
+                    sort_keys=True,
+                    default=str
+                )
+            )
 
-            if key in seen_elements:
+            if key in seen:
                 continue
 
-            seen_elements.add(key)
+            seen.add(key)
 
-            item = {
+            result["video_elements"].append({
                 "selector": selector,
                 "tag": element.name,
-                "attrs": dict(element.attrs),
-                "text": clean_text(
-                    element.get_text(" ", strip=True)
-                )[:500],
-                "html": html[:5000],
-                "urls": extract_urls(html)
-            }
+                "attrs": attrs
+            })
 
-            result["video_elements"].append(item)
-
-    # --------------------------------------------------
-    # 2. Any element whose attributes suggest media/video
-    # --------------------------------------------------
+    # -----------------------------
+    # Elements with media-like attrs
+    # -----------------------------
 
     for element in soup.find_all(True):
 
+        attrs = dict(element.attrs)
+
         attrs_text = json.dumps(
-            dict(element.attrs),
+            attrs,
             ensure_ascii=False,
             default=str
         )
@@ -117,65 +94,53 @@ def inspect_page(url):
         ):
             continue
 
-        html = str(element)
-
-        item = {
+        result["video_attributes"].append({
             "tag": element.name,
-            "attrs": dict(element.attrs),
-            "text": clean_text(
-                element.get_text(" ", strip=True)
-            )[:500],
-            "html": html[:5000],
-            "urls": extract_urls(html)
-        }
+            "attrs": attrs
+        })
 
-        result["video_like_elements"].append(item)
+    # -----------------------------
+    # Scripts containing keywords
+    # -----------------------------
 
-    # --------------------------------------------------
-    # 3. Scripts containing video/media information
-    # --------------------------------------------------
+    for index, script in enumerate(
+        soup.find_all("script")
+    ):
 
-    for index, script in enumerate(soup.find_all("script")):
+        text = script.string or script.get_text()
 
-        script_text = script.string or script.get_text()
-
-        if not script_text:
+        if not text:
             continue
 
         if not re.search(
-            r"(video|media|player|playlist|m3u8|mp4|manifest)",
-            script_text,
+            r"(video|m3u8|mp4|media|player|playlist)",
+            text,
             re.IGNORECASE
         ):
             continue
 
-        matches = []
+        # فقط محل وجود keywordها را ثبت کن
+        keywords = sorted(
+            set(
+                re.findall(
+                    r"(video|m3u8|mp4|media|player|playlist)",
+                    text,
+                    re.IGNORECASE
+                )
+            )
+        )
 
-        for match in re.finditer(
-            r"(video|media|player|playlist|m3u8|mp4|manifest)",
-            script_text,
-            re.IGNORECASE
-        ):
-
-            start = max(0, match.start() - 300)
-            end = min(len(script_text), match.end() + 1000)
-
-            snippet = script_text[start:end]
-
-            matches.append({
-                "keyword": match.group(0),
-                "snippet": snippet,
-                "urls": extract_urls(snippet)
-            })
-
-            # فقط چند نمونه کافی است
-            if len(matches) >= 10:
-                break
+        # URLها را بدون ذخیره کل script استخراج کن
+        urls = re.findall(
+            r'https?://[^\s"\'<>]+',
+            text
+        )
 
         result["video_scripts"].append({
             "script_index": index,
             "type": script.get("type"),
-            "matches": matches
+            "keywords": keywords,
+            "urls": list(dict.fromkeys(urls))[:20]
         })
 
     return result
@@ -196,7 +161,6 @@ def main():
 
             results.append({
                 "url": url,
-                "status": "error",
                 "error": str(error)
             })
 
@@ -213,8 +177,8 @@ def main():
             indent=2
         )
 
-    print()
-    print(f"Output saved to: {OUTPUT_FILE}")
+    print("Probe completed.")
+    print(f"Output: {OUTPUT_FILE}")
 
 
 if __name__ == "__main__":
