@@ -1,3 +1,4 @@
+import json
 import re
 import requests
 from bs4 import BeautifulSoup
@@ -7,6 +8,8 @@ URLS = [
     "https://www.bbc.co.uk/news/articles/c6y9z9r4ejzwo",
     "https://www.bbc.co.uk/news/articles/c6eq84eygz0qo",
 ]
+
+OUTPUT_FILE = "Probe_BBC_Related_Links_Output.json"
 
 HEADERS = {
     "User-Agent": (
@@ -32,154 +35,204 @@ TARGET_TEXTS = [
 
 
 def clean_text(text):
-    text = re.sub(r"\s+", " ", text or "")
+    if not text:
+        return ""
+
+    text = re.sub(r"\s+", " ", text)
+
     return text.strip()
 
 
-def print_element_info(element, level):
-    print()
-    print(f"--- Parent level {level} ---")
+def serialize_value(value):
+    if isinstance(value, list):
+        return value
 
-    print("TAG:")
-    print(element.name)
+    if isinstance(value, dict):
+        return value
 
-    print("ID:")
-    print(element.get("id", ""))
+    return str(value)
 
-    print("CLASS:")
-    print(element.get("class", []))
 
-    print("ARIA:")
+def get_element_info(element):
+    attributes = {}
+
     for key, value in element.attrs.items():
-        if key.startswith("aria-"):
-            print(f"  {key} = {value}")
+        attributes[key] = serialize_value(value)
 
-    print("DATA ATTRIBUTES:")
-    for key, value in element.attrs.items():
-        if key.startswith("data-"):
-            print(f"  {key} = {value}")
+    links = []
 
-    print("HREFS:")
-    links = element.find_all("a", href=True)
-
-    for link in links:
-        text = clean_text(
+    for link in element.find_all("a", href=True):
+        link_text = clean_text(
             link.get_text(" ", strip=True)
         )
 
-        href = link.get("href", "")
+        if not link_text:
+            continue
 
-        if text:
-            print(f"  TEXT: {text}")
-            print(f"  HREF: {href}")
+        links.append({
+            "text": link_text,
+            "href": link.get("href", "")
+        })
 
-    element_text = clean_text(
-        element.get_text(" ", strip=True)
-    )
+    return {
+        "tag": element.name,
+        "attributes": attributes,
+        "text": clean_text(
+            element.get_text(" ", strip=True)
+        ),
+        "links": links
+    }
 
-    print("TEXT:")
-    print(element_text[:1000])
 
-
-def inspect_target(soup, target_text):
+def inspect_target(article, target_text):
     matches = []
 
-    for element in soup.find_all("a", href=True):
+    for element in article.find_all("a", href=True):
         link_text = clean_text(
             element.get_text(" ", strip=True)
         )
 
-        if link_text == target_text:
-            matches.append(element)
+        if link_text != target_text:
+            continue
 
-    if not matches:
-        return False
+        parents = []
 
-    for match_number, link in enumerate(matches, start=1):
-        print()
-        print("=" * 80)
-        print(f"TARGET MATCH {match_number}")
-        print("=" * 80)
-        print(f"TARGET TEXT:\n{target_text}")
-        print()
-        print("LINK TAG:")
-        print(link)
+        current = element
 
-        current = link
-
-        for level in range(1, 6):
-            current = current.parent
-
+        for level in range(0, 7):
             if current is None:
                 break
 
-            print_element_info(
-                current,
-                level
+            info = get_element_info(current)
+            info["level_from_link"] = level
+
+            parents.append(info)
+
+            current = current.parent
+
+        matches.append({
+            "target_text": target_text,
+            "link": {
+                "text": clean_text(
+                    element.get_text(
+                        " ",
+                        strip=True
+                    )
+                ),
+                "href": element.get(
+                    "href",
+                    ""
+                ),
+                "attributes": {
+                    key: serialize_value(value)
+                    for key, value in element.attrs.items()
+                }
+            },
+            "parents": parents
+        })
+
+    return matches
+
+
+def inspect_url(session, url):
+    result = {
+        "url": url,
+        "http_status": None,
+        "final_url": "",
+        "html_size": 0,
+        "error": "",
+        "targets": []
+    }
+
+    try:
+        response = session.get(
+            url,
+            timeout=30
+        )
+
+        result["http_status"] = response.status_code
+        result["final_url"] = response.url
+        result["html_size"] = len(response.content)
+
+        response.raise_for_status()
+
+        soup = BeautifulSoup(
+            response.content,
+            "html.parser"
+        )
+
+        article = soup.find("article")
+
+        if article is None:
+            article = soup.find("main")
+
+        if article is None:
+            result["error"] = (
+                "Article/main element not found."
+            )
+            return result
+
+        for target_text in TARGET_TEXTS:
+            matches = inspect_target(
+                article,
+                target_text
             )
 
-    return True
+            if matches:
+                result["targets"].extend(
+                    matches
+                )
+
+    except requests.RequestException as error:
+        result["error"] = (
+            f"Request error: {error}"
+        )
+
+    except Exception as error:
+        result["error"] = (
+            f"Unexpected error: {error}"
+        )
+
+    return result
 
 
 def main():
     session = requests.Session()
     session.headers.update(HEADERS)
 
+    output = {
+        "probe": "BBC Related Links Structural Probe",
+        "targets": TARGET_TEXTS,
+        "urls": []
+    }
+
     for url in URLS:
-        print()
-        print("#" * 100)
-        print("URL")
-        print(url)
-        print("#" * 100)
+        print(f"Inspecting: {url}")
 
-        try:
-            response = session.get(
-                url,
-                timeout=30
-            )
+        result = inspect_url(
+            session,
+            url
+        )
 
-            print(f"HTTP STATUS: {response.status_code}")
-            print(f"FINAL URL: {response.url}")
-            print(f"HTML SIZE: {len(response.content)}")
+        output["urls"].append(result)
 
-            response.raise_for_status()
+    with open(
+        OUTPUT_FILE,
+        "w",
+        encoding="utf-8"
+    ) as file:
+        json.dump(
+            output,
+            file,
+            ensure_ascii=False,
+            indent=2
+        )
 
-            soup = BeautifulSoup(
-                response.content,
-                "html.parser"
-            )
-
-            article = soup.find("article")
-
-            if article is None:
-                article = soup.find("main")
-
-            if article is None:
-                print("ARTICLE/MAIN NOT FOUND")
-                continue
-
-            found_count = 0
-
-            for target_text in TARGET_TEXTS:
-                found = inspect_target(
-                    article,
-                    target_text
-                )
-
-                if found:
-                    found_count += 1
-
-            print()
-            print("=" * 100)
-            print("SUMMARY")
-            print("=" * 100)
-            print(f"Related targets found: {found_count}")
-
-        except requests.RequestException as error:
-            print(f"REQUEST ERROR: {error}")
-
-        except Exception as error:
-            print(f"UNEXPECTED ERROR: {error}")
+    print()
+    print("=" * 60)
+    print("Probe completed.")
+    print(f"Output file: {OUTPUT_FILE}")
+    print("=" * 60)
 
 
 if __name__ == "__main__":
