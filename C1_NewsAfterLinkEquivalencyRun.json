@@ -1,36 +1,20 @@
 {
   "news": [
     {
-      "title": "A new contest pits competitors against each other in a race to biological youth",
+      "title": "Redefining enterprise intelligence with autonomous AI",
       "source": "MIT Technology Review",
       "category": "AI",
-      "url": "https://www.technologyreview.com/2026/10/02/1145610/younger-contest-race-to-biological-youth/",
-      "published_at": "Fri, 02 Oct 2026 09:00:00 +0000",
-      "collected_at": "2026-10-02T10:12:31.783071+00:00"
+      "url": "https://www.technologyreview.com/2026/10/02/1143774/redefining-enterprise-intelligence-with-autonomous-ai/",
+      "published_at": "Fri, 02 Oct 2026 15:49:04 +0000",
+      "collected_at": "2026-10-02T21:14:30.828606+00:00"
     },
     {
-      "title": "Don’t be fooled—LLMs don’t reason",
+      "title": "The Download: a biological de-aging contest and why LLMs don’t reason",
       "source": "MIT Technology Review",
       "category": "AI",
-      "url": "https://www.technologyreview.com/2026/10/02/1145639/dont-be-fooled-llms-dont-reason/",
-      "published_at": "Fri, 02 Oct 2026 08:00:00 +0000",
-      "collected_at": "2026-10-02T10:12:31.783102+00:00"
-    },
-    {
-      "title": "OpenAI fires workers for 'mishandling sensitive information'",
-      "source": "BBC Technology",
-      "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/news/articles/c6y9z9r4ejzwo?at_medium=RSS&at_campaign=rss",
-      "published_at": "Fri, 02 Oct 2026 08:20:32 GMT",
-      "collected_at": "2026-10-02T10:12:32.230482+00:00"
-    },
-    {
-      "title": "Crypto thieves attack man in home and threaten to kill pregnant wife's baby in 'horrific' robbery",
-      "source": "BBC Technology",
-      "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/news/articles/c6eq84eygz0qo?at_medium=RSS&at_campaign=rss",
-      "published_at": "Thu, 01 Oct 2026 23:45:06 GMT",
-      "collected_at": "2026-10-02T10:12:32.230499+00:00"
+      "url": "https://www.technologyreview.com/2026/10/02/1145666/the-download-biological-de-aging-ai-reasoning/",
+      "published_at": "Fri, 02 Oct 2026 12:10:00 +0000",
+      "collected_at": "2026-10-02T21:14:30.828621+00:00"
     }
   ]
 }
