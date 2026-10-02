@@ -285,8 +285,8 @@ def extract_article_text(article, standfirst):
     if article is None:
         return ""
 
-    # Work on a copy so the original article tree
-    # remains unchanged.
+    # Work on an independent BeautifulSoup tree so that
+    # removing elements does not modify the original page tree.
     article = BeautifulSoup(
         str(article),
         "html.parser"
@@ -314,59 +314,63 @@ def extract_article_text(article, standfirst):
     ):
         element.decompose()
 
-    # Remove common BBC promotional / related-content
-    # blocks.
-    promo_keywords = [
-        "sign up for",
-        "newsletter",
-        "related",
-        "more on this story",
-        "read more",
-        "you may also like",
-        "follow the",
-        "outside the uk"
-    ]
+    # Remove obvious promotional and related-story blocks.
+    #
+    # A related-story card on BBC pages is often composed
+    # mainly or entirely of links. We remove containers where
+    # the meaningful text is fully represented by their links.
+    #
+    # This is intentionally conservative: normal article
+    # paragraphs that merely contain a link are preserved.
 
     for element in article.find_all(
         ["section", "aside", "div"]
     ):
-        text = clean_text(
+        links = element.find_all(
+            "a",
+            href=True
+        )
+
+        if not links:
+            continue
+
+        element_text = clean_text(
             element.get_text(
                 " ",
                 strip=True
             )
-        ).lower()
+        )
 
-        if not text:
+        if not element_text:
             continue
 
-        if any(
-            keyword in text
-            for keyword in promo_keywords
-        ):
-            classes = " ".join(
-                element.get("class", [])
-            ).lower()
+        link_text_parts = []
 
-            element_id = str(
-                element.get("id", "")
-            ).lower()
-
-            structural_markers = (
-                "related",
-                "promo",
-                "newsletter",
-                "recommend",
-                "mostread",
-                "secondary"
+        for link in links:
+            link_text = clean_text(
+                link.get_text(
+                    " ",
+                    strip=True
+                )
             )
 
-            if any(
-                marker in classes
-                or marker in element_id
-                for marker in structural_markers
-            ):
-                element.decompose()
+            if link_text:
+                link_text_parts.append(
+                    link_text
+                )
+
+        if not link_text_parts:
+            continue
+
+        link_text = clean_text(
+            " ".join(link_text_parts)
+        )
+
+        # If all meaningful text in this container is
+        # represented by links, it is likely a navigation
+        # or related-story block rather than article prose.
+        if link_text == element_text:
+            element.decompose()
 
     paragraphs = []
 
@@ -403,8 +407,7 @@ def extract_article_text(article, standfirst):
     if not paragraphs:
         return ""
 
-    # Remove trailing related-content /
-    # newsletter material.
+    # Remove trailing newsletter material.
     cleaned_paragraphs = []
 
     for text in paragraphs:
