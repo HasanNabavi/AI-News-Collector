@@ -13,11 +13,10 @@ OUTPUT_FILE = "Probe_BBC_Video_Output.json"
 
 
 def inspect_page(url):
+
     response = requests.get(
         url,
-        headers={
-            "User-Agent": "Mozilla/5.0"
-        },
+        headers={"User-Agent": "Mozilla/5.0"},
         timeout=30
     )
 
@@ -25,123 +24,115 @@ def inspect_page(url):
 
     result = {
         "url": url,
-        "status_code": response.status_code,
-        "video_elements": [],
-        "video_attributes": [],
-        "video_scripts": []
+        "status": response.status_code,
+        "counts": {},
+        "video_components": [],
+        "media_urls": [],
+        "script_keywords": []
     }
 
-    # -----------------------------
-    # Direct video-related elements
-    # -----------------------------
+    # --------------------------------
+    # Count basic media elements
+    # --------------------------------
 
-    selectors = [
-        "video",
-        "source",
-        "iframe",
-        "[data-component*='video']",
-        "[data-testid*='video']",
-        "[class*='video']",
-        "[id*='video']",
-    ]
+    result["counts"] = {
+        "video": len(soup.find_all("video")),
+        "source": len(soup.find_all("source")),
+        "iframe": len(soup.find_all("iframe")),
+        "audio": len(soup.find_all("audio")),
+        "object": len(soup.find_all("object")),
+        "embed": len(soup.find_all("embed")),
+    }
+
+    # --------------------------------
+    # Find only component/testid names
+    # --------------------------------
 
     seen = set()
 
-    for selector in selectors:
+    for element in soup.find_all(True):
 
-        for element in soup.select(selector):
+        attrs = element.attrs
 
-            attrs = dict(element.attrs)
+        for key in ["data-component", "data-testid"]:
 
-            key = (
-                element.name,
-                json.dumps(
-                    attrs,
-                    sort_keys=True,
-                    default=str
-                )
-            )
+            value = attrs.get(key)
 
-            if key in seen:
+            if not value:
                 continue
 
-            seen.add(key)
+            if re.search(
+                r"video|media|player",
+                str(value),
+                re.IGNORECASE
+            ):
 
-            result["video_elements"].append({
-                "selector": selector,
-                "tag": element.name,
-                "attrs": attrs
-            })
+                item = f"{key}={value}"
 
-    # -----------------------------
-    # Elements with media-like attrs
-    # -----------------------------
+                if item not in seen:
+                    seen.add(item)
+                    result["video_components"].append(item)
+
+    # --------------------------------
+    # Find media URLs only
+    # --------------------------------
+
+    urls = set()
 
     for element in soup.find_all(True):
 
-        attrs = dict(element.attrs)
+        for value in element.attrs.values():
 
-        attrs_text = json.dumps(
-            attrs,
-            ensure_ascii=False,
-            default=str
-        )
+            if isinstance(value, list):
+                values = value
+            else:
+                values = [value]
 
-        if not re.search(
-            r"(video|media|player|playlist|m3u8|mp4)",
-            attrs_text,
-            re.IGNORECASE
-        ):
-            continue
+            for value in values:
 
-        result["video_attributes"].append({
-            "tag": element.name,
-            "attrs": attrs
-        })
+                if not isinstance(value, str):
+                    continue
 
-    # -----------------------------
-    # Scripts containing keywords
-    # -----------------------------
+                found = re.findall(
+                    r'https?://[^"\'>\s]+',
+                    value
+                )
 
-    for index, script in enumerate(
-        soup.find_all("script")
-    ):
+                for url_found in found:
+
+                    if re.search(
+                        r"(\.mp4|\.m3u8|video|media)",
+                        url_found,
+                        re.IGNORECASE
+                    ):
+                        urls.add(url_found)
+
+    result["media_urls"] = sorted(urls)
+
+    # --------------------------------
+    # Find scripts containing keywords
+    # --------------------------------
+
+    keywords = set()
+
+    for script in soup.find_all("script"):
 
         text = script.string or script.get_text()
 
         if not text:
             continue
 
-        if not re.search(
-            r"(video|m3u8|mp4|media|player|playlist)",
+        found = re.findall(
+            r"\b(video|media|player|playlist|m3u8|mp4|manifest)\b",
             text,
             re.IGNORECASE
-        ):
-            continue
-
-        # فقط محل وجود keywordها را ثبت کن
-        keywords = sorted(
-            set(
-                re.findall(
-                    r"(video|m3u8|mp4|media|player|playlist)",
-                    text,
-                    re.IGNORECASE
-                )
-            )
         )
 
-        # URLها را بدون ذخیره کل script استخراج کن
-        urls = re.findall(
-            r'https?://[^\s"\'<>]+',
-            text
+        keywords.update(
+            word.lower() for word in found
         )
 
-        result["video_scripts"].append({
-            "script_index": index,
-            "type": script.get("type"),
-            "keywords": keywords,
-            "urls": list(dict.fromkeys(urls))[:20]
-        })
+    result["script_keywords"] = sorted(keywords)
 
     return result
 
@@ -178,7 +169,6 @@ def main():
         )
 
     print("Probe completed.")
-    print(f"Output: {OUTPUT_FILE}")
 
 
 if __name__ == "__main__":
