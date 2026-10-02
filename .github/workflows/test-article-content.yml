@@ -19,5 +19,5 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run article content test
-        run: python Test_Article_Content.py
+      - name: Run MIT scraper test
+        run: python Test_MIT_Scraper.py
