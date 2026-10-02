@@ -24,3 +24,14 @@ jobs:
 
       - name: Show E1 output
         run: cat E1_NewsAfterScrapingRun.json
+
+      - name: Commit E1 output
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
+          git add E1_NewsAfterScrapingRun.json
+
+          git commit -m "Update E1 scraper output" || echo "No changes to commit"
+
+          git push
