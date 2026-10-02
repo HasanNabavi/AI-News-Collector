@@ -1,0 +1,31 @@
+name: Probe BBC Pages
+
+on:
+  workflow_dispatch:
+
+jobs:
+  probe-bbc:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Run BBC probe
+        run: python bbc_probe.py
+
+      - name: Upload BBC HTML samples
+        uses: actions/upload-artifact@v4
+        with:
+          name: bbc-html-samples
+          path: |
+            bbc_sample_1.html
+            bbc_sample_2.html
