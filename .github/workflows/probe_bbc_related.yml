@@ -1,0 +1,34 @@
+name: Probe BBC Related Links
+
+on:
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run BBC Related Links Probe
+        run: python Probe_BBC_Related_Links.py
+
+      - name: Commit probe output
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
+          git add Probe_BBC_Related_Links_Output.json
+
+          git commit -m "Add BBC related links probe output" || echo "No changes to commit"
+
+          git push
