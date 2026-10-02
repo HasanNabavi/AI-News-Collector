@@ -146,7 +146,9 @@ def extract_title(soup, article_schema):
     h1 = soup.find("h1")
 
     if h1:
-        title = clean_text(h1.get_text(" ", strip=True))
+        title = clean_text(
+            h1.get_text(" ", strip=True)
+        )
 
         if title:
             return title
@@ -157,7 +159,9 @@ def extract_title(soup, article_schema):
         return clean_text(title)
 
     if soup.title:
-        return clean_text(soup.title.get_text())
+        return clean_text(
+            soup.title.get_text()
+        )
 
     return ""
 
@@ -199,7 +203,9 @@ def extract_author(article_schema, soup):
     )
 
     if byline:
-        text = clean_text(byline.get_text(" ", strip=True))
+        text = clean_text(
+            byline.get_text(" ", strip=True)
+        )
 
         if text:
             return text
@@ -208,10 +214,15 @@ def extract_author(article_schema, soup):
 
 
 def extract_published_at(article_schema, soup):
-    published_at = article_schema.get("datePublished", "")
+    published_at = article_schema.get(
+        "datePublished",
+        ""
+    )
 
     if published_at:
-        return clean_text(str(published_at))
+        return clean_text(
+            str(published_at)
+        )
 
     time_tag = soup.find(
         "time",
@@ -243,10 +254,15 @@ def extract_standfirst(article_schema, soup):
     if description:
         return description
 
-    description = article_schema.get("description", "")
+    description = article_schema.get(
+        "description",
+        ""
+    )
 
     if description:
-        return clean_text(str(description))
+        return clean_text(
+            str(description)
+        )
 
     return ""
 
@@ -269,18 +285,116 @@ def extract_article_text(article, standfirst):
     if article is None:
         return ""
 
+    # Work on a copy so the original article tree
+    # remains unchanged.
+    article = BeautifulSoup(
+        str(article),
+        "html.parser"
+    )
+
+    # Remove elements that are clearly not part
+    # of the article text.
+    unwanted_selectors = [
+        "script",
+        "style",
+        "noscript",
+        "svg",
+        "button",
+        "nav",
+        "[aria-hidden='true']",
+    ]
+
+    for selector in unwanted_selectors:
+        for element in article.select(selector):
+            element.decompose()
+
+    # Remove media captions and video-player blocks.
+    for element in article.find_all(
+        ["figcaption", "video"]
+    ):
+        element.decompose()
+
+    # Remove common BBC promotional / related-content
+    # blocks.
+    promo_keywords = [
+        "sign up for",
+        "newsletter",
+        "related",
+        "more on this story",
+        "read more",
+        "you may also like",
+        "follow the",
+        "outside the uk"
+    ]
+
+    for element in article.find_all(
+        ["section", "aside", "div"]
+    ):
+        text = clean_text(
+            element.get_text(
+                " ",
+                strip=True
+            )
+        ).lower()
+
+        if not text:
+            continue
+
+        if any(
+            keyword in text
+            for keyword in promo_keywords
+        ):
+            classes = " ".join(
+                element.get("class", [])
+            ).lower()
+
+            element_id = str(
+                element.get("id", "")
+            ).lower()
+
+            structural_markers = (
+                "related",
+                "promo",
+                "newsletter",
+                "recommend",
+                "mostread",
+                "secondary"
+            )
+
+            if any(
+                marker in classes
+                or marker in element_id
+                for marker in structural_markers
+            ):
+                element.decompose()
+
     paragraphs = []
 
     for element in article.find_all(
         ["p", "blockquote"]
     ):
         text = clean_text(
-            element.get_text(" ", strip=True)
+            element.get_text(
+                " ",
+                strip=True
+            )
         )
 
         if not text:
             continue
 
+        # Remove obvious video-player status messages.
+        video_messages = {
+            "this video can not be played",
+            "this video cannot be played",
+            "video player",
+            "watch video"
+        }
+
+        if text.lower() in video_messages:
+            continue
+
+        # Remove exact duplicate paragraphs.
         if text in paragraphs:
             continue
 
@@ -289,8 +403,30 @@ def extract_article_text(article, standfirst):
     if not paragraphs:
         return ""
 
+    # Remove trailing related-content /
+    # newsletter material.
+    cleaned_paragraphs = []
+
+    for text in paragraphs:
+        lower_text = text.lower()
+
+        if (
+            "sign up for our" in lower_text
+            or "sign up here" in lower_text
+        ):
+            break
+
+        cleaned_paragraphs.append(text)
+
+    paragraphs = cleaned_paragraphs
+
+    if not paragraphs:
+        return ""
+
     text = "\n\n".join(paragraphs)
 
+    # Add standfirst only when it is not
+    # already present.
     if standfirst and standfirst not in text:
         text = standfirst + "\n\n" + text
 
@@ -322,7 +458,9 @@ def choose_srcset_image(srcset):
             )
 
             if match:
-                width = int(match.group(1))
+                width = int(
+                    match.group(1)
+                )
 
         candidates.append(
             (width, image_url)
@@ -358,7 +496,9 @@ def extract_images(soup, article, main_image):
         )
 
         if srcset:
-            src = choose_srcset_image(srcset)
+            src = choose_srcset_image(
+                srcset
+            )
 
         if not src:
             src = (
@@ -399,7 +539,9 @@ def extract_videos(article):
                 )
             )
 
-        for source in video.find_all("source"):
+        for source in video.find_all(
+            "source"
+        ):
             src = source.get("src")
 
             if src:
@@ -410,8 +552,13 @@ def extract_videos(article):
                     )
                 )
 
-    for iframe in article.find_all("iframe"):
-        src = iframe.get("src", "")
+    for iframe in article.find_all(
+        "iframe"
+    ):
+        src = iframe.get(
+            "src",
+            ""
+        )
 
         if (
             "youtube.com" in src
@@ -467,7 +614,9 @@ def scrape(url):
             "html.parser"
         )
 
-        json_ld_data = extract_json_ld(soup)
+        json_ld_data = extract_json_ld(
+            soup
+        )
 
         article_schema = find_article_schema(
             json_ld_data
@@ -493,7 +642,9 @@ def scrape(url):
             soup
         )
 
-        article = extract_article(soup)
+        article = extract_article(
+            soup
+        )
 
         text = extract_article_text(
             article,
@@ -511,13 +662,22 @@ def scrape(url):
                 ""
             )
 
-            if isinstance(schema_image, list):
+            if isinstance(
+                schema_image,
+                list
+            ):
                 if schema_image:
                     schema_image = schema_image[0]
 
-            if isinstance(schema_image, dict):
+            if isinstance(
+                schema_image,
+                dict
+            ):
                 schema_image = (
-                    schema_image.get("url", "")
+                    schema_image.get(
+                        "url",
+                        ""
+                    )
                 )
 
             main_image = clean_text(
@@ -536,7 +696,9 @@ def scrape(url):
             main_image
         )
 
-        videos = extract_videos(article)
+        videos = extract_videos(
+            article
+        )
 
         if not title:
             return {
@@ -551,7 +713,10 @@ def scrape(url):
                 "videos": videos,
                 "url": url,
                 "status": "error",
-                "error": "Article title could not be extracted."
+                "error": (
+                    "Article title could not "
+                    "be extracted."
+                )
             }
 
         if len(text) < 100:
@@ -568,8 +733,8 @@ def scrape(url):
                 "url": url,
                 "status": "error",
                 "error": (
-                    "Article text could not be extracted "
-                    "or is too short."
+                    "Article text could not be "
+                    "extracted or is too short."
                 )
             }
 
@@ -616,5 +781,13 @@ def scrape(url):
             "videos": [],
             "url": url,
             "status": "error",
-            "error": f"Unexpected scraper error: {error}"
+            "error": (
+                f"Unexpected scraper error: {error}"
+            )
         }
+
+
+if __name__ == "__main__":
+    print(
+        "BBC Technology scraper loaded successfully."
+    )
