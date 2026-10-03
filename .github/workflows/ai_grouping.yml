@@ -25,6 +25,17 @@ jobs:
         run: |
           python F0_AIGrouping.py
 
-      - name: Show output file
+      - name: Check output file
         run: |
           ls -lh F1_NewsAfterAIGroupingRun.json
+
+      - name: Commit and push result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add F1_NewsAfterAIGroupingRun.json
+
+          git diff --cached --quiet || git commit -m "Update AI grouping result"
+
+          git push
