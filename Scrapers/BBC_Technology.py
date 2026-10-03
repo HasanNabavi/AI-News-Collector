@@ -1,17 +1,16 @@
 import json
-import html
 import re
-from urllib.parse import urljoin, urlsplit
+from urllib.parse import urljoin, urlparse
 
 import requests
 from bs4 import BeautifulSoup
 
 
-HEADERS = {
+BASE_HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
         "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/120.0 Safari/537.36"
+        "Chrome/140.0.0.0 Safari/537.36"
     ),
     "Accept": (
         "text/html,application/xhtml+xml,application/xml;"
@@ -19,6 +18,7 @@ HEADERS = {
     ),
     "Accept-Language": "en-US,en;q=0.9",
 }
+
 
 ALLOWED_HOSTS = {
     "www.bbc.co.uk",
@@ -28,60 +28,171 @@ ALLOWED_HOSTS = {
 }
 
 
-def clean_text(text):
-    if not text:
-        return ""
-
-    text = html.unescape(text)
-    text = text.replace("\xa0", " ")
-    text = text.replace("\u200b", "")
-    text = text.replace("\u200c", "")
-    text = text.replace("\u200d", "")
-
-    text = re.sub(r"\s+", " ", text)
-
-    return text.strip()
+PLACEHOLDER_IMAGE_PATTERNS = (
+    "grey-placeholder",
+    "placeholder",
+    "transparent.gif",
+    "pixel.gif",
+    "spacer.gif",
+    "1x1",
+)
 
 
-def is_valid_url(url):
+VIDEO_URL_PATTERNS = (
+    r"https?://[^\"'\s<>]+\.mp4(?:\?[^\"'\s<>]*)?",
+    r"https?://[^\"'\s<>]+\.m3u8(?:\?[^\"'\s<>]*)?",
+    r"https?://[^\"'\s<>]+\.webm(?:\?[^\"'\s<>]*)?",
+)
+
+
+def is_bbc_url(url):
     try:
-        parts = urlsplit(url)
-
-        if parts.scheme not in {"http", "https"}:
-            return False
-
-        hostname = (parts.hostname or "").lower()
-
-        return hostname in ALLOWED_HOSTS
-
+        host = (urlparse(url).hostname or "").lower()
+        return host in ALLOWED_HOSTS
     except Exception:
         return False
 
 
-def get_meta_content(soup, name=None, property_name=None):
-    if name:
-        tag = soup.find("meta", attrs={"name": name})
-    elif property_name:
-        tag = soup.find("meta", attrs={"property": property_name})
-    else:
+def is_iplayer_url(url):
+    try:
+        path = (urlparse(url).path or "").lower()
+        return "/iplayer/" in path
+    except Exception:
+        return False
+
+
+def normalize_space(text):
+    return re.sub(r"\s+", " ", text or "").strip()
+
+
+def normalize_url(url, base_url):
+    if not url:
         return ""
 
-    if tag:
-        return clean_text(tag.get("content", ""))
+    url = url.strip()
 
-    return ""
+    if url.startswith("//"):
+        return "https:" + url
+
+    return urljoin(base_url, url)
+
+
+def extract_json_script(soup, script_id):
+    script = soup.find("script", id=script_id)
+
+    if not script:
+        return None
+
+    raw = script.string or script.get_text()
+
+    if not raw:
+        return None
+
+    try:
+        return json.loads(raw)
+    except Exception:
+        return None
+
+
+def extract_next_data(soup):
+    return extract_json_script(soup, "__NEXT_DATA__")
+
+
+def extract_simorgh_data(soup):
+    scripts = soup.find_all("script")
+
+    for script in scripts:
+        raw = script.string or script.get_text()
+
+        if not raw:
+            continue
+
+        if "SIMORGH_DATA" not in raw:
+            continue
+
+        match = re.search(
+            r"window\s*\.\s*SIMORGH_DATA\s*=\s*(\{.*\})\s*;?\s*$",
+            raw,
+            re.DOTALL,
+        )
+
+        if not match:
+            match = re.search(
+                r"SIMORGH_DATA\s*=\s*(\{.*\})",
+                raw,
+                re.DOTALL,
+            )
+
+        if not match:
+            continue
+
+        try:
+            return json.loads(match.group(1))
+        except Exception:
+            continue
+
+    return None
+
+
+def recursive_walk(value):
+    if isinstance(value, dict):
+        yield value
+
+        for child in value.values():
+            yield from recursive_walk(child)
+
+    elif isinstance(value, list):
+        for item in value:
+            yield from recursive_walk(item)
+
+
+def find_article_schema(json_ld):
+    if not json_ld:
+        return None
+
+    items = json_ld if isinstance(json_ld, list) else [json_ld]
+
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+
+        item_type = item.get("@type", "")
+
+        if isinstance(item_type, list):
+            types = [str(x).lower() for x in item_type]
+        else:
+            types = [str(item_type).lower()]
+
+        if any(
+            x in types
+            for x in (
+                "article",
+                "newsarticle",
+                "reportagenewsarticle",
+                "analysisnewsarticle",
+            )
+        ):
+            return item
+
+        graph = item.get("@graph")
+
+        if isinstance(graph, list):
+            result = find_article_schema(graph)
+
+            if result:
+                return result
+
+    return None
 
 
 def extract_json_ld(soup):
-    blocks = soup.find_all(
-        "script",
-        attrs={"type": "application/ld+json"}
-    )
-
     results = []
 
-    for block in blocks:
-        raw = block.string or block.get_text()
+    for script in soup.find_all(
+        "script",
+        attrs={"type": "application/ld+json"},
+    ):
+        raw = script.string or script.get_text()
 
         if not raw:
             continue
@@ -95,116 +206,82 @@ def extract_json_ld(soup):
     return results
 
 
-def find_article_schema(json_ld_data):
-    for data in json_ld_data:
-        candidates = []
+def extract_title(soup, schema):
+    value = soup.find("meta", property="og:title")
 
-        if isinstance(data, dict):
-            candidates.append(data)
-
-            graph = data.get("@graph")
-
-            if isinstance(graph, list):
-                candidates.extend(
-                    item for item in graph
-                    if isinstance(item, dict)
-                )
-
-        elif isinstance(data, list):
-            candidates.extend(
-                item for item in data
-                if isinstance(item, dict)
-            )
-
-        for item in candidates:
-            schema_type = item.get("@type", "")
-
-            if isinstance(schema_type, list):
-                schema_types = schema_type
-            else:
-                schema_types = [schema_type]
-
-            if any(
-                "NewsArticle" in str(item_type)
-                or "Article" in str(item_type)
-                for item_type in schema_types
-            ):
-                return item
-
-    return {}
-
-
-def extract_title(soup, article_schema):
-    title = get_meta_content(
-        soup,
-        property_name="og:title"
-    )
-
-    if title:
-        return title
+    if value and value.get("content"):
+        return normalize_space(value["content"])
 
     h1 = soup.find("h1")
 
     if h1:
-        title = clean_text(
-            h1.get_text(" ", strip=True)
-        )
+        text = normalize_space(h1.get_text(" ", strip=True))
 
-        if title:
-            return title
+        if text:
+            return text
 
-    title = article_schema.get("headline", "")
+    if schema:
+        headline = schema.get("headline")
+
+        if headline:
+            return normalize_space(headline)
+
+    title = soup.find("title")
 
     if title:
-        return clean_text(title)
-
-    if soup.title:
-        return clean_text(
-            soup.title.get_text()
-        )
+        return normalize_space(title.get_text(" ", strip=True))
 
     return ""
 
 
-def extract_author(article_schema, soup):
-    author = article_schema.get("author", "")
+def extract_author(soup, schema):
+    if schema:
+        author = schema.get("author")
 
-    if isinstance(author, dict):
-        author = author.get("name", "")
-
-    elif isinstance(author, list):
-        names = []
-
-        for item in author:
-            if isinstance(item, dict):
-                name = item.get("name", "")
-            else:
-                name = str(item)
-
-            name = clean_text(name)
+        if isinstance(author, dict):
+            name = author.get("name")
 
             if name:
-                names.append(name)
+                return normalize_space(name)
 
-        if names:
-            return ", ".join(names)
+        if isinstance(author, list):
+            names = []
 
-        author = ""
+            for item in author:
+                if isinstance(item, dict) and item.get("name"):
+                    names.append(normalize_space(item["name"]))
+                elif isinstance(item, str):
+                    names.append(normalize_space(item))
 
-    author = clean_text(str(author))
+            if names:
+                return ", ".join(dict.fromkeys(names))
 
-    if author:
-        return author
+        if isinstance(author, str):
+            return normalize_space(author)
 
-    byline = soup.select_one(
-        "[data-testid*='byline'], "
-        "[class*='byline'], "
-        "[class*='Byline']"
-    )
+    selectors = [
+        "[rel='author']",
+        "[data-testid*='byline']",
+        "[class*='byline']",
+        "[class*='Byline']",
+    ]
 
-    if byline:
-        text = clean_text(
-            byline.get_text(" ", strip=True)
+    for selector in selectors:
+        element = soup.select_one(selector)
+
+        if not element:
+            continue
+
+        text = normalize_space(element.get_text(" ", strip=True))
+
+        if not text:
+            continue
+
+        text = re.sub(
+            r"^(By|Written by|Reporter|Correspondent)\s*",
+            "",
+            text,
+            flags=re.IGNORECASE,
         )
 
         if text:
@@ -213,584 +290,775 @@ def extract_author(article_schema, soup):
     return ""
 
 
-def extract_published_at(article_schema, soup):
-    published_at = article_schema.get(
-        "datePublished",
-        ""
-    )
-
-    if published_at:
-        return clean_text(
-            str(published_at)
+def extract_published_at(soup, schema):
+    if schema:
+        value = (
+            schema.get("datePublished")
+            or schema.get("dateCreated")
+            or schema.get("dateModified")
         )
 
-    time_tag = soup.find(
-        "time",
-        attrs={"datetime": True}
-    )
+        if value:
+            return str(value)
+
+    time_tag = soup.find("time")
 
     if time_tag:
-        return clean_text(
-            time_tag.get("datetime", "")
-        )
+        value = time_tag.get("datetime")
+
+        if value:
+            return value
 
     return ""
 
 
-def extract_standfirst(article_schema, soup):
-    description = get_meta_content(
-        soup,
-        name="description"
-    )
+def extract_standfirst(soup, schema):
+    if schema:
+        value = schema.get("description")
 
-    if description:
-        return description
+        if value:
+            return normalize_space(value)
 
-    description = get_meta_content(
-        soup,
-        property_name="og:description"
-    )
+    for attrs in (
+        {"name": "description"},
+        {"property": "og:description"},
+    ):
+        tag = soup.find("meta", attrs=attrs)
 
-    if description:
-        return description
+        if tag and tag.get("content"):
+            return normalize_space(tag["content"])
 
-    description = article_schema.get(
-        "description",
-        ""
-    )
-
-    if description:
-        return clean_text(
-            str(description)
-        )
-
-    return ""
-
-
-def extract_article(soup):
-    article = soup.find("article")
-
-    if article is not None:
-        return article
-
-    main = soup.find("main")
-
-    if main is not None:
-        return main
-
-    return None
-
-
-def extract_article_text(article, standfirst):
-    if article is None:
-        return ""
-
-    # Work on an independent BeautifulSoup tree so that
-    # removing elements does not modify the original page tree.
-    article = BeautifulSoup(
-        str(article),
-        "html.parser"
-    )
-
-    # Remove elements that are clearly not part
-    # of the article text.
-    unwanted_selectors = [
-        "script",
-        "style",
-        "noscript",
-        "svg",
-        "button",
-        "nav",
-        "[aria-hidden='true']",
+    selectors = [
+        "[data-testid='standfirst']",
+        "[class*='standfirst']",
+        "[class*='Standfirst']",
+        "[class*='summary']",
+        "[class*='Summary']",
     ]
 
-    for selector in unwanted_selectors:
-        for element in article.select(selector):
-            element.decompose()
+    for selector in selectors:
+        element = soup.select_one(selector)
 
-    # Remove media captions and video-player blocks.
-    for element in article.find_all(
-        ["figcaption", "video"]
+        if element:
+            text = normalize_space(element.get_text(" ", strip=True))
+
+            if text:
+                return text
+
+    return ""
+
+
+def remove_standfirst_from_text(text, standfirst):
+    text = text.strip()
+    standfirst = normalize_space(standfirst)
+
+    if not text or not standfirst:
+        return text
+
+    paragraphs = text.split("\n\n")
+
+    if paragraphs:
+        first = normalize_space(paragraphs[0])
+
+        if first == standfirst:
+            paragraphs = paragraphs[1:]
+
+    return "\n\n".join(
+        paragraph.strip()
+        for paragraph in paragraphs
+        if paragraph.strip()
+    )
+
+
+def clean_article_paragraphs(paragraphs, standfirst=""):
+    cleaned = []
+    seen = set()
+
+    for paragraph in paragraphs:
+        paragraph = normalize_space(paragraph)
+
+        if not paragraph:
+            continue
+
+        if len(paragraph) < 2:
+            continue
+
+        if paragraph.lower() in {
+            "advertisement",
+            "advertising",
+            "watch",
+            "listen",
+            "read more",
+            "related",
+        }:
+            continue
+
+        key = paragraph.casefold()
+
+        if key in seen:
+            continue
+
+        seen.add(key)
+        cleaned.append(paragraph)
+
+    text = "\n\n".join(cleaned)
+
+    return remove_standfirst_from_text(text, standfirst)
+
+
+def extract_article_text_from_dom(soup, standfirst):
+    article = soup.find("article")
+
+    if not article:
+        article = soup.find("main")
+
+    if not article:
+        return ""
+
+    article_copy = BeautifulSoup(
+        str(article),
+        "html.parser",
+    )
+
+    for tag in article_copy.find_all(
+        [
+            "script",
+            "style",
+            "noscript",
+            "svg",
+            "button",
+            "nav",
+            "footer",
+            "form",
+        ]
+    ):
+        tag.decompose()
+
+    for element in article_copy.find_all(
+        attrs={"aria-hidden": "true"}
     ):
         element.decompose()
 
-    # BBC Related Articles / link blocks.
-    #
-    # The BBC page structure uses:
-    #
-    # <div data-block="links">
-    #     ...
-    #     <ul>
-    #         <li><a>...</a></li>
-    #         ...
-    #     </ul>
-    # </div>
-    #
-    # These blocks are not part of the article body.
-    # Remove them structurally instead of trying to
-    # identify them from their text content.
-    for element in article.find_all(
+    for element in article_copy.find_all(
+        ["video", "audio", "iframe"]
+    ):
+        element.decompose()
+
+    for element in article_copy.find_all(
         attrs={"data-block": "links"}
     ):
         element.decompose()
 
-    # Remove remaining obvious promotional and
-    # related-story containers.
-    #
-    # This is intentionally conservative and acts only
-    # when the entire meaningful text of a container is
-    # represented by its links.
-    for element in article.find_all(
-        ["section", "aside", "div"]
-    ):
-        links = element.find_all(
-            "a",
-            href=True
-        )
-
-        if not links:
-            continue
-
-        element_text = clean_text(
-            element.get_text(
-                " ",
-                strip=True
-            )
-        )
-
-        if not element_text:
-            continue
-
-        link_text_parts = []
-
-        for link in links:
-            link_text = clean_text(
-                link.get_text(
-                    " ",
-                    strip=True
-                )
-            )
-
-            if link_text:
-                link_text_parts.append(
-                    link_text
-                )
-
-        if not link_text_parts:
-            continue
-
-        link_text = clean_text(
-            " ".join(link_text_parts)
-        )
-
-        # If all meaningful text in this container is
-        # represented by links, it is likely a navigation
-        # or related-story block rather than article prose.
-        if link_text == element_text:
-            element.decompose()
-
     paragraphs = []
 
-    for element in article.find_all(
+    for element in article_copy.find_all(
         ["p", "blockquote"]
     ):
-        text = clean_text(
-            element.get_text(
-                " ",
-                strip=True
-            )
+        text = normalize_space(
+            element.get_text(" ", strip=True)
         )
 
         if not text:
             continue
 
-        # Remove paragraphs whose entire meaningful
-        # content consists of links.
-        links = element.find_all(
-            "a",
-            href=True
+        links_text = normalize_space(
+            " ".join(
+                link.get_text(" ", strip=True)
+                for link in element.find_all("a")
+            )
         )
 
-        if links:
-            link_text_parts = []
-
-            for link in links:
-                link_text = clean_text(
-                    link.get_text(
-                        " ",
-                        strip=True
-                    )
-                )
-
-                if link_text:
-                    link_text_parts.append(
-                        link_text
-                    )
-
-            link_text = clean_text(
-                " ".join(link_text_parts)
-            )
-
-            if link_text == text:
-                continue
-
-        # Remove obvious video-player status messages.
-        video_messages = {
-            "this video can not be played",
-            "this video cannot be played",
-            "video player",
-            "watch video"
-        }
-
-        if text.lower() in video_messages:
+        if links_text and links_text == text:
             continue
 
-        # Remove exact duplicate paragraphs.
-        if text in paragraphs:
+        if re.match(
+            r"^(Advertisement|Watch|Listen|Read more)\b",
+            text,
+            flags=re.IGNORECASE,
+        ):
             continue
 
         paragraphs.append(text)
 
-    if not paragraphs:
-        return ""
+    result = clean_article_paragraphs(
+        paragraphs,
+        standfirst,
+    )
 
-    # Remove trailing newsletter material.
-    cleaned_paragraphs = []
+    cutoff_patterns = [
+        r"^sign up for our newsletter",
+        r"^get the latest news",
+        r"^follow bbc",
+        r"^more on this story",
+    ]
 
-    for text in paragraphs:
-        lower_text = text.lower()
+    final_paragraphs = []
 
-        if (
-            "sign up for our" in lower_text
-            or "sign up here" in lower_text
+    for paragraph in result.split("\n\n"):
+        if any(
+            re.search(pattern, paragraph, re.IGNORECASE)
+            for pattern in cutoff_patterns
         ):
             break
 
-        cleaned_paragraphs.append(text)
+        final_paragraphs.append(paragraph)
 
-    paragraphs = cleaned_paragraphs
+    return "\n\n".join(final_paragraphs)
 
-    if not paragraphs:
+
+def extract_text_from_block(block):
+    if isinstance(block, str):
+        return normalize_space(block)
+
+    if not isinstance(block, dict):
         return ""
 
-    text = "\n\n".join(paragraphs)
+    texts = []
 
-    # Add standfirst only when it is not
-    # already present.
-    if standfirst and standfirst not in text:
-        text = standfirst + "\n\n" + text
+    for key in (
+        "text",
+        "value",
+        "plainText",
+    ):
+        value = block.get(key)
 
-    return text
+        if isinstance(value, str):
+            text = normalize_space(value)
+
+            if text:
+                texts.append(text)
+
+    model = block.get("model")
+
+    if isinstance(model, dict):
+        model_text = extract_text_from_block(model)
+
+        if model_text:
+            texts.append(model_text)
+
+    blocks = block.get("blocks")
+
+    if isinstance(blocks, list):
+        for child in blocks:
+            child_text = extract_text_from_block(child)
+
+            if child_text:
+                texts.append(child_text)
+
+    return "\n\n".join(dict.fromkeys(texts))
 
 
-def choose_srcset_image(srcset):
-    if not srcset:
-        return ""
-
+def collect_block_lists(data):
     candidates = []
 
-    for item in srcset.split(","):
-        item = item.strip()
-
-        if not item:
+    for obj in recursive_walk(data):
+        if not isinstance(obj, dict):
             continue
 
-        parts = item.split()
+        blocks = obj.get("blocks")
 
-        image_url = parts[0]
+        if not isinstance(blocks, list):
+            continue
 
-        width = 0
+        if not blocks:
+            continue
 
-        if len(parts) > 1:
-            match = re.match(
-                r"(\d+)w",
-                parts[1]
-            )
+        score = 0
 
-            if match:
-                width = int(
-                    match.group(1)
-                )
+        for block in blocks:
+            if not isinstance(block, dict):
+                continue
 
-        candidates.append(
-            (width, image_url)
-        )
+            block_type = str(
+                block.get("type")
+                or block.get("blockType")
+                or ""
+            ).lower()
+
+            if block_type in {
+                "paragraph",
+                "text",
+                "heading",
+                "subheading",
+                "image",
+                "video",
+                "legacyMedia",
+                "legacy_media",
+            }:
+                score += 3
+
+        if score > 0:
+            candidates.append((score, blocks))
+
+    return candidates
+
+
+def extract_text_from_bbc_blocks(data, standfirst):
+    candidates = collect_block_lists(data)
 
     if not candidates:
         return ""
 
-    candidates.sort(
-        key=lambda item: item[0],
-        reverse=True
-    )
+    scored = []
 
-    return candidates[0][1]
+    for score, blocks in candidates:
+        paragraphs = []
 
+        for block in blocks:
+            if not isinstance(block, dict):
+                continue
 
-def extract_images(soup, article, main_image):
-    images = []
-
-    if main_image:
-        images.append(main_image)
-
-    if article is None:
-        return images
-
-    for image in article.find_all("img"):
-        src = ""
-
-        srcset = (
-            image.get("srcset")
-            or image.get("data-srcset")
-            or ""
-        )
-
-        if srcset:
-            src = choose_srcset_image(
-                srcset
-            )
-
-        if not src:
-            src = (
-                image.get("data-src")
-                or image.get("data-lazy-src")
-                or image.get("src")
+            block_type = str(
+                block.get("type")
+                or block.get("blockType")
                 or ""
-            )
+            ).lower()
 
-        if not src:
-            continue
+            if block_type in {
+                "paragraph",
+                "text",
+                "heading",
+                "subheading",
+            }:
+                text = extract_text_from_block(block)
 
-        src = urljoin(
-            "https://www.bbc.co.uk/",
-            src
+                if text:
+                    paragraphs.append(text)
+
+        cleaned = clean_article_paragraphs(
+            paragraphs,
+            standfirst,
         )
 
-        if src not in images:
-            images.append(src)
-
-    return images
-
-
-def extract_videos(article):
-    videos = []
-
-    if article is None:
-        return videos
-
-    for video in article.find_all("video"):
-        src = video.get("src")
-
-        if src:
-            videos.append(
-                urljoin(
-                    "https://www.bbc.co.uk/",
-                    src
+        if len(cleaned) >= 100:
+            scored.append(
+                (
+                    len(cleaned),
+                    score,
+                    cleaned,
                 )
             )
 
-        for source in video.find_all(
-            "source"
+    if not scored:
+        return ""
+
+    scored.sort(
+        key=lambda item: (item[0], item[1]),
+        reverse=True,
+    )
+
+    return scored[0][2]
+
+
+def extract_article_text_from_json(
+    next_data,
+    simorgh_data,
+    standfirst,
+):
+    candidates = []
+
+    if next_data:
+        text = extract_text_from_bbc_blocks(
+            next_data,
+            standfirst,
+        )
+
+        if len(text) >= 100:
+            candidates.append(text)
+
+    if simorgh_data:
+        text = extract_text_from_bbc_blocks(
+            simorgh_data,
+            standfirst,
+        )
+
+        if len(text) >= 100:
+            candidates.append(text)
+
+    if not candidates:
+        return ""
+
+    return max(
+        candidates,
+        key=len,
+    )
+
+
+def is_placeholder_image(url):
+    lower = url.lower()
+
+    return any(
+        pattern in lower
+        for pattern in PLACEHOLDER_IMAGE_PATTERNS
+    )
+
+
+def image_identity(url):
+    value = url.lower()
+
+    value = re.sub(
+        r"\?.*$",
+        "",
+        value,
+    )
+
+    value = re.sub(
+        r"/\d+/[^/]+/",
+        "/",
+        value,
+    )
+
+    value = value.replace(
+        ".webp",
+        "",
+    )
+
+    return value
+
+
+def extract_images(soup, schema, base_url):
+    images = []
+
+    if schema:
+        image_data = schema.get("image")
+
+        if isinstance(image_data, str):
+            images.append(
+                normalize_url(
+                    image_data,
+                    base_url,
+                )
+            )
+
+        elif isinstance(image_data, dict):
+            value = (
+                image_data.get("url")
+                or image_data.get("contentUrl")
+            )
+
+            if value:
+                images.append(
+                    normalize_url(
+                        value,
+                        base_url,
+                    )
+                )
+
+        elif isinstance(image_data, list):
+            for item in image_data:
+                if isinstance(item, str):
+                    images.append(
+                        normalize_url(
+                            item,
+                            base_url,
+                        )
+                    )
+                elif isinstance(item, dict):
+                    value = (
+                        item.get("url")
+                        or item.get("contentUrl")
+                    )
+
+                    if value:
+                        images.append(
+                            normalize_url(
+                                value,
+                                base_url,
+                            )
+                        )
+
+    for meta in soup.find_all(
+        "meta",
+        property=re.compile(
+            r"^og:image$",
+            re.IGNORECASE,
+        ),
+    ):
+        content = meta.get("content")
+
+        if content:
+            images.append(
+                normalize_url(
+                    content,
+                    base_url,
+                )
+            )
+
+    for image in soup.find_all("img"):
+        candidates = []
+
+        srcset = image.get("srcset")
+
+        if srcset:
+            for item in srcset.split(","):
+                url = item.strip().split(" ")[0]
+
+                if url:
+                    candidates.append(url)
+
+        for attr in (
+            "data-src",
+            "data-lazy-src",
+            "data-original",
+            "src",
         ):
+            value = image.get(attr)
+
+            if value:
+                candidates.append(value)
+
+        for candidate in candidates:
+            normalized = normalize_url(
+                candidate,
+                base_url,
+            )
+
+            if normalized:
+                images.append(normalized)
+
+    result = []
+    seen = set()
+
+    for image_url in images:
+        if not image_url:
+            continue
+
+        if image_url.startswith("data:"):
+            continue
+
+        if is_placeholder_image(image_url):
+            continue
+
+        identity = image_identity(image_url)
+
+        if identity in seen:
+            continue
+
+        seen.add(identity)
+        result.append(image_url)
+
+    return result
+
+
+def find_media_url(value):
+    if isinstance(value, str):
+        for pattern in VIDEO_URL_PATTERNS:
+            match = re.search(
+                pattern,
+                value,
+                re.IGNORECASE,
+            )
+
+            if match:
+                return match.group(0)
+
+        return ""
+
+    if isinstance(value, dict):
+        for key in (
+            "url",
+            "src",
+            "uri",
+            "mediaUrl",
+            "videoUrl",
+            "contentUrl",
+        ):
+            candidate = value.get(key)
+
+            if isinstance(candidate, str):
+                if (
+                    candidate.startswith("http://")
+                    or candidate.startswith("https://")
+                ):
+                    if any(
+                        extension in candidate.lower()
+                        for extension in (
+                            ".mp4",
+                            ".m3u8",
+                            ".webm",
+                        )
+                    ):
+                        return candidate
+
+        for child in value.values():
+            result = find_media_url(child)
+
+            if result:
+                return result
+
+    elif isinstance(value, list):
+        for item in value:
+            result = find_media_url(item)
+
+            if result:
+                return result
+
+    return ""
+
+
+def extract_videos_from_json(data, base_url):
+    videos = []
+
+    if not data:
+        return videos
+
+    for obj in recursive_walk(data):
+        if not isinstance(obj, dict):
+            continue
+
+        block_type = str(
+            obj.get("type")
+            or obj.get("blockType")
+            or ""
+        ).lower()
+
+        if block_type not in {
+            "video",
+            "legacymedia",
+            "media",
+        }:
+            continue
+
+        model = obj.get(
+            "model",
+            obj,
+        )
+
+        video_url = find_media_url(model)
+
+        if video_url:
+            videos.append(
+                normalize_url(
+                    video_url,
+                    base_url,
+                )
+            )
+
+    return videos
+
+
+def extract_videos_from_dom(soup, base_url):
+    videos = []
+
+    for video in soup.find_all("video"):
+        for source in video.find_all("source"):
             src = source.get("src")
 
             if src:
                 videos.append(
-                    urljoin(
-                        "https://www.bbc.co.uk/",
-                        src
+                    normalize_url(
+                        src,
+                        base_url,
                     )
                 )
 
-    for iframe in article.find_all(
-        "iframe"
-    ):
-        src = iframe.get(
-            "src",
-            ""
-        )
+        src = video.get("src")
+
+        if src:
+            videos.append(
+                normalize_url(
+                    src,
+                    base_url,
+                )
+            )
+
+    for iframe in soup.find_all("iframe"):
+        src = iframe.get("src")
+
+        if not src:
+            continue
+
+        lower = src.lower()
 
         if (
-            "youtube.com" in src
-            or "youtu.be" in src
-            or "vimeo.com" in src
+            "youtube.com" in lower
+            or "youtu.be" in lower
+            or "vimeo.com" in lower
+            or "bbc.co.uk" in lower
+            or "bbc.com" in lower
         ):
             videos.append(
-                urljoin(
-                    "https://www.bbc.co.uk/",
-                    src
+                normalize_url(
+                    src,
+                    base_url,
                 )
             )
 
-    unique_videos = []
+    return videos
+
+
+def extract_videos(
+    soup,
+    next_data,
+    simorgh_data,
+    base_url,
+):
+    videos = []
+
+    videos.extend(
+        extract_videos_from_json(
+            next_data,
+            base_url,
+        )
+    )
+
+    videos.extend(
+        extract_videos_from_json(
+            simorgh_data,
+            base_url,
+        )
+    )
+
+    videos.extend(
+        extract_videos_from_dom(
+            soup,
+            base_url,
+        )
+    )
+
+    result = []
+    seen = set()
 
     for video in videos:
-        if video not in unique_videos:
-            unique_videos.append(video)
+        if not video:
+            continue
 
-    return unique_videos
-
-
-def scrape(url):
-    if not is_valid_url(url):
-        return {
-            "page_type": "",
-            "title": "",
-            "text": "",
-            "author": "",
-            "published_at": "",
-            "standfirst": "",
-            "main_image": "",
-            "images": [],
-            "videos": [],
-            "url": url,
-            "status": "error",
-            "error": "Invalid BBC URL."
-        }
-
-    try:
-        session = requests.Session()
-        session.headers.update(HEADERS)
-
-        response = session.get(
-            url,
-            timeout=30
+        identity = re.sub(
+            r"\?.*$",
+            "",
+            video.lower(),
         )
 
-        response.raise_for_status()
+        if identity in seen:
+            continue
 
-        soup = BeautifulSoup(
-            response.content,
-            "html.parser"
-        )
+        seen.add(identity)
+        result.append(video)
 
-        json_ld_data = extract_json_ld(
-            soup
-        )
+    return result
 
-        article_schema = find_article_schema(
-            json_ld_data
-        )
 
-        title = extract_title(
-            soup,
-            article_schema
-        )
+def build_result(
+    url,
+    title="",
+    text="",
+    author="",
+    published_at="",
+    standfirst="",
+    main_image="",
+    images=None,
+    videos=None,
+    page_type="article",
+    status="success",
+    error="",
+):
+    images = images or []
+    videos = videos or []
 
-        author = extract_author(
-            article_schema,
-            soup
-        )
-
-        published_at = extract_published_at(
-            article_schema,
-            soup
-        )
-
-        standfirst = extract_standfirst(
-            article_schema,
-            soup
-        )
-
-        article = extract_article(
-            soup
-        )
-
-        text = extract_article_text(
-            article,
-            standfirst
-        )
-
-        main_image = get_meta_content(
-            soup,
-            property_name="og:image"
-        )
-
-        if not main_image:
-            schema_image = article_schema.get(
-                "image",
-                ""
-            )
-
-            if isinstance(
-                schema_image,
-                list
-            ):
-                if schema_image:
-                    schema_image = schema_image[0]
-
-            if isinstance(
-                schema_image,
-                dict
-            ):
-                schema_image = (
-                    schema_image.get(
-                        "url",
-                        ""
-                    )
-                )
-
-            main_image = clean_text(
-                str(schema_image)
-            )
-
-        if main_image:
-            main_image = urljoin(
-                url,
-                main_image
-            )
-
-        images = extract_images(
-            soup,
-            article,
-            main_image
-        )
-
-        videos = extract_videos(
-            article
-        )
-
-        if not title:
-            return {
-                "page_type": "article",
-                "title": "",
-                "text": "",
-                "author": author,
-                "published_at": published_at,
-                "standfirst": standfirst,
-                "main_image": main_image,
-                "images": images,
-                "videos": videos,
-                "url": url,
-                "status": "error",
-                "error": (
-                    "Article title could not "
-                    "be extracted."
-                )
-            }
-
-        if len(text) < 100:
-            return {
-                "page_type": "article",
-                "title": title,
-                "text": text,
-                "author": author,
-                "published_at": published_at,
-                "standfirst": standfirst,
-                "main_image": main_image,
-                "images": images,
-                "videos": videos,
-                "url": url,
-                "status": "error",
-                "error": (
-                    "Article text could not be "
-                    "extracted or is too short."
-                )
-            }
-
-        return {
-            "page_type": "article",
-            "title": title,
+    return {
+        "url": url,
+        "title": title,
+        "scraped_data": {
             "text": text,
             "author": author,
             "published_at": published_at,
@@ -798,46 +1066,161 @@ def scrape(url):
             "main_image": main_image,
             "images": images,
             "videos": videos,
-            "url": url,
-            "status": "success"
-        }
+        },
+        "page_type": page_type,
+        "status": status,
+        "error": error,
+    }
 
-    except requests.RequestException as error:
-        return {
-            "page_type": "",
-            "title": "",
-            "text": "",
-            "author": "",
-            "published_at": "",
-            "standfirst": "",
-            "main_image": "",
-            "images": [],
-            "videos": [],
-            "url": url,
-            "status": "error",
-            "error": str(error)
-        }
 
-    except Exception as error:
-        return {
-            "page_type": "",
-            "title": "",
-            "text": "",
-            "author": "",
-            "published_at": "",
-            "standfirst": "",
-            "main_image": "",
-            "images": [],
-            "videos": [],
-            "url": url,
-            "status": "error",
-            "error": (
-                f"Unexpected scraper error: {error}"
-            )
-        }
+def scrape(url):
+    if not is_bbc_url(url):
+        return build_result(
+            url=url,
+            page_type="unsupported",
+            status="error",
+            error="URL is not a supported BBC domain.",
+        )
+
+    if is_iplayer_url(url):
+        return build_result(
+            url=url,
+            page_type="video",
+            status="unsupported",
+            error="BBC iPlayer pages are not supported by this scraper.",
+        )
+
+    try:
+        response = requests.get(
+            url,
+            headers=BASE_HEADERS,
+            timeout=30,
+        )
+
+        response.raise_for_status()
+
+    except Exception as exc:
+        return build_result(
+            url=url,
+            status="error",
+            error=f"Request failed: {exc}",
+        )
+
+    soup = BeautifulSoup(
+        response.text,
+        "html.parser",
+    )
+
+    json_ld = extract_json_ld(soup)
+    schema = find_article_schema(json_ld)
+
+    next_data = extract_next_data(soup)
+    simorgh_data = extract_simorgh_data(soup)
+
+    title = extract_title(
+        soup,
+        schema,
+    )
+
+    author = extract_author(
+        soup,
+        schema,
+    )
+
+    published_at = extract_published_at(
+        soup,
+        schema,
+    )
+
+    standfirst = extract_standfirst(
+        soup,
+        schema,
+    )
+
+    text = extract_article_text_from_json(
+        next_data,
+        simorgh_data,
+        standfirst,
+    )
+
+    if len(text) < 100:
+        text = extract_article_text_from_dom(
+            soup,
+            standfirst,
+        )
+
+    images = extract_images(
+        soup,
+        schema,
+        url,
+    )
+
+    videos = extract_videos(
+        soup,
+        next_data,
+        simorgh_data,
+        url,
+    )
+
+    main_image = images[0] if images else ""
+
+    if len(text) < 100:
+        return build_result(
+            url=url,
+            title=title,
+            text=text,
+            author=author,
+            published_at=published_at,
+            standfirst=standfirst,
+            main_image=main_image,
+            images=images,
+            videos=videos,
+            page_type="article",
+            status="error",
+            error=(
+                "Article text could not be extracted "
+                "or is too short."
+            ),
+        )
+
+    return build_result(
+        url=url,
+        title=title,
+        text=text,
+        author=author,
+        published_at=published_at,
+        standfirst=standfirst,
+        main_image=main_image,
+        images=images,
+        videos=videos,
+        page_type="article",
+        status="success",
+        error="",
+    )
 
 
 if __name__ == "__main__":
+    import sys
+
+    if len(sys.argv) < 2:
+        print(
+            json.dumps(
+                {
+                    "status": "error",
+                    "error": "URL argument is required.",
+                },
+                ensure_ascii=False,
+                indent=2,
+            )
+        )
+        sys.exit(1)
+
+    result = scrape(sys.argv[1])
+
     print(
-        "BBC Technology scraper loaded successfully."
+        json.dumps(
+            result,
+            ensure_ascii=False,
+            indent=2,
+        )
     )
