@@ -1,0 +1,64 @@
+{
+  "news": [
+    {
+      "title": "Redefining enterprise intelligence with autonomous AI",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/02/1143774/redefining-enterprise-intelligence-with-autonomous-ai/",
+      "published_at": "Fri, 02 Oct 2026 15:49:04 +0000",
+      "collected_at": "2026-10-02T21:14:30.828606+00:00",
+      "scraped_data": {
+        "page_type": "article",
+        "title": "Redefining enterprise intelligence with autonomous AI",
+        "text": "Enterprise AI is no longer a future ambition. It is in full operational flight. Model capabilities are advancing faster than most organizations can absorb, while the cost of performance continues to fall. Globally, AI investment is set to reach $2.5 trillion in 2026, up 44% from the previous year. For many enterprises, this investment has…\n\nIn partnership withUniphore\n\nEnterprise AI is no longer a future ambition. It is in full operational flight. Model capabilities are advancing faster than most organizations can absorb, while the cost of performance continues to fall. Globally, AI investment is set to reach $2.5 trillion in 2026, up 44% from the previous year.\n\nFor many enterprises, this investment has produced fragmentation. Intelligence can accumulate in silos so that sales agents are unaware of open support tickets, for instance, or marketing systems are personalizing content without visibility into what finance already knows about a customer. Each function may perform well in isolation, but the enterprise as a whole learns little and has less information to act upon.\n\nThe shift from AI as a tool to AI as an operating model—what we call the “agentic shift” in this report—demands something more fundamental than better models or faster infrastructure. It requires connecting people, processes, and data in real time, along with the governance and control to act on that intelligence reliably.\n\nThis means rethinking both architecture and operating models simultaneously. First, rebuilding data infrastructure for accessibility rather than volume. Second, replacing fixed tech stacks with composable architectures that can evolve as models and tools change. And, lastly, resolving questions of AI sovereignty, including where intelligence runs, who controls it, and how it operates across organizational and jurisdictional boundaries.\n\nKey findings include the following:\n\nEnterprise AI’s scaling problem is structural. Process-first companies are pulling ahead. Global AI spending is rising sharply and model capabilities are advancing faster than most organizations can integrate them. Yet the majority of enterprises are still not growing revenue through AI or fundamentally rethinking how they operate. The companies generating sustained returns share a common discipline. They treat process redesign as the work that precedes model selection, building for how the technology will evolve rather than retrofitting roles and workflows after deployment. For them, the agentic shift begins with the operating model.\n\nData readiness, not data abundance, is what makes AI compoundable. Most enterprises discover too late that having data and having AI-ready data are very different things. A sovereign, composable foundation—one that queries and prepares data where it resides, without migration or centralization—can convert raw data estates into intelligence that AI agents can act upon. As data residency laws, multicloud environments, and structural complexity make centralization increasingly impractical, sovereign control over where models run and data lives is what keeps that adaptability intact.\n\nDownload the report.\n\nThis content was produced by Insights, MIT Technology Review’s custom content arm, not its editorial staff. It was researched and written by humans, with any AI tools that may have been used limited to production processes under human oversight.",
+        "author": "MIT Technology Review Insights",
+        "published_at": "2026-10-02T11:49:04-04:00",
+        "standfirst": "Enterprise AI is no longer a future ambition. It is in full operational flight. Model capabilities are advancing faster than most organizations can absorb, while the cost of performance continues to fall. Globally, AI investment is set to reach $2.5 trillion in 2026, up 44% from the previous year. For many enterprises, this investment has…",
+        "main_image": "https://wp.technologyreview.com/wp-content/uploads/2026/09/Uniphore-Social-Card-1.png?resize=1200,600",
+        "images": [
+          "https://wp.technologyreview.com/wp-content/uploads/2026/09/Uniphore-Social-Card-1.png?resize=1200,600",
+          "https://wp.technologyreview.com/wp-content/uploads/2026/09/Uniphore-Report-2026-UPDATE-cover.png",
+          "https://wp.technologyreview.com/wp-content/uploads/2026/09/Uniphore-Social-Card-2-1.png"
+        ],
+        "videos": [],
+        "url": "https://www.technologyreview.com/2026/10/02/1143774/redefining-enterprise-intelligence-with-autonomous-ai/",
+        "status": "success"
+      },
+      "group_id": "G0001"
+    },
+    {
+      "title": "The Download: a biological de-aging contest and why LLMs don’t reason",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/02/1145666/the-download-biological-de-aging-ai-reasoning/",
+      "published_at": "Fri, 02 Oct 2026 12:10:00 +0000",
+      "collected_at": "2026-10-02T21:14:30.828621+00:00",
+      "scraped_data": {
+        "page_type": "newsletter",
+        "title": "The Download: a biological de-aging contest and why LLMs don’t reason",
+        "text": "",
+        "author": "Thomas Macaulay",
+        "published_at": "2026-10-02T08:10:00-04:00",
+        "standfirst": "OpenAI says rogue agents may have affected more than 100 organizations.",
+        "main_image": "",
+        "images": [],
+        "videos": [],
+        "url": "https://www.technologyreview.com/2026/10/02/1145666/the-download-biological-de-aging-ai-reasoning/",
+        "status": "skipped"
+      },
+      "group_id": "G0002"
+    }
+  ],
+  "generated_content": {
+    "G0001": {
+      "text": "Redefining enterprise intelligence with autonomous AI",
+      "images": [],
+      "videos": []
+    },
+    "G0002": {
+      "text": "The Download: a biological de-aging contest and why LLMs don’t reason",
+      "images": [],
+      "videos": []
+    }
+  }
+}
