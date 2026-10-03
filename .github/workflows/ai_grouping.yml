@@ -1,10 +1,10 @@
-name: AI News Grouping and Content Generation
+name: AI News Pipeline
 
 on:
   workflow_dispatch:
 
 jobs:
-  ai-grouping-and-content-generation:
+  ai-news-pipeline:
     runs-on: ubuntu-latest
 
     steps:
@@ -36,6 +36,10 @@ jobs:
       - name: Check G1 output
         run: |
           ls -lh G1_NewsAfterAIContentGenerationRun.json
+
+      - name: Run Telegram Interface
+        run: |
+          python I0_TelegramInterface.py
 
       - name: Commit and push results
         run: |
