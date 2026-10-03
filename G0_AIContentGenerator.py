@@ -14,28 +14,23 @@ def main():
 
     print(f"Total news: {len(news)}")
 
-    first_article_of_group = {}
+    generated_content = {}
 
     for article in news:
         group_id = article.get("group_id")
 
-        if group_id not in first_article_of_group:
-            first_article_of_group[group_id] = article
+        if group_id not in generated_content:
+            generated_content[group_id] = {
+                "text": article.get("title", ""),
+                "images": [],
+                "videos": []
+            }
 
-    print(f"Total groups: {len(first_article_of_group)}")
-
-    for group_id, first_article in first_article_of_group.items():
-
-        generated_content = {
-            "text": first_article.get("title", "")
-        }
-
-        for article in news:
-            if article.get("group_id") == group_id:
-                article["generated_content"] = generated_content
+    print(f"Total groups: {len(generated_content)}")
 
     output = {
-        "news": news
+        "news": news,
+        "generated_content": generated_content
     }
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as file:
@@ -43,7 +38,7 @@ def main():
 
     print()
     print("G0 completed.")
-    print(f"Groups processed: {len(first_article_of_group)}")
+    print(f"Groups processed: {len(generated_content)}")
     print(f"Output: {OUTPUT_FILE}")
 
 
