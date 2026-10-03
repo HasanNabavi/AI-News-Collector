@@ -1,20 +1,20 @@
 {
   "news": [
     {
-      "title": "Redefining enterprise intelligence with autonomous AI",
-      "source": "MIT Technology Review",
+      "title": "All the AI agents that can live in your text messages",
+      "source": "TechCrunch",
       "category": "AI",
-      "url": "https://www.technologyreview.com/2026/10/02/1143774/redefining-enterprise-intelligence-with-autonomous-ai/",
-      "published_at": "Fri, 02 Oct 2026 15:49:04 +0000",
-      "collected_at": "2026-10-02T21:14:30.828606+00:00"
+      "url": "https://techcrunch.com/2026/10/03/all-the-ai-agents-that-can-live-in-your-text-messages/",
+      "published_at": "Sat, 03 Oct 2026 14:00:00 +0000",
+      "collected_at": "2026-10-03T20:47:12.947081+00:00"
     },
     {
-      "title": "The Download: a biological de-aging contest and why LLMs don’t reason",
-      "source": "MIT Technology Review",
-      "category": "AI",
-      "url": "https://www.technologyreview.com/2026/10/02/1145666/the-download-biological-de-aging-ai-reasoning/",
-      "published_at": "Fri, 02 Oct 2026 12:10:00 +0000",
-      "collected_at": "2026-10-02T21:14:30.828621+00:00"
+      "title": "Tech Now",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/iplayer/episode/m0032n6v?at_medium=RSS&at_campaign=rss",
+      "published_at": "Sat, 03 Oct 2026 01:00:00 GMT",
+      "collected_at": "2026-10-03T20:47:13.164956+00:00"
     }
   ]
 }
