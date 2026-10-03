@@ -2,4 +2,3 @@ feedparser
 jdatetime
 requests
 beautifulsoup4
-sentence-transformers
