@@ -1,4 +1,4 @@
-name: AI News Pipeline
+name: Skeleton Pipeline 
 
 on:
   workflow_dispatch:
