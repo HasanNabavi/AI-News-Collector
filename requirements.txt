@@ -2,3 +2,5 @@ feedparser
 jdatetime
 requests
 beautifulsoup4
+trafilatura
+newspaper4k
