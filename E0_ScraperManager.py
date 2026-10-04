@@ -83,17 +83,27 @@ def scrape_news_item(news_item):
         ""
     )
 
+    # ---------------------------------------------------------
+    # Missing source or URL is an error.
+    # A skipped item means that the scraper intentionally
+    # decided not to process the page.
+    # ---------------------------------------------------------
+
     if not source:
         print(
-            "Action: skip - source is empty."
+            "Action: error - source is empty."
         )
-        return None
+        return None, "error"
 
     if not url:
         print(
-            "Action: skip - URL is empty."
+            "Action: error - URL is empty."
         )
-        return None
+        return None, "error"
+
+    # ---------------------------------------------------------
+    # Load the scraper associated with this news source.
+    # ---------------------------------------------------------
 
     scraper, error = load_scraper(
         source
@@ -103,7 +113,15 @@ def scrape_news_item(news_item):
         print(
             f"Action: error - {error}"
         )
-        return None
+        return None, "error"
+
+    # ---------------------------------------------------------
+    # Scraper contract:
+    #
+    # dict  -> successful scraping
+    # None  -> intentional skip
+    # Exception -> scraping error
+    # ---------------------------------------------------------
 
     try:
         scraped_data = scraper.scrape(
@@ -116,20 +134,27 @@ def scrape_news_item(news_item):
             f"scraper execution failed: "
             f"{type(error).__name__}: {error}"
         )
-        return None
+        return None, "error"
 
     # ---------------------------------------------------------
-    # None means that the scraper decided to skip this item.
+    # None means that the scraper intentionally skipped
+    # this page.
     #
-    # For example, BBC scraper returns None when the URL
-    # is not an article.
+    # Example:
+    # BBC scraper receives an iPlayer/video URL instead
+    # of a /news/articles/ URL.
     # ---------------------------------------------------------
 
     if scraped_data is None:
         print(
             "Action: skip - scraper rejected this page."
         )
-        return None
+        return None, "skipped"
+
+    # ---------------------------------------------------------
+    # A scraper must return a dictionary when scraping
+    # succeeds.
+    # ---------------------------------------------------------
 
     if not isinstance(
         scraped_data,
@@ -139,7 +164,12 @@ def scrape_news_item(news_item):
             "Action: error - scraper returned "
             "an invalid result."
         )
-        return None
+        return None, "error"
+
+    # ---------------------------------------------------------
+    # Preserve the original RSS-level news data and add
+    # the scraped data.
+    # ---------------------------------------------------------
 
     result_item = news_item.copy()
 
@@ -147,7 +177,7 @@ def scrape_news_item(news_item):
         scraped_data
     )
 
-    return result_item
+    return result_item, "success"
 
 
 def scrape_manager():
@@ -157,13 +187,20 @@ def scrape_manager():
     print(
         "AI & Robotics Scraper Manager"
     )
+
     print(
         "=" * 40
     )
 
     processed_news = []
 
-    skipped_news = 0
+    success_count = 0
+    skipped_count = 0
+    error_count = 0
+
+    # ---------------------------------------------------------
+    # Process every news item.
+    # ---------------------------------------------------------
 
     for index, news_item in enumerate(
         news,
@@ -190,21 +227,54 @@ def scrape_manager():
             f"Title: {title}"
         )
 
-        result_item = scrape_news_item(
-            news_item
+        result_item, result_status = (
+            scrape_news_item(news_item)
         )
 
-        if result_item is None:
-            skipped_news += 1
-            continue
+        # -----------------------------------------------------
+        # Success
+        # -----------------------------------------------------
 
-        processed_news.append(
-            result_item
-        )
+        if result_status == "success":
 
-        print(
-            "Action: scraped successfully."
-        )
+            processed_news.append(
+                result_item
+            )
+
+            success_count += 1
+
+            print(
+                "Action: scraped successfully."
+            )
+
+        # -----------------------------------------------------
+        # Skipped
+        # -----------------------------------------------------
+
+        elif result_status == "skipped":
+
+            skipped_count += 1
+
+        # -----------------------------------------------------
+        # Error
+        # -----------------------------------------------------
+
+        elif result_status == "error":
+
+            error_count += 1
+
+    # ---------------------------------------------------------
+    # Create E1 output.
+    # ---------------------------------------------------------
+
+    output_data = {
+        "scraping_summary": {
+            "success": success_count,
+            "skipped": skipped_count,
+            "errors": error_count
+        },
+        "news": processed_news
+    }
 
     with open(
         OUTPUT_FILE,
@@ -213,13 +283,15 @@ def scrape_manager():
     ) as file:
 
         json.dump(
-            {
-                "news": processed_news
-            },
+            output_data,
             file,
             ensure_ascii=False,
             indent=2
         )
+
+    # ---------------------------------------------------------
+    # Final run summary
+    # ---------------------------------------------------------
 
     print()
     print(
@@ -231,13 +303,19 @@ def scrape_manager():
     )
 
     print(
-        f"Scraped news: "
-        f"{len(processed_news)}"
+        f"Success: {success_count}"
     )
 
     print(
-        f"Skipped news: "
-        f"{skipped_news}"
+        f"Skipped: {skipped_count}"
+    )
+
+    print(
+        f"Errors: {error_count}"
+    )
+
+    print(
+        f"Output news: {len(processed_news)}"
     )
 
     print(
