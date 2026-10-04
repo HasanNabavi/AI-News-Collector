@@ -20,8 +20,8 @@ HEADERS = {
 }
 
 
-def is_iplayer_url(url):
-    return "/iplayer/" in url.lower()
+def is_article_url(url):
+    return "/news/articles/" in url.lower()
 
 
 def empty_scraped_data():
@@ -206,38 +206,26 @@ def extract_videos_from_html(soup, url):
 
 
 def scrape(url):
-    if not url:
-        return {
-            "scraped_data": empty_scraped_data(),
-            "page_type": "unknown",
-            "status": "error",
-            "error": "URL is empty.",
-        }
 
-    if is_iplayer_url(url):
-        return {
-            "scraped_data": empty_scraped_data(),
-            "page_type": "video",
-            "status": "unsupported",
-            "error": (
-                "BBC iPlayer pages are not supported "
-                "by this scraper."
-            ),
-        }
+    # ---------------------------------------------------------
+    # Page type detection
+    # ---------------------------------------------------------
+
+    if not url:
+        return None
+
+    if not is_article_url(url):
+        return None
+
+    # ---------------------------------------------------------
+    # Download article page
+    # ---------------------------------------------------------
 
     try:
         html = get_html(url)
 
-    except Exception as e:
-        return {
-            "scraped_data": empty_scraped_data(),
-            "page_type": "article",
-            "status": "error",
-            "error": (
-                f"Failed to download page: "
-                f"{type(e).__name__}: {e}"
-            ),
-        }
+    except Exception:
+        return None
 
     soup = BeautifulSoup(
         html,
@@ -315,27 +303,14 @@ def scrape(url):
     # ---------------------------------------------------------
 
     if not text or len(text.strip()) < 100:
-        return {
-            "scraped_data": {
-                "text": text,
-                "main_image": main_image,
-                "videos": videos,
-            },
-            "page_type": "article",
-            "status": "error",
-            "error": (
-                "Article text could not be extracted "
-                "or is too short."
-            ),
-        }
+        return None
+
+    # ---------------------------------------------------------
+    # Final scraped data
+    # ---------------------------------------------------------
 
     return {
-        "scraped_data": {
-            "text": text,
-            "main_image": main_image,
-            "videos": videos,
-        },
-        "page_type": "article",
-        "status": "success",
-        "error": "",
+        "text": text,
+        "main_image": main_image,
+        "videos": videos,
     }
