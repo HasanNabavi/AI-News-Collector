@@ -27,9 +27,7 @@ def is_iplayer_url(url):
 def empty_scraped_data():
     return {
         "text": "",
-        "author": "",
         "published_at": "",
-        "standfirst": "",
         "main_image": "",
         "videos": [],
     }
@@ -65,6 +63,7 @@ def extract_with_trafilatura(html, url):
 
         if text:
             result["text"] = text.strip()
+
     except Exception:
         pass
 
@@ -290,8 +289,6 @@ def extract_videos_from_html(soup, url):
 def scrape(url):
     if not url:
         return {
-            "url": url,
-            "title": "",
             "scraped_data": empty_scraped_data(),
             "page_type": "unknown",
             "status": "error",
@@ -300,8 +297,6 @@ def scrape(url):
 
     if is_iplayer_url(url):
         return {
-            "url": url,
-            "title": "",
             "scraped_data": empty_scraped_data(),
             "page_type": "video",
             "status": "unsupported",
@@ -316,8 +311,6 @@ def scrape(url):
 
     except Exception as e:
         return {
-            "url": url,
-            "title": "",
             "scraped_data": empty_scraped_data(),
             "page_type": "article",
             "status": "error",
@@ -426,13 +419,9 @@ def scrape(url):
 
     if not text or len(text.strip()) < 100:
         return {
-            "url": url,
-            "title": title,
             "scraped_data": {
                 "text": text,
-                "author": author,
                 "published_at": published_at,
-                "standfirst": standfirst,
                 "main_image": main_image,
                 "videos": videos,
             },
@@ -445,13 +434,9 @@ def scrape(url):
         }
 
     return {
-        "url": url,
-        "title": title,
         "scraped_data": {
             "text": text,
-            "author": author,
             "published_at": published_at,
-            "standfirst": standfirst,
             "main_image": main_image,
             "videos": videos,
         },
