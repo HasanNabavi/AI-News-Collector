@@ -9,19 +9,29 @@ SCRAPERS_DIR = Path("Scrapers")
 
 
 def load_news():
-    with open(INPUT_FILE, "r", encoding="utf-8") as file:
+    with open(
+        INPUT_FILE,
+        "r",
+        encoding="utf-8"
+    ) as file:
         data = json.load(file)
 
     return data.get("news", [])
 
 
 def load_scraper(source):
-    scraper_filename = source.replace(" ", "_") + ".py"
-    scraper_path = SCRAPERS_DIR / scraper_filename
+    scraper_filename = (
+        source.replace(" ", "_") + ".py"
+    )
+
+    scraper_path = (
+        SCRAPERS_DIR / scraper_filename
+    )
 
     if not scraper_path.exists():
         return None, (
-            f"Scraper file not found: {scraper_path}"
+            f"Scraper file not found: "
+            f"{scraper_path}"
         )
 
     module_name = (
@@ -41,8 +51,12 @@ def load_scraper(source):
         )
 
     try:
-        module = importlib.util.module_from_spec(spec)
+        module = (
+            importlib.util.module_from_spec(spec)
+        )
+
         spec.loader.exec_module(module)
+
     except Exception as error:
         return None, (
             f"Scraper import error: {error}"
@@ -58,66 +72,104 @@ def load_scraper(source):
 
 
 def scrape_news_item(news_item):
-    source = news_item.get("source", "")
-    url = news_item.get("url", "")
+
+    source = news_item.get(
+        "source",
+        ""
+    )
+
+    url = news_item.get(
+        "url",
+        ""
+    )
+
+    if not source:
+        print(
+            "Action: skip - source is empty."
+        )
+        return None
+
+    if not url:
+        print(
+            "Action: skip - URL is empty."
+        )
+        return None
+
+    scraper, error = load_scraper(
+        source
+    )
+
+    if scraper is None:
+        print(
+            f"Action: error - {error}"
+        )
+        return None
+
+    try:
+        scraped_data = scraper.scrape(
+            url
+        )
+
+    except Exception as error:
+        print(
+            "Action: error - "
+            f"scraper execution failed: "
+            f"{type(error).__name__}: {error}"
+        )
+        return None
+
+    # ---------------------------------------------------------
+    # None means that the scraper decided to skip this item.
+    #
+    # For example, BBC scraper returns None when the URL
+    # is not an article.
+    # ---------------------------------------------------------
+
+    if scraped_data is None:
+        print(
+            "Action: skip - scraper rejected this page."
+        )
+        return None
+
+    if not isinstance(
+        scraped_data,
+        dict
+    ):
+        print(
+            "Action: error - scraper returned "
+            "an invalid result."
+        )
+        return None
 
     result_item = news_item.copy()
 
-    if not source:
-        result_item["scraped_data"] = {
-            "status": "error",
-            "error": "News source is empty."
-        }
-        return result_item
-
-    if not url:
-        result_item["scraped_data"] = {
-            "status": "error",
-            "error": "News URL is empty."
-        }
-        return result_item
-
-    scraper, error = load_scraper(source)
-
-    if scraper is None:
-        result_item["scraped_data"] = {
-            "status": "error",
-            "error": error
-        }
-        return result_item
-
-    try:
-        scraped_data = scraper.scrape(url)
-
-        if not isinstance(scraped_data, dict):
-            scraped_data = {
-                "status": "error",
-                "error": (
-                    "Scraper returned an invalid result. "
-                    "Expected a dictionary."
-                )
-            }
-
-    except Exception as error:
-        scraped_data = {
-            "status": "error",
-            "error": f"Scraper execution error: {error}"
-        }
-
-    result_item["scraped_data"] = scraped_data
+    result_item["scraped_data"] = (
+        scraped_data
+    )
 
     return result_item
 
 
 def scrape_manager():
+
     news = load_news()
 
-    print("AI & Robotics Scraper Manager")
-    print("=" * 40)
+    print(
+        "AI & Robotics Scraper Manager"
+    )
+    print(
+        "=" * 40
+    )
 
     processed_news = []
 
-    for index, news_item in enumerate(news, start=1):
+    skipped_news = 0
+
+    for index, news_item in enumerate(
+        news,
+        start=1
+    ):
+
         title = news_item.get(
             "title",
             "No title"
@@ -129,51 +181,68 @@ def scrape_manager():
         )
 
         print()
-        print(f"[{index}/{len(news)}] {source}")
-        print(f"Title: {title}")
-        print("Action: scraping...")
-
-        result_item = scrape_news_item(news_item)
-
-        scraped_status = result_item.get(
-            "scraped_data",
-            {}
-        ).get(
-            "status",
-            "unknown"
+        print(
+            f"[{index}/{len(news)}] "
+            f"{source}"
         )
 
-        print(f"Scraper status: {scraped_status}")
+        print(
+            f"Title: {title}"
+        )
 
-        if scraped_status == "error":
-            error_message = result_item[
-                "scraped_data"
-            ].get(
-                "error",
-                "Unknown scraper error."
-            )
+        result_item = scrape_news_item(
+            news_item
+        )
 
-            print(f"Error: {error_message}")
+        if result_item is None:
+            skipped_news += 1
+            continue
 
-        processed_news.append(result_item)
+        processed_news.append(
+            result_item
+        )
+
+        print(
+            "Action: scraped successfully."
+        )
 
     with open(
         OUTPUT_FILE,
         "w",
         encoding="utf-8"
     ) as file:
+
         json.dump(
-            {"news": processed_news},
+            {
+                "news": processed_news
+            },
             file,
             ensure_ascii=False,
             indent=2
         )
 
     print()
-    print("=" * 40)
-    print(f"Input news: {len(news)}")
-    print(f"Output news: {len(processed_news)}")
-    print("Scraper Manager completed.")
+    print(
+        "=" * 40
+    )
+
+    print(
+        f"Input news: {len(news)}"
+    )
+
+    print(
+        f"Scraped news: "
+        f"{len(processed_news)}"
+    )
+
+    print(
+        f"Skipped news: "
+        f"{skipped_news}"
+    )
+
+    print(
+        "Scraper Manager completed."
+    )
 
 
 if __name__ == "__main__":
