@@ -27,7 +27,6 @@ def is_iplayer_url(url):
 def empty_scraped_data():
     return {
         "text": "",
-        "published_at": "",
         "main_image": "",
         "videos": [],
     }
@@ -45,12 +44,9 @@ def get_html(url):
     return response.text
 
 
-def extract_with_trafilatura(html, url):
+def extract_with_trafilatura(html):
     result = {
         "text": "",
-        "author": "",
-        "published_at": "",
-        "title": "",
     }
 
     try:
@@ -70,23 +66,10 @@ def extract_with_trafilatura(html, url):
     try:
         metadata = trafilatura.bare_extraction(
             html,
-            url=url,
         )
 
         if metadata:
             data = metadata.as_dict()
-
-            result["title"] = (
-                data.get("title") or ""
-            ).strip()
-
-            result["author"] = (
-                data.get("author") or ""
-            ).strip()
-
-            result["published_at"] = (
-                data.get("date") or ""
-            ).strip()
 
             structured_text = (
                 data.get("text") or ""
@@ -103,10 +86,7 @@ def extract_with_trafilatura(html, url):
 
 def extract_with_newspaper(url):
     result = {
-        "title": "",
         "text": "",
-        "author": "",
-        "published_at": "",
         "main_image": "",
         "videos": [],
     }
@@ -117,22 +97,9 @@ def extract_with_newspaper(url):
             language="en",
         )
 
-        result["title"] = (
-            article.title or ""
-        ).strip()
-
         result["text"] = (
             article.text or ""
         ).strip()
-
-        result["author"] = ", ".join(
-            article.authors or []
-        ).strip()
-
-        if article.publish_date:
-            result["published_at"] = str(
-                article.publish_date
-            )
 
         result["main_image"] = (
             article.top_image or ""
@@ -146,54 +113,6 @@ def extract_with_newspaper(url):
         pass
 
     return result
-
-
-def extract_standfirst(soup):
-    candidates = [
-        soup.find(
-            "meta",
-            attrs={"property": "og:description"},
-        ),
-        soup.find(
-            "meta",
-            attrs={"name": "description"},
-        ),
-    ]
-
-    for tag in candidates:
-        if tag and tag.get("content"):
-            return tag["content"].strip()
-
-    return ""
-
-
-def extract_title_from_html(soup):
-    h1 = soup.find("h1")
-
-    if h1:
-        title = h1.get_text(
-            " ",
-            strip=True,
-        )
-
-        if title:
-            return title
-
-    og_title = soup.find(
-        "meta",
-        attrs={"property": "og:title"},
-    )
-
-    if og_title and og_title.get("content"):
-        return og_title["content"].strip()
-
-    if soup.title:
-        return soup.title.get_text(
-            " ",
-            strip=True,
-        )
-
-    return ""
 
 
 def extract_images_from_html(soup, url):
@@ -330,8 +249,7 @@ def scrape(url):
     # ---------------------------------------------------------
 
     trafilatura_data = extract_with_trafilatura(
-        html,
-        url,
+        html
     )
 
     # ---------------------------------------------------------
@@ -339,20 +257,12 @@ def scrape(url):
     # ---------------------------------------------------------
 
     newspaper_data = extract_with_newspaper(
-        url,
+        url
     )
 
     # ---------------------------------------------------------
     # Basic HTML data
     # ---------------------------------------------------------
-
-    html_title = extract_title_from_html(
-        soup
-    )
-
-    standfirst = extract_standfirst(
-        soup
-    )
 
     html_images = extract_images_from_html(
         soup,
@@ -367,32 +277,19 @@ def scrape(url):
     # ---------------------------------------------------------
     # Select best available values
     #
-    # For this test we intentionally prefer:
-    # Trafilatura -> Newspaper4k -> HTML
+    # Text:
+    # Trafilatura -> Newspaper4k
     #
-    # We will NOT make a final decision about the best
-    # extractor until we inspect E0 output.
+    # Main image:
+    # Newspaper4k -> HTML
+    #
+    # Videos:
+    # Newspaper4k + HTML
     # ---------------------------------------------------------
-
-    title = (
-        trafilatura_data["title"]
-        or newspaper_data["title"]
-        or html_title
-    )
 
     text = (
         trafilatura_data["text"]
         or newspaper_data["text"]
-    )
-
-    author = (
-        trafilatura_data["author"]
-        or newspaper_data["author"]
-    )
-
-    published_at = (
-        trafilatura_data["published_at"]
-        or newspaper_data["published_at"]
     )
 
     main_image = (
@@ -421,7 +318,6 @@ def scrape(url):
         return {
             "scraped_data": {
                 "text": text,
-                "published_at": published_at,
                 "main_image": main_image,
                 "videos": videos,
             },
@@ -436,7 +332,6 @@ def scrape(url):
     return {
         "scraped_data": {
             "text": text,
-            "published_at": published_at,
             "main_image": main_image,
             "videos": videos,
         },
