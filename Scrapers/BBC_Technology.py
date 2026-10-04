@@ -219,13 +219,12 @@ def scrape(url):
 
     # ---------------------------------------------------------
     # Download article page
+    #
+    # Any download failure is a real scraping error.
+    # Let the exception propagate to E0.
     # ---------------------------------------------------------
 
-    try:
-        html = get_html(url)
-
-    except Exception:
-        return None
+    html = get_html(url)
 
     soup = BeautifulSoup(
         html,
@@ -300,10 +299,17 @@ def scrape(url):
 
     # ---------------------------------------------------------
     # Validation
+    #
+    # Article was identified correctly, but its content
+    # could not be extracted sufficiently.
+    # This is a real scraping error, not a skip.
     # ---------------------------------------------------------
 
     if not text or len(text.strip()) < 100:
-        return None
+        raise RuntimeError(
+            "Article text could not be extracted "
+            "or is too short."
+        )
 
     # ---------------------------------------------------------
     # Final scraped data
