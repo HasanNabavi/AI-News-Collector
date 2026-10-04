@@ -31,7 +31,6 @@ def empty_scraped_data():
         "published_at": "",
         "standfirst": "",
         "main_image": "",
-        "images": [],
         "videos": [],
     }
 
@@ -78,8 +77,14 @@ def extract_with_trafilatura(html, url):
         if metadata:
             data = metadata.as_dict()
 
-            result["title"] = (data.get("title") or "").strip()
-            result["author"] = (data.get("author") or "").strip()
+            result["title"] = (
+                data.get("title") or ""
+            ).strip()
+
+            result["author"] = (
+                data.get("author") or ""
+            ).strip()
+
             result["published_at"] = (
                 data.get("date") or ""
             ).strip()
@@ -104,7 +109,6 @@ def extract_with_newspaper(url):
         "author": "",
         "published_at": "",
         "main_image": "",
-        "images": [],
         "videos": [],
     }
 
@@ -134,10 +138,6 @@ def extract_with_newspaper(url):
         result["main_image"] = (
             article.top_image or ""
         ).strip()
-
-        result["images"] = list(
-            article.images or []
-        )
 
         result["videos"] = list(
             article.movies or []
@@ -411,15 +411,6 @@ def scrape(url):
         )
     )
 
-    images = []
-
-    for image in (
-        newspaper_data["images"]
-        + html_images
-    ):
-        if image and image not in images:
-            images.append(image)
-
     videos = []
 
     for video in (
@@ -443,7 +434,6 @@ def scrape(url):
                 "published_at": published_at,
                 "standfirst": standfirst,
                 "main_image": main_image,
-                "images": images,
                 "videos": videos,
             },
             "page_type": "article",
@@ -463,7 +453,6 @@ def scrape(url):
             "published_at": published_at,
             "standfirst": standfirst,
             "main_image": main_image,
-            "images": images,
             "videos": videos,
         },
         "page_type": "article",
