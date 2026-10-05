@@ -1,0 +1,677 @@
+{
+  "test_summary": {
+    "input_news": 21,
+    "successful": 21,
+    "errors": 0
+  },
+  "news": [
+    {
+      "title": "OpenAI fires workers for 'mishandling sensitive information'",
+      "url": "https://www.bbc.co.uk/news/articles/c6y9z9r4ejzwo?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [
+        "https://ichef.bbci.co.uk/ace/standard/994/cpsprodpb/136d/live/561b92b0-bdf9-11f1-a76b-bdcdab65a1b7.jpg"
+      ],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": [
+        {
+          "figure_number": 1,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/994/cpsprodpb/136d/live/561b92b0-bdf9-11f1-a76b-bdcdab65a1b7.jpg"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/994/cpsprodpb/136d/live/561b92b0-bdf9-11f1-a76b-bdcdab65a1b7.jpg",
+              "alt": "Sam Altman, CEO of OpenAI, speaks to an audience. He is seated in front of the American flag.",
+              "caption": "Image caption, OpenAI chief executive Sam Altman"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Crypto thieves attack man in home and threaten to kill pregnant wife's baby in 'horrific' robbery",
+      "url": "https://www.bbc.co.uk/news/articles/c6eq84eygz0qo?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [
+        "https://ichef.bbci.co.uk/ace/standard/1008/cpsprodpb/3f19/live/024fc570-bcb9-11f1-bc2e-018d645d8d21.png",
+        "https://ichef.bbci.co.uk/ace/standard/1680/cpsprodpb/efb1/live/7ced5610-bcd9-11f1-afec-ebbb2634c4cd.jpg",
+        "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/80c1/live/7a4731e0-2128-11f0-9060-674316cb3a1f.png"
+      ],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": [
+        {
+          "figure_number": 2,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/1008/cpsprodpb/3f19/live/024fc570-bcb9-11f1-bc2e-018d645d8d21.png"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/1008/cpsprodpb/3f19/live/024fc570-bcb9-11f1-bc2e-018d645d8d21.png",
+              "alt": "Hospial shot of bad head wound",
+              "caption": "Image caption, 'James' suffered multiple major injuries to his head, hands and ribs"
+            }
+          }
+        },
+        {
+          "figure_number": 3,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/1680/cpsprodpb/efb1/live/7ced5610-bcd9-11f1-afec-ebbb2634c4cd.jpg"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/1680/cpsprodpb/efb1/live/7ced5610-bcd9-11f1-afec-ebbb2634c4cd.jpg",
+              "alt": "Man in light bliue jacket and balaclava",
+              "caption": "Image caption, Crimestoppers hopes people might be able to identify the criminals"
+            }
+          }
+        },
+        {
+          "figure_number": 4,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/80c1/live/7a4731e0-2128-11f0-9060-674316cb3a1f.png"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/80c1/live/7a4731e0-2128-11f0-9060-674316cb3a1f.png",
+              "alt": "A green promotional banner with black squares and rectangles forming pixels, moving in from the right. The text says: âTech Decoded: The worldâs biggest tech news in your inbox every Monday.â",
+              "caption": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Trump's AI rebrand causes 'unprecedented' demand for Slovenian website names",
+      "url": "https://www.bbc.co.uk/news/articles/cqx2z23xj555o?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [
+        "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/4ff7/live/977f2bf0-bd85-11f1-ab03-fd866f8788d0.jpg",
+        "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/41d3/live/348b21e0-26a8-11f0-8f57-b7237f6a66e6.png"
+      ],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": [
+        {
+          "figure_number": 1,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/4ff7/live/977f2bf0-bd85-11f1-ab03-fd866f8788d0.jpg"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/4ff7/live/977f2bf0-bd85-11f1-ab03-fd866f8788d0.jpg",
+              "alt": "President Trump in a blue suit and red tie, which has an american flag pin badge on the jacket, sitting in front of white red and blue flag background. The word United States is in front of him.",
+              "caption": ""
+            }
+          }
+        },
+        {
+          "figure_number": 2,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/41d3/live/348b21e0-26a8-11f0-8f57-b7237f6a66e6.png"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/41d3/live/348b21e0-26a8-11f0-8f57-b7237f6a66e6.png",
+              "alt": "A green promotional banner with black squares and rectangles forming pixels, moving in from the right. The text says: âTech Decoded: The worldâs biggest tech news in your inbox every Monday.â",
+              "caption": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "AI boom could trigger market shocks, Bank of England boss warns",
+      "url": "https://www.bbc.co.uk/news/articles/cv8e30enrkxyo?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [
+        "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/884f/live/79710d80-bd0e-11f1-88b1-671c34af7444.jpg",
+        "https://ichef.bbci.co.uk/ace/standard/1920/cpsprodpb/edae/live/33951910-bd62-11f1-babe-4199b0e7ccea.png"
+      ],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": [
+        {
+          "figure_number": 2,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/884f/live/79710d80-bd0e-11f1-88b1-671c34af7444.jpg"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/884f/live/79710d80-bd0e-11f1-88b1-671c34af7444.jpg",
+              "alt": "A close up of Bank of England Governor Andrew Bailey looking to one side wearing a navy suit and white shirt",
+              "caption": ""
+            }
+          }
+        },
+        {
+          "figure_number": 3,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/1920/cpsprodpb/edae/live/33951910-bd62-11f1-babe-4199b0e7ccea.png"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/1920/cpsprodpb/edae/live/33951910-bd62-11f1-babe-4199b0e7ccea.png",
+              "alt": "A thin, grey banner promoting the News Daily newsletter. On the right, there is a graphic of an orange sphere with two concentric crescent shapes around it in a red-orange gradient, like a sound wave. The banner reads: âThe latest news in your inbox first thing.â\n\n",
+              "caption": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Tiny image sparks big backlash in Nikon photo contest",
+      "url": "https://www.bbc.co.uk/news/articles/ck4gjn1yzprno?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [
+        "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/41d3/live/348b21e0-26a8-11f0-8f57-b7237f6a66e6.png"
+      ],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": [
+        {
+          "figure_number": 2,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/41d3/live/348b21e0-26a8-11f0-8f57-b7237f6a66e6.png"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/41d3/live/348b21e0-26a8-11f0-8f57-b7237f6a66e6.png",
+              "alt": "A green promotional banner with black squares and rectangles forming pixels, moving in from the right. The text says: âTech Decoded: The worldâs biggest tech news in your inbox every Monday.â",
+              "caption": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "The AI telling farmers when to harvest",
+      "url": "https://www.bbc.co.uk/news/articles/cgk53dkmyxko?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [
+        "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/874b/live/cbc27c20-acfd-11f1-bc1f-3f186ca4140c.jpg",
+        "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/baa5/live/9ad8d3a0-aac0-11f1-b109-879e35c24276.png",
+        "https://ichef.bbci.co.uk/ace/standard/1248/cpsprodpb/ed3e/live/e59eefb0-aabf-11f1-b109-879e35c24276.jpg",
+        "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/fc8a/live/399f5770-aac1-11f1-a291-b542ee92de7c.jpg"
+      ],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": [
+        {
+          "figure_number": 1,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/874b/live/cbc27c20-acfd-11f1-bc1f-3f186ca4140c.jpg"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/874b/live/cbc27c20-acfd-11f1-bc1f-3f186ca4140c.jpg",
+              "alt": "Harvested blueberries pour into a blue container at a farm in Harrington, Maine.",
+              "caption": "Image caption, Choosing the right moment to harvest can be a make-or-break decision"
+            }
+          }
+        },
+        {
+          "figure_number": 2,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/baa5/live/9ad8d3a0-aac0-11f1-b109-879e35c24276.png"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/baa5/live/9ad8d3a0-aac0-11f1-b109-879e35c24276.png",
+              "alt": "Smiling and wearing a blue checked shirt, Raymond Martin stands in greenhouse next to strawberry plants.",
+              "caption": "Image caption, There's only a small window for picking berries says Raymond Martin"
+            }
+          }
+        },
+        {
+          "figure_number": 3,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/1248/cpsprodpb/ed3e/live/e59eefb0-aabf-11f1-b109-879e35c24276.jpg"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/1248/cpsprodpb/ed3e/live/e59eefb0-aabf-11f1-b109-879e35c24276.jpg",
+              "alt": "Yasaman Ghasempour (left) and graduate student Atsutse Kludze inspect two rows of tomatoes ",
+              "caption": "Image caption, Yasaman Ghasempour (left) is developing ripeness detection techniques"
+            }
+          }
+        },
+        {
+          "figure_number": 4,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/fc8a/live/399f5770-aac1-11f1-a291-b542ee92de7c.jpg"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/fc8a/live/399f5770-aac1-11f1-a291-b542ee92de7c.jpg",
+              "alt": "Wearing glasses and a lavender-coloured jacket, Jing Zhang stands in an orchard holding her phone.",
+              "caption": "Image caption, Jing Zhang says new tech has to prove its worth to farmers"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Regulating AI 'not the right place to start' says Bailey",
+      "url": "https://www.bbc.co.uk/news/articles/cvzez7k0pn40o?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [
+        "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/e249/live/7e528b30-bcb4-11f1-a3e9-bbda6f9b9e25.jpg"
+      ],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": [
+        {
+          "figure_number": 1,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/e249/live/7e528b30-bcb4-11f1-a3e9-bbda6f9b9e25.jpg"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/e249/live/7e528b30-bcb4-11f1-a3e9-bbda6f9b9e25.jpg",
+              "alt": "Governor of the Bank of England, Andrew Bailey, talks during a Bank of England Monetary Policy Report press conference. He is wearing a dark suit and tie.",
+              "caption": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "WhatsApp introduces optional parental controls for teenagers",
+      "url": "https://www.bbc.co.uk/news/articles/cm986x65we88o?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [
+        "https://ichef.bbci.co.uk/ace/standard/925/cpsprodpb/f4b8/live/e7f33150-bcc5-11f1-ae14-0b840f99ba59.jpg",
+        "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/41d3/live/348b21e0-26a8-11f0-8f57-b7237f6a66e6.png"
+      ],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": [
+        {
+          "figure_number": 1,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/925/cpsprodpb/f4b8/live/e7f33150-bcc5-11f1-ae14-0b840f99ba59.jpg"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/925/cpsprodpb/f4b8/live/e7f33150-bcc5-11f1-ae14-0b840f99ba59.jpg",
+              "alt": "Young person with curly brown hair lying on a sofa, looking at a white phone",
+              "caption": ""
+            }
+          }
+        },
+        {
+          "figure_number": 2,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/41d3/live/348b21e0-26a8-11f0-8f57-b7237f6a66e6.png"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/41d3/live/348b21e0-26a8-11f0-8f57-b7237f6a66e6.png",
+              "alt": "A green promotional banner with black squares and rectangles forming pixels, moving in from the right. The text says: âTech Decoded: The worldâs biggest tech news in your inbox every Monday.â",
+              "caption": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "OpenAI unveils AI assistant 'dots' while safety worries delay new model",
+      "url": "https://www.bbc.co.uk/news/articles/cw7v42rp083eo?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [
+        "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/1d0f/live/83220850-bc2a-11f1-bd53-1b67dc8fba34.jpg"
+      ],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": [
+        {
+          "figure_number": 1,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/1d0f/live/83220850-bc2a-11f1-bd53-1b67dc8fba34.jpg"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/1d0f/live/83220850-bc2a-11f1-bd53-1b67dc8fba34.jpg",
+              "alt": "OpenAI CEO Sam Altman standing on stage at his company's annual developer conference in front of a screen with \"dots\" displayed behind it.",
+              "caption": "Image caption, Sam Altman has spoken repeatedly in recent weeks about the risks posed by AI agents."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Three takeaways from Trump's 'Super Intelligence' summit",
+      "url": "https://www.bbc.co.uk/news/articles/cme30dz5vkzko?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [
+        "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/1c6e/live/311c64e0-bc86-11f1-bd21-bdf910f2cec6.jpg",
+        "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/6fe2/live/190c20a0-bc65-11f1-990d-93a606ee502f.jpg",
+        "https://ichef.bbci.co.uk/ace/standard/999/cpsprodpb/f5a9/live/44c6e400-bc65-11f1-bc1f-3f186ca4140c.jpg"
+      ],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": [
+        {
+          "figure_number": 1,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/1c6e/live/311c64e0-bc86-11f1-bd21-bdf910f2cec6.jpg"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/1c6e/live/311c64e0-bc86-11f1-bd21-bdf910f2cec6.jpg",
+              "alt": "US President Donald Trump and SpacexAI Founder and CEO Elon Musk speak to the media at the White House driveway following a luncheon for tech leaders in the East Room, in Washington, DC, US, 29 September 29, 2026.",
+              "caption": "Image caption, Trump met top tech leaders at the White House on Tuesday to discuss AI"
+            }
+          }
+        },
+        {
+          "figure_number": 2,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/6fe2/live/190c20a0-bc65-11f1-990d-93a606ee502f.jpg"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/6fe2/live/190c20a0-bc65-11f1-990d-93a606ee502f.jpg",
+              "alt": "US President Donald Trump, center, speaks during a meeting with tech executives on artificial intelligence in the East Room of the White House in Washington, DC, US, on Tuesday, Sept. 29, 2026. ",
+              "caption": "Image caption, Trump with top tech leaders at the White House on Tuesday"
+            }
+          }
+        },
+        {
+          "figure_number": 3,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/999/cpsprodpb/f5a9/live/44c6e400-bc65-11f1-bc1f-3f186ca4140c.jpg"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/999/cpsprodpb/f5a9/live/44c6e400-bc65-11f1-bc1f-3f186ca4140c.jpg",
+              "alt": "US President Donald J. Trump (2-R), with Speaker of the House Mike Johnson (R), responds to a question from the news media outside the West Wing of the White House in Washington, DC, USA, 29 September 2026.",
+              "caption": "Image caption, Trump spoke to the media alongside tech executives after the summit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Chinese AI tool told researchers how to make bioweapons",
+      "url": "https://www.bbc.co.uk/news/articles/cmrergq3j7lgo?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [
+        "https://ichef.bbci.co.uk/ace/standard/962/cpsprodpb/925f/live/79ba4b60-bc25-11f1-bd53-1b67dc8fba34.jpg",
+        "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/41d3/live/348b21e0-26a8-11f0-8f57-b7237f6a66e6.png"
+      ],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": [
+        {
+          "figure_number": 1,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/962/cpsprodpb/925f/live/79ba4b60-bc25-11f1-bd53-1b67dc8fba34.jpg"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/962/cpsprodpb/925f/live/79ba4b60-bc25-11f1-bd53-1b67dc8fba34.jpg",
+              "alt": "Moonshot AI logo on a smartphone",
+              "caption": ""
+            }
+          }
+        },
+        {
+          "figure_number": 2,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/41d3/live/348b21e0-26a8-11f0-8f57-b7237f6a66e6.png"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/41d3/live/348b21e0-26a8-11f0-8f57-b7237f6a66e6.png",
+              "alt": "A green promotional banner with black squares and rectangles forming pixels, moving in from the right. The text says: âTech Decoded: The worldâs biggest tech news in your inbox every Monday.â",
+              "caption": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "The start-ups hoping to return battery making to the US",
+      "url": "https://www.bbc.co.uk/news/articles/cvgyexx4g8ro?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [
+        "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/ab91/live/bbe97560-a5e1-11f1-aed2-8d6da8d75094.jpg",
+        "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/d964/live/16e38f00-a5e2-11f1-a291-b542ee92de7c.jpg",
+        "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/732f/live/b4898ad0-a5e6-11f1-b109-879e35c24276.jpg",
+        "https://ichef.bbci.co.uk/ace/standard/1056/cpsprodpb/d42a/live/5c36ce00-a5e7-11f1-b109-879e35c24276.png"
+      ],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": [
+        {
+          "figure_number": 1,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/ab91/live/bbe97560-a5e1-11f1-aed2-8d6da8d75094.jpg"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/ab91/live/bbe97560-a5e1-11f1-aed2-8d6da8d75094.jpg",
+              "alt": "People walk across jets of water in a public square in Paris",
+              "caption": "Image caption, Europe's heatwave has boosted demand for battery storage systems"
+            }
+          }
+        },
+        {
+          "figure_number": 2,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/d964/live/16e38f00-a5e2-11f1-a291-b542ee92de7c.jpg"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/d964/live/16e38f00-a5e2-11f1-a291-b542ee92de7c.jpg",
+              "alt": "Darren Tan, co-founder and chief executive",
+              "caption": "Image caption, Darren Tan founded Unigrid - a maker of sodium ion batteries"
+            }
+          }
+        },
+        {
+          "figure_number": 3,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/732f/live/b4898ad0-a5e6-11f1-b109-879e35c24276.jpg"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/732f/live/b4898ad0-a5e6-11f1-b109-879e35c24276.jpg",
+              "alt": "Smiling, the three founders of Emerald Battery Labs are standing next to each other wearing white lab coats.",
+              "caption": "Image caption, Emerald Battery Labs founders (left to right) Aric Stocks, Kjell Schroder, David Bell"
+            }
+          }
+        },
+        {
+          "figure_number": 4,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/1056/cpsprodpb/d42a/live/5c36ce00-a5e7-11f1-b109-879e35c24276.png"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/1056/cpsprodpb/d42a/live/5c36ce00-a5e7-11f1-b109-879e35c24276.png",
+              "alt": "48 Alsym Energy batteries, which look a bit like regular AA batteries, are assembled in an eight by six grid. ",
+              "caption": "Image caption, Alysm sodium ion batteries are made in the US"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Oura pulls $15bn stock market listing days after announcement",
+      "url": "https://www.bbc.co.uk/news/articles/cjwyz5v190qwo?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [
+        "https://ichef.bbci.co.uk/ace/standard/936/cpsprodpb/fc0e/live/21da3ca0-bc1d-11f1-a9cf-939723882d7f.jpg"
+      ],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": [
+        {
+          "figure_number": 1,
+          "images": [
+            "https://ichef.bbci.co.uk/ace/standard/936/cpsprodpb/fc0e/live/21da3ca0-bc1d-11f1-a9cf-939723882d7f.jpg"
+          ],
+          "videos": [],
+          "video_posters": [],
+          "details": {
+            "image": {
+              "url": "https://ichef.bbci.co.uk/ace/standard/936/cpsprodpb/fc0e/live/21da3ca0-bc1d-11f1-a9cf-939723882d7f.jpg",
+              "alt": "Tom Hale, chief executive at Oura, wears an Oura ring at an event in Lisbon, Portugal",
+              "caption": "Image caption, Oura's chief executive Tom Hale wears one of the company's smart rings"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Tech Life",
+      "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyh?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": []
+    },
+    {
+      "title": "Tech Life",
+      "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyg?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": []
+    },
+    {
+      "title": "Tech Life",
+      "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyf?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": []
+    },
+    {
+      "title": "Tech Life",
+      "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyd?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": []
+    },
+    {
+      "title": "Tech Now",
+      "url": "https://www.bbc.co.uk/iplayer/episode/m0032n6v?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": []
+    },
+    {
+      "title": "Tech Now",
+      "url": "https://www.bbc.co.uk/iplayer/episode/m0032d9k?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": []
+    },
+    {
+      "title": "Tech Now",
+      "url": "https://www.bbc.co.uk/iplayer/episode/m0032301?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": []
+    },
+    {
+      "title": "Tech Now",
+      "url": "https://www.bbc.co.uk/iplayer/episode/m0031qjy?at_medium=RSS&at_campaign=rss",
+      "status": "success",
+      "error": "",
+      "images": [],
+      "videos": [],
+      "video_posters": [],
+      "figure_results": []
+    }
+  ]
+}
