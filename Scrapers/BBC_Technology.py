@@ -1,6 +1,7 @@
 import requests
 import trafilatura
 import newspaper
+import yt_dlp
 
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
@@ -88,7 +89,6 @@ def extract_with_newspaper(url):
     result = {
         "text": "",
         "main_image": "",
-        "videos": [],
     }
 
     try:
@@ -104,10 +104,6 @@ def extract_with_newspaper(url):
         result["main_image"] = (
             article.top_image or ""
         ).strip()
-
-        result["videos"] = list(
-            article.movies or []
-        )
 
     except Exception:
         pass
@@ -158,51 +154,47 @@ def extract_images_from_html(soup, url):
     return images
 
 
-def extract_videos_from_html(soup, url):
+def extract_videos_with_yt_dlp(url):
     videos = []
 
-    for video in soup.find_all("video"):
-        src = video.get("src")
+    try:
+        options = {
+            "quiet": True,
+            "no_warnings": True,
+            "skip_download": True,
+            "extract_flat": False,
+        }
 
-        if src:
-            videos.append(
-                urljoin(url, src)
+        with yt_dlp.YoutubeDL(options) as ydl:
+            info = ydl.extract_info(
+                url,
+                download=False,
             )
 
-        for source in video.find_all("source"):
-            source_src = source.get("src")
+        if not info:
+            return videos
 
-            if source_src:
-                videos.append(
-                    urljoin(url, source_src)
-                )
+        entries = info.get("entries")
 
-    for iframe in soup.find_all("iframe"):
-        src = iframe.get("src")
+        if entries is None:
+            entries = [info]
 
-        if not src:
-            continue
+        for entry in entries:
+            if not entry:
+                continue
 
-        src = urljoin(url, src)
+            video_url = entry.get("url")
 
-        lowered = src.lower()
+            if (
+                video_url
+                and video_url not in videos
+            ):
+                videos.append(video_url)
 
-        if (
-            "youtube.com" in lowered
-            or "youtu.be" in lowered
-            or "vimeo.com" in lowered
-            or "bbc.co.uk" in lowered
-            or "bbc.com" in lowered
-        ):
-            videos.append(src)
+    except Exception:
+        pass
 
-    unique_videos = []
-
-    for video in videos:
-        if video not in unique_videos:
-            unique_videos.append(video)
-
-    return unique_videos
+    return videos
 
 
 def scrape(url):
@@ -256,9 +248,15 @@ def scrape(url):
         url,
     )
 
-    html_videos = extract_videos_from_html(
-        soup,
-        url,
+    # ---------------------------------------------------------
+    # YouTube-DL / yt-dlp
+    #
+    # Extract actual embedded BBC video streams.
+    # Only the video URLs are stored.
+    # ---------------------------------------------------------
+
+    videos = extract_videos_with_yt_dlp(
+        url
     )
 
     # ---------------------------------------------------------
@@ -271,7 +269,7 @@ def scrape(url):
     # Newspaper4k -> HTML
     #
     # Videos:
-    # Newspaper4k + HTML
+    # yt-dlp
     # ---------------------------------------------------------
 
     text = (
@@ -287,15 +285,6 @@ def scrape(url):
             else ""
         )
     )
-
-    videos = []
-
-    for video in (
-        newspaper_data["videos"]
-        + html_videos
-    ):
-        if video and video not in videos:
-            videos.append(video)
 
     # ---------------------------------------------------------
     # Validation
