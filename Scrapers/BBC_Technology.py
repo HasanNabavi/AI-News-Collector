@@ -5,6 +5,7 @@ import yt_dlp
 
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
+import json
 
 
 HEADERS = {
@@ -88,7 +89,6 @@ def extract_with_trafilatura(html):
 def extract_with_newspaper(url):
     result = {
         "text": "",
-        "main_image": "",
     }
 
     try:
@@ -101,57 +101,222 @@ def extract_with_newspaper(url):
             article.text or ""
         ).strip()
 
-        result["main_image"] = (
-            article.top_image or ""
-        ).strip()
-
     except Exception:
         pass
 
     return result
 
 
-def extract_images_from_html(soup, url):
-    images = []
+def extract_main_image(soup, url):
 
-    for img in soup.find_all("img"):
-        candidates = []
+    # ---------------------------------------------------------
+    # 1. Open Graph image
+    # ---------------------------------------------------------
 
-        for attribute in [
-            "src",
-            "data-src",
-            "data-lazy-src",
-            "data-original",
-        ]:
-            value = img.get(attribute)
+    og_image = soup.find(
+        "meta",
+        property="og:image",
+    )
 
-            if value:
-                candidates.append(value)
+    if og_image:
+        image_url = og_image.get(
+            "content"
+        )
 
-        srcset = img.get("srcset")
-
-        if srcset:
-            for item in srcset.split(","):
-                item = item.strip()
-
-                if item:
-                    candidates.append(
-                        item.split()[0]
-                    )
-
-        for image_url in candidates:
-            image_url = urljoin(
+        if image_url:
+            return urljoin(
                 url,
                 image_url,
             )
 
-            if image_url.startswith(
-                ("http://", "https://")
-            ):
-                if image_url not in images:
-                    images.append(image_url)
+    # ---------------------------------------------------------
+    # 2. Twitter image
+    # ---------------------------------------------------------
 
-    return images
+    twitter_image = soup.find(
+        "meta",
+        attrs={
+            "name": "twitter:image"
+        },
+    )
+
+    if twitter_image:
+        image_url = twitter_image.get(
+            "content"
+        )
+
+        if image_url:
+            return urljoin(
+                url,
+                image_url,
+            )
+
+    # ---------------------------------------------------------
+    # 3. JSON-LD image
+    # ---------------------------------------------------------
+
+    for script in soup.find_all(
+        "script",
+        type="application/ld+json",
+    ):
+
+        try:
+            data = json.loads(
+                script.string
+                or script.get_text()
+            )
+
+        except Exception:
+            continue
+
+        objects = []
+
+        if isinstance(data, dict):
+
+            objects.append(data)
+
+            graph = data.get(
+                "@graph"
+            )
+
+            if isinstance(
+                graph,
+                list,
+            ):
+                objects.extend(
+                    graph
+                )
+
+        elif isinstance(
+            data,
+            list,
+        ):
+            objects.extend(
+                data
+            )
+
+        for item in objects:
+
+            if not isinstance(
+                item,
+                dict,
+            ):
+                continue
+
+            image = item.get(
+                "image"
+            )
+
+            if isinstance(
+                image,
+                str,
+            ):
+                return urljoin(
+                    url,
+                    image,
+                )
+
+            if isinstance(
+                image,
+                dict,
+            ):
+
+                image_url = image.get(
+                    "url"
+                )
+
+                if image_url:
+                    return urljoin(
+                        url,
+                        image_url,
+                    )
+
+            if isinstance(
+                image,
+                list,
+            ):
+
+                for image_item in image:
+
+                    if isinstance(
+                        image_item,
+                        str,
+                    ):
+                        return urljoin(
+                            url,
+                            image_item,
+                        )
+
+                    if isinstance(
+                        image_item,
+                        dict,
+                    ):
+
+                        image_url = (
+                            image_item.get(
+                                "url"
+                            )
+                        )
+
+                        if image_url:
+                            return urljoin(
+                                url,
+                                image_url,
+                            )
+
+    # ---------------------------------------------------------
+    # 4. First image inside <figure>
+    # ---------------------------------------------------------
+
+    figure = soup.find(
+        "figure"
+    )
+
+    if figure:
+
+        img = figure.find(
+            "img"
+        )
+
+        if img:
+
+            for attribute in [
+                "src",
+                "data-src",
+                "data-lazy-src",
+                "data-original",
+            ]:
+
+                image_url = img.get(
+                    attribute
+                )
+
+                if image_url:
+                    return urljoin(
+                        url,
+                        image_url,
+                    )
+
+            srcset = img.get(
+                "srcset"
+            )
+
+            if srcset:
+
+                image_url = (
+                    srcset
+                    .split(",")[0]
+                    .strip()
+                    .split()[0]
+                )
+
+                if image_url:
+                    return urljoin(
+                        url,
+                        image_url,
+                    )
+
+    return ""
 
 
 def extract_videos_with_yt_dlp(url):
@@ -165,7 +330,10 @@ def extract_videos_with_yt_dlp(url):
             "extract_flat": False,
         }
 
-        with yt_dlp.YoutubeDL(options) as ydl:
+        with yt_dlp.YoutubeDL(
+            options
+        ) as ydl:
+
             info = ydl.extract_info(
                 url,
                 download=False,
@@ -174,22 +342,29 @@ def extract_videos_with_yt_dlp(url):
         if not info:
             return videos
 
-        entries = info.get("entries")
+        entries = info.get(
+            "entries"
+        )
 
         if entries is None:
             entries = [info]
 
         for entry in entries:
+
             if not entry:
                 continue
 
-            video_url = entry.get("url")
+            video_url = entry.get(
+                "url"
+            )
 
             if (
                 video_url
                 and video_url not in videos
             ):
-                videos.append(video_url)
+                videos.append(
+                    video_url
+                )
 
     except Exception:
         pass
@@ -216,7 +391,9 @@ def scrape(url):
     # Let the exception propagate to E0.
     # ---------------------------------------------------------
 
-    html = get_html(url)
+    html = get_html(
+        url
+    )
 
     soup = BeautifulSoup(
         html,
@@ -227,23 +404,37 @@ def scrape(url):
     # Trafilatura
     # ---------------------------------------------------------
 
-    trafilatura_data = extract_with_trafilatura(
-        html
+    trafilatura_data = (
+        extract_with_trafilatura(
+            html
+        )
     )
 
     # ---------------------------------------------------------
     # Newspaper4k
     # ---------------------------------------------------------
 
-    newspaper_data = extract_with_newspaper(
-        url
+    newspaper_data = (
+        extract_with_newspaper(
+            url
+        )
     )
 
     # ---------------------------------------------------------
-    # Basic HTML data
+    # Main image
+    #
+    # BeautifulSoup / HTML metadata:
+    #
+    # 1. og:image
+    # 2. twitter:image
+    # 3. JSON-LD image
+    # 4. first image inside <figure>
+    #
+    # This method was manually tested on
+    # 13 BBC Technology articles.
     # ---------------------------------------------------------
 
-    html_images = extract_images_from_html(
+    main_image = extract_main_image(
         soup,
         url,
     )
@@ -260,13 +451,13 @@ def scrape(url):
     )
 
     # ---------------------------------------------------------
-    # Select best available values
+    # Select best available text
     #
     # Text:
     # Trafilatura -> Newspaper4k
     #
     # Main image:
-    # Newspaper4k -> HTML
+    # BeautifulSoup / HTML metadata
     #
     # Videos:
     # yt-dlp
@@ -277,15 +468,6 @@ def scrape(url):
         or newspaper_data["text"]
     )
 
-    main_image = (
-        newspaper_data["main_image"]
-        or (
-            html_images[0]
-            if html_images
-            else ""
-        )
-    )
-
     # ---------------------------------------------------------
     # Validation
     #
@@ -294,7 +476,10 @@ def scrape(url):
     # This is a real scraping error, not a skip.
     # ---------------------------------------------------------
 
-    if not text or len(text.strip()) < 100:
+    if not text or len(
+        text.strip()
+    ) < 100:
+
         raise RuntimeError(
             "Article text could not be extracted "
             "or is too short."
