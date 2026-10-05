@@ -18,6 +18,7 @@ def extract_html_media(html):
         images = []
 
         for img in figure.find_all("img"):
+
             src = (
                 img.get("src")
                 or img.get("data-src")
@@ -43,6 +44,7 @@ def extract_html_media(html):
                 })
 
             for source in video.find_all("source"):
+
                 source_src = source.get("src")
 
                 if source_src:
@@ -52,6 +54,7 @@ def extract_html_media(html):
                     })
 
         if images or videos:
+
             figure_results.append({
                 "images": images,
                 "videos": videos
@@ -101,6 +104,7 @@ def extract_html_media(html):
             value = tag.get(attribute)
 
             if value:
+
                 global_media["media_attributes"].append({
                     "attribute": attribute,
                     "value": value
@@ -123,6 +127,9 @@ def extract_yt_dlp(url):
 
     result = {
         "success": False,
+        "entry_count": 0,
+        "video_count": 0,
+        "entries": [],
         "videos": [],
         "error": None
     }
@@ -144,37 +151,50 @@ def extract_yt_dlp(url):
             )
 
         if not info:
+
             result["success"] = True
             return result
 
         entries = info.get("entries")
 
-        if entries:
+        if entries is None:
 
-            for entry in entries:
-
-                if not entry:
-                    continue
-
-                result["videos"].append({
-                    "id": entry.get("id"),
-                    "title": entry.get("title"),
-                    "url": entry.get("url"),
-                    "webpage_url": entry.get("webpage_url"),
-                    "duration": entry.get("duration"),
-                    "ext": entry.get("ext")
-                })
+            entries = [info]
 
         else:
 
-            result["videos"].append({
-                "id": info.get("id"),
-                "title": info.get("title"),
-                "url": info.get("url"),
-                "webpage_url": info.get("webpage_url"),
-                "duration": info.get("duration"),
-                "ext": info.get("ext")
-            })
+            entries = [
+                entry
+                for entry in entries
+                if entry
+            ]
+
+        result["entry_count"] = len(entries)
+
+        for entry in entries:
+
+            entry_data = {
+                "id": entry.get("id"),
+                "title": entry.get("title"),
+                "url": entry.get("url"),
+                "webpage_url": entry.get("webpage_url"),
+                "duration": entry.get("duration"),
+                "ext": entry.get("ext")
+            }
+
+            result["entries"].append(
+                entry_data
+            )
+
+            if entry.get("url"):
+
+                result["videos"].append(
+                    entry_data
+                )
+
+        result["video_count"] = len(
+            result["videos"]
+        )
 
         result["success"] = True
 
@@ -202,7 +222,13 @@ def main():
     success_count = 0
     error_count = 0
 
-    for index, item in enumerate(news, start=1):
+    total_ytdlp_entries = 0
+    total_ytdlp_videos = 0
+
+    for index, item in enumerate(
+        news,
+        start=1
+    ):
 
         url = item.get(
             "url",
@@ -240,32 +266,62 @@ def main():
 
             response.raise_for_status()
 
-            result["html_media"] = extract_html_media(
-                response.text
+            result["html_media"] = (
+                extract_html_media(
+                    response.text
+                )
             )
 
             if (
                 "bbc.com/news/articles/" in url
-                or "bbc.co.uk/news/articles/" in url
+                or
+                "bbc.co.uk/news/articles/" in url
             ):
 
-                print("Running yt-dlp...")
+                print(
+                    "Running yt-dlp..."
+                )
 
-                result["yt_dlp"] = extract_yt_dlp(
-                    url
+                result["yt_dlp"] = (
+                    extract_yt_dlp(url)
                 )
 
                 if result["yt_dlp"]["success"]:
+
+                    entry_count = (
+                        result["yt_dlp"]
+                        ["entry_count"]
+                    )
+
+                    video_count = (
+                        result["yt_dlp"]
+                        ["video_count"]
+                    )
+
+                    total_ytdlp_entries += (
+                        entry_count
+                    )
+
+                    total_ytdlp_videos += (
+                        video_count
+                    )
+
+                    print(
+                        "yt-dlp entries:",
+                        entry_count
+                    )
+
                     print(
                         "yt-dlp videos:",
-                        len(
-                            result["yt_dlp"]["videos"]
-                        )
+                        video_count
                     )
+
                 else:
+
                     print(
                         "yt-dlp error:",
-                        result["yt_dlp"]["error"]
+                        result["yt_dlp"]
+                        ["error"]
                     )
 
             success_count += 1
@@ -282,7 +338,13 @@ def main():
         "test_summary": {
             "input_news": len(news),
             "successful": success_count,
-            "errors": error_count
+            "errors": error_count,
+            "yt_dlp_total_entries": (
+                total_ytdlp_entries
+            ),
+            "yt_dlp_total_videos": (
+                total_ytdlp_videos
+            )
         },
         "results": results
     }
@@ -311,6 +373,14 @@ def main():
     )
     print(
         f"Errors: {error_count}"
+    )
+    print(
+        "yt-dlp total entries:",
+        total_ytdlp_entries
+    )
+    print(
+        "yt-dlp total videos:",
+        total_ytdlp_videos
     )
     print("=" * 40)
 
