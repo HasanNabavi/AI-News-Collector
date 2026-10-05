@@ -28,7 +28,7 @@ def get_hashtags(category):
     if "quantum" in category:
         hashtags.append("#quantum")
 
-    if "technology" in category and "#ai" not in hashtags:
+    if "technology" in category and "#technology" not in hashtags:
         hashtags.append("#technology")
 
     if not hashtags:
@@ -105,11 +105,6 @@ def format_article(article):
         f"📢 {CHANNEL_ID}"
     )
 
-    # Media priority:
-    # 1. All videos
-    # 2. Main image
-    # 3. No media
-
     if videos:
         media_type = "video"
         media_urls = videos
@@ -145,6 +140,7 @@ def main():
         "r",
         encoding="utf-8"
     ) as file:
+
         data = json.load(file)
 
     news = data.get(
