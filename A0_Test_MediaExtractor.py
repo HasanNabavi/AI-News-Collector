@@ -1,530 +1,290 @@
 import json
-import re
 import requests
 from bs4 import BeautifulSoup
-from urllib.parse import urljoin
+import yt_dlp
 
 
 INPUT_FILE = "C1_NewsAfterLinkEquivalencyRun.json"
 OUTPUT_FILE = "A1_Test_MediaExtractor.json"
 
-REQUEST_TIMEOUT = 30
 
-SCRIPT_KEYWORDS = [
-    "data-media-vpid",
-    "media-vpid",
-    "mediaMeta",
-    "media-meta",
-    "data-playable",
-    "bbcmedia",
-    "vpid",
-]
+def extract_html_media(html):
+    soup = BeautifulSoup(html, "html.parser")
 
+    figure_results = []
 
-def load_news():
-    with open(
-        INPUT_FILE,
-        "r",
-        encoding="utf-8"
-    ) as file:
-        data = json.load(file)
+    for figure in soup.find_all("figure"):
 
-    return data.get("news", [])
-
-
-def fetch_page(url):
-    response = requests.get(
-        url,
-        timeout=REQUEST_TIMEOUT,
-        headers={
-            "User-Agent": (
-                "Mozilla/5.0 "
-                "(Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 "
-                "(KHTML, like Gecko) "
-                "Chrome/140.0 Safari/537.36"
-            )
-        }
-    )
-
-    response.raise_for_status()
-
-    return response.text
-
-
-def clean_url(url, base_url):
-    if not url:
-        return ""
-
-    return urljoin(
-        base_url,
-        url.strip()
-    )
-
-
-def extract_figure_results(soup, page_url):
-    results = []
-
-    figures = soup.find_all("figure")
-
-    for figure_number, figure in enumerate(
-        figures,
-        start=1
-    ):
         images = []
 
-        for image in figure.find_all("img"):
+        for img in figure.find_all("img"):
             src = (
-                image.get("src")
-                or image.get("data-src")
-                or image.get("data-original")
-                or ""
+                img.get("src")
+                or img.get("data-src")
+                or img.get("data-lazy-src")
             )
 
             if src:
                 images.append({
-                    "url": clean_url(
-                        src,
-                        page_url
-                    ),
-                    "alt": image.get(
-                        "alt",
-                        ""
-                    )
+                    "url": src,
+                    "alt": img.get("alt", "")
                 })
 
         videos = []
 
         for video in figure.find_all("video"):
-            video_data = {
-                "src": clean_url(
-                    video.get("src", ""),
-                    page_url
-                ),
-                "poster": clean_url(
-                    video.get("poster", ""),
-                    page_url
-                )
-            }
 
-            sources = []
+            src = video.get("src")
+
+            if src:
+                videos.append({
+                    "url": src,
+                    "poster": video.get("poster", "")
+                })
 
             for source in video.find_all("source"):
-                source_url = source.get(
-                    "src",
-                    ""
-                )
+                source_src = source.get("src")
 
-                if source_url:
-                    sources.append(
-                        clean_url(
-                            source_url,
-                            page_url
-                        )
-                    )
-
-            if sources:
-                video_data["sources"] = sources
-
-            videos.append(video_data)
+                if source_src:
+                    videos.append({
+                        "url": source_src,
+                        "poster": video.get("poster", "")
+                    })
 
         if images or videos:
-            result = {
-                "figure_number": figure_number
-            }
+            figure_results.append({
+                "images": images,
+                "videos": videos
+            })
 
-            if images:
-                result["images"] = images
-
-            if videos:
-                result["videos"] = videos
-
-            results.append(result)
-
-    return results
-
-
-def extract_global_videos(soup, page_url):
-    videos = []
-
-    for video_number, video in enumerate(
-        soup.find_all("video"),
-        start=1
-    ):
-        result = {
-            "video_number": video_number
-        }
-
-        src = video.get("src", "")
-
-        if src:
-            result["src"] = clean_url(
-                src,
-                page_url
-            )
-
-        poster = video.get(
-            "poster",
-            ""
-        )
-
-        if poster:
-            result["poster"] = clean_url(
-                poster,
-                page_url
-            )
-
-        sources = []
-
-        for source in video.find_all("source"):
-            source_url = source.get(
-                "src",
-                ""
-            )
-
-            if source_url:
-                sources.append(
-                    clean_url(
-                        source_url,
-                        page_url
-                    )
-                )
-
-        if sources:
-            result["sources"] = sources
-
-        videos.append(result)
-
-    return videos
-
-
-def extract_iframes(soup, page_url):
-    iframes = []
-
-    for iframe in soup.find_all("iframe"):
-        src = iframe.get(
-            "src",
-            ""
-        )
-
-        if not src:
-            continue
-
-        iframes.append(
-            clean_url(
-                src,
-                page_url
-            )
-        )
-
-    return list(
-        dict.fromkeys(iframes)
-    )
-
-
-def extract_video_posters(soup, page_url):
-    posters = []
+    global_media = {
+        "videos": [],
+        "video_posters": [],
+        "iframes": [],
+        "media_attributes": [],
+        "sources": []
+    }
 
     for video in soup.find_all("video"):
-        poster = video.get(
-            "poster",
-            ""
-        )
+
+        src = video.get("src")
+
+        if src:
+            global_media["videos"].append(src)
+
+        poster = video.get("poster")
 
         if poster:
-            posters.append(
-                clean_url(
-                    poster,
-                    page_url
-                )
-            )
+            global_media["video_posters"].append(poster)
 
-    return list(
-        dict.fromkeys(posters)
-    )
+    for iframe in soup.find_all("iframe"):
 
+        src = iframe.get("src")
 
-def extract_media_attributes(soup, page_url):
-    results = []
+        if src:
+            global_media["iframes"].append(src)
 
-    relevant_attributes = [
+    media_attributes = [
         "data-playable",
         "data-media-vpid",
         "data-media-meta",
         "data-media",
         "data-video",
         "data-video-id",
-        "data-vpid",
+        "data-vpid"
     ]
 
     for tag in soup.find_all(True):
 
-        found_attributes = {}
+        for attribute in media_attributes:
 
-        for attribute in relevant_attributes:
-            if attribute not in tag.attrs:
-                continue
+            value = tag.get(attribute)
 
-            value = tag.get(
-                attribute
-            )
-
-            if isinstance(value, list):
-                value = " ".join(value)
-
-            value = str(value).strip()
-
-            if not value:
-                continue
-
-            # Keep diagnostic output compact.
-            if len(value) > 500:
-                value = value[:500] + "..."
-
-            found_attributes[attribute] = value
-
-        if found_attributes:
-            result = {
-                "tag": tag.name,
-                "attributes": found_attributes
-            }
-
-            results.append(result)
-
-    return results
-
-
-def extract_script_matches(soup):
-    results = []
-
-    scripts = soup.find_all("script")
-
-    for script_number, script in enumerate(
-        scripts,
-        start=1
-    ):
-        content = script.string
-
-        if not content:
-            content = script.get_text(
-                strip=False
-            )
-
-        if not content:
-            continue
-
-        matched_keywords = []
-
-        for keyword in SCRIPT_KEYWORDS:
-            if keyword.lower() in content.lower():
-                matched_keywords.append(
-                    keyword
-                )
-
-        if matched_keywords:
-            results.append({
-                "script_number": script_number,
-                "matched_keywords": matched_keywords
-            })
-
-    return results
-
-
-def extract_source_tags(soup, page_url):
-    sources = []
+            if value:
+                global_media["media_attributes"].append({
+                    "attribute": attribute,
+                    "value": value
+                })
 
     for source in soup.find_all("source"):
-        src = source.get(
-            "src",
-            ""
-        )
 
-        if not src:
-            continue
+        src = source.get("src")
 
-        source_data = {
-            "url": clean_url(
-                src,
-                page_url
-            )
-        }
+        if src:
+            global_media["sources"].append(src)
 
-        media = source.get(
-            "media",
-            ""
-        )
-
-        if media:
-            source_data["media"] = media
-
-        source_type = source.get(
-            "type",
-            ""
-        )
-
-        if source_type:
-            source_data["type"] = source_type
-
-        sources.append(
-            source_data
-        )
-
-    return sources
+    return {
+        "figure_results": figure_results,
+        "global_media": global_media
+    }
 
 
-def extract_media(page_url, html):
-    soup = BeautifulSoup(
-        html,
-        "html.parser"
-    )
+def extract_yt_dlp(url):
 
     result = {
-        "figure_results": extract_figure_results(
-            soup,
-            page_url
-        ),
-        "global_media": {
-            "videos": extract_global_videos(
-                soup,
-                page_url
-            ),
-            "video_posters": extract_video_posters(
-                soup,
-                page_url
-            ),
-            "iframes": extract_iframes(
-                soup,
-                page_url
-            ),
-            "media_attributes": extract_media_attributes(
-                soup,
-                page_url
-            ),
-            "sources": extract_source_tags(
-                soup,
-                page_url
-            ),
-        },
-        "script_matches": extract_script_matches(
-            soup
-        )
+        "success": False,
+        "videos": [],
+        "error": None
     }
+
+    try:
+
+        options = {
+            "quiet": True,
+            "no_warnings": True,
+            "skip_download": True,
+            "extract_flat": False
+        }
+
+        with yt_dlp.YoutubeDL(options) as ydl:
+
+            info = ydl.extract_info(
+                url,
+                download=False
+            )
+
+        if not info:
+            result["success"] = True
+            return result
+
+        entries = info.get("entries")
+
+        if entries:
+
+            for entry in entries:
+
+                if not entry:
+                    continue
+
+                result["videos"].append({
+                    "id": entry.get("id"),
+                    "title": entry.get("title"),
+                    "url": entry.get("url"),
+                    "webpage_url": entry.get("webpage_url"),
+                    "duration": entry.get("duration"),
+                    "ext": entry.get("ext")
+                })
+
+        else:
+
+            result["videos"].append({
+                "id": info.get("id"),
+                "title": info.get("title"),
+                "url": info.get("url"),
+                "webpage_url": info.get("webpage_url"),
+                "duration": info.get("duration"),
+                "ext": info.get("ext")
+            })
+
+        result["success"] = True
+
+    except Exception as error:
+
+        result["error"] = str(error)
 
     return result
 
 
-def test_news_item(news_item):
-    url = news_item.get(
-        "url",
-        ""
-    )
+def main():
 
-    if not url:
-        raise ValueError(
-            "URL is empty"
-        )
+    with open(
+        INPUT_FILE,
+        "r",
+        encoding="utf-8"
+    ) as file:
 
-    html = fetch_page(url)
+        data = json.load(file)
 
-    media_data = extract_media(
-        url,
-        html
-    )
-
-    return media_data
-
-
-def run_test():
-    news = load_news()
-
-    print(
-        "BBC / Website Media Extraction Test"
-    )
-    print(
-        "=" * 50
-    )
+    news = data["news"]
 
     results = []
 
-    successful = 0
-    errors = 0
+    success_count = 0
+    error_count = 0
 
-    for index, news_item in enumerate(
-        news,
-        start=1
-    ):
-        title = news_item.get(
-            "title",
-            "No title"
-        )
+    for index, item in enumerate(news, start=1):
 
-        source = news_item.get(
-            "source",
-            "Unknown source"
-        )
-
-        url = news_item.get(
+        url = item.get(
             "url",
             ""
         )
 
         print()
         print(
-            f"[{index}/{len(news)}] {source}"
+            f"[{index}/{len(news)}] {url}"
         )
-        print(
-            f"Title: {title}"
-        )
+
+        result = {
+            "title": item.get("title"),
+            "source": item.get("source"),
+            "url": url,
+            "html_media": None,
+            "yt_dlp": None,
+            "error": None
+        }
 
         try:
-            media_data = test_news_item(
-                news_item
+
+            response = requests.get(
+                url,
+                timeout=30,
+                headers={
+                    "User-Agent":
+                    "Mozilla/5.0 "
+                    "(Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 "
+                    "(KHTML, like Gecko) "
+                    "Chrome/120.0 Safari/537.36"
+                }
             )
 
-            result_item = {
-                "title": title,
-                "source": source,
-                "url": url,
-                "media_data": media_data
-            }
+            response.raise_for_status()
 
-            results.append(
-                result_item
+            result["html_media"] = extract_html_media(
+                response.text
             )
 
-            successful += 1
+            if (
+                "bbc.com/news/articles/" in url
+                or "bbc.co.uk/news/articles/" in url
+            ):
 
-            print(
-                "Status: success"
-            )
+                print("Running yt-dlp...")
+
+                result["yt_dlp"] = extract_yt_dlp(
+                    url
+                )
+
+                if result["yt_dlp"]["success"]:
+                    print(
+                        "yt-dlp videos:",
+                        len(
+                            result["yt_dlp"]["videos"]
+                        )
+                    )
+                else:
+                    print(
+                        "yt-dlp error:",
+                        result["yt_dlp"]["error"]
+                    )
+
+            success_count += 1
 
         except Exception as error:
-            errors += 1
 
-            results.append({
-                "title": title,
-                "source": source,
-                "url": url,
-                "error": (
-                    f"{type(error).__name__}: "
-                    f"{error}"
-                )
-            })
+            result["error"] = str(error)
 
-            print(
-                "Status: error"
-            )
-            print(
-                f"Error: {error}"
-            )
+            error_count += 1
+
+        results.append(result)
 
     output = {
         "test_summary": {
             "input_news": len(news),
-            "successful": successful,
-            "errors": errors
+            "successful": success_count,
+            "errors": error_count
         },
-        "news": results
+        "results": results
     }
 
     with open(
@@ -532,6 +292,7 @@ def run_test():
         "w",
         encoding="utf-8"
     ) as file:
+
         json.dump(
             output,
             file,
@@ -540,25 +301,19 @@ def run_test():
         )
 
     print()
-    print(
-        "=" * 50
-    )
+    print("=" * 40)
+    print("Test completed")
     print(
         f"Input news: {len(news)}"
     )
     print(
-        f"Successful: {successful}"
+        f"Successful: {success_count}"
     )
     print(
-        f"Errors: {errors}"
+        f"Errors: {error_count}"
     )
-    print(
-        f"Output: {OUTPUT_FILE}"
-    )
-    print(
-        "Test completed."
-    )
+    print("=" * 40)
 
 
 if __name__ == "__main__":
-    run_test()
+    main()
