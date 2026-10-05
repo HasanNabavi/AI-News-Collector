@@ -2,7 +2,9 @@
   "test_summary": {
     "input_news": 21,
     "successful": 21,
-    "errors": 0
+    "errors": 0,
+    "yt_dlp_total_entries": 3,
+    "yt_dlp_total_videos": 3
   },
   "results": [
     {
@@ -31,16 +33,10 @@
       },
       "yt_dlp": {
         "success": true,
-        "videos": [
-          {
-            "id": "c6y9z9r4ejzwo",
-            "title": "OpenAI fires workers for 'mishandling sensitive information'",
-            "url": null,
-            "webpage_url": "https://www.bbc.co.uk/news/articles/c6y9z9r4ejzwo?at_medium=RSS&at_campaign=rss",
-            "duration": null,
-            "ext": null
-          }
-        ],
+        "entry_count": 0,
+        "video_count": 0,
+        "entries": [],
+        "videos": [],
         "error": null
       },
       "error": null
@@ -89,6 +85,18 @@
       },
       "yt_dlp": {
         "success": true,
+        "entry_count": 1,
+        "video_count": 1,
+        "entries": [
+          {
+            "id": "p0pdlj1d",
+            "title": "Crypto thieves attack man in home and threaten him and his pregnant wife",
+            "url": "https://vod-hls-ww.live.cf.md.bbci.co.uk/usp/auth/vod/piff_abr_full_hd/c550b1-p0pdlj1d/vf_p0pdlj1d_cb931c0a-84ee-4e6f-b212-bc34b73d57e0.ism/vf_p0pdlj1d_cb931c0a-84ee-4e6f-b212-bc34b73d57e0-audio_eng=96000-video=5070000.m3u8",
+            "webpage_url": "https://www.bbc.co.uk/news/articles/c6eq84eygz0qo?at_medium=RSS&at_campaign=rss",
+            "duration": 61,
+            "ext": "mp4"
+          }
+        ],
         "videos": [
           {
             "id": "p0pdlj1d",
@@ -138,16 +146,10 @@
       },
       "yt_dlp": {
         "success": true,
-        "videos": [
-          {
-            "id": "cqx2z23xj555o",
-            "title": "Trump's AI rebrand causes 'unprecedented' demand for Slovenian website names",
-            "url": null,
-            "webpage_url": "https://www.bbc.co.uk/news/articles/cqx2z23xj555o?at_medium=RSS&at_campaign=rss",
-            "duration": null,
-            "ext": null
-          }
-        ],
+        "entry_count": 0,
+        "video_count": 0,
+        "entries": [],
+        "videos": [],
         "error": null
       },
       "error": null
@@ -187,6 +189,18 @@
       },
       "yt_dlp": {
         "success": true,
+        "entry_count": 1,
+        "video_count": 1,
+        "entries": [
+          {
+            "id": "p0pd9kq1",
+            "title": "Governor of the Bank of England tells BBC quality of deepfakes 'alarming'",
+            "url": "https://vod-hls-ww.live.cf.md.bbci.co.uk/usp/auth/vod/piff_abr_full_hd/dfef36-p0pd9kq1/vf_p0pd9kq1_845565a4-9eed-4d32-b238-e9f58d7953bc.ism/vf_p0pd9kq1_845565a4-9eed-4d32-b238-e9f58d7953bc-audio_eng=96000-video=5070000.m3u8",
+            "webpage_url": "https://www.bbc.co.uk/news/articles/cv8e30enrkxyo?at_medium=RSS&at_campaign=rss",
+            "duration": 51,
+            "ext": "mp4"
+          }
+        ],
         "videos": [
           {
             "id": "p0pd9kq1",
@@ -227,6 +241,18 @@
       },
       "yt_dlp": {
         "success": true,
+        "entry_count": 1,
+        "video_count": 1,
+        "entries": [
+          {
+            "id": "p0pb6yky",
+            "title": "See tiny organisms on show in microscopic video competition",
+            "url": "https://vod-hls-ww.live.cf.md.bbci.co.uk/usp/auth/vod/piff_abr_full_hd/7359a5-p0pb6yky/vf_p0pb6yky_1391ff8f-719b-4552-8487-4a035fcb0716.ism/vf_p0pb6yky_1391ff8f-719b-4552-8487-4a035fcb0716-audio_eng=96000-video=5070000.m3u8",
+            "webpage_url": "https://www.bbc.co.uk/news/articles/ck4gjn1yzprno?at_medium=RSS&at_campaign=rss",
+            "duration": 58,
+            "ext": "mp4"
+          }
+        ],
         "videos": [
           {
             "id": "p0pb6yky",
@@ -294,16 +320,10 @@
       },
       "yt_dlp": {
         "success": true,
-        "videos": [
-          {
-            "id": "cgk53dkmyxko",
-            "title": "The AI telling farmers when to harvest",
-            "url": null,
-            "webpage_url": "https://www.bbc.co.uk/news/articles/cgk53dkmyxko?at_medium=RSS&at_campaign=rss",
-            "duration": null,
-            "ext": null
-          }
-        ],
+        "entry_count": 0,
+        "video_count": 0,
+        "entries": [],
+        "videos": [],
         "error": null
       },
       "error": null
@@ -334,16 +354,10 @@
       },
       "yt_dlp": {
         "success": true,
-        "videos": [
-          {
-            "id": "cvzez7k0pn40o",
-            "title": "Regulating AI 'not the right place to start' says Bank of England governor",
-            "url": null,
-            "webpage_url": "https://www.bbc.co.uk/news/articles/cvzez7k0pn40o?at_medium=RSS&at_campaign=rss",
-            "duration": null,
-            "ext": null
-          }
-        ],
+        "entry_count": 0,
+        "video_count": 0,
+        "entries": [],
+        "videos": [],
         "error": null
       },
       "error": null
@@ -383,16 +397,10 @@
       },
       "yt_dlp": {
         "success": true,
-        "videos": [
-          {
-            "id": "cm986x65we88o",
-            "title": "WhatsApp introduces optional parental controls for teenagers",
-            "url": null,
-            "webpage_url": "https://www.bbc.co.uk/news/articles/cm986x65we88o?at_medium=RSS&at_campaign=rss",
-            "duration": null,
-            "ext": null
-          }
-        ],
+        "entry_count": 0,
+        "video_count": 0,
+        "entries": [],
+        "videos": [],
         "error": null
       },
       "error": null
@@ -423,16 +431,10 @@
       },
       "yt_dlp": {
         "success": true,
-        "videos": [
-          {
-            "id": "cw7v42rp083eo",
-            "title": "OpenAI unveils AI assistant 'dots' while safety worries delay new model",
-            "url": null,
-            "webpage_url": "https://www.bbc.co.uk/news/articles/cw7v42rp083eo?at_medium=RSS&at_campaign=rss",
-            "duration": null,
-            "ext": null
-          }
-        ],
+        "entry_count": 0,
+        "video_count": 0,
+        "entries": [],
+        "videos": [],
         "error": null
       },
       "error": null
@@ -481,16 +483,10 @@
       },
       "yt_dlp": {
         "success": true,
-        "videos": [
-          {
-            "id": "cme30dz5vkzko",
-            "title": "‘Super Intelligence’: Three takeaways from Trump's tech summit",
-            "url": null,
-            "webpage_url": "https://www.bbc.co.uk/news/articles/cme30dz5vkzko?at_medium=RSS&at_campaign=rss",
-            "duration": null,
-            "ext": null
-          }
-        ],
+        "entry_count": 0,
+        "video_count": 0,
+        "entries": [],
+        "videos": [],
         "error": null
       },
       "error": null
@@ -530,16 +526,10 @@
       },
       "yt_dlp": {
         "success": true,
-        "videos": [
-          {
-            "id": "cmrergq3j7lgo",
-            "title": "Chinese AI tool told researchers how to make bioweapons",
-            "url": null,
-            "webpage_url": "https://www.bbc.co.uk/news/articles/cmrergq3j7lgo?at_medium=RSS&at_campaign=rss",
-            "duration": null,
-            "ext": null
-          }
-        ],
+        "entry_count": 0,
+        "video_count": 0,
+        "entries": [],
+        "videos": [],
         "error": null
       },
       "error": null
@@ -597,16 +587,10 @@
       },
       "yt_dlp": {
         "success": true,
-        "videos": [
-          {
-            "id": "cvgyexx4g8ro",
-            "title": "The start-ups hoping to return battery making to the US",
-            "url": null,
-            "webpage_url": "https://www.bbc.co.uk/news/articles/cvgyexx4g8ro?at_medium=RSS&at_campaign=rss",
-            "duration": null,
-            "ext": null
-          }
-        ],
+        "entry_count": 0,
+        "video_count": 0,
+        "entries": [],
+        "videos": [],
         "error": null
       },
       "error": null
@@ -637,16 +621,10 @@
       },
       "yt_dlp": {
         "success": true,
-        "videos": [
-          {
-            "id": "cjwyz5v190qwo",
-            "title": "Oura pulls $15bn stock market listing days after announcement",
-            "url": null,
-            "webpage_url": "https://www.bbc.co.uk/news/articles/cjwyz5v190qwo?at_medium=RSS&at_campaign=rss",
-            "duration": null,
-            "ext": null
-          }
-        ],
+        "entry_count": 0,
+        "video_count": 0,
+        "entries": [],
+        "videos": [],
         "error": null
       },
       "error": null
