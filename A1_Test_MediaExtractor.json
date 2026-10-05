@@ -31,6 +31,32 @@
             }
           }
         }
+      ],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 4,
+          "matched_keywords": [
+            "video",
+            "playlist"
+          ],
+          "length": 140424,
+          "preview": "window.__INITIAL_DATA__=\"{\\\"data\\\":{\\\"global-navigation?country=us&language=en-GB&service=news\\\":{\\\"name\\\":\\\"global-navigation\\\",\\\"props\\\":{\\\"country\\\":\\\"us\\\",\\\"language\\\":\\\"en-GB\\\",\\\"service\\\":\\\"news\\\"},\\\"data\\\":{\\\"accessibilityLinks\\\":[{\\\"label\\\":\\\"Skip to content\\\",\\\"url\\\":\\\"#main-heading\\\"},{\\\"label\\\":\\\"Accessibility Help\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility/\\\"}],\\\"signInLabel\\\":\\\"Sign in\\\",\\\"accountLabel\\\":\\\"Your account\\\",\\\"forYouLabel\\\":\\\"For you\\\",\\\"forYouUrl\\\":\\\"https://www.bbc.co.uk/foryou\\\",\\\"menuLabel\\\":\\\"Menu\\\",\\\"moreLabel\\\":\\\"More\\\",\\\"moreMenuLabel\\\":\\\"More menu\\\",\\\"closeButtonLabel\\\":\\\"Close menu\\\",\\\"disclaimer\\\":{\\\"text\\\":\\\"Copyright Â© 2026 BBC. The BBC is not responsible for the content of external sites.\\\",\\\"link\\\":{\\\"url\\\":\\\"https://www.bbc.co.uk/editorialguidelines/guidance/links-and-feeds\\\",\\\"text\\\":\\\"Read about our approach to external linking.\\\"}},\\\"legalLinks\\\":[{\\\"url\\\":\\\"https://www.bbc.co.uk/usingthebbc/terms\\\",\\\"label\\\":\\\"Terms of Use\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/aboutthebbc\\\",\\\"label\\\":\\\"About the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/privacy\\\",\\\"label\\\":\\\"Privacy Policy\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/cookies\\\",\\\"label\\\":\\\"Cookies\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility\\\",\\\"label\\\":\\\"Accessibility Help\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/iplayer/guidance\\\",\\\"label\\\":\\\"Parental Guidance\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/contact\\\",\\\"label\\\":\\\"Contact the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/careers\\\",\\\"label\\\":\\\"Careers\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/bbcnewsletter\\\",\\\"label\\\":\\\"BBC emails for you\\\"},{\\\"url\\\":\\\"https://www.bbc.com/advertisingcontact/\\\",\\\"label\\\":\\\"Advertise with us\\\"},{\\\"opens\\\":\\\"privacy-management\\\",\\\"label\\\":\\\"Do not share or sell my info\\\"}],\\\"navigationType\\\":\\\"Commercial Legacy\\\",\\\"homepageLink\\\":{\\\"label\\\":\\\"BBC Homepage\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},\\\"searchLink\\\":{\\\"label\\\":\\\"Search BBC\\\",\\\"url\\\":\\\"https://www.bbc.com/search\\\"},\\\"navigationLinks\\\":[{\\\"label\\\":\\\"Home\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},{\\\"label\\\":\\\"News\\\",\\\"url\\\":\\\"https://www.bbc.com/news\\\",\\\"accent\\\":\\\"#EB1212\\\"},{\\\"label\\\":\\\"Sport\\\",\\\"url\\\":\\\"https://www.bbc.com/sport\\\",\\\"accent\\\":\\\"#FFD230\\\"},{\\\"label\\\":\\\"Earth\\\",\\\"url\\\":\\\"https://www.bbc.com/future/earth\\\",\\\"accent\\\":\\\"#AAFF00\\\"},{\\\"label\\\":\\\"Reel\\\",\\\"url\\\":\\\"https://www.bbc.com/reel\\\",\\\"accent\\\":\\\"#0068FF\\\"},{\\\"label\\\":\\\"Worklife\\\",\\\"url\\\":\\\"https://www.bbc.com/worklife\\\",\\\"accent\\\":\\\"#0052A1\\\"},{\\\"label\\\":\\\"Travel\\\",\\\"url\\\":\\\"https://www.bbc.com/travel\\\",\\\"accent\\\":\\\"#589E50\\\"},{\\\"label\\\":\\\"Culture\\\",\\\"url\\\":\\\"https://www.bbc.com/culture\\\",\\\"accent\\\":\\\"#482878\\\"},{\\\"label\\\":\\\"Future\\\",\\\"url\\\":\\\"https://www.bbc.com/future\\\",\\\"accent\\\":\\\"#002856\\\"},{\\\"label\\\":\\\"Music\\\",\\\"url\\\":\\\"https://www.bbc.com/culture/music\\\"},{\\\"label\\\":\\\"TV\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/schedules/p00fzl9m\\\"},{\\\"label\\\":\\\"Weather\\\",\\\"url\\\":\\\"https://www.bbc.com/weather\\\",\\\"accent\\\":\\\"#149EDC\\\"},{\\\"label\\\":\\\"Sounds\\\",\\\"url\\\":\\\"htt"
+        },
+        {
+          "script_number": 8,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 836,
+          "preview": "{\"namedChunks\":[\"website-containers-global-navigation-index-js\",\"design-system-svgs-account-index-jsx\",\"design-system-svgs-actions-index-jsx\",\"website-containers-product-navigation-index-js\",\"design-system-svgs-logo-index-jsx\",\"website-containers-article-index-js\",\"design-system-svgs-arrows-index-jsx\",\"website-containers-portrait-video-experience-index-js\",\"design-system-svgs-playback-avkx-index-jsx\",\"website-containers-onward-journeys-index-js\",\"website-containers-service-bar-index-js\",\"design-system-svgs-devices-and-inputs-index-jsx\",\"design-system-svgs-content-types-index-jsx\",\"design-system-svgs-participate-index-jsx\",\"website-containers-global-footer-index-js\",\"website-addons-document-metadata-index-jsx\",\"website-addons-comscore-mmx-index-jsx\",\"website-addons-dotcom-index-jsx\",\"website-addons-cookies-module-index-jsx\"]}"
+        }
       ]
     },
     {
@@ -46,6 +72,13 @@
       "videos": [],
       "video_posters": [],
       "figure_results": [
+        {
+          "figure_number": 1,
+          "images": [],
+          "videos": [],
+          "video_posters": [],
+          "details": {}
+        },
         {
           "figure_number": 2,
           "images": [
@@ -91,6 +124,34 @@
             }
           }
         }
+      ],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 4,
+          "matched_keywords": [
+            "vpid",
+            "mediaMeta",
+            "video",
+            "playlist"
+          ],
+          "length": 156774,
+          "preview": "window.__INITIAL_DATA__=\"{\\\"data\\\":{\\\"global-navigation?country=us&language=en-GB&service=news\\\":{\\\"name\\\":\\\"global-navigation\\\",\\\"props\\\":{\\\"country\\\":\\\"us\\\",\\\"language\\\":\\\"en-GB\\\",\\\"service\\\":\\\"news\\\"},\\\"data\\\":{\\\"accessibilityLinks\\\":[{\\\"label\\\":\\\"Skip to content\\\",\\\"url\\\":\\\"#main-heading\\\"},{\\\"label\\\":\\\"Accessibility Help\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility/\\\"}],\\\"signInLabel\\\":\\\"Sign in\\\",\\\"accountLabel\\\":\\\"Your account\\\",\\\"forYouLabel\\\":\\\"For you\\\",\\\"forYouUrl\\\":\\\"https://www.bbc.co.uk/foryou\\\",\\\"menuLabel\\\":\\\"Menu\\\",\\\"moreLabel\\\":\\\"More\\\",\\\"moreMenuLabel\\\":\\\"More menu\\\",\\\"closeButtonLabel\\\":\\\"Close menu\\\",\\\"disclaimer\\\":{\\\"text\\\":\\\"Copyright Â© 2026 BBC. The BBC is not responsible for the content of external sites.\\\",\\\"link\\\":{\\\"url\\\":\\\"https://www.bbc.co.uk/editorialguidelines/guidance/links-and-feeds\\\",\\\"text\\\":\\\"Read about our approach to external linking.\\\"}},\\\"legalLinks\\\":[{\\\"url\\\":\\\"https://www.bbc.co.uk/usingthebbc/terms\\\",\\\"label\\\":\\\"Terms of Use\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/aboutthebbc\\\",\\\"label\\\":\\\"About the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/privacy\\\",\\\"label\\\":\\\"Privacy Policy\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/cookies\\\",\\\"label\\\":\\\"Cookies\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility\\\",\\\"label\\\":\\\"Accessibility Help\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/iplayer/guidance\\\",\\\"label\\\":\\\"Parental Guidance\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/contact\\\",\\\"label\\\":\\\"Contact the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/careers\\\",\\\"label\\\":\\\"Careers\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/bbcnewsletter\\\",\\\"label\\\":\\\"BBC emails for you\\\"},{\\\"url\\\":\\\"https://www.bbc.com/advertisingcontact/\\\",\\\"label\\\":\\\"Advertise with us\\\"},{\\\"opens\\\":\\\"privacy-management\\\",\\\"label\\\":\\\"Do not share or sell my info\\\"}],\\\"navigationType\\\":\\\"Commercial Legacy\\\",\\\"homepageLink\\\":{\\\"label\\\":\\\"BBC Homepage\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},\\\"searchLink\\\":{\\\"label\\\":\\\"Search BBC\\\",\\\"url\\\":\\\"https://www.bbc.com/search\\\"},\\\"navigationLinks\\\":[{\\\"label\\\":\\\"Home\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},{\\\"label\\\":\\\"News\\\",\\\"url\\\":\\\"https://www.bbc.com/news\\\",\\\"accent\\\":\\\"#EB1212\\\"},{\\\"label\\\":\\\"Sport\\\",\\\"url\\\":\\\"https://www.bbc.com/sport\\\",\\\"accent\\\":\\\"#FFD230\\\"},{\\\"label\\\":\\\"Earth\\\",\\\"url\\\":\\\"https://www.bbc.com/future/earth\\\",\\\"accent\\\":\\\"#AAFF00\\\"},{\\\"label\\\":\\\"Reel\\\",\\\"url\\\":\\\"https://www.bbc.com/reel\\\",\\\"accent\\\":\\\"#0068FF\\\"},{\\\"label\\\":\\\"Worklife\\\",\\\"url\\\":\\\"https://www.bbc.com/worklife\\\",\\\"accent\\\":\\\"#0052A1\\\"},{\\\"label\\\":\\\"Travel\\\",\\\"url\\\":\\\"https://www.bbc.com/travel\\\",\\\"accent\\\":\\\"#589E50\\\"},{\\\"label\\\":\\\"Culture\\\",\\\"url\\\":\\\"https://www.bbc.com/culture\\\",\\\"accent\\\":\\\"#482878\\\"},{\\\"label\\\":\\\"Future\\\",\\\"url\\\":\\\"https://www.bbc.com/future\\\",\\\"accent\\\":\\\"#002856\\\"},{\\\"label\\\":\\\"Music\\\",\\\"url\\\":\\\"https://www.bbc.com/culture/music\\\"},{\\\"label\\\":\\\"TV\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/schedules/p00fzl9m\\\"},{\\\"label\\\":\\\"Weather\\\",\\\"url\\\":\\\"https://www.bbc.com/weather\\\",\\\"accent\\\":\\\"#149EDC\\\"},{\\\"label\\\":\\\"Sounds\\\",\\\"url\\\":\\\"htt"
+        },
+        {
+          "script_number": 8,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 836,
+          "preview": "{\"namedChunks\":[\"website-containers-global-navigation-index-js\",\"design-system-svgs-account-index-jsx\",\"design-system-svgs-actions-index-jsx\",\"website-containers-product-navigation-index-js\",\"design-system-svgs-logo-index-jsx\",\"website-containers-article-index-js\",\"design-system-svgs-arrows-index-jsx\",\"website-containers-portrait-video-experience-index-js\",\"design-system-svgs-playback-avkx-index-jsx\",\"website-containers-onward-journeys-index-js\",\"website-containers-service-bar-index-js\",\"design-system-svgs-devices-and-inputs-index-jsx\",\"design-system-svgs-content-types-index-jsx\",\"design-system-svgs-participate-index-jsx\",\"website-containers-global-footer-index-js\",\"website-addons-document-metadata-index-jsx\",\"website-addons-comscore-mmx-index-jsx\",\"website-addons-dotcom-index-jsx\",\"website-addons-cookies-module-index-jsx\"]}"
+        }
       ]
     },
     {
@@ -135,6 +196,32 @@
             }
           }
         }
+      ],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 4,
+          "matched_keywords": [
+            "video",
+            "playlist"
+          ],
+          "length": 146221,
+          "preview": "window.__INITIAL_DATA__=\"{\\\"data\\\":{\\\"global-navigation?country=us&language=en-GB&service=news\\\":{\\\"name\\\":\\\"global-navigation\\\",\\\"props\\\":{\\\"country\\\":\\\"us\\\",\\\"language\\\":\\\"en-GB\\\",\\\"service\\\":\\\"news\\\"},\\\"data\\\":{\\\"accessibilityLinks\\\":[{\\\"label\\\":\\\"Skip to content\\\",\\\"url\\\":\\\"#main-heading\\\"},{\\\"label\\\":\\\"Accessibility Help\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility/\\\"}],\\\"signInLabel\\\":\\\"Sign in\\\",\\\"accountLabel\\\":\\\"Your account\\\",\\\"forYouLabel\\\":\\\"For you\\\",\\\"forYouUrl\\\":\\\"https://www.bbc.co.uk/foryou\\\",\\\"menuLabel\\\":\\\"Menu\\\",\\\"moreLabel\\\":\\\"More\\\",\\\"moreMenuLabel\\\":\\\"More menu\\\",\\\"closeButtonLabel\\\":\\\"Close menu\\\",\\\"disclaimer\\\":{\\\"text\\\":\\\"Copyright Â© 2026 BBC. The BBC is not responsible for the content of external sites.\\\",\\\"link\\\":{\\\"url\\\":\\\"https://www.bbc.co.uk/editorialguidelines/guidance/links-and-feeds\\\",\\\"text\\\":\\\"Read about our approach to external linking.\\\"}},\\\"legalLinks\\\":[{\\\"url\\\":\\\"https://www.bbc.co.uk/usingthebbc/terms\\\",\\\"label\\\":\\\"Terms of Use\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/aboutthebbc\\\",\\\"label\\\":\\\"About the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/privacy\\\",\\\"label\\\":\\\"Privacy Policy\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/cookies\\\",\\\"label\\\":\\\"Cookies\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility\\\",\\\"label\\\":\\\"Accessibility Help\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/iplayer/guidance\\\",\\\"label\\\":\\\"Parental Guidance\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/contact\\\",\\\"label\\\":\\\"Contact the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/careers\\\",\\\"label\\\":\\\"Careers\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/bbcnewsletter\\\",\\\"label\\\":\\\"BBC emails for you\\\"},{\\\"url\\\":\\\"https://www.bbc.com/advertisingcontact/\\\",\\\"label\\\":\\\"Advertise with us\\\"},{\\\"opens\\\":\\\"privacy-management\\\",\\\"label\\\":\\\"Do not share or sell my info\\\"}],\\\"navigationType\\\":\\\"Commercial Legacy\\\",\\\"homepageLink\\\":{\\\"label\\\":\\\"BBC Homepage\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},\\\"searchLink\\\":{\\\"label\\\":\\\"Search BBC\\\",\\\"url\\\":\\\"https://www.bbc.com/search\\\"},\\\"navigationLinks\\\":[{\\\"label\\\":\\\"Home\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},{\\\"label\\\":\\\"News\\\",\\\"url\\\":\\\"https://www.bbc.com/news\\\",\\\"accent\\\":\\\"#EB1212\\\"},{\\\"label\\\":\\\"Sport\\\",\\\"url\\\":\\\"https://www.bbc.com/sport\\\",\\\"accent\\\":\\\"#FFD230\\\"},{\\\"label\\\":\\\"Earth\\\",\\\"url\\\":\\\"https://www.bbc.com/future/earth\\\",\\\"accent\\\":\\\"#AAFF00\\\"},{\\\"label\\\":\\\"Reel\\\",\\\"url\\\":\\\"https://www.bbc.com/reel\\\",\\\"accent\\\":\\\"#0068FF\\\"},{\\\"label\\\":\\\"Worklife\\\",\\\"url\\\":\\\"https://www.bbc.com/worklife\\\",\\\"accent\\\":\\\"#0052A1\\\"},{\\\"label\\\":\\\"Travel\\\",\\\"url\\\":\\\"https://www.bbc.com/travel\\\",\\\"accent\\\":\\\"#589E50\\\"},{\\\"label\\\":\\\"Culture\\\",\\\"url\\\":\\\"https://www.bbc.com/culture\\\",\\\"accent\\\":\\\"#482878\\\"},{\\\"label\\\":\\\"Future\\\",\\\"url\\\":\\\"https://www.bbc.com/future\\\",\\\"accent\\\":\\\"#002856\\\"},{\\\"label\\\":\\\"Music\\\",\\\"url\\\":\\\"https://www.bbc.com/culture/music\\\"},{\\\"label\\\":\\\"TV\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/schedules/p00fzl9m\\\"},{\\\"label\\\":\\\"Weather\\\",\\\"url\\\":\\\"https://www.bbc.com/weather\\\",\\\"accent\\\":\\\"#149EDC\\\"},{\\\"label\\\":\\\"Sounds\\\",\\\"url\\\":\\\"htt"
+        },
+        {
+          "script_number": 8,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 836,
+          "preview": "{\"namedChunks\":[\"website-containers-global-navigation-index-js\",\"design-system-svgs-account-index-jsx\",\"design-system-svgs-actions-index-jsx\",\"website-containers-product-navigation-index-js\",\"design-system-svgs-logo-index-jsx\",\"website-containers-article-index-js\",\"website-containers-portrait-video-experience-index-js\",\"design-system-svgs-arrows-index-jsx\",\"design-system-svgs-playback-avkx-index-jsx\",\"website-containers-onward-journeys-index-js\",\"website-containers-service-bar-index-js\",\"design-system-svgs-devices-and-inputs-index-jsx\",\"design-system-svgs-content-types-index-jsx\",\"design-system-svgs-participate-index-jsx\",\"website-containers-global-footer-index-js\",\"website-addons-document-metadata-index-jsx\",\"website-addons-comscore-mmx-index-jsx\",\"website-addons-dotcom-index-jsx\",\"website-addons-cookies-module-index-jsx\"]}"
+        }
       ]
     },
     {
@@ -149,6 +236,13 @@
       "videos": [],
       "video_posters": [],
       "figure_results": [
+        {
+          "figure_number": 1,
+          "images": [],
+          "videos": [],
+          "video_posters": [],
+          "details": {}
+        },
         {
           "figure_number": 2,
           "images": [
@@ -179,6 +273,34 @@
             }
           }
         }
+      ],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 4,
+          "matched_keywords": [
+            "vpid",
+            "mediaMeta",
+            "video",
+            "playlist"
+          ],
+          "length": 158479,
+          "preview": "window.__INITIAL_DATA__=\"{\\\"data\\\":{\\\"global-navigation?country=us&language=en-GB&service=news\\\":{\\\"name\\\":\\\"global-navigation\\\",\\\"props\\\":{\\\"country\\\":\\\"us\\\",\\\"language\\\":\\\"en-GB\\\",\\\"service\\\":\\\"news\\\"},\\\"data\\\":{\\\"accessibilityLinks\\\":[{\\\"label\\\":\\\"Skip to content\\\",\\\"url\\\":\\\"#main-heading\\\"},{\\\"label\\\":\\\"Accessibility Help\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility/\\\"}],\\\"signInLabel\\\":\\\"Sign in\\\",\\\"accountLabel\\\":\\\"Your account\\\",\\\"forYouLabel\\\":\\\"For you\\\",\\\"forYouUrl\\\":\\\"https://www.bbc.co.uk/foryou\\\",\\\"menuLabel\\\":\\\"Menu\\\",\\\"moreLabel\\\":\\\"More\\\",\\\"moreMenuLabel\\\":\\\"More menu\\\",\\\"closeButtonLabel\\\":\\\"Close menu\\\",\\\"disclaimer\\\":{\\\"text\\\":\\\"Copyright Â© 2026 BBC. The BBC is not responsible for the content of external sites.\\\",\\\"link\\\":{\\\"url\\\":\\\"https://www.bbc.co.uk/editorialguidelines/guidance/links-and-feeds\\\",\\\"text\\\":\\\"Read about our approach to external linking.\\\"}},\\\"legalLinks\\\":[{\\\"url\\\":\\\"https://www.bbc.co.uk/usingthebbc/terms\\\",\\\"label\\\":\\\"Terms of Use\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/aboutthebbc\\\",\\\"label\\\":\\\"About the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/privacy\\\",\\\"label\\\":\\\"Privacy Policy\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/cookies\\\",\\\"label\\\":\\\"Cookies\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility\\\",\\\"label\\\":\\\"Accessibility Help\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/iplayer/guidance\\\",\\\"label\\\":\\\"Parental Guidance\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/contact\\\",\\\"label\\\":\\\"Contact the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/careers\\\",\\\"label\\\":\\\"Careers\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/bbcnewsletter\\\",\\\"label\\\":\\\"BBC emails for you\\\"},{\\\"url\\\":\\\"https://www.bbc.com/advertisingcontact/\\\",\\\"label\\\":\\\"Advertise with us\\\"},{\\\"opens\\\":\\\"privacy-management\\\",\\\"label\\\":\\\"Do not share or sell my info\\\"}],\\\"navigationType\\\":\\\"Commercial Legacy\\\",\\\"homepageLink\\\":{\\\"label\\\":\\\"BBC Homepage\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},\\\"searchLink\\\":{\\\"label\\\":\\\"Search BBC\\\",\\\"url\\\":\\\"https://www.bbc.com/search\\\"},\\\"navigationLinks\\\":[{\\\"label\\\":\\\"Home\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},{\\\"label\\\":\\\"News\\\",\\\"url\\\":\\\"https://www.bbc.com/news\\\",\\\"accent\\\":\\\"#EB1212\\\"},{\\\"label\\\":\\\"Sport\\\",\\\"url\\\":\\\"https://www.bbc.com/sport\\\",\\\"accent\\\":\\\"#FFD230\\\"},{\\\"label\\\":\\\"Earth\\\",\\\"url\\\":\\\"https://www.bbc.com/future/earth\\\",\\\"accent\\\":\\\"#AAFF00\\\"},{\\\"label\\\":\\\"Reel\\\",\\\"url\\\":\\\"https://www.bbc.com/reel\\\",\\\"accent\\\":\\\"#0068FF\\\"},{\\\"label\\\":\\\"Worklife\\\",\\\"url\\\":\\\"https://www.bbc.com/worklife\\\",\\\"accent\\\":\\\"#0052A1\\\"},{\\\"label\\\":\\\"Travel\\\",\\\"url\\\":\\\"https://www.bbc.com/travel\\\",\\\"accent\\\":\\\"#589E50\\\"},{\\\"label\\\":\\\"Culture\\\",\\\"url\\\":\\\"https://www.bbc.com/culture\\\",\\\"accent\\\":\\\"#482878\\\"},{\\\"label\\\":\\\"Future\\\",\\\"url\\\":\\\"https://www.bbc.com/future\\\",\\\"accent\\\":\\\"#002856\\\"},{\\\"label\\\":\\\"Music\\\",\\\"url\\\":\\\"https://www.bbc.com/culture/music\\\"},{\\\"label\\\":\\\"TV\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/schedules/p00fzl9m\\\"},{\\\"label\\\":\\\"Weather\\\",\\\"url\\\":\\\"https://www.bbc.com/weather\\\",\\\"accent\\\":\\\"#149EDC\\\"},{\\\"label\\\":\\\"Sounds\\\",\\\"url\\\":\\\"htt"
+        },
+        {
+          "script_number": 8,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 836,
+          "preview": "{\"namedChunks\":[\"website-containers-global-navigation-index-js\",\"design-system-svgs-account-index-jsx\",\"design-system-svgs-actions-index-jsx\",\"website-containers-product-navigation-index-js\",\"design-system-svgs-logo-index-jsx\",\"website-containers-article-index-js\",\"website-containers-portrait-video-experience-index-js\",\"design-system-svgs-arrows-index-jsx\",\"design-system-svgs-playback-avkx-index-jsx\",\"website-containers-onward-journeys-index-js\",\"website-containers-service-bar-index-js\",\"design-system-svgs-devices-and-inputs-index-jsx\",\"design-system-svgs-content-types-index-jsx\",\"design-system-svgs-participate-index-jsx\",\"website-containers-global-footer-index-js\",\"website-addons-document-metadata-index-jsx\",\"website-addons-comscore-mmx-index-jsx\",\"website-addons-dotcom-index-jsx\",\"website-addons-cookies-module-index-jsx\"]}"
+        }
       ]
     },
     {
@@ -193,6 +315,13 @@
       "video_posters": [],
       "figure_results": [
         {
+          "figure_number": 1,
+          "images": [],
+          "videos": [],
+          "video_posters": [],
+          "details": {}
+        },
+        {
           "figure_number": 2,
           "images": [
             "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/41d3/live/348b21e0-26a8-11f0-8f57-b7237f6a66e6.png"
@@ -206,6 +335,34 @@
               "caption": ""
             }
           }
+        }
+      ],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 4,
+          "matched_keywords": [
+            "vpid",
+            "mediaMeta",
+            "video",
+            "playlist"
+          ],
+          "length": 143574,
+          "preview": "window.__INITIAL_DATA__=\"{\\\"data\\\":{\\\"global-navigation?country=us&language=en-GB&service=news\\\":{\\\"name\\\":\\\"global-navigation\\\",\\\"props\\\":{\\\"country\\\":\\\"us\\\",\\\"language\\\":\\\"en-GB\\\",\\\"service\\\":\\\"news\\\"},\\\"data\\\":{\\\"accessibilityLinks\\\":[{\\\"label\\\":\\\"Skip to content\\\",\\\"url\\\":\\\"#main-heading\\\"},{\\\"label\\\":\\\"Accessibility Help\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility/\\\"}],\\\"signInLabel\\\":\\\"Sign in\\\",\\\"accountLabel\\\":\\\"Your account\\\",\\\"forYouLabel\\\":\\\"For you\\\",\\\"forYouUrl\\\":\\\"https://www.bbc.co.uk/foryou\\\",\\\"menuLabel\\\":\\\"Menu\\\",\\\"moreLabel\\\":\\\"More\\\",\\\"moreMenuLabel\\\":\\\"More menu\\\",\\\"closeButtonLabel\\\":\\\"Close menu\\\",\\\"disclaimer\\\":{\\\"text\\\":\\\"Copyright Â© 2026 BBC. The BBC is not responsible for the content of external sites.\\\",\\\"link\\\":{\\\"url\\\":\\\"https://www.bbc.co.uk/editorialguidelines/guidance/links-and-feeds\\\",\\\"text\\\":\\\"Read about our approach to external linking.\\\"}},\\\"legalLinks\\\":[{\\\"url\\\":\\\"https://www.bbc.co.uk/usingthebbc/terms\\\",\\\"label\\\":\\\"Terms of Use\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/aboutthebbc\\\",\\\"label\\\":\\\"About the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/privacy\\\",\\\"label\\\":\\\"Privacy Policy\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/cookies\\\",\\\"label\\\":\\\"Cookies\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility\\\",\\\"label\\\":\\\"Accessibility Help\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/iplayer/guidance\\\",\\\"label\\\":\\\"Parental Guidance\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/contact\\\",\\\"label\\\":\\\"Contact the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/careers\\\",\\\"label\\\":\\\"Careers\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/bbcnewsletter\\\",\\\"label\\\":\\\"BBC emails for you\\\"},{\\\"url\\\":\\\"https://www.bbc.com/advertisingcontact/\\\",\\\"label\\\":\\\"Advertise with us\\\"},{\\\"opens\\\":\\\"privacy-management\\\",\\\"label\\\":\\\"Do not share or sell my info\\\"}],\\\"navigationType\\\":\\\"Commercial Legacy\\\",\\\"homepageLink\\\":{\\\"label\\\":\\\"BBC Homepage\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},\\\"searchLink\\\":{\\\"label\\\":\\\"Search BBC\\\",\\\"url\\\":\\\"https://www.bbc.com/search\\\"},\\\"navigationLinks\\\":[{\\\"label\\\":\\\"Home\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},{\\\"label\\\":\\\"News\\\",\\\"url\\\":\\\"https://www.bbc.com/news\\\",\\\"accent\\\":\\\"#EB1212\\\"},{\\\"label\\\":\\\"Sport\\\",\\\"url\\\":\\\"https://www.bbc.com/sport\\\",\\\"accent\\\":\\\"#FFD230\\\"},{\\\"label\\\":\\\"Earth\\\",\\\"url\\\":\\\"https://www.bbc.com/future/earth\\\",\\\"accent\\\":\\\"#AAFF00\\\"},{\\\"label\\\":\\\"Reel\\\",\\\"url\\\":\\\"https://www.bbc.com/reel\\\",\\\"accent\\\":\\\"#0068FF\\\"},{\\\"label\\\":\\\"Worklife\\\",\\\"url\\\":\\\"https://www.bbc.com/worklife\\\",\\\"accent\\\":\\\"#0052A1\\\"},{\\\"label\\\":\\\"Travel\\\",\\\"url\\\":\\\"https://www.bbc.com/travel\\\",\\\"accent\\\":\\\"#589E50\\\"},{\\\"label\\\":\\\"Culture\\\",\\\"url\\\":\\\"https://www.bbc.com/culture\\\",\\\"accent\\\":\\\"#482878\\\"},{\\\"label\\\":\\\"Future\\\",\\\"url\\\":\\\"https://www.bbc.com/future\\\",\\\"accent\\\":\\\"#002856\\\"},{\\\"label\\\":\\\"Music\\\",\\\"url\\\":\\\"https://www.bbc.com/culture/music\\\"},{\\\"label\\\":\\\"TV\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/schedules/p00fzl9m\\\"},{\\\"label\\\":\\\"Weather\\\",\\\"url\\\":\\\"https://www.bbc.com/weather\\\",\\\"accent\\\":\\\"#149EDC\\\"},{\\\"label\\\":\\\"Sounds\\\",\\\"url\\\":\\\"htt"
+        },
+        {
+          "script_number": 8,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 836,
+          "preview": "{\"namedChunks\":[\"website-containers-global-navigation-index-js\",\"design-system-svgs-account-index-jsx\",\"design-system-svgs-actions-index-jsx\",\"website-containers-product-navigation-index-js\",\"design-system-svgs-logo-index-jsx\",\"website-containers-article-index-js\",\"design-system-svgs-arrows-index-jsx\",\"website-containers-portrait-video-experience-index-js\",\"design-system-svgs-playback-avkx-index-jsx\",\"website-containers-onward-journeys-index-js\",\"website-containers-service-bar-index-js\",\"design-system-svgs-devices-and-inputs-index-jsx\",\"design-system-svgs-content-types-index-jsx\",\"design-system-svgs-participate-index-jsx\",\"website-containers-global-footer-index-js\",\"website-addons-document-metadata-index-jsx\",\"website-addons-comscore-mmx-index-jsx\",\"website-addons-dotcom-index-jsx\",\"website-addons-cookies-module-index-jsx\"]}"
         }
       ]
     },
@@ -283,6 +440,32 @@
             }
           }
         }
+      ],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 4,
+          "matched_keywords": [
+            "video",
+            "playlist"
+          ],
+          "length": 160390,
+          "preview": "window.__INITIAL_DATA__=\"{\\\"data\\\":{\\\"global-navigation?country=us&language=en-GB&service=news\\\":{\\\"name\\\":\\\"global-navigation\\\",\\\"props\\\":{\\\"country\\\":\\\"us\\\",\\\"language\\\":\\\"en-GB\\\",\\\"service\\\":\\\"news\\\"},\\\"data\\\":{\\\"accessibilityLinks\\\":[{\\\"label\\\":\\\"Skip to content\\\",\\\"url\\\":\\\"#main-heading\\\"},{\\\"label\\\":\\\"Accessibility Help\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility/\\\"}],\\\"signInLabel\\\":\\\"Sign in\\\",\\\"accountLabel\\\":\\\"Your account\\\",\\\"forYouLabel\\\":\\\"For you\\\",\\\"forYouUrl\\\":\\\"https://www.bbc.co.uk/foryou\\\",\\\"menuLabel\\\":\\\"Menu\\\",\\\"moreLabel\\\":\\\"More\\\",\\\"moreMenuLabel\\\":\\\"More menu\\\",\\\"closeButtonLabel\\\":\\\"Close menu\\\",\\\"disclaimer\\\":{\\\"text\\\":\\\"Copyright Â© 2026 BBC. The BBC is not responsible for the content of external sites.\\\",\\\"link\\\":{\\\"url\\\":\\\"https://www.bbc.co.uk/editorialguidelines/guidance/links-and-feeds\\\",\\\"text\\\":\\\"Read about our approach to external linking.\\\"}},\\\"legalLinks\\\":[{\\\"url\\\":\\\"https://www.bbc.co.uk/usingthebbc/terms\\\",\\\"label\\\":\\\"Terms of Use\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/aboutthebbc\\\",\\\"label\\\":\\\"About the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/privacy\\\",\\\"label\\\":\\\"Privacy Policy\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/cookies\\\",\\\"label\\\":\\\"Cookies\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility\\\",\\\"label\\\":\\\"Accessibility Help\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/iplayer/guidance\\\",\\\"label\\\":\\\"Parental Guidance\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/contact\\\",\\\"label\\\":\\\"Contact the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/careers\\\",\\\"label\\\":\\\"Careers\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/bbcnewsletter\\\",\\\"label\\\":\\\"BBC emails for you\\\"},{\\\"url\\\":\\\"https://www.bbc.com/advertisingcontact/\\\",\\\"label\\\":\\\"Advertise with us\\\"},{\\\"opens\\\":\\\"privacy-management\\\",\\\"label\\\":\\\"Do not share or sell my info\\\"}],\\\"navigationType\\\":\\\"Commercial Legacy\\\",\\\"homepageLink\\\":{\\\"label\\\":\\\"BBC Homepage\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},\\\"searchLink\\\":{\\\"label\\\":\\\"Search BBC\\\",\\\"url\\\":\\\"https://www.bbc.com/search\\\"},\\\"navigationLinks\\\":[{\\\"label\\\":\\\"Home\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},{\\\"label\\\":\\\"News\\\",\\\"url\\\":\\\"https://www.bbc.com/news\\\",\\\"accent\\\":\\\"#EB1212\\\"},{\\\"label\\\":\\\"Sport\\\",\\\"url\\\":\\\"https://www.bbc.com/sport\\\",\\\"accent\\\":\\\"#FFD230\\\"},{\\\"label\\\":\\\"Earth\\\",\\\"url\\\":\\\"https://www.bbc.com/future/earth\\\",\\\"accent\\\":\\\"#AAFF00\\\"},{\\\"label\\\":\\\"Reel\\\",\\\"url\\\":\\\"https://www.bbc.com/reel\\\",\\\"accent\\\":\\\"#0068FF\\\"},{\\\"label\\\":\\\"Worklife\\\",\\\"url\\\":\\\"https://www.bbc.com/worklife\\\",\\\"accent\\\":\\\"#0052A1\\\"},{\\\"label\\\":\\\"Travel\\\",\\\"url\\\":\\\"https://www.bbc.com/travel\\\",\\\"accent\\\":\\\"#589E50\\\"},{\\\"label\\\":\\\"Culture\\\",\\\"url\\\":\\\"https://www.bbc.com/culture\\\",\\\"accent\\\":\\\"#482878\\\"},{\\\"label\\\":\\\"Future\\\",\\\"url\\\":\\\"https://www.bbc.com/future\\\",\\\"accent\\\":\\\"#002856\\\"},{\\\"label\\\":\\\"Music\\\",\\\"url\\\":\\\"https://www.bbc.com/culture/music\\\"},{\\\"label\\\":\\\"TV\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/schedules/p00fzl9m\\\"},{\\\"label\\\":\\\"Weather\\\",\\\"url\\\":\\\"https://www.bbc.com/weather\\\",\\\"accent\\\":\\\"#149EDC\\\"},{\\\"label\\\":\\\"Sounds\\\",\\\"url\\\":\\\"htt"
+        },
+        {
+          "script_number": 8,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 836,
+          "preview": "{\"namedChunks\":[\"website-containers-global-navigation-index-js\",\"design-system-svgs-account-index-jsx\",\"design-system-svgs-actions-index-jsx\",\"website-containers-product-navigation-index-js\",\"design-system-svgs-logo-index-jsx\",\"website-containers-article-index-js\",\"website-containers-portrait-video-experience-index-js\",\"design-system-svgs-arrows-index-jsx\",\"design-system-svgs-playback-avkx-index-jsx\",\"website-containers-onward-journeys-index-js\",\"website-containers-service-bar-index-js\",\"design-system-svgs-devices-and-inputs-index-jsx\",\"design-system-svgs-content-types-index-jsx\",\"design-system-svgs-participate-index-jsx\",\"website-containers-global-footer-index-js\",\"website-addons-document-metadata-index-jsx\",\"website-addons-comscore-mmx-index-jsx\",\"website-addons-dotcom-index-jsx\",\"website-addons-cookies-module-index-jsx\"]}"
+        }
       ]
     },
     {
@@ -310,6 +493,32 @@
               "caption": ""
             }
           }
+        }
+      ],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 4,
+          "matched_keywords": [
+            "video",
+            "playlist"
+          ],
+          "length": 138943,
+          "preview": "window.__INITIAL_DATA__=\"{\\\"data\\\":{\\\"global-navigation?country=us&language=en-GB&service=news\\\":{\\\"name\\\":\\\"global-navigation\\\",\\\"props\\\":{\\\"country\\\":\\\"us\\\",\\\"language\\\":\\\"en-GB\\\",\\\"service\\\":\\\"news\\\"},\\\"data\\\":{\\\"accessibilityLinks\\\":[{\\\"label\\\":\\\"Skip to content\\\",\\\"url\\\":\\\"#main-heading\\\"},{\\\"label\\\":\\\"Accessibility Help\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility/\\\"}],\\\"signInLabel\\\":\\\"Sign in\\\",\\\"accountLabel\\\":\\\"Your account\\\",\\\"forYouLabel\\\":\\\"For you\\\",\\\"forYouUrl\\\":\\\"https://www.bbc.co.uk/foryou\\\",\\\"menuLabel\\\":\\\"Menu\\\",\\\"moreLabel\\\":\\\"More\\\",\\\"moreMenuLabel\\\":\\\"More menu\\\",\\\"closeButtonLabel\\\":\\\"Close menu\\\",\\\"disclaimer\\\":{\\\"text\\\":\\\"Copyright Â© 2026 BBC. The BBC is not responsible for the content of external sites.\\\",\\\"link\\\":{\\\"url\\\":\\\"https://www.bbc.co.uk/editorialguidelines/guidance/links-and-feeds\\\",\\\"text\\\":\\\"Read about our approach to external linking.\\\"}},\\\"legalLinks\\\":[{\\\"url\\\":\\\"https://www.bbc.co.uk/usingthebbc/terms\\\",\\\"label\\\":\\\"Terms of Use\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/aboutthebbc\\\",\\\"label\\\":\\\"About the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/privacy\\\",\\\"label\\\":\\\"Privacy Policy\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/cookies\\\",\\\"label\\\":\\\"Cookies\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility\\\",\\\"label\\\":\\\"Accessibility Help\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/iplayer/guidance\\\",\\\"label\\\":\\\"Parental Guidance\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/contact\\\",\\\"label\\\":\\\"Contact the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/careers\\\",\\\"label\\\":\\\"Careers\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/bbcnewsletter\\\",\\\"label\\\":\\\"BBC emails for you\\\"},{\\\"url\\\":\\\"https://www.bbc.com/advertisingcontact/\\\",\\\"label\\\":\\\"Advertise with us\\\"},{\\\"opens\\\":\\\"privacy-management\\\",\\\"label\\\":\\\"Do not share or sell my info\\\"}],\\\"navigationType\\\":\\\"Commercial Legacy\\\",\\\"homepageLink\\\":{\\\"label\\\":\\\"BBC Homepage\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},\\\"searchLink\\\":{\\\"label\\\":\\\"Search BBC\\\",\\\"url\\\":\\\"https://www.bbc.com/search\\\"},\\\"navigationLinks\\\":[{\\\"label\\\":\\\"Home\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},{\\\"label\\\":\\\"News\\\",\\\"url\\\":\\\"https://www.bbc.com/news\\\",\\\"accent\\\":\\\"#EB1212\\\"},{\\\"label\\\":\\\"Sport\\\",\\\"url\\\":\\\"https://www.bbc.com/sport\\\",\\\"accent\\\":\\\"#FFD230\\\"},{\\\"label\\\":\\\"Earth\\\",\\\"url\\\":\\\"https://www.bbc.com/future/earth\\\",\\\"accent\\\":\\\"#AAFF00\\\"},{\\\"label\\\":\\\"Reel\\\",\\\"url\\\":\\\"https://www.bbc.com/reel\\\",\\\"accent\\\":\\\"#0068FF\\\"},{\\\"label\\\":\\\"Worklife\\\",\\\"url\\\":\\\"https://www.bbc.com/worklife\\\",\\\"accent\\\":\\\"#0052A1\\\"},{\\\"label\\\":\\\"Travel\\\",\\\"url\\\":\\\"https://www.bbc.com/travel\\\",\\\"accent\\\":\\\"#589E50\\\"},{\\\"label\\\":\\\"Culture\\\",\\\"url\\\":\\\"https://www.bbc.com/culture\\\",\\\"accent\\\":\\\"#482878\\\"},{\\\"label\\\":\\\"Future\\\",\\\"url\\\":\\\"https://www.bbc.com/future\\\",\\\"accent\\\":\\\"#002856\\\"},{\\\"label\\\":\\\"Music\\\",\\\"url\\\":\\\"https://www.bbc.com/culture/music\\\"},{\\\"label\\\":\\\"TV\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/schedules/p00fzl9m\\\"},{\\\"label\\\":\\\"Weather\\\",\\\"url\\\":\\\"https://www.bbc.com/weather\\\",\\\"accent\\\":\\\"#149EDC\\\"},{\\\"label\\\":\\\"Sounds\\\",\\\"url\\\":\\\"htt"
+        },
+        {
+          "script_number": 8,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 836,
+          "preview": "{\"namedChunks\":[\"website-containers-global-navigation-index-js\",\"design-system-svgs-account-index-jsx\",\"design-system-svgs-actions-index-jsx\",\"website-containers-product-navigation-index-js\",\"design-system-svgs-logo-index-jsx\",\"website-containers-article-index-js\",\"design-system-svgs-arrows-index-jsx\",\"website-containers-portrait-video-experience-index-js\",\"design-system-svgs-playback-avkx-index-jsx\",\"website-containers-onward-journeys-index-js\",\"website-containers-service-bar-index-js\",\"design-system-svgs-devices-and-inputs-index-jsx\",\"design-system-svgs-content-types-index-jsx\",\"design-system-svgs-participate-index-jsx\",\"website-containers-global-footer-index-js\",\"website-addons-document-metadata-index-jsx\",\"website-addons-comscore-mmx-index-jsx\",\"website-addons-dotcom-index-jsx\",\"website-addons-cookies-module-index-jsx\"]}"
         }
       ]
     },
@@ -355,6 +564,32 @@
             }
           }
         }
+      ],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 4,
+          "matched_keywords": [
+            "video",
+            "playlist"
+          ],
+          "length": 143188,
+          "preview": "window.__INITIAL_DATA__=\"{\\\"data\\\":{\\\"global-navigation?country=us&language=en-GB&service=news\\\":{\\\"name\\\":\\\"global-navigation\\\",\\\"props\\\":{\\\"country\\\":\\\"us\\\",\\\"language\\\":\\\"en-GB\\\",\\\"service\\\":\\\"news\\\"},\\\"data\\\":{\\\"accessibilityLinks\\\":[{\\\"label\\\":\\\"Skip to content\\\",\\\"url\\\":\\\"#main-heading\\\"},{\\\"label\\\":\\\"Accessibility Help\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility/\\\"}],\\\"signInLabel\\\":\\\"Sign in\\\",\\\"accountLabel\\\":\\\"Your account\\\",\\\"forYouLabel\\\":\\\"For you\\\",\\\"forYouUrl\\\":\\\"https://www.bbc.co.uk/foryou\\\",\\\"menuLabel\\\":\\\"Menu\\\",\\\"moreLabel\\\":\\\"More\\\",\\\"moreMenuLabel\\\":\\\"More menu\\\",\\\"closeButtonLabel\\\":\\\"Close menu\\\",\\\"disclaimer\\\":{\\\"text\\\":\\\"Copyright Â© 2026 BBC. The BBC is not responsible for the content of external sites.\\\",\\\"link\\\":{\\\"url\\\":\\\"https://www.bbc.co.uk/editorialguidelines/guidance/links-and-feeds\\\",\\\"text\\\":\\\"Read about our approach to external linking.\\\"}},\\\"legalLinks\\\":[{\\\"url\\\":\\\"https://www.bbc.co.uk/usingthebbc/terms\\\",\\\"label\\\":\\\"Terms of Use\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/aboutthebbc\\\",\\\"label\\\":\\\"About the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/privacy\\\",\\\"label\\\":\\\"Privacy Policy\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/cookies\\\",\\\"label\\\":\\\"Cookies\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility\\\",\\\"label\\\":\\\"Accessibility Help\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/iplayer/guidance\\\",\\\"label\\\":\\\"Parental Guidance\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/contact\\\",\\\"label\\\":\\\"Contact the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/careers\\\",\\\"label\\\":\\\"Careers\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/bbcnewsletter\\\",\\\"label\\\":\\\"BBC emails for you\\\"},{\\\"url\\\":\\\"https://www.bbc.com/advertisingcontact/\\\",\\\"label\\\":\\\"Advertise with us\\\"},{\\\"opens\\\":\\\"privacy-management\\\",\\\"label\\\":\\\"Do not share or sell my info\\\"}],\\\"navigationType\\\":\\\"Commercial Legacy\\\",\\\"homepageLink\\\":{\\\"label\\\":\\\"BBC Homepage\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},\\\"searchLink\\\":{\\\"label\\\":\\\"Search BBC\\\",\\\"url\\\":\\\"https://www.bbc.com/search\\\"},\\\"navigationLinks\\\":[{\\\"label\\\":\\\"Home\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},{\\\"label\\\":\\\"News\\\",\\\"url\\\":\\\"https://www.bbc.com/news\\\",\\\"accent\\\":\\\"#EB1212\\\"},{\\\"label\\\":\\\"Sport\\\",\\\"url\\\":\\\"https://www.bbc.com/sport\\\",\\\"accent\\\":\\\"#FFD230\\\"},{\\\"label\\\":\\\"Earth\\\",\\\"url\\\":\\\"https://www.bbc.com/future/earth\\\",\\\"accent\\\":\\\"#AAFF00\\\"},{\\\"label\\\":\\\"Reel\\\",\\\"url\\\":\\\"https://www.bbc.com/reel\\\",\\\"accent\\\":\\\"#0068FF\\\"},{\\\"label\\\":\\\"Worklife\\\",\\\"url\\\":\\\"https://www.bbc.com/worklife\\\",\\\"accent\\\":\\\"#0052A1\\\"},{\\\"label\\\":\\\"Travel\\\",\\\"url\\\":\\\"https://www.bbc.com/travel\\\",\\\"accent\\\":\\\"#589E50\\\"},{\\\"label\\\":\\\"Culture\\\",\\\"url\\\":\\\"https://www.bbc.com/culture\\\",\\\"accent\\\":\\\"#482878\\\"},{\\\"label\\\":\\\"Future\\\",\\\"url\\\":\\\"https://www.bbc.com/future\\\",\\\"accent\\\":\\\"#002856\\\"},{\\\"label\\\":\\\"Music\\\",\\\"url\\\":\\\"https://www.bbc.com/culture/music\\\"},{\\\"label\\\":\\\"TV\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/schedules/p00fzl9m\\\"},{\\\"label\\\":\\\"Weather\\\",\\\"url\\\":\\\"https://www.bbc.com/weather\\\",\\\"accent\\\":\\\"#149EDC\\\"},{\\\"label\\\":\\\"Sounds\\\",\\\"url\\\":\\\"htt"
+        },
+        {
+          "script_number": 8,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 836,
+          "preview": "{\"namedChunks\":[\"website-containers-global-navigation-index-js\",\"design-system-svgs-account-index-jsx\",\"design-system-svgs-actions-index-jsx\",\"website-containers-product-navigation-index-js\",\"design-system-svgs-logo-index-jsx\",\"website-containers-article-index-js\",\"website-containers-portrait-video-experience-index-js\",\"design-system-svgs-arrows-index-jsx\",\"design-system-svgs-playback-avkx-index-jsx\",\"website-containers-onward-journeys-index-js\",\"website-containers-service-bar-index-js\",\"design-system-svgs-devices-and-inputs-index-jsx\",\"design-system-svgs-content-types-index-jsx\",\"design-system-svgs-participate-index-jsx\",\"website-containers-global-footer-index-js\",\"website-addons-document-metadata-index-jsx\",\"website-addons-comscore-mmx-index-jsx\",\"website-addons-dotcom-index-jsx\",\"website-addons-cookies-module-index-jsx\"]}"
+        }
       ]
     },
     {
@@ -382,6 +617,32 @@
               "caption": "Image caption, Sam Altman has spoken repeatedly in recent weeks about the risks posed by AI agents."
             }
           }
+        }
+      ],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 4,
+          "matched_keywords": [
+            "video",
+            "playlist"
+          ],
+          "length": 146019,
+          "preview": "window.__INITIAL_DATA__=\"{\\\"data\\\":{\\\"global-navigation?country=us&language=en-GB&service=news\\\":{\\\"name\\\":\\\"global-navigation\\\",\\\"props\\\":{\\\"country\\\":\\\"us\\\",\\\"language\\\":\\\"en-GB\\\",\\\"service\\\":\\\"news\\\"},\\\"data\\\":{\\\"accessibilityLinks\\\":[{\\\"label\\\":\\\"Skip to content\\\",\\\"url\\\":\\\"#main-heading\\\"},{\\\"label\\\":\\\"Accessibility Help\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility/\\\"}],\\\"signInLabel\\\":\\\"Sign in\\\",\\\"accountLabel\\\":\\\"Your account\\\",\\\"forYouLabel\\\":\\\"For you\\\",\\\"forYouUrl\\\":\\\"https://www.bbc.co.uk/foryou\\\",\\\"menuLabel\\\":\\\"Menu\\\",\\\"moreLabel\\\":\\\"More\\\",\\\"moreMenuLabel\\\":\\\"More menu\\\",\\\"closeButtonLabel\\\":\\\"Close menu\\\",\\\"disclaimer\\\":{\\\"text\\\":\\\"Copyright Â© 2026 BBC. The BBC is not responsible for the content of external sites.\\\",\\\"link\\\":{\\\"url\\\":\\\"https://www.bbc.co.uk/editorialguidelines/guidance/links-and-feeds\\\",\\\"text\\\":\\\"Read about our approach to external linking.\\\"}},\\\"legalLinks\\\":[{\\\"url\\\":\\\"https://www.bbc.co.uk/usingthebbc/terms\\\",\\\"label\\\":\\\"Terms of Use\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/aboutthebbc\\\",\\\"label\\\":\\\"About the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/privacy\\\",\\\"label\\\":\\\"Privacy Policy\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/cookies\\\",\\\"label\\\":\\\"Cookies\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility\\\",\\\"label\\\":\\\"Accessibility Help\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/iplayer/guidance\\\",\\\"label\\\":\\\"Parental Guidance\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/contact\\\",\\\"label\\\":\\\"Contact the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/careers\\\",\\\"label\\\":\\\"Careers\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/bbcnewsletter\\\",\\\"label\\\":\\\"BBC emails for you\\\"},{\\\"url\\\":\\\"https://www.bbc.com/advertisingcontact/\\\",\\\"label\\\":\\\"Advertise with us\\\"},{\\\"opens\\\":\\\"privacy-management\\\",\\\"label\\\":\\\"Do not share or sell my info\\\"}],\\\"navigationType\\\":\\\"Commercial Legacy\\\",\\\"homepageLink\\\":{\\\"label\\\":\\\"BBC Homepage\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},\\\"searchLink\\\":{\\\"label\\\":\\\"Search BBC\\\",\\\"url\\\":\\\"https://www.bbc.com/search\\\"},\\\"navigationLinks\\\":[{\\\"label\\\":\\\"Home\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},{\\\"label\\\":\\\"News\\\",\\\"url\\\":\\\"https://www.bbc.com/news\\\",\\\"accent\\\":\\\"#EB1212\\\"},{\\\"label\\\":\\\"Sport\\\",\\\"url\\\":\\\"https://www.bbc.com/sport\\\",\\\"accent\\\":\\\"#FFD230\\\"},{\\\"label\\\":\\\"Earth\\\",\\\"url\\\":\\\"https://www.bbc.com/future/earth\\\",\\\"accent\\\":\\\"#AAFF00\\\"},{\\\"label\\\":\\\"Reel\\\",\\\"url\\\":\\\"https://www.bbc.com/reel\\\",\\\"accent\\\":\\\"#0068FF\\\"},{\\\"label\\\":\\\"Worklife\\\",\\\"url\\\":\\\"https://www.bbc.com/worklife\\\",\\\"accent\\\":\\\"#0052A1\\\"},{\\\"label\\\":\\\"Travel\\\",\\\"url\\\":\\\"https://www.bbc.com/travel\\\",\\\"accent\\\":\\\"#589E50\\\"},{\\\"label\\\":\\\"Culture\\\",\\\"url\\\":\\\"https://www.bbc.com/culture\\\",\\\"accent\\\":\\\"#482878\\\"},{\\\"label\\\":\\\"Future\\\",\\\"url\\\":\\\"https://www.bbc.com/future\\\",\\\"accent\\\":\\\"#002856\\\"},{\\\"label\\\":\\\"Music\\\",\\\"url\\\":\\\"https://www.bbc.com/culture/music\\\"},{\\\"label\\\":\\\"TV\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/schedules/p00fzl9m\\\"},{\\\"label\\\":\\\"Weather\\\",\\\"url\\\":\\\"https://www.bbc.com/weather\\\",\\\"accent\\\":\\\"#149EDC\\\"},{\\\"label\\\":\\\"Sounds\\\",\\\"url\\\":\\\"htt"
+        },
+        {
+          "script_number": 8,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 836,
+          "preview": "{\"namedChunks\":[\"website-containers-global-navigation-index-js\",\"design-system-svgs-account-index-jsx\",\"design-system-svgs-actions-index-jsx\",\"website-containers-product-navigation-index-js\",\"design-system-svgs-logo-index-jsx\",\"website-containers-article-index-js\",\"design-system-svgs-arrows-index-jsx\",\"website-containers-portrait-video-experience-index-js\",\"design-system-svgs-playback-avkx-index-jsx\",\"website-containers-onward-journeys-index-js\",\"website-containers-service-bar-index-js\",\"design-system-svgs-devices-and-inputs-index-jsx\",\"design-system-svgs-content-types-index-jsx\",\"design-system-svgs-participate-index-jsx\",\"website-containers-global-footer-index-js\",\"website-addons-document-metadata-index-jsx\",\"website-addons-comscore-mmx-index-jsx\",\"website-addons-dotcom-index-jsx\",\"website-addons-cookies-module-index-jsx\"]}"
         }
       ]
     },
@@ -443,6 +704,32 @@
             }
           }
         }
+      ],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 4,
+          "matched_keywords": [
+            "video",
+            "playlist"
+          ],
+          "length": 162570,
+          "preview": "window.__INITIAL_DATA__=\"{\\\"data\\\":{\\\"global-navigation?country=us&language=en-GB&service=news\\\":{\\\"name\\\":\\\"global-navigation\\\",\\\"props\\\":{\\\"country\\\":\\\"us\\\",\\\"language\\\":\\\"en-GB\\\",\\\"service\\\":\\\"news\\\"},\\\"data\\\":{\\\"accessibilityLinks\\\":[{\\\"label\\\":\\\"Skip to content\\\",\\\"url\\\":\\\"#main-heading\\\"},{\\\"label\\\":\\\"Accessibility Help\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility/\\\"}],\\\"signInLabel\\\":\\\"Sign in\\\",\\\"accountLabel\\\":\\\"Your account\\\",\\\"forYouLabel\\\":\\\"For you\\\",\\\"forYouUrl\\\":\\\"https://www.bbc.co.uk/foryou\\\",\\\"menuLabel\\\":\\\"Menu\\\",\\\"moreLabel\\\":\\\"More\\\",\\\"moreMenuLabel\\\":\\\"More menu\\\",\\\"closeButtonLabel\\\":\\\"Close menu\\\",\\\"disclaimer\\\":{\\\"text\\\":\\\"Copyright Â© 2026 BBC. The BBC is not responsible for the content of external sites.\\\",\\\"link\\\":{\\\"url\\\":\\\"https://www.bbc.co.uk/editorialguidelines/guidance/links-and-feeds\\\",\\\"text\\\":\\\"Read about our approach to external linking.\\\"}},\\\"legalLinks\\\":[{\\\"url\\\":\\\"https://www.bbc.co.uk/usingthebbc/terms\\\",\\\"label\\\":\\\"Terms of Use\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/aboutthebbc\\\",\\\"label\\\":\\\"About the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/privacy\\\",\\\"label\\\":\\\"Privacy Policy\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/cookies\\\",\\\"label\\\":\\\"Cookies\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility\\\",\\\"label\\\":\\\"Accessibility Help\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/iplayer/guidance\\\",\\\"label\\\":\\\"Parental Guidance\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/contact\\\",\\\"label\\\":\\\"Contact the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/careers\\\",\\\"label\\\":\\\"Careers\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/bbcnewsletter\\\",\\\"label\\\":\\\"BBC emails for you\\\"},{\\\"url\\\":\\\"https://www.bbc.com/advertisingcontact/\\\",\\\"label\\\":\\\"Advertise with us\\\"},{\\\"opens\\\":\\\"privacy-management\\\",\\\"label\\\":\\\"Do not share or sell my info\\\"}],\\\"navigationType\\\":\\\"Commercial Legacy\\\",\\\"homepageLink\\\":{\\\"label\\\":\\\"BBC Homepage\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},\\\"searchLink\\\":{\\\"label\\\":\\\"Search BBC\\\",\\\"url\\\":\\\"https://www.bbc.com/search\\\"},\\\"navigationLinks\\\":[{\\\"label\\\":\\\"Home\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},{\\\"label\\\":\\\"News\\\",\\\"url\\\":\\\"https://www.bbc.com/news\\\",\\\"accent\\\":\\\"#EB1212\\\"},{\\\"label\\\":\\\"Sport\\\",\\\"url\\\":\\\"https://www.bbc.com/sport\\\",\\\"accent\\\":\\\"#FFD230\\\"},{\\\"label\\\":\\\"Earth\\\",\\\"url\\\":\\\"https://www.bbc.com/future/earth\\\",\\\"accent\\\":\\\"#AAFF00\\\"},{\\\"label\\\":\\\"Reel\\\",\\\"url\\\":\\\"https://www.bbc.com/reel\\\",\\\"accent\\\":\\\"#0068FF\\\"},{\\\"label\\\":\\\"Worklife\\\",\\\"url\\\":\\\"https://www.bbc.com/worklife\\\",\\\"accent\\\":\\\"#0052A1\\\"},{\\\"label\\\":\\\"Travel\\\",\\\"url\\\":\\\"https://www.bbc.com/travel\\\",\\\"accent\\\":\\\"#589E50\\\"},{\\\"label\\\":\\\"Culture\\\",\\\"url\\\":\\\"https://www.bbc.com/culture\\\",\\\"accent\\\":\\\"#482878\\\"},{\\\"label\\\":\\\"Future\\\",\\\"url\\\":\\\"https://www.bbc.com/future\\\",\\\"accent\\\":\\\"#002856\\\"},{\\\"label\\\":\\\"Music\\\",\\\"url\\\":\\\"https://www.bbc.com/culture/music\\\"},{\\\"label\\\":\\\"TV\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/schedules/p00fzl9m\\\"},{\\\"label\\\":\\\"Weather\\\",\\\"url\\\":\\\"https://www.bbc.com/weather\\\",\\\"accent\\\":\\\"#149EDC\\\"},{\\\"label\\\":\\\"Sounds\\\",\\\"url\\\":\\\"htt"
+        },
+        {
+          "script_number": 8,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 836,
+          "preview": "{\"namedChunks\":[\"website-containers-global-navigation-index-js\",\"design-system-svgs-account-index-jsx\",\"design-system-svgs-actions-index-jsx\",\"website-containers-product-navigation-index-js\",\"design-system-svgs-logo-index-jsx\",\"website-containers-article-index-js\",\"design-system-svgs-arrows-index-jsx\",\"website-containers-portrait-video-experience-index-js\",\"design-system-svgs-playback-avkx-index-jsx\",\"website-containers-onward-journeys-index-js\",\"website-containers-service-bar-index-js\",\"design-system-svgs-devices-and-inputs-index-jsx\",\"design-system-svgs-content-types-index-jsx\",\"design-system-svgs-participate-index-jsx\",\"website-containers-global-footer-index-js\",\"website-addons-document-metadata-index-jsx\",\"website-addons-comscore-mmx-index-jsx\",\"website-addons-dotcom-index-jsx\",\"website-addons-cookies-module-index-jsx\"]}"
+        }
       ]
     },
     {
@@ -486,6 +773,32 @@
               "caption": ""
             }
           }
+        }
+      ],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 4,
+          "matched_keywords": [
+            "video",
+            "playlist"
+          ],
+          "length": 148362,
+          "preview": "window.__INITIAL_DATA__=\"{\\\"data\\\":{\\\"global-navigation?country=us&language=en-GB&service=news\\\":{\\\"name\\\":\\\"global-navigation\\\",\\\"props\\\":{\\\"country\\\":\\\"us\\\",\\\"language\\\":\\\"en-GB\\\",\\\"service\\\":\\\"news\\\"},\\\"data\\\":{\\\"accessibilityLinks\\\":[{\\\"label\\\":\\\"Skip to content\\\",\\\"url\\\":\\\"#main-heading\\\"},{\\\"label\\\":\\\"Accessibility Help\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility/\\\"}],\\\"signInLabel\\\":\\\"Sign in\\\",\\\"accountLabel\\\":\\\"Your account\\\",\\\"forYouLabel\\\":\\\"For you\\\",\\\"forYouUrl\\\":\\\"https://www.bbc.co.uk/foryou\\\",\\\"menuLabel\\\":\\\"Menu\\\",\\\"moreLabel\\\":\\\"More\\\",\\\"moreMenuLabel\\\":\\\"More menu\\\",\\\"closeButtonLabel\\\":\\\"Close menu\\\",\\\"disclaimer\\\":{\\\"text\\\":\\\"Copyright Â© 2026 BBC. The BBC is not responsible for the content of external sites.\\\",\\\"link\\\":{\\\"url\\\":\\\"https://www.bbc.co.uk/editorialguidelines/guidance/links-and-feeds\\\",\\\"text\\\":\\\"Read about our approach to external linking.\\\"}},\\\"legalLinks\\\":[{\\\"url\\\":\\\"https://www.bbc.co.uk/usingthebbc/terms\\\",\\\"label\\\":\\\"Terms of Use\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/aboutthebbc\\\",\\\"label\\\":\\\"About the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/privacy\\\",\\\"label\\\":\\\"Privacy Policy\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/cookies\\\",\\\"label\\\":\\\"Cookies\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility\\\",\\\"label\\\":\\\"Accessibility Help\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/iplayer/guidance\\\",\\\"label\\\":\\\"Parental Guidance\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/contact\\\",\\\"label\\\":\\\"Contact the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/careers\\\",\\\"label\\\":\\\"Careers\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/bbcnewsletter\\\",\\\"label\\\":\\\"BBC emails for you\\\"},{\\\"url\\\":\\\"https://www.bbc.com/advertisingcontact/\\\",\\\"label\\\":\\\"Advertise with us\\\"},{\\\"opens\\\":\\\"privacy-management\\\",\\\"label\\\":\\\"Do not share or sell my info\\\"}],\\\"navigationType\\\":\\\"Commercial Legacy\\\",\\\"homepageLink\\\":{\\\"label\\\":\\\"BBC Homepage\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},\\\"searchLink\\\":{\\\"label\\\":\\\"Search BBC\\\",\\\"url\\\":\\\"https://www.bbc.com/search\\\"},\\\"navigationLinks\\\":[{\\\"label\\\":\\\"Home\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},{\\\"label\\\":\\\"News\\\",\\\"url\\\":\\\"https://www.bbc.com/news\\\",\\\"accent\\\":\\\"#EB1212\\\"},{\\\"label\\\":\\\"Sport\\\",\\\"url\\\":\\\"https://www.bbc.com/sport\\\",\\\"accent\\\":\\\"#FFD230\\\"},{\\\"label\\\":\\\"Earth\\\",\\\"url\\\":\\\"https://www.bbc.com/future/earth\\\",\\\"accent\\\":\\\"#AAFF00\\\"},{\\\"label\\\":\\\"Reel\\\",\\\"url\\\":\\\"https://www.bbc.com/reel\\\",\\\"accent\\\":\\\"#0068FF\\\"},{\\\"label\\\":\\\"Worklife\\\",\\\"url\\\":\\\"https://www.bbc.com/worklife\\\",\\\"accent\\\":\\\"#0052A1\\\"},{\\\"label\\\":\\\"Travel\\\",\\\"url\\\":\\\"https://www.bbc.com/travel\\\",\\\"accent\\\":\\\"#589E50\\\"},{\\\"label\\\":\\\"Culture\\\",\\\"url\\\":\\\"https://www.bbc.com/culture\\\",\\\"accent\\\":\\\"#482878\\\"},{\\\"label\\\":\\\"Future\\\",\\\"url\\\":\\\"https://www.bbc.com/future\\\",\\\"accent\\\":\\\"#002856\\\"},{\\\"label\\\":\\\"Music\\\",\\\"url\\\":\\\"https://www.bbc.com/culture/music\\\"},{\\\"label\\\":\\\"TV\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/schedules/p00fzl9m\\\"},{\\\"label\\\":\\\"Weather\\\",\\\"url\\\":\\\"https://www.bbc.com/weather\\\",\\\"accent\\\":\\\"#149EDC\\\"},{\\\"label\\\":\\\"Sounds\\\",\\\"url\\\":\\\"htt"
+        },
+        {
+          "script_number": 8,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 836,
+          "preview": "{\"namedChunks\":[\"website-containers-global-navigation-index-js\",\"design-system-svgs-account-index-jsx\",\"design-system-svgs-actions-index-jsx\",\"website-containers-product-navigation-index-js\",\"design-system-svgs-logo-index-jsx\",\"website-containers-article-index-js\",\"design-system-svgs-arrows-index-jsx\",\"website-containers-portrait-video-experience-index-js\",\"design-system-svgs-playback-avkx-index-jsx\",\"website-containers-onward-journeys-index-js\",\"website-containers-service-bar-index-js\",\"design-system-svgs-devices-and-inputs-index-jsx\",\"design-system-svgs-content-types-index-jsx\",\"design-system-svgs-participate-index-jsx\",\"website-containers-global-footer-index-js\",\"website-addons-document-metadata-index-jsx\",\"website-addons-comscore-mmx-index-jsx\",\"website-addons-dotcom-index-jsx\",\"website-addons-cookies-module-index-jsx\"]}"
         }
       ]
     },
@@ -563,6 +876,32 @@
             }
           }
         }
+      ],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 4,
+          "matched_keywords": [
+            "video",
+            "playlist"
+          ],
+          "length": 164745,
+          "preview": "window.__INITIAL_DATA__=\"{\\\"data\\\":{\\\"global-navigation?country=us&language=en-GB&service=news\\\":{\\\"name\\\":\\\"global-navigation\\\",\\\"props\\\":{\\\"country\\\":\\\"us\\\",\\\"language\\\":\\\"en-GB\\\",\\\"service\\\":\\\"news\\\"},\\\"data\\\":{\\\"accessibilityLinks\\\":[{\\\"label\\\":\\\"Skip to content\\\",\\\"url\\\":\\\"#main-heading\\\"},{\\\"label\\\":\\\"Accessibility Help\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility/\\\"}],\\\"signInLabel\\\":\\\"Sign in\\\",\\\"accountLabel\\\":\\\"Your account\\\",\\\"forYouLabel\\\":\\\"For you\\\",\\\"forYouUrl\\\":\\\"https://www.bbc.co.uk/foryou\\\",\\\"menuLabel\\\":\\\"Menu\\\",\\\"moreLabel\\\":\\\"More\\\",\\\"moreMenuLabel\\\":\\\"More menu\\\",\\\"closeButtonLabel\\\":\\\"Close menu\\\",\\\"disclaimer\\\":{\\\"text\\\":\\\"Copyright Â© 2026 BBC. The BBC is not responsible for the content of external sites.\\\",\\\"link\\\":{\\\"url\\\":\\\"https://www.bbc.co.uk/editorialguidelines/guidance/links-and-feeds\\\",\\\"text\\\":\\\"Read about our approach to external linking.\\\"}},\\\"legalLinks\\\":[{\\\"url\\\":\\\"https://www.bbc.co.uk/usingthebbc/terms\\\",\\\"label\\\":\\\"Terms of Use\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/aboutthebbc\\\",\\\"label\\\":\\\"About the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/privacy\\\",\\\"label\\\":\\\"Privacy Policy\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/cookies\\\",\\\"label\\\":\\\"Cookies\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility\\\",\\\"label\\\":\\\"Accessibility Help\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/iplayer/guidance\\\",\\\"label\\\":\\\"Parental Guidance\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/contact\\\",\\\"label\\\":\\\"Contact the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/careers\\\",\\\"label\\\":\\\"Careers\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/bbcnewsletter\\\",\\\"label\\\":\\\"BBC emails for you\\\"},{\\\"url\\\":\\\"https://www.bbc.com/advertisingcontact/\\\",\\\"label\\\":\\\"Advertise with us\\\"},{\\\"opens\\\":\\\"privacy-management\\\",\\\"label\\\":\\\"Do not share or sell my info\\\"}],\\\"navigationType\\\":\\\"Commercial Legacy\\\",\\\"homepageLink\\\":{\\\"label\\\":\\\"BBC Homepage\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},\\\"searchLink\\\":{\\\"label\\\":\\\"Search BBC\\\",\\\"url\\\":\\\"https://www.bbc.com/search\\\"},\\\"navigationLinks\\\":[{\\\"label\\\":\\\"Home\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},{\\\"label\\\":\\\"News\\\",\\\"url\\\":\\\"https://www.bbc.com/news\\\",\\\"accent\\\":\\\"#EB1212\\\"},{\\\"label\\\":\\\"Sport\\\",\\\"url\\\":\\\"https://www.bbc.com/sport\\\",\\\"accent\\\":\\\"#FFD230\\\"},{\\\"label\\\":\\\"Earth\\\",\\\"url\\\":\\\"https://www.bbc.com/future/earth\\\",\\\"accent\\\":\\\"#AAFF00\\\"},{\\\"label\\\":\\\"Reel\\\",\\\"url\\\":\\\"https://www.bbc.com/reel\\\",\\\"accent\\\":\\\"#0068FF\\\"},{\\\"label\\\":\\\"Worklife\\\",\\\"url\\\":\\\"https://www.bbc.com/worklife\\\",\\\"accent\\\":\\\"#0052A1\\\"},{\\\"label\\\":\\\"Travel\\\",\\\"url\\\":\\\"https://www.bbc.com/travel\\\",\\\"accent\\\":\\\"#589E50\\\"},{\\\"label\\\":\\\"Culture\\\",\\\"url\\\":\\\"https://www.bbc.com/culture\\\",\\\"accent\\\":\\\"#482878\\\"},{\\\"label\\\":\\\"Future\\\",\\\"url\\\":\\\"https://www.bbc.com/future\\\",\\\"accent\\\":\\\"#002856\\\"},{\\\"label\\\":\\\"Music\\\",\\\"url\\\":\\\"https://www.bbc.com/culture/music\\\"},{\\\"label\\\":\\\"TV\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/schedules/p00fzl9m\\\"},{\\\"label\\\":\\\"Weather\\\",\\\"url\\\":\\\"https://www.bbc.com/weather\\\",\\\"accent\\\":\\\"#149EDC\\\"},{\\\"label\\\":\\\"Sounds\\\",\\\"url\\\":\\\"htt"
+        },
+        {
+          "script_number": 8,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 836,
+          "preview": "{\"namedChunks\":[\"website-containers-global-navigation-index-js\",\"design-system-svgs-account-index-jsx\",\"design-system-svgs-actions-index-jsx\",\"website-containers-product-navigation-index-js\",\"design-system-svgs-logo-index-jsx\",\"website-containers-article-index-js\",\"website-containers-portrait-video-experience-index-js\",\"design-system-svgs-arrows-index-jsx\",\"design-system-svgs-playback-avkx-index-jsx\",\"website-containers-onward-journeys-index-js\",\"website-containers-service-bar-index-js\",\"design-system-svgs-devices-and-inputs-index-jsx\",\"design-system-svgs-content-types-index-jsx\",\"design-system-svgs-participate-index-jsx\",\"website-containers-global-footer-index-js\",\"website-addons-document-metadata-index-jsx\",\"website-addons-comscore-mmx-index-jsx\",\"website-addons-dotcom-index-jsx\",\"website-addons-cookies-module-index-jsx\"]}"
+        }
       ]
     },
     {
@@ -591,6 +930,32 @@
             }
           }
         }
+      ],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 4,
+          "matched_keywords": [
+            "video",
+            "playlist"
+          ],
+          "length": 149336,
+          "preview": "window.__INITIAL_DATA__=\"{\\\"data\\\":{\\\"global-navigation?country=us&language=en-GB&service=news\\\":{\\\"name\\\":\\\"global-navigation\\\",\\\"props\\\":{\\\"country\\\":\\\"us\\\",\\\"language\\\":\\\"en-GB\\\",\\\"service\\\":\\\"news\\\"},\\\"data\\\":{\\\"accessibilityLinks\\\":[{\\\"label\\\":\\\"Skip to content\\\",\\\"url\\\":\\\"#main-heading\\\"},{\\\"label\\\":\\\"Accessibility Help\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility/\\\"}],\\\"signInLabel\\\":\\\"Sign in\\\",\\\"accountLabel\\\":\\\"Your account\\\",\\\"forYouLabel\\\":\\\"For you\\\",\\\"forYouUrl\\\":\\\"https://www.bbc.co.uk/foryou\\\",\\\"menuLabel\\\":\\\"Menu\\\",\\\"moreLabel\\\":\\\"More\\\",\\\"moreMenuLabel\\\":\\\"More menu\\\",\\\"closeButtonLabel\\\":\\\"Close menu\\\",\\\"disclaimer\\\":{\\\"text\\\":\\\"Copyright Â© 2026 BBC. The BBC is not responsible for the content of external sites.\\\",\\\"link\\\":{\\\"url\\\":\\\"https://www.bbc.co.uk/editorialguidelines/guidance/links-and-feeds\\\",\\\"text\\\":\\\"Read about our approach to external linking.\\\"}},\\\"legalLinks\\\":[{\\\"url\\\":\\\"https://www.bbc.co.uk/usingthebbc/terms\\\",\\\"label\\\":\\\"Terms of Use\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/aboutthebbc\\\",\\\"label\\\":\\\"About the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/privacy\\\",\\\"label\\\":\\\"Privacy Policy\\\"},{\\\"url\\\":\\\"https://www.bbc.com/usingthebbc/cookies\\\",\\\"label\\\":\\\"Cookies\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/accessibility\\\",\\\"label\\\":\\\"Accessibility Help\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/iplayer/guidance\\\",\\\"label\\\":\\\"Parental Guidance\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/contact\\\",\\\"label\\\":\\\"Contact the BBC\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/careers\\\",\\\"label\\\":\\\"Careers\\\"},{\\\"url\\\":\\\"https://www.bbc.co.uk/bbcnewsletter\\\",\\\"label\\\":\\\"BBC emails for you\\\"},{\\\"url\\\":\\\"https://www.bbc.com/advertisingcontact/\\\",\\\"label\\\":\\\"Advertise with us\\\"},{\\\"opens\\\":\\\"privacy-management\\\",\\\"label\\\":\\\"Do not share or sell my info\\\"}],\\\"navigationType\\\":\\\"Commercial Legacy\\\",\\\"homepageLink\\\":{\\\"label\\\":\\\"BBC Homepage\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},\\\"searchLink\\\":{\\\"label\\\":\\\"Search BBC\\\",\\\"url\\\":\\\"https://www.bbc.com/search\\\"},\\\"navigationLinks\\\":[{\\\"label\\\":\\\"Home\\\",\\\"url\\\":\\\"https://www.bbc.com\\\"},{\\\"label\\\":\\\"News\\\",\\\"url\\\":\\\"https://www.bbc.com/news\\\",\\\"accent\\\":\\\"#EB1212\\\"},{\\\"label\\\":\\\"Sport\\\",\\\"url\\\":\\\"https://www.bbc.com/sport\\\",\\\"accent\\\":\\\"#FFD230\\\"},{\\\"label\\\":\\\"Earth\\\",\\\"url\\\":\\\"https://www.bbc.com/future/earth\\\",\\\"accent\\\":\\\"#AAFF00\\\"},{\\\"label\\\":\\\"Reel\\\",\\\"url\\\":\\\"https://www.bbc.com/reel\\\",\\\"accent\\\":\\\"#0068FF\\\"},{\\\"label\\\":\\\"Worklife\\\",\\\"url\\\":\\\"https://www.bbc.com/worklife\\\",\\\"accent\\\":\\\"#0052A1\\\"},{\\\"label\\\":\\\"Travel\\\",\\\"url\\\":\\\"https://www.bbc.com/travel\\\",\\\"accent\\\":\\\"#589E50\\\"},{\\\"label\\\":\\\"Culture\\\",\\\"url\\\":\\\"https://www.bbc.com/culture\\\",\\\"accent\\\":\\\"#482878\\\"},{\\\"label\\\":\\\"Future\\\",\\\"url\\\":\\\"https://www.bbc.com/future\\\",\\\"accent\\\":\\\"#002856\\\"},{\\\"label\\\":\\\"Music\\\",\\\"url\\\":\\\"https://www.bbc.com/culture/music\\\"},{\\\"label\\\":\\\"TV\\\",\\\"url\\\":\\\"https://www.bbc.co.uk/schedules/p00fzl9m\\\"},{\\\"label\\\":\\\"Weather\\\",\\\"url\\\":\\\"https://www.bbc.com/weather\\\",\\\"accent\\\":\\\"#149EDC\\\"},{\\\"label\\\":\\\"Sounds\\\",\\\"url\\\":\\\"htt"
+        },
+        {
+          "script_number": 8,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 836,
+          "preview": "{\"namedChunks\":[\"website-containers-global-navigation-index-js\",\"design-system-svgs-account-index-jsx\",\"design-system-svgs-actions-index-jsx\",\"website-containers-product-navigation-index-js\",\"design-system-svgs-logo-index-jsx\",\"website-containers-article-index-js\",\"website-containers-portrait-video-experience-index-js\",\"design-system-svgs-arrows-index-jsx\",\"design-system-svgs-playback-avkx-index-jsx\",\"website-containers-onward-journeys-index-js\",\"website-containers-service-bar-index-js\",\"design-system-svgs-devices-and-inputs-index-jsx\",\"design-system-svgs-content-types-index-jsx\",\"design-system-svgs-participate-index-jsx\",\"website-containers-global-footer-index-js\",\"website-addons-document-metadata-index-jsx\",\"website-addons-comscore-mmx-index-jsx\",\"website-addons-dotcom-index-jsx\",\"website-addons-cookies-module-index-jsx\"]}"
+        }
       ]
     },
     {
@@ -601,7 +966,26 @@
       "images": [],
       "videos": [],
       "video_posters": [],
-      "figure_results": []
+      "figure_results": [],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 36,
+          "matched_keywords": [
+            "vpid",
+            "playable",
+            "video"
+          ],
+          "length": 39098,
+          "preview": "{\"props\":{\"pageProps\":{\"dehydratedState\":{\"mutations\":[],\"queries\":[{\"dehydratedAt\":1791179967785,\"state\":{\"data\":{\"experimentConfiguration\":{\"projectId\":\"29369580015\"},\"experimentMapping\":[{\"trackingKeys\":[],\"experimentKey\":\"sndsxp_search_datebias_qpe\",\"scope\":\"search\",\"visitorId\":\"USER_ID\",\"attributeNames\":[],\"platforms\":[\"web\"],\"implementationPlatforms\":[\"data\"]}],\"trackingConfiguration\":[{\"trackingKey\":\"LiveCompletes\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]},{\"trackingKey\":\"LivePlayStarts\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]},{\"trackingKey\":\"OnDemandCompletes\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]},{\"trackingKey\":\"OnDemandPlayStarts\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]},{\"trackingKey\":\"userActionClicks\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]}],\"experimentDefinitions\":{\"accountId\":\"4621041136\",\"projectId\":\"29369580015\",\"revision\":\"214\",\"attributes\":[{\"id\":\"29935680220\",\"key\":\"df_age_range\"},{\"id\":\"29938600209\",\"key\":\"df_visit_frequency\"},{\"id\":\"29979000063\",\"key\":\"df_app_type\"},{\"id\":\"5597486008500224\",\"key\":\"df_device_type\"}],\"audiences\":[{\"id\":\"$opt_dummy_audience\",\"name\":\"Optimizely-Generated Audience for Backwards Compatibility\",\"conditions\":\"[\\\"or\\\", {\\\"match\\\": \\\"exact\\\", \\\"name\\\": \\\"$opt_dummy_attribute\\\", \\\"type\\\": \\\"custom_attribute\\\", \\\"value\\\": \\\"$opt_dummy_value\\\"}]\"}],\"version\":\"4\",\"events\":[{\"id\":\"29906910283\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-homepage-unmissable-sounds\"},{\"id\":\"29912470211\",\"experimentIds\":[\"9300003431033\"],\"key\":\"df-sndxp-ep-listened-all\"},{\"id\":\"29912600228\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-listened-aod-homepage-music-mixes\"},{\"id\":\"29912750272\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-music-page-music-mixes\"},{\"id\":\"29922090282\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-homepage-continue-listening\"},{\"id\":\"29922210154\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-listened-live-music-page\"},{\"id\":\"29924790288\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-homepage\"},{\"id\":\"29926150261\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-all\"},{\"id\":\"29928190233\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-listened-aod-music-page\"},{\"id\":\"29928870175\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-listened-aod\"},{\"id\":\"29930110224\",\"experimentIds\":[],\"key\":\"LivePlayStarts\"},{\"id\":\"29930290141\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-music-page-back-to-back-sounds\"},{\"id\":\"29933800330\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-podcast-page\"},{\"id\":\"29935260311\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-"
+        }
+      ]
     },
     {
       "title": "Tech Life",
@@ -611,7 +995,26 @@
       "images": [],
       "videos": [],
       "video_posters": [],
-      "figure_results": []
+      "figure_results": [],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 36,
+          "matched_keywords": [
+            "vpid",
+            "playable",
+            "video"
+          ],
+          "length": 42094,
+          "preview": "{\"props\":{\"pageProps\":{\"dehydratedState\":{\"mutations\":[],\"queries\":[{\"dehydratedAt\":1791179968728,\"state\":{\"data\":{\"experimentConfiguration\":{\"projectId\":\"29369580015\"},\"experimentMapping\":[{\"trackingKeys\":[],\"experimentKey\":\"sndsxp_search_datebias_qpe\",\"scope\":\"search\",\"visitorId\":\"USER_ID\",\"attributeNames\":[],\"platforms\":[\"web\"],\"implementationPlatforms\":[\"data\"]}],\"trackingConfiguration\":[{\"trackingKey\":\"LiveCompletes\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]},{\"trackingKey\":\"LivePlayStarts\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]},{\"trackingKey\":\"OnDemandCompletes\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]},{\"trackingKey\":\"OnDemandPlayStarts\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]},{\"trackingKey\":\"userActionClicks\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]}],\"experimentDefinitions\":{\"accountId\":\"4621041136\",\"projectId\":\"29369580015\",\"revision\":\"214\",\"attributes\":[{\"id\":\"29935680220\",\"key\":\"df_age_range\"},{\"id\":\"29938600209\",\"key\":\"df_visit_frequency\"},{\"id\":\"29979000063\",\"key\":\"df_app_type\"},{\"id\":\"5597486008500224\",\"key\":\"df_device_type\"}],\"audiences\":[{\"id\":\"$opt_dummy_audience\",\"name\":\"Optimizely-Generated Audience for Backwards Compatibility\",\"conditions\":\"[\\\"or\\\", {\\\"match\\\": \\\"exact\\\", \\\"name\\\": \\\"$opt_dummy_attribute\\\", \\\"type\\\": \\\"custom_attribute\\\", \\\"value\\\": \\\"$opt_dummy_value\\\"}]\"}],\"version\":\"4\",\"events\":[{\"id\":\"29906910283\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-homepage-unmissable-sounds\"},{\"id\":\"29912470211\",\"experimentIds\":[\"9300003431033\"],\"key\":\"df-sndxp-ep-listened-all\"},{\"id\":\"29912600228\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-listened-aod-homepage-music-mixes\"},{\"id\":\"29912750272\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-music-page-music-mixes\"},{\"id\":\"29922090282\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-homepage-continue-listening\"},{\"id\":\"29922210154\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-listened-live-music-page\"},{\"id\":\"29924790288\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-homepage\"},{\"id\":\"29926150261\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-all\"},{\"id\":\"29928190233\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-listened-aod-music-page\"},{\"id\":\"29928870175\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-listened-aod\"},{\"id\":\"29930110224\",\"experimentIds\":[],\"key\":\"LivePlayStarts\"},{\"id\":\"29930290141\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-music-page-back-to-back-sounds\"},{\"id\":\"29933800330\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-podcast-page\"},{\"id\":\"29935260311\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-"
+        }
+      ]
     },
     {
       "title": "Tech Life",
@@ -621,7 +1024,26 @@
       "images": [],
       "videos": [],
       "video_posters": [],
-      "figure_results": []
+      "figure_results": [],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 36,
+          "matched_keywords": [
+            "vpid",
+            "playable",
+            "video"
+          ],
+          "length": 45793,
+          "preview": "{\"props\":{\"pageProps\":{\"dehydratedState\":{\"mutations\":[],\"queries\":[{\"dehydratedAt\":1791179969556,\"state\":{\"data\":{\"experimentConfiguration\":{\"projectId\":\"29369580015\"},\"experimentMapping\":[{\"trackingKeys\":[],\"experimentKey\":\"sndsxp_search_datebias_qpe\",\"scope\":\"search\",\"visitorId\":\"USER_ID\",\"attributeNames\":[],\"platforms\":[\"web\"],\"implementationPlatforms\":[\"data\"]}],\"trackingConfiguration\":[{\"trackingKey\":\"LiveCompletes\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]},{\"trackingKey\":\"LivePlayStarts\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]},{\"trackingKey\":\"OnDemandCompletes\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]},{\"trackingKey\":\"OnDemandPlayStarts\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]},{\"trackingKey\":\"userActionClicks\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]}],\"experimentDefinitions\":{\"accountId\":\"4621041136\",\"projectId\":\"29369580015\",\"revision\":\"214\",\"attributes\":[{\"id\":\"29935680220\",\"key\":\"df_age_range\"},{\"id\":\"29938600209\",\"key\":\"df_visit_frequency\"},{\"id\":\"29979000063\",\"key\":\"df_app_type\"},{\"id\":\"5597486008500224\",\"key\":\"df_device_type\"}],\"audiences\":[{\"id\":\"$opt_dummy_audience\",\"name\":\"Optimizely-Generated Audience for Backwards Compatibility\",\"conditions\":\"[\\\"or\\\", {\\\"match\\\": \\\"exact\\\", \\\"name\\\": \\\"$opt_dummy_attribute\\\", \\\"type\\\": \\\"custom_attribute\\\", \\\"value\\\": \\\"$opt_dummy_value\\\"}]\"}],\"version\":\"4\",\"events\":[{\"id\":\"29906910283\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-homepage-unmissable-sounds\"},{\"id\":\"29912470211\",\"experimentIds\":[\"9300003431033\"],\"key\":\"df-sndxp-ep-listened-all\"},{\"id\":\"29912600228\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-listened-aod-homepage-music-mixes\"},{\"id\":\"29912750272\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-music-page-music-mixes\"},{\"id\":\"29922090282\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-homepage-continue-listening\"},{\"id\":\"29922210154\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-listened-live-music-page\"},{\"id\":\"29924790288\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-homepage\"},{\"id\":\"29926150261\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-all\"},{\"id\":\"29928190233\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-listened-aod-music-page\"},{\"id\":\"29928870175\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-listened-aod\"},{\"id\":\"29930110224\",\"experimentIds\":[],\"key\":\"LivePlayStarts\"},{\"id\":\"29930290141\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-music-page-back-to-back-sounds\"},{\"id\":\"29933800330\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-podcast-page\"},{\"id\":\"29935260311\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-"
+        }
+      ]
     },
     {
       "title": "Tech Life",
@@ -631,7 +1053,26 @@
       "images": [],
       "videos": [],
       "video_posters": [],
-      "figure_results": []
+      "figure_results": [],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 36,
+          "matched_keywords": [
+            "vpid",
+            "playable",
+            "video"
+          ],
+          "length": 49051,
+          "preview": "{\"props\":{\"pageProps\":{\"dehydratedState\":{\"mutations\":[],\"queries\":[{\"dehydratedAt\":1791179970112,\"state\":{\"data\":{\"experimentConfiguration\":{\"projectId\":\"29369580015\"},\"experimentMapping\":[{\"trackingKeys\":[],\"experimentKey\":\"sndsxp_search_datebias_qpe\",\"scope\":\"search\",\"visitorId\":\"USER_ID\",\"attributeNames\":[],\"platforms\":[\"web\"],\"implementationPlatforms\":[\"data\"]}],\"trackingConfiguration\":[{\"trackingKey\":\"LiveCompletes\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]},{\"trackingKey\":\"LivePlayStarts\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]},{\"trackingKey\":\"OnDemandCompletes\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]},{\"trackingKey\":\"OnDemandPlayStarts\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]},{\"trackingKey\":\"userActionClicks\",\"configurations\":[{\"visitorId\":\"USER_ID\",\"attributeNames\":[\"platform\",\"aseg\"]},{\"visitorId\":\"DEVICE_ID\",\"attributeNames\":[\"platform\"]}]}],\"experimentDefinitions\":{\"accountId\":\"4621041136\",\"projectId\":\"29369580015\",\"revision\":\"214\",\"attributes\":[{\"id\":\"29935680220\",\"key\":\"df_age_range\"},{\"id\":\"29938600209\",\"key\":\"df_visit_frequency\"},{\"id\":\"29979000063\",\"key\":\"df_app_type\"},{\"id\":\"5597486008500224\",\"key\":\"df_device_type\"}],\"audiences\":[{\"id\":\"$opt_dummy_audience\",\"name\":\"Optimizely-Generated Audience for Backwards Compatibility\",\"conditions\":\"[\\\"or\\\", {\\\"match\\\": \\\"exact\\\", \\\"name\\\": \\\"$opt_dummy_attribute\\\", \\\"type\\\": \\\"custom_attribute\\\", \\\"value\\\": \\\"$opt_dummy_value\\\"}]\"}],\"version\":\"4\",\"events\":[{\"id\":\"29906910283\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-homepage-unmissable-sounds\"},{\"id\":\"29912470211\",\"experimentIds\":[\"9300003431033\"],\"key\":\"df-sndxp-ep-listened-all\"},{\"id\":\"29912600228\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-listened-aod-homepage-music-mixes\"},{\"id\":\"29912750272\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-music-page-music-mixes\"},{\"id\":\"29922090282\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-homepage-continue-listening\"},{\"id\":\"29922210154\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-listened-live-music-page\"},{\"id\":\"29924790288\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-homepage\"},{\"id\":\"29926150261\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-all\"},{\"id\":\"29928190233\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-listened-aod-music-page\"},{\"id\":\"29928870175\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-listened-aod\"},{\"id\":\"29930110224\",\"experimentIds\":[],\"key\":\"LivePlayStarts\"},{\"id\":\"29930290141\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-music-page-back-to-back-sounds\"},{\"id\":\"29933800330\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-started-aod-podcast-page\"},{\"id\":\"29935260311\",\"experimentIds\":[],\"key\":\"df-sndxp-ep-"
+        }
+      ]
     },
     {
       "title": "Tech Now",
@@ -641,7 +1082,32 @@
       "images": [],
       "videos": [],
       "video_posters": [],
-      "figure_results": []
+      "figure_results": [],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 17,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 939,
+          "preview": "[{\"@context\":\"https://schema.org/\",\"thumbnailUrl\":\"https://ichef.bbci.co.uk/images/ic/1920x1080/p0pdn492.jpg\",\"description\":\"As Pokémon celebrates its 30th anniversary, Alasdair Keane heads to the Pokémon World Championships in San Francisco.\",\"url\":\"https://www.bbc.co.uk/iplayer/episode/m0032n6v/tech-now-pokemon-turns-30\",\"name\":\"Tech Now - Pokémon Turns 30\",\"duration\":\"PT24M31.040S\",\"genre\":\"Science\",\"@type\":\"TVEpisode\",\"partOfSeries\":\"Tech Now\"},{\"@context\":\"https://schema.org/\",\"thumbnailUrl\":\"https://ichef.bbci.co.uk/images/ic/1920x1080/p0pdn492.jpg\",\"description\":\"As Pokémon celebrates its 30th anniversary, Alasdair Keane heads to the Pokémon World Championships in San Francisco.\",\"url\":\"https://www.bbc.co.uk/iplayer/episode/m0032n6v/tech-now-pokemon-turns-30\",\"name\":\"Tech Now - Pokémon Turns 30\",\"duration\":\"PT24M31.040S\",\"genre\":\"Science\",\"@type\":\"VideoObject\",\"regionsAllowed\":\"GB\",\"uploadDate\":\"2026-10-03T01:00:00Z\"}]"
+        },
+        {
+          "script_number": 21,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 32542,
+          "preview": "window.__IPLAYER_REDUX_STATE__ = {\"navigation\":{\"items\":[{\"id\":\"channels\",\"title\":\"Channels\",\"active\":false,\"subItems\":[{\"title\":\"BBC One\",\"href\":\"/bbcone\",\"liveHref\":\"/iplayer/live/bbcone\",\"active\":false,\"icon\":\"bbcone\",\"id\":\"bbc_one\"},{\"title\":\"BBC Two\",\"href\":\"/bbctwo\",\"liveHref\":\"/iplayer/live/bbctwo\",\"active\":false,\"icon\":\"bbctwo\",\"id\":\"bbc_two\"},{\"title\":\"BBC Three\",\"href\":\"/tv/bbcthree\",\"liveHref\":\"/iplayer/live/bbcthree\",\"active\":false,\"icon\":\"bbcthree\",\"id\":\"bbc_three\"},{\"title\":\"BBC Four\",\"href\":\"/bbcfour\",\"liveHref\":\"/iplayer/live/bbcfour\",\"active\":false,\"icon\":\"bbcfour\",\"id\":\"bbc_four\"},{\"title\":\"BBC Radio 1\",\"href\":\"/tv/radio1\",\"liveHref\":\"/iplayer/live/radio1\",\"active\":false,\"icon\":\"radio1\",\"id\":\"bbc_radio_one\"},{\"title\":\"CBBC\",\"href\":\"/tv/cbbc\",\"liveHref\":\"/iplayer/live/cbbc\",\"active\":false,\"icon\":\"cbbc\",\"id\":\"cbbc\"},{\"title\":\"CBeebies\",\"href\":\"/tv/cbeebies\",\"liveHref\":\"/iplayer/live/cbeebies\",\"active\":false,\"icon\":\"cbeebies\",\"id\":\"cbeebies\"},{\"title\":\"BBC Scotland\",\"href\":\"/tv/bbcscotland\",\"liveHref\":\"/iplayer/live/bbcscotland\",\"active\":false,\"icon\":\"bbcscotland\",\"id\":\"bbc_scotland\"},{\"title\":\"BBC News\",\"href\":\"/tv/bbcnews\",\"liveHref\":\"/iplayer/live/bbcnews\",\"active\":false,\"icon\":\"bbcnews\",\"id\":\"bbc_news24\"},{\"title\":\"BBC Parliament\",\"href\":\"/tv/bbcparliament\",\"liveHref\":\"/iplayer/live/bbcparliament\",\"active\":false,\"icon\":\"bbcparliament\",\"id\":\"bbc_parliament\"},{\"title\":\"BBC Alba\",\"href\":\"/tv/bbcalba\",\"liveHref\":\"/iplayer/live/bbcalba\",\"active\":false,\"icon\":\"bbcalba\",\"id\":\"bbc_alba\"},{\"title\":\"S4C\",\"href\":\"/tv/s4c\",\"liveHref\":\"/iplayer/live/s4c\",\"active\":false,\"icon\":\"s4c\",\"id\":\"s4cpbs\"}]},{\"id\":\"categories\",\"title\":\"Categories\",\"active\":false,\"subItems\":[{\"title\":\"Drama & Soaps\",\"href\":\"/iplayer/categories/drama-and-soaps/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"drama-and-soaps\"},{\"title\":\"Films\",\"href\":\"/iplayer/browse/films\",\"active\":false,\"kind\":\"genre\",\"id\":\"films\"},{\"title\":\"Comedy\",\"href\":\"/iplayer/categories/comedy/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"comedy\"},{\"title\":\"Documentaries\",\"href\":\"/iplayer/categories/documentaries/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"documentaries\"},{\"title\":\"Sport\",\"href\":\"/iplayer/categories/sport/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"sport\"},{\"title\":\"News\",\"href\":\"/iplayer/categories/news/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"news\"},{\"title\":\"Entertainment\",\"href\":\"/iplayer/categories/entertainment/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"entertainment\"},{\"title\":\"Music\",\"href\":\"/iplayer/browse/music\",\"active\":false,\"kind\":\"genre\",\"id\":\"music\"},{\"title\":\"Food\",\"href\":\"/iplayer/categories/food/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"food\"},{\"title\":\"Lifestyle\",\"href\":\"/iplayer/categories/lifestyle/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"lifestyle\"},{\"title\":\"History\",\"href\":\"/iplayer/categories/history/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"history\"},{\"title\":\"Science & Nature\",\"href\":\"/iplayer/categories/science-and-nature/featur"
+        }
+      ]
     },
     {
       "title": "Tech Now",
@@ -651,7 +1117,32 @@
       "images": [],
       "videos": [],
       "video_posters": [],
-      "figure_results": []
+      "figure_results": [],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 17,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 1059,
+          "preview": "[{\"@context\":\"https://schema.org/\",\"thumbnailUrl\":\"https://ichef.bbci.co.uk/images/ic/1920x1080/p0pc9t8x.jpg\",\"description\":\"Ammie Sekhon explores the tech being deployed to identify and remove counterfeit products online. Shiona McCallum visits a UK company making a different type of computer chip.\",\"url\":\"https://www.bbc.co.uk/iplayer/episode/m0032d9k/tech-now-hunting-the-fakes\",\"name\":\"Tech Now - Hunting the Fakes\",\"duration\":\"PT24M28.040S\",\"genre\":\"Science\",\"@type\":\"TVEpisode\",\"partOfSeries\":\"Tech Now\"},{\"@context\":\"https://schema.org/\",\"thumbnailUrl\":\"https://ichef.bbci.co.uk/images/ic/1920x1080/p0pc9t8x.jpg\",\"description\":\"Ammie Sekhon explores the tech being deployed to identify and remove counterfeit products online. Shiona McCallum visits a UK company making a different type of computer chip.\",\"url\":\"https://www.bbc.co.uk/iplayer/episode/m0032d9k/tech-now-hunting-the-fakes\",\"name\":\"Tech Now - Hunting the Fakes\",\"duration\":\"PT24M28.040S\",\"genre\":\"Science\",\"@type\":\"VideoObject\",\"regionsAllowed\":\"GB\",\"uploadDate\":\"2026-09-26T01:00:13Z\"}]"
+        },
+        {
+          "script_number": 21,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 32570,
+          "preview": "window.__IPLAYER_REDUX_STATE__ = {\"navigation\":{\"items\":[{\"id\":\"channels\",\"title\":\"Channels\",\"active\":false,\"subItems\":[{\"title\":\"BBC One\",\"href\":\"/bbcone\",\"liveHref\":\"/iplayer/live/bbcone\",\"active\":false,\"icon\":\"bbcone\",\"id\":\"bbc_one\"},{\"title\":\"BBC Two\",\"href\":\"/bbctwo\",\"liveHref\":\"/iplayer/live/bbctwo\",\"active\":false,\"icon\":\"bbctwo\",\"id\":\"bbc_two\"},{\"title\":\"BBC Three\",\"href\":\"/tv/bbcthree\",\"liveHref\":\"/iplayer/live/bbcthree\",\"active\":false,\"icon\":\"bbcthree\",\"id\":\"bbc_three\"},{\"title\":\"BBC Four\",\"href\":\"/bbcfour\",\"liveHref\":\"/iplayer/live/bbcfour\",\"active\":false,\"icon\":\"bbcfour\",\"id\":\"bbc_four\"},{\"title\":\"BBC Radio 1\",\"href\":\"/tv/radio1\",\"liveHref\":\"/iplayer/live/radio1\",\"active\":false,\"icon\":\"radio1\",\"id\":\"bbc_radio_one\"},{\"title\":\"CBBC\",\"href\":\"/tv/cbbc\",\"liveHref\":\"/iplayer/live/cbbc\",\"active\":false,\"icon\":\"cbbc\",\"id\":\"cbbc\"},{\"title\":\"CBeebies\",\"href\":\"/tv/cbeebies\",\"liveHref\":\"/iplayer/live/cbeebies\",\"active\":false,\"icon\":\"cbeebies\",\"id\":\"cbeebies\"},{\"title\":\"BBC Scotland\",\"href\":\"/tv/bbcscotland\",\"liveHref\":\"/iplayer/live/bbcscotland\",\"active\":false,\"icon\":\"bbcscotland\",\"id\":\"bbc_scotland\"},{\"title\":\"BBC News\",\"href\":\"/tv/bbcnews\",\"liveHref\":\"/iplayer/live/bbcnews\",\"active\":false,\"icon\":\"bbcnews\",\"id\":\"bbc_news24\"},{\"title\":\"BBC Parliament\",\"href\":\"/tv/bbcparliament\",\"liveHref\":\"/iplayer/live/bbcparliament\",\"active\":false,\"icon\":\"bbcparliament\",\"id\":\"bbc_parliament\"},{\"title\":\"BBC Alba\",\"href\":\"/tv/bbcalba\",\"liveHref\":\"/iplayer/live/bbcalba\",\"active\":false,\"icon\":\"bbcalba\",\"id\":\"bbc_alba\"},{\"title\":\"S4C\",\"href\":\"/tv/s4c\",\"liveHref\":\"/iplayer/live/s4c\",\"active\":false,\"icon\":\"s4c\",\"id\":\"s4cpbs\"}]},{\"id\":\"categories\",\"title\":\"Categories\",\"active\":false,\"subItems\":[{\"title\":\"Drama & Soaps\",\"href\":\"/iplayer/categories/drama-and-soaps/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"drama-and-soaps\"},{\"title\":\"Films\",\"href\":\"/iplayer/browse/films\",\"active\":false,\"kind\":\"genre\",\"id\":\"films\"},{\"title\":\"Comedy\",\"href\":\"/iplayer/categories/comedy/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"comedy\"},{\"title\":\"Documentaries\",\"href\":\"/iplayer/categories/documentaries/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"documentaries\"},{\"title\":\"Sport\",\"href\":\"/iplayer/categories/sport/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"sport\"},{\"title\":\"News\",\"href\":\"/iplayer/categories/news/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"news\"},{\"title\":\"Entertainment\",\"href\":\"/iplayer/categories/entertainment/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"entertainment\"},{\"title\":\"Music\",\"href\":\"/iplayer/browse/music\",\"active\":false,\"kind\":\"genre\",\"id\":\"music\"},{\"title\":\"Food\",\"href\":\"/iplayer/categories/food/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"food\"},{\"title\":\"Lifestyle\",\"href\":\"/iplayer/categories/lifestyle/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"lifestyle\"},{\"title\":\"History\",\"href\":\"/iplayer/categories/history/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"history\"},{\"title\":\"Science & Nature\",\"href\":\"/iplayer/categories/science-and-nature/featur"
+        }
+      ]
     },
     {
       "title": "Tech Now",
@@ -661,7 +1152,32 @@
       "images": [],
       "videos": [],
       "video_posters": [],
-      "figure_results": []
+      "figure_results": [],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 17,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 1121,
+          "preview": "[{\"@context\":\"https://schema.org/\",\"thumbnailUrl\":\"https://ichef.bbci.co.uk/images/ic/1920x1080/p0pbb5jj.jpg\",\"description\":\"Adrienne Murray follows a team of NASA scientists in Iceland carrying out research during a rare total solar eclipse. Andrew Rogers has highlights from IFA Berlin, one of the biggest tech shows.\",\"url\":\"https://www.bbc.co.uk/iplayer/episode/m0032301/tech-now-chasing-a-solar-eclipse\",\"name\":\"Tech Now - Chasing a Solar Eclipse\",\"duration\":\"PT24M39.040S\",\"genre\":\"Science\",\"@type\":\"TVEpisode\",\"partOfSeries\":\"Tech Now\"},{\"@context\":\"https://schema.org/\",\"thumbnailUrl\":\"https://ichef.bbci.co.uk/images/ic/1920x1080/p0pbb5jj.jpg\",\"description\":\"Adrienne Murray follows a team of NASA scientists in Iceland carrying out research during a rare total solar eclipse. Andrew Rogers has highlights from IFA Berlin, one of the biggest tech shows.\",\"url\":\"https://www.bbc.co.uk/iplayer/episode/m0032301/tech-now-chasing-a-solar-eclipse\",\"name\":\"Tech Now - Chasing a Solar Eclipse\",\"duration\":\"PT24M39.040S\",\"genre\":\"Science\",\"@type\":\"VideoObject\",\"regionsAllowed\":\"GB\",\"uploadDate\":\"2026-09-19T01:00:00Z\"}]"
+        },
+        {
+          "script_number": 21,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 32618,
+          "preview": "window.__IPLAYER_REDUX_STATE__ = {\"navigation\":{\"items\":[{\"id\":\"channels\",\"title\":\"Channels\",\"active\":false,\"subItems\":[{\"title\":\"BBC One\",\"href\":\"/bbcone\",\"liveHref\":\"/iplayer/live/bbcone\",\"active\":false,\"icon\":\"bbcone\",\"id\":\"bbc_one\"},{\"title\":\"BBC Two\",\"href\":\"/bbctwo\",\"liveHref\":\"/iplayer/live/bbctwo\",\"active\":false,\"icon\":\"bbctwo\",\"id\":\"bbc_two\"},{\"title\":\"BBC Three\",\"href\":\"/tv/bbcthree\",\"liveHref\":\"/iplayer/live/bbcthree\",\"active\":false,\"icon\":\"bbcthree\",\"id\":\"bbc_three\"},{\"title\":\"BBC Four\",\"href\":\"/bbcfour\",\"liveHref\":\"/iplayer/live/bbcfour\",\"active\":false,\"icon\":\"bbcfour\",\"id\":\"bbc_four\"},{\"title\":\"BBC Radio 1\",\"href\":\"/tv/radio1\",\"liveHref\":\"/iplayer/live/radio1\",\"active\":false,\"icon\":\"radio1\",\"id\":\"bbc_radio_one\"},{\"title\":\"CBBC\",\"href\":\"/tv/cbbc\",\"liveHref\":\"/iplayer/live/cbbc\",\"active\":false,\"icon\":\"cbbc\",\"id\":\"cbbc\"},{\"title\":\"CBeebies\",\"href\":\"/tv/cbeebies\",\"liveHref\":\"/iplayer/live/cbeebies\",\"active\":false,\"icon\":\"cbeebies\",\"id\":\"cbeebies\"},{\"title\":\"BBC Scotland\",\"href\":\"/tv/bbcscotland\",\"liveHref\":\"/iplayer/live/bbcscotland\",\"active\":false,\"icon\":\"bbcscotland\",\"id\":\"bbc_scotland\"},{\"title\":\"BBC News\",\"href\":\"/tv/bbcnews\",\"liveHref\":\"/iplayer/live/bbcnews\",\"active\":false,\"icon\":\"bbcnews\",\"id\":\"bbc_news24\"},{\"title\":\"BBC Parliament\",\"href\":\"/tv/bbcparliament\",\"liveHref\":\"/iplayer/live/bbcparliament\",\"active\":false,\"icon\":\"bbcparliament\",\"id\":\"bbc_parliament\"},{\"title\":\"BBC Alba\",\"href\":\"/tv/bbcalba\",\"liveHref\":\"/iplayer/live/bbcalba\",\"active\":false,\"icon\":\"bbcalba\",\"id\":\"bbc_alba\"},{\"title\":\"S4C\",\"href\":\"/tv/s4c\",\"liveHref\":\"/iplayer/live/s4c\",\"active\":false,\"icon\":\"s4c\",\"id\":\"s4cpbs\"}]},{\"id\":\"categories\",\"title\":\"Categories\",\"active\":false,\"subItems\":[{\"title\":\"Drama & Soaps\",\"href\":\"/iplayer/categories/drama-and-soaps/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"drama-and-soaps\"},{\"title\":\"Films\",\"href\":\"/iplayer/browse/films\",\"active\":false,\"kind\":\"genre\",\"id\":\"films\"},{\"title\":\"Comedy\",\"href\":\"/iplayer/categories/comedy/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"comedy\"},{\"title\":\"Documentaries\",\"href\":\"/iplayer/categories/documentaries/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"documentaries\"},{\"title\":\"Sport\",\"href\":\"/iplayer/categories/sport/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"sport\"},{\"title\":\"News\",\"href\":\"/iplayer/categories/news/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"news\"},{\"title\":\"Entertainment\",\"href\":\"/iplayer/categories/entertainment/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"entertainment\"},{\"title\":\"Music\",\"href\":\"/iplayer/browse/music\",\"active\":false,\"kind\":\"genre\",\"id\":\"music\"},{\"title\":\"Food\",\"href\":\"/iplayer/categories/food/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"food\"},{\"title\":\"Lifestyle\",\"href\":\"/iplayer/categories/lifestyle/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"lifestyle\"},{\"title\":\"History\",\"href\":\"/iplayer/categories/history/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"history\"},{\"title\":\"Science & Nature\",\"href\":\"/iplayer/categories/science-and-nature/featur"
+        }
+      ]
     },
     {
       "title": "Tech Now",
@@ -671,7 +1187,32 @@
       "images": [],
       "videos": [],
       "video_posters": [],
-      "figure_results": []
+      "figure_results": [],
+      "global_media": {
+        "videos": [],
+        "sources": [],
+        "iframes": [],
+        "video_posters": [],
+        "media_attributes": []
+      },
+      "script_matches": [
+        {
+          "script_number": 17,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 1131,
+          "preview": "[{\"@context\":\"https://schema.org/\",\"thumbnailUrl\":\"https://ichef.bbci.co.uk/images/ic/1920x1080/p0p93vgf.jpg\",\"description\":\"Shiona McCallum meets mums and hospital staff trialling a new assisted birth innovation. Yasmin Morgan-Griffiths visits a firm building electric vehicle tech without rare earths.\",\"url\":\"https://www.bbc.co.uk/iplayer/episode/m0031qjy/tech-now-can-new-tech-help-assisted-births\",\"name\":\"Tech Now - Can New Tech Help Assisted Births?\",\"duration\":\"PT24M33.040S\",\"genre\":\"Science\",\"@type\":\"TVEpisode\",\"partOfSeries\":\"Tech Now\"},{\"@context\":\"https://schema.org/\",\"thumbnailUrl\":\"https://ichef.bbci.co.uk/images/ic/1920x1080/p0p93vgf.jpg\",\"description\":\"Shiona McCallum meets mums and hospital staff trialling a new assisted birth innovation. Yasmin Morgan-Griffiths visits a firm building electric vehicle tech without rare earths.\",\"url\":\"https://www.bbc.co.uk/iplayer/episode/m0031qjy/tech-now-can-new-tech-help-assisted-births\",\"name\":\"Tech Now - Can New Tech Help Assisted Births?\",\"duration\":\"PT24M33.040S\",\"genre\":\"Science\",\"@type\":\"VideoObject\",\"regionsAllowed\":\"GB\",\"uploadDate\":\"2026-09-12T01:00:19Z\"}]"
+        },
+        {
+          "script_number": 21,
+          "matched_keywords": [
+            "video"
+          ],
+          "length": 32676,
+          "preview": "window.__IPLAYER_REDUX_STATE__ = {\"navigation\":{\"items\":[{\"id\":\"channels\",\"title\":\"Channels\",\"active\":false,\"subItems\":[{\"title\":\"BBC One\",\"href\":\"/bbcone\",\"liveHref\":\"/iplayer/live/bbcone\",\"active\":false,\"icon\":\"bbcone\",\"id\":\"bbc_one\"},{\"title\":\"BBC Two\",\"href\":\"/bbctwo\",\"liveHref\":\"/iplayer/live/bbctwo\",\"active\":false,\"icon\":\"bbctwo\",\"id\":\"bbc_two\"},{\"title\":\"BBC Three\",\"href\":\"/tv/bbcthree\",\"liveHref\":\"/iplayer/live/bbcthree\",\"active\":false,\"icon\":\"bbcthree\",\"id\":\"bbc_three\"},{\"title\":\"BBC Four\",\"href\":\"/bbcfour\",\"liveHref\":\"/iplayer/live/bbcfour\",\"active\":false,\"icon\":\"bbcfour\",\"id\":\"bbc_four\"},{\"title\":\"BBC Radio 1\",\"href\":\"/tv/radio1\",\"liveHref\":\"/iplayer/live/radio1\",\"active\":false,\"icon\":\"radio1\",\"id\":\"bbc_radio_one\"},{\"title\":\"CBBC\",\"href\":\"/tv/cbbc\",\"liveHref\":\"/iplayer/live/cbbc\",\"active\":false,\"icon\":\"cbbc\",\"id\":\"cbbc\"},{\"title\":\"CBeebies\",\"href\":\"/tv/cbeebies\",\"liveHref\":\"/iplayer/live/cbeebies\",\"active\":false,\"icon\":\"cbeebies\",\"id\":\"cbeebies\"},{\"title\":\"BBC Scotland\",\"href\":\"/tv/bbcscotland\",\"liveHref\":\"/iplayer/live/bbcscotland\",\"active\":false,\"icon\":\"bbcscotland\",\"id\":\"bbc_scotland\"},{\"title\":\"BBC News\",\"href\":\"/tv/bbcnews\",\"liveHref\":\"/iplayer/live/bbcnews\",\"active\":false,\"icon\":\"bbcnews\",\"id\":\"bbc_news24\"},{\"title\":\"BBC Parliament\",\"href\":\"/tv/bbcparliament\",\"liveHref\":\"/iplayer/live/bbcparliament\",\"active\":false,\"icon\":\"bbcparliament\",\"id\":\"bbc_parliament\"},{\"title\":\"BBC Alba\",\"href\":\"/tv/bbcalba\",\"liveHref\":\"/iplayer/live/bbcalba\",\"active\":false,\"icon\":\"bbcalba\",\"id\":\"bbc_alba\"},{\"title\":\"S4C\",\"href\":\"/tv/s4c\",\"liveHref\":\"/iplayer/live/s4c\",\"active\":false,\"icon\":\"s4c\",\"id\":\"s4cpbs\"}]},{\"id\":\"categories\",\"title\":\"Categories\",\"active\":false,\"subItems\":[{\"title\":\"Drama & Soaps\",\"href\":\"/iplayer/categories/drama-and-soaps/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"drama-and-soaps\"},{\"title\":\"Films\",\"href\":\"/iplayer/browse/films\",\"active\":false,\"kind\":\"genre\",\"id\":\"films\"},{\"title\":\"Comedy\",\"href\":\"/iplayer/categories/comedy/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"comedy\"},{\"title\":\"Documentaries\",\"href\":\"/iplayer/categories/documentaries/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"documentaries\"},{\"title\":\"Sport\",\"href\":\"/iplayer/categories/sport/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"sport\"},{\"title\":\"News\",\"href\":\"/iplayer/categories/news/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"news\"},{\"title\":\"Entertainment\",\"href\":\"/iplayer/categories/entertainment/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"entertainment\"},{\"title\":\"Music\",\"href\":\"/iplayer/browse/music\",\"active\":false,\"kind\":\"genre\",\"id\":\"music\"},{\"title\":\"Food\",\"href\":\"/iplayer/categories/food/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"food\"},{\"title\":\"Lifestyle\",\"href\":\"/iplayer/categories/lifestyle/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"lifestyle\"},{\"title\":\"History\",\"href\":\"/iplayer/categories/history/featured\",\"active\":false,\"kind\":\"genre\",\"id\":\"history\"},{\"title\":\"Science & Nature\",\"href\":\"/iplayer/categories/science-and-nature/featur"
+        }
+      ]
     }
   ]
 }
