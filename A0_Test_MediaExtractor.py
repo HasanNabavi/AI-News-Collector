@@ -1,7 +1,6 @@
 import json
 import re
 import requests
-
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
@@ -9,15 +8,17 @@ from urllib.parse import urljoin
 INPUT_FILE = "C1_NewsAfterLinkEquivalencyRun.json"
 OUTPUT_FILE = "A1_Test_MediaExtractor.json"
 
+REQUEST_TIMEOUT = 30
 
-HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/140.0.0.0 Safari/537.36"
-    ),
-    "Accept-Language": "en-US,en;q=0.9",
-}
+SCRIPT_KEYWORDS = [
+    "data-media-vpid",
+    "media-vpid",
+    "mediaMeta",
+    "media-meta",
+    "data-playable",
+    "bbcmedia",
+    "vpid",
+]
 
 
 def load_news():
@@ -31,32 +32,222 @@ def load_news():
     return data.get("news", [])
 
 
-def absolute_url(url, base_url):
+def fetch_page(url):
+    response = requests.get(
+        url,
+        timeout=REQUEST_TIMEOUT,
+        headers={
+            "User-Agent": (
+                "Mozilla/5.0 "
+                "(Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 "
+                "(KHTML, like Gecko) "
+                "Chrome/140.0 Safari/537.36"
+            )
+        }
+    )
+
+    response.raise_for_status()
+
+    return response.text
+
+
+def clean_url(url, base_url):
     if not url:
         return ""
 
     return urljoin(
         base_url,
-        url
+        url.strip()
     )
 
 
-def get_attribute_values(tag):
-    """
-    Collect potentially useful media-related attributes
-    from an HTML tag.
-    """
+def extract_figure_results(soup, page_url):
+    results = []
 
-    attributes = {}
+    figures = soup.find_all("figure")
 
-    interesting_attributes = [
-        "src",
-        "srcset",
-        "poster",
-        "data-src",
-        "data-srcset",
-        "data-lazy-src",
-        "data-original",
+    for figure_number, figure in enumerate(
+        figures,
+        start=1
+    ):
+        images = []
+
+        for image in figure.find_all("img"):
+            src = (
+                image.get("src")
+                or image.get("data-src")
+                or image.get("data-original")
+                or ""
+            )
+
+            if src:
+                images.append({
+                    "url": clean_url(
+                        src,
+                        page_url
+                    ),
+                    "alt": image.get(
+                        "alt",
+                        ""
+                    )
+                })
+
+        videos = []
+
+        for video in figure.find_all("video"):
+            video_data = {
+                "src": clean_url(
+                    video.get("src", ""),
+                    page_url
+                ),
+                "poster": clean_url(
+                    video.get("poster", ""),
+                    page_url
+                )
+            }
+
+            sources = []
+
+            for source in video.find_all("source"):
+                source_url = source.get(
+                    "src",
+                    ""
+                )
+
+                if source_url:
+                    sources.append(
+                        clean_url(
+                            source_url,
+                            page_url
+                        )
+                    )
+
+            if sources:
+                video_data["sources"] = sources
+
+            videos.append(video_data)
+
+        if images or videos:
+            result = {
+                "figure_number": figure_number
+            }
+
+            if images:
+                result["images"] = images
+
+            if videos:
+                result["videos"] = videos
+
+            results.append(result)
+
+    return results
+
+
+def extract_global_videos(soup, page_url):
+    videos = []
+
+    for video_number, video in enumerate(
+        soup.find_all("video"),
+        start=1
+    ):
+        result = {
+            "video_number": video_number
+        }
+
+        src = video.get("src", "")
+
+        if src:
+            result["src"] = clean_url(
+                src,
+                page_url
+            )
+
+        poster = video.get(
+            "poster",
+            ""
+        )
+
+        if poster:
+            result["poster"] = clean_url(
+                poster,
+                page_url
+            )
+
+        sources = []
+
+        for source in video.find_all("source"):
+            source_url = source.get(
+                "src",
+                ""
+            )
+
+            if source_url:
+                sources.append(
+                    clean_url(
+                        source_url,
+                        page_url
+                    )
+                )
+
+        if sources:
+            result["sources"] = sources
+
+        videos.append(result)
+
+    return videos
+
+
+def extract_iframes(soup, page_url):
+    iframes = []
+
+    for iframe in soup.find_all("iframe"):
+        src = iframe.get(
+            "src",
+            ""
+        )
+
+        if not src:
+            continue
+
+        iframes.append(
+            clean_url(
+                src,
+                page_url
+            )
+        )
+
+    return list(
+        dict.fromkeys(iframes)
+    )
+
+
+def extract_video_posters(soup, page_url):
+    posters = []
+
+    for video in soup.find_all("video"):
+        poster = video.get(
+            "poster",
+            ""
+        )
+
+        if poster:
+            posters.append(
+                clean_url(
+                    poster,
+                    page_url
+                )
+            )
+
+    return list(
+        dict.fromkeys(posters)
+    )
+
+
+def extract_media_attributes(soup, page_url):
+    results = []
+
+    relevant_attributes = [
         "data-playable",
         "data-media-vpid",
         "data-media-meta",
@@ -66,487 +257,191 @@ def get_attribute_values(tag):
         "data-vpid",
     ]
 
-    for attribute in interesting_attributes:
-
-        if tag.has_attr(attribute):
-
-            value = tag.get(attribute)
-
-            if value:
-                attributes[attribute] = value
-
-    return attributes
-
-
-def inspect_figures(soup, page_url):
-    """
-    Inspect all <figure> elements.
-
-    This remains useful for identifying article-owned
-    images and embedded media.
-    """
-
-    images = []
-    videos = []
-    video_posters = []
-
-    figure_results = []
-
-    figures = soup.find_all("figure")
-
-    for number, figure in enumerate(
-        figures,
-        start=1
-    ):
-
-        figure_images = []
-        figure_videos = []
-        figure_posters = []
-
-        details = {}
-
-        # -------------------------------------------------
-        # Images
-        # -------------------------------------------------
-
-        image_tags = figure.find_all("img")
-
-        for image in image_tags:
-
-            image_url = (
-                image.get("src")
-                or image.get("data-src")
-                or image.get("data-lazy-src")
-                or image.get("data-original")
-            )
-
-            if image_url:
-
-                image_url = absolute_url(
-                    image_url,
-                    page_url
-                )
-
-                if image_url not in figure_images:
-                    figure_images.append(image_url)
-
-                if image_url not in images:
-                    images.append(image_url)
-
-                details["image"] = {
-                    "url": image_url,
-                    "alt": image.get(
-                        "alt",
-                        ""
-                    ),
-                    "caption": (
-                        figure.find(
-                            "figcaption"
-                        ).get_text(
-                            " ",
-                            strip=True
-                        )
-                        if figure.find("figcaption")
-                        else ""
-                    )
-                }
-
-        # -------------------------------------------------
-        # Video elements
-        # -------------------------------------------------
-
-        video_tags = figure.find_all("video")
-
-        for video in video_tags:
-
-            poster = video.get("poster")
-
-            if poster:
-
-                poster = absolute_url(
-                    poster,
-                    page_url
-                )
-
-                if poster not in figure_posters:
-                    figure_posters.append(poster)
-
-                if poster not in video_posters:
-                    video_posters.append(poster)
-
-            video_src = video.get("src")
-
-            if video_src:
-
-                video_src = absolute_url(
-                    video_src,
-                    page_url
-                )
-
-                if video_src not in figure_videos:
-                    figure_videos.append(video_src)
-
-                if video_src not in videos:
-                    videos.append(video_src)
-
-            for source in video.find_all("source"):
-
-                source_url = source.get("src")
-
-                if source_url:
-
-                    source_url = absolute_url(
-                        source_url,
-                        page_url
-                    )
-
-                    if source_url not in figure_videos:
-                        figure_videos.append(
-                            source_url
-                        )
-
-                    if source_url not in videos:
-                        videos.append(
-                            source_url
-                        )
-
-        # -------------------------------------------------
-        # Iframes
-        # -------------------------------------------------
-
-        iframe_tags = figure.find_all("iframe")
-
-        iframe_urls = []
-
-        for iframe in iframe_tags:
-
-            iframe_url = iframe.get("src")
-
-            if iframe_url:
-
-                iframe_url = absolute_url(
-                    iframe_url,
-                    page_url
-                )
-
-                iframe_urls.append(
-                    iframe_url
-                )
-
-        if iframe_urls:
-            details["iframes"] = iframe_urls
-
-        # -------------------------------------------------
-        # Store figure result
-        # -------------------------------------------------
-
-        figure_results.append(
-            {
-                "figure_number": number,
-                "images": figure_images,
-                "videos": figure_videos,
-                "video_posters": figure_posters,
-                "details": details
-            }
-        )
-
-    return (
-        images,
-        videos,
-        video_posters,
-        figure_results
-    )
-
-
-def inspect_global_media(soup, page_url):
-    """
-    Inspect media elements across the entire document,
-    not only inside <figure>.
-
-    This is diagnostic only.
-    """
-
-    result = {
-        "videos": [],
-        "sources": [],
-        "iframes": [],
-        "video_posters": [],
-        "media_attributes": []
-    }
-
-    # -----------------------------------------------------
-    # All <video>
-    # -----------------------------------------------------
-
-    for video in soup.find_all("video"):
-
-        video_info = {
-            "tag": "video",
-            "attributes": get_attribute_values(video),
-            "sources": []
-        }
-
-        video_src = video.get("src")
-
-        if video_src:
-            video_info["src_absolute"] = absolute_url(
-                video_src,
-                page_url
-            )
-
-        poster = video.get("poster")
-
-        if poster:
-            video_info["poster_absolute"] = absolute_url(
-                poster,
-                page_url
-            )
-
-            result["video_posters"].append(
-                video_info["poster_absolute"]
-            )
-
-        for source in video.find_all("source"):
-
-            source_url = source.get("src")
-
-            if source_url:
-
-                source_absolute = absolute_url(
-                    source_url,
-                    page_url
-                )
-
-                video_info["sources"].append(
-                    {
-                        "url": source_absolute,
-                        "type": source.get(
-                            "type",
-                            ""
-                        )
-                    }
-                )
-
-                result["sources"].append(
-                    source_absolute
-                )
-
-        result["videos"].append(
-            video_info
-        )
-
-    # -----------------------------------------------------
-    # All <iframe>
-    # -----------------------------------------------------
-
-    for iframe in soup.find_all("iframe"):
-
-        iframe_url = iframe.get("src")
-
-        if not iframe_url:
-            continue
-
-        result["iframes"].append(
-            {
-                "url": absolute_url(
-                    iframe_url,
-                    page_url
-                ),
-                "attributes": get_attribute_values(
-                    iframe
-                )
-            }
-        )
-
-    # -----------------------------------------------------
-    # Elements containing BBC media attributes
-    # -----------------------------------------------------
-
-    media_attribute_names = [
-        "data-playable",
-        "data-media-vpid",
-        "data-media-meta",
-        "data-media",
-        "data-video",
-        "data-video-id",
-        "data-vpid"
-    ]
-
     for tag in soup.find_all(True):
 
         found_attributes = {}
 
-        for attribute in media_attribute_names:
+        for attribute in relevant_attributes:
+            if attribute not in tag.attrs:
+                continue
 
-            if tag.has_attr(attribute):
-
-                value = tag.get(attribute)
-
-                if value:
-                    found_attributes[attribute] = value
-
-        if found_attributes:
-
-            result["media_attributes"].append(
-                {
-                    "tag": tag.name,
-                    "attributes": found_attributes
-                }
+            value = tag.get(
+                attribute
             )
 
-    # Remove duplicates from simple lists.
+            if isinstance(value, list):
+                value = " ".join(value)
 
-    result["video_posters"] = list(
-        dict.fromkeys(
-            result["video_posters"]
-        )
-    )
+            value = str(value).strip()
 
-    result["sources"] = list(
-        dict.fromkeys(
-            result["sources"]
-        )
-    )
+            if not value:
+                continue
 
-    return result
+            # Keep diagnostic output compact.
+            if len(value) > 500:
+                value = value[:500] + "..."
+
+            found_attributes[attribute] = value
+
+        if found_attributes:
+            result = {
+                "tag": tag.name,
+                "attributes": found_attributes
+            }
+
+            results.append(result)
+
+    return results
 
 
-def inspect_scripts(soup):
-    """
-    Search JavaScript blocks for BBC/video-related
-    keywords.
+def extract_script_matches(soup):
+    results = []
 
-    We do not attempt to interpret the data yet.
-    The purpose is to discover how BBC exposes
-    player metadata in the current HTML.
-    """
+    scripts = soup.find_all("script")
 
-    keywords = [
-        "media-vpid",
-        "vpid",
-        "mediaMeta",
-        "media-meta",
-        "playable",
-        "video",
-        "playlist",
-        "mediator",
-        "bbcmedia"
-    ]
-
-    matches = []
-
-    for number, script in enumerate(
-        soup.find_all("script"),
+    for script_number, script in enumerate(
+        scripts,
         start=1
     ):
+        content = script.string
 
-        script_text = script.string
+        if not content:
+            content = script.get_text(
+                strip=False
+            )
 
-        if not script_text:
-            script_text = script.get_text()
-
-        if not script_text:
+        if not content:
             continue
 
         matched_keywords = []
 
-        lower_text = script_text.lower()
-
-        for keyword in keywords:
-
-            if keyword.lower() in lower_text:
-
+        for keyword in SCRIPT_KEYWORDS:
+            if keyword.lower() in content.lower():
                 matched_keywords.append(
                     keyword
                 )
 
-        if not matched_keywords:
-            continue
+        if matched_keywords:
+            results.append({
+                "script_number": script_number,
+                "matched_keywords": matched_keywords
+            })
 
-        # Keep only a limited diagnostic preview.
-        preview_length = 3000
+    return results
 
-        matches.append(
-            {
-                "script_number": number,
-                "matched_keywords": (
-                    matched_keywords
-                ),
-                "length": len(script_text),
-                "preview": script_text[
-                    :preview_length
-                ]
-            }
+
+def extract_source_tags(soup, page_url):
+    sources = []
+
+    for source in soup.find_all("source"):
+        src = source.get(
+            "src",
+            ""
         )
 
-    return matches
+        if not src:
+            continue
+
+        source_data = {
+            "url": clean_url(
+                src,
+                page_url
+            )
+        }
+
+        media = source.get(
+            "media",
+            ""
+        )
+
+        if media:
+            source_data["media"] = media
+
+        source_type = source.get(
+            "type",
+            ""
+        )
+
+        if source_type:
+            source_data["type"] = source_type
+
+        sources.append(
+            source_data
+        )
+
+    return sources
 
 
-def inspect_article(url):
-    """
-    Download one BBC page and perform diagnostic
-    media inspection.
-    """
-
-    response = requests.get(
-        url,
-        headers=HEADERS,
-        timeout=30
-    )
-
-    response.raise_for_status()
-
+def extract_media(page_url, html):
     soup = BeautifulSoup(
-        response.text,
+        html,
         "html.parser"
     )
 
-    (
-        figure_images,
-        figure_videos,
-        figure_posters,
-        figure_results
-    ) = inspect_figures(
-        soup,
-        url
-    )
-
-    global_media = inspect_global_media(
-        soup,
-        url
-    )
-
-    script_matches = inspect_scripts(
-        soup
-    )
-
-    return {
-        "status": "success",
-        "error": "",
-
-        "images": figure_images,
-
-        "videos": figure_videos,
-
-        "video_posters": figure_posters,
-
-        "figure_results": figure_results,
-
-        "global_media": global_media,
-
-        "script_matches": script_matches
+    result = {
+        "figure_results": extract_figure_results(
+            soup,
+            page_url
+        ),
+        "global_media": {
+            "videos": extract_global_videos(
+                soup,
+                page_url
+            ),
+            "video_posters": extract_video_posters(
+                soup,
+                page_url
+            ),
+            "iframes": extract_iframes(
+                soup,
+                page_url
+            ),
+            "media_attributes": extract_media_attributes(
+                soup,
+                page_url
+            ),
+            "sources": extract_source_tags(
+                soup,
+                page_url
+            ),
+        },
+        "script_matches": extract_script_matches(
+            soup
+        )
     }
+
+    return result
+
+
+def test_news_item(news_item):
+    url = news_item.get(
+        "url",
+        ""
+    )
+
+    if not url:
+        raise ValueError(
+            "URL is empty"
+        )
+
+    html = fetch_page(url)
+
+    media_data = extract_media(
+        url,
+        html
+    )
+
+    return media_data
 
 
 def run_test():
-
     news = load_news()
 
     print(
-        "BBC Media Extraction Test"
+        "BBC / Website Media Extraction Test"
     )
     print(
-        "=" * 40
+        "=" * 50
     )
 
     results = []
@@ -558,10 +453,14 @@ def run_test():
         news,
         start=1
     ):
-
         title = news_item.get(
             "title",
             "No title"
+        )
+
+        source = news_item.get(
+            "source",
+            "Unknown source"
         )
 
         url = news_item.get(
@@ -571,36 +470,26 @@ def run_test():
 
         print()
         print(
-            f"[{index}/{len(news)}]"
+            f"[{index}/{len(news)}] {source}"
         )
         print(
             f"Title: {title}"
         )
-        print(
-            f"URL: {url}"
-        )
-
-        result = {
-            "title": title,
-            "url": url,
-            "status": "success",
-            "error": "",
-            "images": [],
-            "videos": [],
-            "video_posters": [],
-            "figure_results": [],
-            "global_media": {},
-            "script_matches": []
-        }
 
         try:
-
-            inspection = inspect_article(
-                url
+            media_data = test_news_item(
+                news_item
             )
 
-            result.update(
-                inspection
+            result_item = {
+                "title": title,
+                "source": source,
+                "url": url,
+                "media_data": media_data
+            }
+
+            results.append(
+                result_item
             )
 
             successful += 1
@@ -609,53 +498,25 @@ def run_test():
                 "Status: success"
             )
 
-            print(
-                "Figure images: "
-                f"{len(result['images'])}"
-            )
-
-            print(
-                "Global videos: "
-                f"{len(result['global_media'].get('videos', []))}"
-            )
-
-            print(
-                "Global iframes: "
-                f"{len(result['global_media'].get('iframes', []))}"
-            )
-
-            print(
-                "Media attributes: "
-                f"{len(result['global_media'].get('media_attributes', []))}"
-            )
-
-            print(
-                "Matching scripts: "
-                f"{len(result['script_matches'])}"
-            )
-
         except Exception as error:
-
-            result["status"] = "error"
-
-            result["error"] = (
-                f"{type(error).__name__}: "
-                f"{error}"
-            )
-
             errors += 1
+
+            results.append({
+                "title": title,
+                "source": source,
+                "url": url,
+                "error": (
+                    f"{type(error).__name__}: "
+                    f"{error}"
+                )
+            })
 
             print(
                 "Status: error"
             )
-
             print(
-                f"Error: {result['error']}"
+                f"Error: {error}"
             )
-
-        results.append(
-            result
-        )
 
     output = {
         "test_summary": {
@@ -671,7 +532,6 @@ def run_test():
         "w",
         encoding="utf-8"
     ) as file:
-
         json.dump(
             output,
             file,
@@ -681,7 +541,7 @@ def run_test():
 
     print()
     print(
-        "=" * 40
+        "=" * 50
     )
     print(
         f"Input news: {len(news)}"
@@ -694,6 +554,9 @@ def run_test():
     )
     print(
         f"Output: {OUTPUT_FILE}"
+    )
+    print(
+        "Test completed."
     )
 
 
