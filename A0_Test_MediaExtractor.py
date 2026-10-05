@@ -1,389 +1,351 @@
 import json
 import requests
+
 from bs4 import BeautifulSoup
-import yt_dlp
+from urllib.parse import urljoin
 
 
-INPUT_FILE = "C1_NewsAfterLinkEquivalencyRun.json"
-OUTPUT_FILE = "A1_Test_MediaExtractor.json"
+HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/140.0.0.0 Safari/537.36"
+    ),
+    "Accept": (
+        "text/html,application/xhtml+xml,application/xml;"
+        "q=0.9,image/avif,image/webp,*/*;q=0.8"
+    ),
+    "Accept-Language": "en-US,en;q=0.9",
+}
 
 
-def extract_html_media(html):
-    soup = BeautifulSoup(html, "html.parser")
+def get_html(url):
+    response = requests.get(
+        url,
+        headers=HEADERS,
+        timeout=30,
+    )
 
-    figure_results = []
+    response.raise_for_status()
 
-    for figure in soup.find_all("figure"):
+    return response.text
 
-        images = []
 
-        for img in figure.find_all("img"):
+def make_absolute_url(
+    image_url,
+    article_url,
+):
+    if not image_url:
+        return ""
 
-            src = (
-                img.get("src")
-                or img.get("data-src")
-                or img.get("data-lazy-src")
+    image_url = urljoin(
+        article_url,
+        image_url,
+    )
+
+    if image_url.startswith(
+        ("http://", "https://")
+    ):
+        return image_url
+
+    return ""
+
+
+def extract_json_ld_image(
+    soup,
+    article_url,
+):
+    for script in soup.find_all(
+        "script",
+        attrs={"type": "application/ld+json"},
+    ):
+
+        if not script.string:
+            continue
+
+        try:
+            data = json.loads(
+                script.string
             )
+        except Exception:
+            continue
 
-            if src:
-                images.append({
-                    "url": src,
-                    "alt": img.get("alt", "")
-                })
+        def find_image(value):
 
-        videos = []
+            if isinstance(value, dict):
 
-        for video in figure.find_all("video"):
-
-            src = video.get("src")
-
-            if src:
-                videos.append({
-                    "url": src,
-                    "poster": video.get("poster", "")
-                })
-
-            for source in video.find_all("source"):
-
-                source_src = source.get("src")
-
-                if source_src:
-                    videos.append({
-                        "url": source_src,
-                        "poster": video.get("poster", "")
-                    })
-
-        if images or videos:
-
-            figure_results.append({
-                "images": images,
-                "videos": videos
-            })
-
-    global_media = {
-        "videos": [],
-        "video_posters": [],
-        "iframes": [],
-        "media_attributes": [],
-        "sources": []
-    }
-
-    for video in soup.find_all("video"):
-
-        src = video.get("src")
-
-        if src:
-            global_media["videos"].append(src)
-
-        poster = video.get("poster")
-
-        if poster:
-            global_media["video_posters"].append(poster)
-
-    for iframe in soup.find_all("iframe"):
-
-        src = iframe.get("src")
-
-        if src:
-            global_media["iframes"].append(src)
-
-    media_attributes = [
-        "data-playable",
-        "data-media-vpid",
-        "data-media-meta",
-        "data-media",
-        "data-video",
-        "data-video-id",
-        "data-vpid"
-    ]
-
-    for tag in soup.find_all(True):
-
-        for attribute in media_attributes:
-
-            value = tag.get(attribute)
-
-            if value:
-
-                global_media["media_attributes"].append({
-                    "attribute": attribute,
-                    "value": value
-                })
-
-    for source in soup.find_all("source"):
-
-        src = source.get("src")
-
-        if src:
-            global_media["sources"].append(src)
-
-    return {
-        "figure_results": figure_results,
-        "global_media": global_media
-    }
-
-
-def extract_yt_dlp(url):
-
-    result = {
-        "success": False,
-        "entry_count": 0,
-        "video_count": 0,
-        "entries": [],
-        "videos": [],
-        "error": None
-    }
-
-    try:
-
-        options = {
-            "quiet": True,
-            "no_warnings": True,
-            "skip_download": True,
-            "extract_flat": False
-        }
-
-        with yt_dlp.YoutubeDL(options) as ydl:
-
-            info = ydl.extract_info(
-                url,
-                download=False
-            )
-
-        if not info:
-
-            result["success"] = True
-            return result
-
-        entries = info.get("entries")
-
-        if entries is None:
-
-            entries = [info]
-
-        else:
-
-            entries = [
-                entry
-                for entry in entries
-                if entry
-            ]
-
-        result["entry_count"] = len(entries)
-
-        for entry in entries:
-
-            entry_data = {
-                "id": entry.get("id"),
-                "title": entry.get("title"),
-                "url": entry.get("url"),
-                "webpage_url": entry.get("webpage_url"),
-                "duration": entry.get("duration"),
-                "ext": entry.get("ext")
-            }
-
-            result["entries"].append(
-                entry_data
-            )
-
-            if entry.get("url"):
-
-                result["videos"].append(
-                    entry_data
+                image = value.get(
+                    "image"
                 )
 
-        result["video_count"] = len(
-            result["videos"]
+                if isinstance(
+                    image,
+                    str,
+                ):
+                    return image
+
+                if isinstance(
+                    image,
+                    dict,
+                ):
+                    image_url = image.get(
+                        "url"
+                    )
+
+                    if image_url:
+                        return image_url
+
+                if isinstance(
+                    image,
+                    list,
+                ):
+                    for item in image:
+
+                        if isinstance(
+                            item,
+                            str,
+                        ):
+                            return item
+
+                        if isinstance(
+                            item,
+                            dict,
+                        ):
+                            image_url = item.get(
+                                "url"
+                            )
+
+                            if image_url:
+                                return image_url
+
+                for child in value.values():
+
+                    if isinstance(
+                        child,
+                        (dict, list),
+                    ):
+                        result = find_image(
+                            child
+                        )
+
+                        if result:
+                            return result
+
+            elif isinstance(
+                value,
+                list,
+            ):
+
+                for item in value:
+
+                    result = find_image(
+                        item
+                    )
+
+                    if result:
+                        return result
+
+            return None
+
+        image = find_image(
+            data
         )
 
-        result["success"] = True
+        image_url = make_absolute_url(
+            image,
+            article_url,
+        )
 
-    except Exception as error:
+        if image_url:
+            return image_url
 
-        result["error"] = str(error)
-
-    return result
+    return ""
 
 
-def main():
+def extract_figure_image(
+    soup,
+    article_url,
+):
+    for figure in soup.find_all(
+        "figure"
+    ):
+
+        img = figure.find("img")
+
+        if not img:
+            continue
+
+        image_url = (
+            img.get("src")
+            or img.get("data-src")
+            or img.get("data-lazy-src")
+            or img.get("data-original")
+        )
+
+        image_url = make_absolute_url(
+            image_url,
+            article_url,
+        )
+
+        if image_url:
+            return image_url
+
+    return ""
+
+
+def extract_main_image(
+    soup,
+    article_url,
+):
+
+    # ---------------------------------------------------------
+    # 1. Open Graph
+    # ---------------------------------------------------------
+
+    meta = soup.find(
+        "meta",
+        attrs={
+            "property": "og:image"
+        },
+    )
+
+    if meta:
+        image_url = make_absolute_url(
+            meta.get("content"),
+            article_url,
+        )
+
+        if image_url:
+            return image_url
+
+    # ---------------------------------------------------------
+    # 2. Twitter
+    # ---------------------------------------------------------
+
+    meta = soup.find(
+        "meta",
+        attrs={
+            "name": "twitter:image"
+        },
+    )
+
+    if meta:
+        image_url = make_absolute_url(
+            meta.get("content"),
+            article_url,
+        )
+
+        if image_url:
+            return image_url
+
+    # ---------------------------------------------------------
+    # 3. JSON-LD
+    # ---------------------------------------------------------
+
+    image_url = extract_json_ld_image(
+        soup,
+        article_url,
+    )
+
+    if image_url:
+        return image_url
+
+    # ---------------------------------------------------------
+    # 4. Figure
+    # ---------------------------------------------------------
+
+    image_url = extract_figure_image(
+        soup,
+        article_url,
+    )
+
+    if image_url:
+        return image_url
+
+    return ""
+
+
+def run_test():
 
     with open(
-        INPUT_FILE,
+        "C1_NewsAfterLinkEquivalencyRun.json",
         "r",
-        encoding="utf-8"
+        encoding="utf-8",
     ) as file:
-
         data = json.load(file)
 
-    news = data["news"]
+    news = data.get(
+        "news",
+        []
+    )
 
     results = []
 
-    success_count = 0
-    error_count = 0
+    for item in news:
 
-    total_ytdlp_entries = 0
-    total_ytdlp_videos = 0
+        title = item.get(
+            "title",
+            "",
+        )
 
-    for index, item in enumerate(
-        news,
-        start=1
-    ):
-
-        url = item.get(
+        article_url = item.get(
             "url",
-            ""
+            "",
         )
 
-        print()
-        print(
-            f"[{index}/{len(news)}] {url}"
-        )
-
-        result = {
-            "title": item.get("title"),
-            "source": item.get("source"),
-            "url": url,
-            "html_media": None,
-            "yt_dlp": None,
-            "error": None
-        }
+        image_url = ""
 
         try:
 
-            response = requests.get(
-                url,
-                timeout=30,
-                headers={
-                    "User-Agent":
-                    "Mozilla/5.0 "
-                    "(Windows NT 10.0; Win64; x64) "
-                    "AppleWebKit/537.36 "
-                    "(KHTML, like Gecko) "
-                    "Chrome/120.0 Safari/537.36"
-                }
+            html = get_html(
+                article_url
             )
 
-            response.raise_for_status()
-
-            result["html_media"] = (
-                extract_html_media(
-                    response.text
-                )
+            soup = BeautifulSoup(
+                html,
+                "html.parser",
             )
 
-            if (
-                "bbc.com/news/articles/" in url
-                or
-                "bbc.co.uk/news/articles/" in url
-            ):
-
-                print(
-                    "Running yt-dlp..."
-                )
-
-                result["yt_dlp"] = (
-                    extract_yt_dlp(url)
-                )
-
-                if result["yt_dlp"]["success"]:
-
-                    entry_count = (
-                        result["yt_dlp"]
-                        ["entry_count"]
-                    )
-
-                    video_count = (
-                        result["yt_dlp"]
-                        ["video_count"]
-                    )
-
-                    total_ytdlp_entries += (
-                        entry_count
-                    )
-
-                    total_ytdlp_videos += (
-                        video_count
-                    )
-
-                    print(
-                        "yt-dlp entries:",
-                        entry_count
-                    )
-
-                    print(
-                        "yt-dlp videos:",
-                        video_count
-                    )
-
-                else:
-
-                    print(
-                        "yt-dlp error:",
-                        result["yt_dlp"]
-                        ["error"]
-                    )
-
-            success_count += 1
-
-        except Exception as error:
-
-            result["error"] = str(error)
-
-            error_count += 1
-
-        results.append(result)
-
-    output = {
-        "test_summary": {
-            "input_news": len(news),
-            "successful": success_count,
-            "errors": error_count,
-            "yt_dlp_total_entries": (
-                total_ytdlp_entries
-            ),
-            "yt_dlp_total_videos": (
-                total_ytdlp_videos
+            image_url = extract_main_image(
+                soup,
+                article_url,
             )
-        },
-        "results": results
-    }
+
+        except Exception:
+            pass
+
+        results.append(
+            {
+                "title": title,
+                "article_url": article_url,
+                "image_url": image_url,
+            }
+        )
 
     with open(
-        OUTPUT_FILE,
+        "A1_Test_MediaExtractor.json",
         "w",
-        encoding="utf-8"
+        encoding="utf-8",
     ) as file:
 
         json.dump(
-            output,
+            results,
             file,
             ensure_ascii=False,
-            indent=2
+            indent=2,
         )
 
     print()
-    print("=" * 40)
-    print("Test completed")
     print(
-        f"Input news: {len(news)}"
+        "Main Image Extraction Test"
     )
     print(
-        f"Successful: {success_count}"
+        "=" * 40
     )
     print(
-        f"Errors: {error_count}"
+        f"News processed: {len(results)}"
     )
-    print(
-        "yt-dlp total entries:",
-        total_ytdlp_entries
-    )
-    print(
-        "yt-dlp total videos:",
-        total_ytdlp_videos
-    )
-    print("=" * 40)
 
 
 if __name__ == "__main__":
-    main()
+    run_test()
