@@ -1,3 +1,172 @@
 {
-  "news": []
+  "news": [
+    {
+      "title": "OpenAI fires workers for 'mishandling sensitive information'",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/c6y9z9r4ejzwo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-10-02T08:20:32+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "Crypto thieves attack man in home and threaten to kill pregnant wife's baby in 'horrific' robbery",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/c6eq84eygz0qo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-10-01T23:45:06+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "Trump's AI rebrand causes 'unprecedented' demand for Slovenian website names",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/cqx2z23xj555o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-10-01T11:37:46+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "AI boom could trigger market shocks, Bank of England boss warns",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/cv8e30enrkxyo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-10-01T10:05:25+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "Tiny image sparks big backlash in Nikon photo contest",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/ck4gjn1yzprno?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-30T23:10:19+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "The AI telling farmers when to harvest",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/cgk53dkmyxko?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-30T23:02:21+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "Regulating AI 'not the right place to start' says Bailey",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/cvzez7k0pn40o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-30T14:00:33+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "WhatsApp introduces optional parental controls for teenagers",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/cm986x65we88o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-30T13:01:30+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "OpenAI unveils AI assistant 'dots' while safety worries delay new model",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/cw7v42rp083eo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-30T05:18:13+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "Three takeaways from Trump's 'Super Intelligence' summit",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/cme30dz5vkzko?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-30T04:01:52+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "Chinese AI tool told researchers how to make bioweapons",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/cmrergq3j7lgo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-29T23:15:29+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "The start-ups hoping to return battery making to the US",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/cvgyexx4g8ro?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-29T23:06:50+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "Oura pulls $15bn stock market listing days after announcement",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/cjwyz5v190qwo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-29T17:17:07+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "Tech Life",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyh?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-29T19:30:00+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "Tech Life",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyg?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-22T20:00:00+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "Tech Life",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyf?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-15T19:30:00+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "Tech Life",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyd?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-08T20:00:00+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "Tech Now",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/iplayer/episode/m0032n6v?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-10-03T01:00:00+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "Tech Now",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/iplayer/episode/m0032d9k?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-26T01:00:13+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "Tech Now",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/iplayer/episode/m0032301?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-19T01:00:00+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    },
+    {
+      "title": "Tech Now",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/iplayer/episode/m0031qjy?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-12T01:00:19+00:00",
+      "collected_at": "2026-10-04T18:29:28+00:00"
+    }
+  ]
 }
