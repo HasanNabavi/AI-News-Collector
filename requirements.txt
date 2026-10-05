@@ -4,3 +4,4 @@ requests
 beautifulsoup4
 trafilatura
 newspaper4k
+yt-dlp
