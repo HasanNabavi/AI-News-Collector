@@ -37,6 +37,14 @@ jobs:
         run: |
           ls -lh G1_NewsAfterAIContentGenerationRun.json
 
+      - name: Run Telegram Formatting
+        run: |
+          python H0_TelegramFormatedNews.py
+
+      - name: Check H1 output
+        run: |
+          ls -lh H1_TelegramFormatedNews.json
+
       - name: Run Telegram Interface
         run: |
           python I0_TelegramInterface.py
@@ -48,7 +56,8 @@ jobs:
 
           git add F1_NewsAfterAIGroupingRun.json
           git add G1_NewsAfterAIContentGenerationRun.json
+          git add H1_TelegramFormatedNews.json
 
-          git diff --cached --quiet || git commit -m "Update F1 and G1 pipeline results"
+          git diff --cached --quiet || git commit -m "Update F1, G1 and H1 pipeline results"
 
           git push
