@@ -4,21 +4,21 @@
     "successful": 21,
     "errors": 0
   },
-  "news": [
+  "results": [
     {
       "title": "OpenAI fires workers for 'mishandling sensitive information'",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/news/articles/c6y9z9r4ejzwo?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [
           {
-            "figure_number": 1,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/994/cpsprodpb/136d/live/561b92b0-bdf9-11f1-a76b-bdcdab65a1b7.jpg",
                 "alt": "Sam Altman, CEO of OpenAI, speaks to an audience. He is seated in front of the American flag."
               }
-            ]
+            ],
+            "videos": []
           }
         ],
         "global_media": {
@@ -27,42 +27,56 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": []
-      }
+        }
+      },
+      "yt_dlp": {
+        "success": true,
+        "videos": [
+          {
+            "id": "c6y9z9r4ejzwo",
+            "title": "OpenAI fires workers for 'mishandling sensitive information'",
+            "url": null,
+            "webpage_url": "https://www.bbc.co.uk/news/articles/c6y9z9r4ejzwo?at_medium=RSS&at_campaign=rss",
+            "duration": null,
+            "ext": null
+          }
+        ],
+        "error": null
+      },
+      "error": null
     },
     {
       "title": "Crypto thieves attack man in home and threaten to kill pregnant wife's baby in 'horrific' robbery",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/news/articles/c6eq84eygz0qo?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [
           {
-            "figure_number": 2,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/1008/cpsprodpb/3f19/live/024fc570-bcb9-11f1-bc2e-018d645d8d21.png",
                 "alt": "Hospial shot of bad head wound"
               }
-            ]
+            ],
+            "videos": []
           },
           {
-            "figure_number": 3,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/1680/cpsprodpb/efb1/live/7ced5610-bcd9-11f1-afec-ebbb2634c4cd.jpg",
                 "alt": "Man in light bliue jacket and balaclava"
               }
-            ]
+            ],
+            "videos": []
           },
           {
-            "figure_number": 4,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/80c1/live/7a4731e0-2128-11f0-9060-674316cb3a1f.png",
                 "alt": "A green promotional banner with black squares and rectangles forming pixels, moving in from the right. The text says: âTech Decoded: The worldâs biggest tech news in your inbox every Monday.â"
               }
-            ]
+            ],
+            "videos": []
           }
         ],
         "global_media": {
@@ -71,41 +85,47 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": [
+        }
+      },
+      "yt_dlp": {
+        "success": true,
+        "videos": [
           {
-            "script_number": 4,
-            "matched_keywords": [
-              "mediaMeta",
-              "vpid"
-            ]
+            "id": "p0pdlj1d",
+            "title": "Crypto thieves attack man in home and threaten him and his pregnant wife",
+            "url": "https://vod-hls-ww.live.cf.md.bbci.co.uk/usp/auth/vod/piff_abr_full_hd/c550b1-p0pdlj1d/vf_p0pdlj1d_cb931c0a-84ee-4e6f-b212-bc34b73d57e0.ism/vf_p0pdlj1d_cb931c0a-84ee-4e6f-b212-bc34b73d57e0-audio_eng=96000-video=5070000.m3u8",
+            "webpage_url": "https://www.bbc.co.uk/news/articles/c6eq84eygz0qo?at_medium=RSS&at_campaign=rss",
+            "duration": 61,
+            "ext": "mp4"
           }
-        ]
-      }
+        ],
+        "error": null
+      },
+      "error": null
     },
     {
       "title": "Trump's AI rebrand causes 'unprecedented' demand for Slovenian website names",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/news/articles/cqx2z23xj555o?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [
           {
-            "figure_number": 1,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/4ff7/live/977f2bf0-bd85-11f1-ab03-fd866f8788d0.jpg",
                 "alt": "President Trump in a blue suit and red tie, which has an american flag pin badge on the jacket, sitting in front of white red and blue flag background. The word United States is in front of him."
               }
-            ]
+            ],
+            "videos": []
           },
           {
-            "figure_number": 2,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/41d3/live/348b21e0-26a8-11f0-8f57-b7237f6a66e6.png",
                 "alt": "A green promotional banner with black squares and rectangles forming pixels, moving in from the right. The text says: âTech Decoded: The worldâs biggest tech news in your inbox every Monday.â"
               }
-            ]
+            ],
+            "videos": []
           }
         ],
         "global_media": {
@@ -114,33 +134,47 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": []
-      }
+        }
+      },
+      "yt_dlp": {
+        "success": true,
+        "videos": [
+          {
+            "id": "cqx2z23xj555o",
+            "title": "Trump's AI rebrand causes 'unprecedented' demand for Slovenian website names",
+            "url": null,
+            "webpage_url": "https://www.bbc.co.uk/news/articles/cqx2z23xj555o?at_medium=RSS&at_campaign=rss",
+            "duration": null,
+            "ext": null
+          }
+        ],
+        "error": null
+      },
+      "error": null
     },
     {
       "title": "AI boom could trigger market shocks, Bank of England boss warns",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/news/articles/cv8e30enrkxyo?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [
           {
-            "figure_number": 2,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/884f/live/79710d80-bd0e-11f1-88b1-671c34af7444.jpg",
                 "alt": "A close up of Bank of England Governor Andrew Bailey looking to one side wearing a navy suit and white shirt"
               }
-            ]
+            ],
+            "videos": []
           },
           {
-            "figure_number": 3,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/1920/cpsprodpb/edae/live/33951910-bd62-11f1-babe-4199b0e7ccea.png",
                 "alt": "A thin, grey banner promoting the News Daily newsletter. On the right, there is a graphic of an orange sphere with two concentric crescent shapes around it in a red-orange gradient, like a sound wave. The banner reads: âThe latest news in your inbox first thing.â\n\n"
               }
-            ]
+            ],
+            "videos": []
           }
         ],
         "global_media": {
@@ -149,32 +183,38 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": [
+        }
+      },
+      "yt_dlp": {
+        "success": true,
+        "videos": [
           {
-            "script_number": 4,
-            "matched_keywords": [
-              "mediaMeta",
-              "vpid"
-            ]
+            "id": "p0pd9kq1",
+            "title": "Governor of the Bank of England tells BBC quality of deepfakes 'alarming'",
+            "url": "https://vod-hls-ww.live.cf.md.bbci.co.uk/usp/auth/vod/piff_abr_full_hd/dfef36-p0pd9kq1/vf_p0pd9kq1_845565a4-9eed-4d32-b238-e9f58d7953bc.ism/vf_p0pd9kq1_845565a4-9eed-4d32-b238-e9f58d7953bc-audio_eng=96000-video=5070000.m3u8",
+            "webpage_url": "https://www.bbc.co.uk/news/articles/cv8e30enrkxyo?at_medium=RSS&at_campaign=rss",
+            "duration": 51,
+            "ext": "mp4"
           }
-        ]
-      }
+        ],
+        "error": null
+      },
+      "error": null
     },
     {
       "title": "Tiny image sparks big backlash in Nikon photo contest",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/news/articles/ck4gjn1yzprno?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [
           {
-            "figure_number": 2,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/41d3/live/348b21e0-26a8-11f0-8f57-b7237f6a66e6.png",
                 "alt": "A green promotional banner with black squares and rectangles forming pixels, moving in from the right. The text says: âTech Decoded: The worldâs biggest tech news in your inbox every Monday.â"
               }
-            ]
+            ],
+            "videos": []
           }
         ],
         "global_media": {
@@ -183,59 +223,65 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": [
+        }
+      },
+      "yt_dlp": {
+        "success": true,
+        "videos": [
           {
-            "script_number": 4,
-            "matched_keywords": [
-              "mediaMeta",
-              "vpid"
-            ]
+            "id": "p0pb6yky",
+            "title": "See tiny organisms on show in microscopic video competition",
+            "url": "https://vod-hls-ww.live.cf.md.bbci.co.uk/usp/auth/vod/piff_abr_full_hd/7359a5-p0pb6yky/vf_p0pb6yky_1391ff8f-719b-4552-8487-4a035fcb0716.ism/vf_p0pb6yky_1391ff8f-719b-4552-8487-4a035fcb0716-audio_eng=96000-video=5070000.m3u8",
+            "webpage_url": "https://www.bbc.co.uk/news/articles/ck4gjn1yzprno?at_medium=RSS&at_campaign=rss",
+            "duration": 58,
+            "ext": "mp4"
           }
-        ]
-      }
+        ],
+        "error": null
+      },
+      "error": null
     },
     {
       "title": "The AI telling farmers when to harvest",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/news/articles/cgk53dkmyxko?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [
           {
-            "figure_number": 1,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/874b/live/cbc27c20-acfd-11f1-bc1f-3f186ca4140c.jpg",
                 "alt": "Harvested blueberries pour into a blue container at a farm in Harrington, Maine."
               }
-            ]
+            ],
+            "videos": []
           },
           {
-            "figure_number": 2,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/baa5/live/9ad8d3a0-aac0-11f1-b109-879e35c24276.png",
                 "alt": "Smiling and wearing a blue checked shirt, Raymond Martin stands in greenhouse next to strawberry plants."
               }
-            ]
+            ],
+            "videos": []
           },
           {
-            "figure_number": 3,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/1248/cpsprodpb/ed3e/live/e59eefb0-aabf-11f1-b109-879e35c24276.jpg",
                 "alt": "Yasaman Ghasempour (left) and graduate student Atsutse Kludze inspect two rows of tomatoes "
               }
-            ]
+            ],
+            "videos": []
           },
           {
-            "figure_number": 4,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/fc8a/live/399f5770-aac1-11f1-a291-b542ee92de7c.jpg",
                 "alt": "Wearing glasses and a lavender-coloured jacket, Jing Zhang stands in an orchard holding her phone."
               }
-            ]
+            ],
+            "videos": []
           }
         ],
         "global_media": {
@@ -244,24 +290,38 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": []
-      }
+        }
+      },
+      "yt_dlp": {
+        "success": true,
+        "videos": [
+          {
+            "id": "cgk53dkmyxko",
+            "title": "The AI telling farmers when to harvest",
+            "url": null,
+            "webpage_url": "https://www.bbc.co.uk/news/articles/cgk53dkmyxko?at_medium=RSS&at_campaign=rss",
+            "duration": null,
+            "ext": null
+          }
+        ],
+        "error": null
+      },
+      "error": null
     },
     {
       "title": "Regulating AI 'not the right place to start' says Bailey",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/news/articles/cvzez7k0pn40o?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [
           {
-            "figure_number": 1,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/e249/live/7e528b30-bcb4-11f1-a3e9-bbda6f9b9e25.jpg",
                 "alt": "Governor of the Bank of England, Andrew Bailey, talks during a Bank of England Monetary Policy Report press conference. He is wearing a dark suit and tie."
               }
-            ]
+            ],
+            "videos": []
           }
         ],
         "global_media": {
@@ -270,33 +330,47 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": []
-      }
+        }
+      },
+      "yt_dlp": {
+        "success": true,
+        "videos": [
+          {
+            "id": "cvzez7k0pn40o",
+            "title": "Regulating AI 'not the right place to start' says Bank of England governor",
+            "url": null,
+            "webpage_url": "https://www.bbc.co.uk/news/articles/cvzez7k0pn40o?at_medium=RSS&at_campaign=rss",
+            "duration": null,
+            "ext": null
+          }
+        ],
+        "error": null
+      },
+      "error": null
     },
     {
       "title": "WhatsApp introduces optional parental controls for teenagers",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/news/articles/cm986x65we88o?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [
           {
-            "figure_number": 1,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/925/cpsprodpb/f4b8/live/e7f33150-bcc5-11f1-ae14-0b840f99ba59.jpg",
                 "alt": "Young person with curly brown hair lying on a sofa, looking at a white phone"
               }
-            ]
+            ],
+            "videos": []
           },
           {
-            "figure_number": 2,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/41d3/live/348b21e0-26a8-11f0-8f57-b7237f6a66e6.png",
                 "alt": "A green promotional banner with black squares and rectangles forming pixels, moving in from the right. The text says: âTech Decoded: The worldâs biggest tech news in your inbox every Monday.â"
               }
-            ]
+            ],
+            "videos": []
           }
         ],
         "global_media": {
@@ -305,24 +379,38 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": []
-      }
+        }
+      },
+      "yt_dlp": {
+        "success": true,
+        "videos": [
+          {
+            "id": "cm986x65we88o",
+            "title": "WhatsApp introduces optional parental controls for teenagers",
+            "url": null,
+            "webpage_url": "https://www.bbc.co.uk/news/articles/cm986x65we88o?at_medium=RSS&at_campaign=rss",
+            "duration": null,
+            "ext": null
+          }
+        ],
+        "error": null
+      },
+      "error": null
     },
     {
       "title": "OpenAI unveils AI assistant 'dots' while safety worries delay new model",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/news/articles/cw7v42rp083eo?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [
           {
-            "figure_number": 1,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/1d0f/live/83220850-bc2a-11f1-bd53-1b67dc8fba34.jpg",
                 "alt": "OpenAI CEO Sam Altman standing on stage at his company's annual developer conference in front of a screen with \"dots\" displayed behind it."
               }
-            ]
+            ],
+            "videos": []
           }
         ],
         "global_media": {
@@ -331,42 +419,56 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": []
-      }
+        }
+      },
+      "yt_dlp": {
+        "success": true,
+        "videos": [
+          {
+            "id": "cw7v42rp083eo",
+            "title": "OpenAI unveils AI assistant 'dots' while safety worries delay new model",
+            "url": null,
+            "webpage_url": "https://www.bbc.co.uk/news/articles/cw7v42rp083eo?at_medium=RSS&at_campaign=rss",
+            "duration": null,
+            "ext": null
+          }
+        ],
+        "error": null
+      },
+      "error": null
     },
     {
       "title": "Three takeaways from Trump's 'Super Intelligence' summit",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/news/articles/cme30dz5vkzko?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [
           {
-            "figure_number": 1,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/1c6e/live/311c64e0-bc86-11f1-bd21-bdf910f2cec6.jpg",
                 "alt": "US President Donald Trump and SpacexAI Founder and CEO Elon Musk speak to the media at the White House driveway following a luncheon for tech leaders in the East Room, in Washington, DC, US, 29 September 29, 2026."
               }
-            ]
+            ],
+            "videos": []
           },
           {
-            "figure_number": 2,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/6fe2/live/190c20a0-bc65-11f1-990d-93a606ee502f.jpg",
                 "alt": "US President Donald Trump, center, speaks during a meeting with tech executives on artificial intelligence in the East Room of the White House in Washington, DC, US, on Tuesday, Sept. 29, 2026. "
               }
-            ]
+            ],
+            "videos": []
           },
           {
-            "figure_number": 3,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/999/cpsprodpb/f5a9/live/44c6e400-bc65-11f1-bc1f-3f186ca4140c.jpg",
                 "alt": "US President Donald J. Trump (2-R), with Speaker of the House Mike Johnson (R), responds to a question from the news media outside the West Wing of the White House in Washington, DC, USA, 29 September 2026."
               }
-            ]
+            ],
+            "videos": []
           }
         ],
         "global_media": {
@@ -375,33 +477,47 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": []
-      }
+        }
+      },
+      "yt_dlp": {
+        "success": true,
+        "videos": [
+          {
+            "id": "cme30dz5vkzko",
+            "title": "‘Super Intelligence’: Three takeaways from Trump's tech summit",
+            "url": null,
+            "webpage_url": "https://www.bbc.co.uk/news/articles/cme30dz5vkzko?at_medium=RSS&at_campaign=rss",
+            "duration": null,
+            "ext": null
+          }
+        ],
+        "error": null
+      },
+      "error": null
     },
     {
       "title": "Chinese AI tool told researchers how to make bioweapons",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/news/articles/cmrergq3j7lgo?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [
           {
-            "figure_number": 1,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/962/cpsprodpb/925f/live/79ba4b60-bc25-11f1-bd53-1b67dc8fba34.jpg",
                 "alt": "Moonshot AI logo on a smartphone"
               }
-            ]
+            ],
+            "videos": []
           },
           {
-            "figure_number": 2,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/41d3/live/348b21e0-26a8-11f0-8f57-b7237f6a66e6.png",
                 "alt": "A green promotional banner with black squares and rectangles forming pixels, moving in from the right. The text says: âTech Decoded: The worldâs biggest tech news in your inbox every Monday.â"
               }
-            ]
+            ],
+            "videos": []
           }
         ],
         "global_media": {
@@ -410,51 +526,65 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": []
-      }
+        }
+      },
+      "yt_dlp": {
+        "success": true,
+        "videos": [
+          {
+            "id": "cmrergq3j7lgo",
+            "title": "Chinese AI tool told researchers how to make bioweapons",
+            "url": null,
+            "webpage_url": "https://www.bbc.co.uk/news/articles/cmrergq3j7lgo?at_medium=RSS&at_campaign=rss",
+            "duration": null,
+            "ext": null
+          }
+        ],
+        "error": null
+      },
+      "error": null
     },
     {
       "title": "The start-ups hoping to return battery making to the US",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/news/articles/cvgyexx4g8ro?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [
           {
-            "figure_number": 1,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/ab91/live/bbe97560-a5e1-11f1-aed2-8d6da8d75094.jpg",
                 "alt": "People walk across jets of water in a public square in Paris"
               }
-            ]
+            ],
+            "videos": []
           },
           {
-            "figure_number": 2,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/3840/cpsprodpb/d964/live/16e38f00-a5e2-11f1-a291-b542ee92de7c.jpg",
                 "alt": "Darren Tan, co-founder and chief executive"
               }
-            ]
+            ],
+            "videos": []
           },
           {
-            "figure_number": 3,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/1600/cpsprodpb/732f/live/b4898ad0-a5e6-11f1-b109-879e35c24276.jpg",
                 "alt": "Smiling, the three founders of Emerald Battery Labs are standing next to each other wearing white lab coats."
               }
-            ]
+            ],
+            "videos": []
           },
           {
-            "figure_number": 4,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/1056/cpsprodpb/d42a/live/5c36ce00-a5e7-11f1-b109-879e35c24276.png",
                 "alt": "48 Alsym Energy batteries, which look a bit like regular AA batteries, are assembled in an eight by six grid. "
               }
-            ]
+            ],
+            "videos": []
           }
         ],
         "global_media": {
@@ -463,24 +593,38 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": []
-      }
+        }
+      },
+      "yt_dlp": {
+        "success": true,
+        "videos": [
+          {
+            "id": "cvgyexx4g8ro",
+            "title": "The start-ups hoping to return battery making to the US",
+            "url": null,
+            "webpage_url": "https://www.bbc.co.uk/news/articles/cvgyexx4g8ro?at_medium=RSS&at_campaign=rss",
+            "duration": null,
+            "ext": null
+          }
+        ],
+        "error": null
+      },
+      "error": null
     },
     {
       "title": "Oura pulls $15bn stock market listing days after announcement",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/news/articles/cjwyz5v190qwo?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [
           {
-            "figure_number": 1,
             "images": [
               {
                 "url": "https://ichef.bbci.co.uk/ace/standard/936/cpsprodpb/fc0e/live/21da3ca0-bc1d-11f1-a9cf-939723882d7f.jpg",
                 "alt": "Tom Hale, chief executive at Oura, wears an Oura ring at an event in Lisbon, Portugal"
               }
-            ]
+            ],
+            "videos": []
           }
         ],
         "global_media": {
@@ -489,15 +633,29 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": []
-      }
+        }
+      },
+      "yt_dlp": {
+        "success": true,
+        "videos": [
+          {
+            "id": "cjwyz5v190qwo",
+            "title": "Oura pulls $15bn stock market listing days after announcement",
+            "url": null,
+            "webpage_url": "https://www.bbc.co.uk/news/articles/cjwyz5v190qwo?at_medium=RSS&at_campaign=rss",
+            "duration": null,
+            "ext": null
+          }
+        ],
+        "error": null
+      },
+      "error": null
     },
     {
       "title": "Tech Life",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyh?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [],
         "global_media": {
           "videos": [],
@@ -505,22 +663,16 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": [
-          {
-            "script_number": 36,
-            "matched_keywords": [
-              "vpid"
-            ]
-          }
-        ]
-      }
+        }
+      },
+      "yt_dlp": null,
+      "error": null
     },
     {
       "title": "Tech Life",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyg?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [],
         "global_media": {
           "videos": [],
@@ -528,22 +680,16 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": [
-          {
-            "script_number": 36,
-            "matched_keywords": [
-              "vpid"
-            ]
-          }
-        ]
-      }
+        }
+      },
+      "yt_dlp": null,
+      "error": null
     },
     {
       "title": "Tech Life",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyf?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [],
         "global_media": {
           "videos": [],
@@ -551,22 +697,16 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": [
-          {
-            "script_number": 36,
-            "matched_keywords": [
-              "vpid"
-            ]
-          }
-        ]
-      }
+        }
+      },
+      "yt_dlp": null,
+      "error": null
     },
     {
       "title": "Tech Life",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyd?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [],
         "global_media": {
           "videos": [],
@@ -574,22 +714,16 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": [
-          {
-            "script_number": 36,
-            "matched_keywords": [
-              "vpid"
-            ]
-          }
-        ]
-      }
+        }
+      },
+      "yt_dlp": null,
+      "error": null
     },
     {
       "title": "Tech Now",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/iplayer/episode/m0032n6v?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [],
         "global_media": {
           "videos": [],
@@ -597,15 +731,16 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": []
-      }
+        }
+      },
+      "yt_dlp": null,
+      "error": null
     },
     {
       "title": "Tech Now",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/iplayer/episode/m0032d9k?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [],
         "global_media": {
           "videos": [],
@@ -613,15 +748,16 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": []
-      }
+        }
+      },
+      "yt_dlp": null,
+      "error": null
     },
     {
       "title": "Tech Now",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/iplayer/episode/m0032301?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [],
         "global_media": {
           "videos": [],
@@ -629,15 +765,16 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": []
-      }
+        }
+      },
+      "yt_dlp": null,
+      "error": null
     },
     {
       "title": "Tech Now",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/iplayer/episode/m0031qjy?at_medium=RSS&at_campaign=rss",
-      "media_data": {
+      "html_media": {
         "figure_results": [],
         "global_media": {
           "videos": [],
@@ -645,9 +782,10 @@
           "iframes": [],
           "media_attributes": [],
           "sources": []
-        },
-        "script_matches": []
-      }
+        }
+      },
+      "yt_dlp": null,
+      "error": null
     }
   ]
 }
