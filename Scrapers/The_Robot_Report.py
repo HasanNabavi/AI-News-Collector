@@ -351,6 +351,10 @@ def extract_videos_with_yt_dlp(url):
             "no_warnings": True,
             "skip_download": True,
             "extract_flat": False,
+
+            # Force yt-dlp to treat the article as a
+            # generic webpage and look for embedded media.
+            "force_generic_extractor": True,
         }
 
         with yt_dlp.YoutubeDL(
