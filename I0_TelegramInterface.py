@@ -3,7 +3,7 @@ import html
 import requests
 
 
-BOT_TOKEN = "8949593265:AAGalkZDAGolW3PG_MNiieNJBkRMJFrC_6o"
+BOT_TOKEN = "<KEEP_YOUR_EXISTING_BOT_TOKEN_HERE>"
 CHANNEL_ID = "@International_MetaTech"
 
 INPUT_FILE = "H1_TelegramFormatedNews.json"
@@ -31,13 +31,10 @@ def prepare_telegram_text(article):
     if not formatted_text:
         return None
 
-    # Escape the complete text first.
     text = html.escape(formatted_text)
 
-    # Escape the link label separately.
     escaped_link_text = html.escape(link_text)
 
-    # Replace the plain link text with a Telegram HTML hyperlink.
     if link_url and link_text in formatted_text:
 
         text = text.replace(
@@ -63,10 +60,7 @@ def send_message(article):
     payload = {
         "chat_id": CHANNEL_ID,
         "text": text,
-        "parse_mode": "HTML",
-        "link_preview_options": {
-            "is_disabled": False
-        }
+        "parse_mode": "HTML"
     }
 
     response = requests.post(
@@ -103,7 +97,6 @@ def main():
         "r",
         encoding="utf-8"
     ) as file:
-
         data = json.load(file)
 
     news = data.get(
