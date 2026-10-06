@@ -1,22 +1,16 @@
 {
   "sources": [
     {
-      "name": "MIT Technology Review",
-      "category": "AI",
-      "url": "https://www.technologyreview.com/",
-      "rss_url": "https://www.technologyreview.com/feed"
-    },
-    {
-      "name": "TechCrunch",
-      "category": "AI",
-      "url": "https://techcrunch.com/tag/ai/",
-      "rss_url": "https://techcrunch.com/tag/ai/feed/"
-    },
-    {
       "name": "BBC Technology",
-      "category": "AI & Robotics",
-      "url": "https://www.bbc.com/news/technology",
+      "category": "Artificial Intelligence",
+      "url": "https://www.bbc.com/technology",
       "rss_url": "https://feeds.bbci.co.uk/news/technology/rss.xml"
+    },
+    {
+      "name": "The Robot Report",
+      "category": "Robotics",
+      "url": "https://www.therobotreport.com/",
+      "rss_url": "https://www.therobotreport.com/feed/"
     }
   ]
 }
