@@ -1,4 +1,4 @@
-name: Skeleton Pipeline 
+name: F_G_H_I
 
 on:
   workflow_dispatch:
