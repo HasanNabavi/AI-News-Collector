@@ -1,20 +1,42 @@
 {
   "execution": {
-    "started_at": "2026-10-06T06:51:17.667001+00:00",
-    "finished_at": "2026-10-06T06:51:29.538708+00:00",
+    "started_at": "2026-10-06T06:56:54.431391+00:00",
+    "finished_at": "2026-10-06T06:57:07.048316+00:00",
     "channel_id": "@International_MetaTech"
   },
   "summary": {
     "total_articles_in_H1": 13,
-    "published_successfully": 13,
-    "failed": 0,
+    "published_successfully": 10,
+    "failed": 3,
     "skipped": 0,
-    "articles_with_video_in_H1": 0,
-    "articles_with_photo_in_H1": 0,
-    "text_only_articles_in_H1": 13,
+    "articles_with_video_in_H1": 3,
+    "articles_with_photo_in_H1": 10,
+    "text_only_articles_in_H1": 0,
     "published_with_video": 0,
-    "published_with_photo": 0,
-    "published_text_only": 13
+    "published_with_photo": 10,
+    "published_text_only": 0
   },
-  "failures": []
+  "failures": [
+    {
+      "title": "Crypto thieves attack man in home and threaten to kill pregnant wife's baby in 'horrific' robbery",
+      "status": "failed",
+      "media_type": "video",
+      "media_count": 1,
+      "reason": "HTTP 400: Bad Request: failed to get HTTP URL content"
+    },
+    {
+      "title": "AI boom could trigger market shocks, Bank of England boss warns",
+      "status": "failed",
+      "media_type": "video",
+      "media_count": 1,
+      "reason": "HTTP 400: Bad Request: failed to get HTTP URL content"
+    },
+    {
+      "title": "Tiny image sparks big backlash in Nikon photo contest",
+      "status": "failed",
+      "media_type": "video",
+      "media_count": 1,
+      "reason": "HTTP 400: Bad Request: failed to get HTTP URL content"
+    }
+  ]
 }
