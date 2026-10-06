@@ -4,7 +4,7 @@ import requests
 from datetime import datetime, timezone
 
 
-BOT_TOKEN = "8949593265:AAGalkZDAGolW3PG_MNiieNJBkRMJFrC_6o"
+BOT_TOKEN = "<KEEP_YOUR_EXISTING_BOT_TOKEN_HERE>"
 CHANNEL_ID = "@International_MetaTech"
 
 INPUT_FILE = "H1_TelegramFormatedNews.json"
@@ -54,43 +54,33 @@ def prepare_telegram_text(article):
 
 def get_media(article):
 
-    scraped_data = article.get(
-        "scraped_data",
-        {}
+    media_type = article.get(
+        "media_type",
+        "none"
     )
 
-    if not isinstance(scraped_data, dict):
-        scraped_data = {}
-
-    videos = scraped_data.get(
-        "videos",
+    media_urls = article.get(
+        "media_urls",
         []
     )
 
-    if not isinstance(videos, list):
-        videos = []
+    if not isinstance(media_urls, list):
+        media_urls = []
 
-    videos = [
-        video.strip()
-        for video in videos
-        if isinstance(video, str) and video.strip()
+    media_urls = [
+        media_url.strip()
+        for media_url in media_urls
+        if isinstance(media_url, str)
+        and media_url.strip()
     ]
 
-    if videos:
-        return "video", videos
+    if media_type == "video" and media_urls:
 
-    main_image = scraped_data.get(
-        "main_image",
-        ""
-    )
+        return "video", media_urls
 
-    if isinstance(main_image, str):
-        main_image = main_image.strip()
-    else:
-        main_image = ""
+    if media_type == "photo" and media_urls:
 
-    if main_image:
-        return "photo", [main_image]
+        return "photo", media_urls
 
     return "none", []
 
@@ -98,6 +88,7 @@ def get_media(article):
 def parse_telegram_response(response):
 
     try:
+
         result = response.json()
 
     except ValueError:
