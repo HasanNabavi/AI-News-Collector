@@ -1,12 +1,14 @@
 import json
 import html
 import requests
+from datetime import datetime, timezone
 
 
-BOT_TOKEN = "8949593265:AAGalkZDAGolW3PG_MNiieNJBkRMJFrC_6o"
+BOT_TOKEN = "<KEEP_YOUR_EXISTING_BOT_TOKEN_HERE>"
 CHANNEL_ID = "@International_MetaTech"
 
 INPUT_FILE = "H1_TelegramFormatedNews.json"
+REPORT_FILE = "I1_TelegramPublishReport.json"
 
 TELEGRAM_API_URL = f"https://api.telegram.org/bot{BOT_TOKEN}"
 
@@ -31,6 +33,8 @@ def prepare_telegram_text(article):
     if not formatted_text:
         return None
 
+    # Create a separate Telegram-safe copy.
+    # H1 is never modified.
     text = html.escape(formatted_text)
 
     escaped_link_text = html.escape(link_text)
@@ -48,12 +52,96 @@ def prepare_telegram_text(article):
     return text
 
 
-def send_message(article):
+def get_media(article):
 
-    text = prepare_telegram_text(article)
+    scraped_data = article.get(
+        "scraped_data",
+        {}
+    )
 
-    if not text:
-        return False
+    if not isinstance(scraped_data, dict):
+        scraped_data = {}
+
+    videos = scraped_data.get(
+        "videos",
+        []
+    )
+
+    if not isinstance(videos, list):
+        videos = []
+
+    videos = [
+        video.strip()
+        for video in videos
+        if isinstance(video, str) and video.strip()
+    ]
+
+    if videos:
+        return "video", videos
+
+    main_image = scraped_data.get(
+        "main_image",
+        ""
+    )
+
+    if isinstance(main_image, str):
+        main_image = main_image.strip()
+    else:
+        main_image = ""
+
+    if main_image:
+        return "photo", [main_image]
+
+    return "none", []
+
+
+def parse_telegram_response(response):
+
+    try:
+        result = response.json()
+
+    except ValueError:
+
+        return {
+            "success": False,
+            "error": (
+                f"HTTP {response.status_code}: "
+                f"Invalid JSON response"
+            )
+        }
+
+    if response.status_code != 200:
+
+        description = result.get(
+            "description",
+            response.text
+        )
+
+        return {
+            "success": False,
+            "error": (
+                f"HTTP {response.status_code}: "
+                f"{description}"
+            )
+        }
+
+    if not result.get("ok"):
+
+        return {
+            "success": False,
+            "error": result.get(
+                "description",
+                "Telegram API returned an unknown error."
+            )
+        }
+
+    return {
+        "success": True,
+        "error": None
+    }
+
+
+def send_text(article, text):
 
     url = f"{TELEGRAM_API_URL}/sendMessage"
 
@@ -66,32 +154,192 @@ def send_message(article):
         })
     }
 
-    response = requests.post(
-        url,
-        data=payload,
-        timeout=30
+    try:
+
+        response = requests.post(
+            url,
+            data=payload,
+            timeout=30
+        )
+
+    except requests.RequestException as error:
+
+        return {
+            "success": False,
+            "error": f"Request error: {error}"
+        }
+
+    return parse_telegram_response(response)
+
+
+def send_photo(article, text, image_url):
+
+    url = f"{TELEGRAM_API_URL}/sendPhoto"
+
+    payload = {
+        "chat_id": CHANNEL_ID,
+        "photo": image_url,
+        "caption": text,
+        "parse_mode": "HTML"
+    }
+
+    try:
+
+        response = requests.post(
+            url,
+            data=payload,
+            timeout=60
+        )
+
+    except requests.RequestException as error:
+
+        return {
+            "success": False,
+            "error": f"Request error: {error}"
+        }
+
+    return parse_telegram_response(response)
+
+
+def send_video(article, text, video_url):
+
+    url = f"{TELEGRAM_API_URL}/sendVideo"
+
+    payload = {
+        "chat_id": CHANNEL_ID,
+        "video": video_url,
+        "caption": text,
+        "parse_mode": "HTML"
+    }
+
+    try:
+
+        response = requests.post(
+            url,
+            data=payload,
+            timeout=120
+        )
+
+    except requests.RequestException as error:
+
+        return {
+            "success": False,
+            "error": f"Request error: {error}"
+        }
+
+    return parse_telegram_response(response)
+
+
+def send_multiple_videos(article, text, video_urls):
+
+    url = f"{TELEGRAM_API_URL}/sendMediaGroup"
+
+    media = []
+
+    for index, video_url in enumerate(video_urls):
+
+        item = {
+            "type": "video",
+            "media": video_url
+        }
+
+        if index == 0:
+
+            item["caption"] = text
+            item["parse_mode"] = "HTML"
+
+        media.append(item)
+
+    payload = {
+        "chat_id": CHANNEL_ID,
+        "media": json.dumps(media)
+    }
+
+    try:
+
+        response = requests.post(
+            url,
+            data=payload,
+            timeout=180
+        )
+
+    except requests.RequestException as error:
+
+        return {
+            "success": False,
+            "error": f"Request error: {error}"
+        }
+
+    return parse_telegram_response(response)
+
+
+def send_article(article):
+
+    text = prepare_telegram_text(article)
+
+    if not text:
+
+        return {
+            "success": False,
+            "error": "Formatted text is empty.",
+            "media_type": "none",
+            "media_count": 0
+        }
+
+    media_type, media_urls = get_media(article)
+
+    if media_type == "video":
+
+        if len(media_urls) == 1:
+
+            result = send_video(
+                article,
+                text,
+                media_urls[0]
+            )
+
+        else:
+
+            result = send_multiple_videos(
+                article,
+                text,
+                media_urls
+            )
+
+        result["media_type"] = "video"
+        result["media_count"] = len(media_urls)
+
+        return result
+
+    if media_type == "photo":
+
+        result = send_photo(
+            article,
+            text,
+            media_urls[0]
+        )
+
+        result["media_type"] = "photo"
+        result["media_count"] = 1
+
+        return result
+
+    result = send_text(
+        article,
+        text
     )
 
-    if response.status_code != 200:
+    result["media_type"] = "none"
+    result["media_count"] = 0
 
-        print("Telegram API error:")
-        print(response.text)
-
-        return False
-
-    result = response.json()
-
-    if not result.get("ok"):
-
-        print("Telegram API returned an error:")
-        print(result)
-
-        return False
-
-    return True
+    return result
 
 
 def main():
+
+    execution_started_at = datetime.now(
+        timezone.utc
+    ).isoformat()
 
     print("Loading H1...")
 
@@ -100,6 +348,7 @@ def main():
         "r",
         encoding="utf-8"
     ) as file:
+
         data = json.load(file)
 
     news = data.get(
@@ -112,7 +361,18 @@ def main():
     )
 
     published = 0
+    failed = 0
     skipped = 0
+
+    video_count = 0
+    photo_count = 0
+    text_only_count = 0
+
+    published_with_video = 0
+    published_with_photo = 0
+    published_text_only = 0
+
+    failures = []
 
     for index, article in enumerate(
         news,
@@ -128,6 +388,7 @@ def main():
         print(
             f"[{index}/{len(news)}]"
         )
+
         print(
             f"Title: {title}"
         )
@@ -145,13 +406,47 @@ def main():
             )
 
             skipped += 1
+
+            failures.append({
+                "title": title,
+                "status": "skipped",
+                "media_type": "none",
+                "reason": "Formatted text is empty."
+            })
+
             continue
 
+        media_type, media_urls = get_media(article)
+
+        if media_type == "video":
+
+            video_count += 1
+
+        elif media_type == "photo":
+
+            photo_count += 1
+
+        else:
+
+            text_only_count += 1
+
         print(
-            "Action: publishing text..."
+            f"Media: {media_type}"
         )
 
-        if send_message(article):
+        if media_urls:
+
+            print(
+                f"Media count: {len(media_urls)}"
+            )
+
+        print(
+            "Action: publishing..."
+        )
+
+        result = send_article(article)
+
+        if result.get("success"):
 
             print(
                 "Result: published successfully."
@@ -159,23 +454,132 @@ def main():
 
             published += 1
 
+            if media_type == "video":
+
+                published_with_video += 1
+
+            elif media_type == "photo":
+
+                published_with_photo += 1
+
+            else:
+
+                published_text_only += 1
+
         else:
+
+            error = result.get(
+                "error",
+                "Unknown error."
+            )
 
             print(
                 "Result: publishing failed."
             )
 
+            print(
+                f"Reason: {error}"
+            )
+
+            failed += 1
+
+            failures.append({
+                "title": title,
+                "status": "failed",
+                "media_type": result.get(
+                    "media_type",
+                    media_type
+                ),
+                "media_count": result.get(
+                    "media_count",
+                    len(media_urls)
+                ),
+                "reason": error
+            })
+
+    execution_finished_at = datetime.now(
+        timezone.utc
+    ).isoformat()
+
+    report = {
+        "execution": {
+            "started_at": execution_started_at,
+            "finished_at": execution_finished_at,
+            "channel_id": CHANNEL_ID
+        },
+
+        "summary": {
+            "total_articles_in_H1": len(news),
+            "published_successfully": published,
+            "failed": failed,
+            "skipped": skipped,
+
+            "articles_with_video_in_H1": video_count,
+            "articles_with_photo_in_H1": photo_count,
+            "text_only_articles_in_H1": text_only_count,
+
+            "published_with_video": published_with_video,
+            "published_with_photo": published_with_photo,
+            "published_text_only": published_text_only
+        },
+
+        "failures": failures
+    }
+
+    with open(
+        REPORT_FILE,
+        "w",
+        encoding="utf-8"
+    ) as file:
+
+        json.dump(
+            report,
+            file,
+            ensure_ascii=False,
+            indent=2
+        )
+
     print()
     print("=" * 40)
-    print("I0 completed.")
+
+    print(
+        "I0 completed."
+    )
+
     print(
         f"Published: {published}"
     )
+
+    print(
+        f"Failed: {failed}"
+    )
+
     print(
         f"Skipped: {skipped}"
     )
+
     print(
         f"Total news: {len(news)}"
+    )
+
+    print()
+
+    print(
+        f"News with video: {video_count}"
+    )
+
+    print(
+        f"News with photo: {photo_count}"
+    )
+
+    print(
+        f"Text only: {text_only_count}"
+    )
+
+    print()
+
+    print(
+        f"I1 report: {REPORT_FILE}"
     )
 
 
