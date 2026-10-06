@@ -3,7 +3,7 @@ import html
 import requests
 
 
-BOT_TOKEN = "<KEEP_YOUR_EXISTING_BOT_TOKEN_HERE>"
+BOT_TOKEN = "8949593265:AAGalkZDAGolW3PG_MNiieNJBkRMJFrC_6o"
 CHANNEL_ID = "@International_MetaTech"
 
 INPUT_FILE = "H1_TelegramFormatedNews.json"
