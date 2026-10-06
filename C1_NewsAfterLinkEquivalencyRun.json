@@ -1,172 +1,148 @@
 {
   "news": [
     {
-      "title": "OpenAI fires workers for 'mishandling sensitive information'",
-      "source": "BBC Technology",
-      "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/news/articles/c6y9z9r4ejzwo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-10-02T08:20:32+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
+      "title": "Weight-loss drugs show signs of slowing biological aging, say drugmakers",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1145836/weight-loss-drugs-glp1-lilly-novo-aging-clocks/",
+      "published_at": "Tue, 06 Oct 2026 16:40:36 +0000",
+      "collected_at": "2026-10-06T17:39:42.790936+00:00"
     },
     {
-      "title": "Crypto thieves attack man in home and threaten to kill pregnant wife's baby in 'horrific' robbery",
-      "source": "BBC Technology",
-      "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/news/articles/c6eq84eygz0qo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-10-01T23:45:06+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
+      "title": "The Download: 10 climate tech companies to watch",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1145796/the-download-10-climate-tech-companies-to-watch/",
+      "published_at": "Tue, 06 Oct 2026 12:10:00 +0000",
+      "collected_at": "2026-10-06T17:39:42.790958+00:00"
     },
     {
-      "title": "Trump's AI rebrand causes 'unprecedented' demand for Slovenian website names",
-      "source": "BBC Technology",
-      "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/news/articles/cqx2z23xj555o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-10-01T11:37:46+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
+      "title": "2026 Climate Tech Companies to Watch",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1143800/2026-climate-tech-companies-to-watch/",
+      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
+      "collected_at": "2026-10-06T17:39:42.790969+00:00"
     },
     {
-      "title": "AI boom could trigger market shocks, Bank of England boss warns",
-      "source": "BBC Technology",
-      "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/news/articles/cv8e30enrkxyo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-10-01T10:05:25+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
+      "title": "Here’s how our climate team picked 10 promising companies to watch",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1144978/2026-climate-tech-companies-to-watch-how-we-chose/",
+      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
+      "collected_at": "2026-10-06T17:39:42.790977+00:00"
     },
     {
-      "title": "Tiny image sparks big backlash in Nikon photo contest",
-      "source": "BBC Technology",
-      "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/news/articles/ck4gjn1yzprno?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-30T23:10:19+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
+      "title": "WeLion New Energy and its semi-solid-state batteries",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1144987/2026-climate-tech-companies-to-watch-welion-semi-solid-state-batteries/",
+      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
+      "collected_at": "2026-10-06T17:39:42.790986+00:00"
     },
     {
-      "title": "The AI telling farmers when to harvest",
-      "source": "BBC Technology",
-      "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/news/articles/cgk53dkmyxko?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-30T23:02:21+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
+      "title": "Form Energy and its iron batteries",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1145020/2026-climate-tech-companies-to-watch-form-energy-iron-batteries/",
+      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
+      "collected_at": "2026-10-06T17:39:42.790995+00:00"
     },
     {
-      "title": "Regulating AI 'not the right place to start' says Bailey",
-      "source": "BBC Technology",
-      "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/news/articles/cvzez7k0pn40o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-30T14:00:33+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
+      "title": "X-energy and its helium-cooled nuclear reactors",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1145025/2026-climate-tech-companies-to-watch-x-energy-helium-cooled-nuclear-reactors/",
+      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
+      "collected_at": "2026-10-06T17:39:42.791002+00:00"
     },
     {
-      "title": "WhatsApp introduces optional parental controls for teenagers",
-      "source": "BBC Technology",
-      "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/news/articles/cm986x65we88o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-30T13:01:30+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
+      "title": "Energy Dome and its carbon dioxide batteries",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1145032/2026-climate-tech-companies-to-watch-energy-dome-carbon-dioxide-batteries/",
+      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
+      "collected_at": "2026-10-06T17:39:42.791010+00:00"
     },
     {
-      "title": "OpenAI unveils AI assistant 'dots' while safety worries delay new model",
-      "source": "BBC Technology",
-      "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/news/articles/cw7v42rp083eo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-30T05:18:13+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
+      "title": "Brimstone and its one-stop process for making cleaner cement and critical minerals",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1145172/2026-climate-tech-companies-to-watch-brimstone-one-stop-process-making-cleaner-cement-critical-minerals/",
+      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
+      "collected_at": "2026-10-06T17:39:42.791018+00:00"
     },
     {
-      "title": "Three takeaways from Trump's 'Super Intelligence' summit",
-      "source": "BBC Technology",
-      "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/news/articles/cme30dz5vkzko?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-30T04:01:52+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
+      "title": "WaveSave and its portable rubber dam",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1145208/2026-climate-tech-companies-to-watch-wavesave-portable-rubber-dam/",
+      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
+      "collected_at": "2026-10-06T17:39:42.791026+00:00"
     },
     {
-      "title": "Chinese AI tool told researchers how to make bioweapons",
-      "source": "BBC Technology",
-      "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/news/articles/cmrergq3j7lgo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-29T23:15:29+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
+      "title": "Vinod Khosla believes ex-DeepMind engineer’s Wajo will win agent market on trust",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/10/06/vinod-khosla-believes-ex-deepmind-engineers-wajo-will-win-agent-market-on-trust/",
+      "published_at": "Tue, 06 Oct 2026 15:15:00 +0000",
+      "collected_at": "2026-10-06T17:39:43.316720+00:00"
     },
     {
-      "title": "The start-ups hoping to return battery making to the US",
+      "title": "Finland orders halt to work on two Google data centres",
       "source": "BBC Technology",
       "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/news/articles/cvgyexx4g8ro?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-29T23:06:50+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
+      "url": "https://www.bbc.co.uk/news/articles/cvj6jkx6g1r0o?at_medium=RSS&at_campaign=rss",
+      "published_at": "Tue, 06 Oct 2026 17:15:46 GMT",
+      "collected_at": "2026-10-06T17:39:43.806502+00:00"
     },
     {
-      "title": "Oura pulls $15bn stock market listing days after announcement",
+      "title": "Italian PM files to trademark her voice against AI threats",
       "source": "BBC Technology",
       "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/news/articles/cjwyz5v190qwo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-29T17:17:07+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
+      "url": "https://www.bbc.co.uk/news/articles/ckly0g1ljq2yo?at_medium=RSS&at_campaign=rss",
+      "published_at": "Tue, 06 Oct 2026 11:24:10 GMT",
+      "collected_at": "2026-10-06T17:39:43.806518+00:00"
     },
     {
-      "title": "Tech Life",
+      "title": "ASOS app users receive push notifications apparently sent by hackers",
       "source": "BBC Technology",
       "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyh?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-29T19:30:00+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
+      "url": "https://www.bbc.co.uk/news/articles/cj62ylzpr6d3o?at_medium=RSS&at_campaign=rss",
+      "published_at": "Tue, 06 Oct 2026 10:37:50 GMT",
+      "collected_at": "2026-10-06T17:39:43.806524+00:00"
     },
     {
-      "title": "Tech Life",
+      "title": "Ofcom investigates Meta over Instagram Instants feature",
       "source": "BBC Technology",
       "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyg?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-22T20:00:00+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
+      "url": "https://www.bbc.co.uk/news/articles/cq8jzyey8e2ro?at_medium=RSS&at_campaign=rss",
+      "published_at": "Tue, 06 Oct 2026 09:04:02 GMT",
+      "collected_at": "2026-10-06T17:39:43.806530+00:00"
     },
     {
-      "title": "Tech Life",
+      "title": "Lego fraudster among last year's most high-profile insurance scammers",
       "source": "BBC Technology",
       "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyf?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-15T19:30:00+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
+      "url": "https://www.bbc.co.uk/news/articles/cm86z9npj5deo?at_medium=RSS&at_campaign=rss",
+      "published_at": "Tue, 06 Oct 2026 07:03:35 GMT",
+      "collected_at": "2026-10-06T17:39:43.806535+00:00"
     },
     {
-      "title": "Tech Life",
+      "title": "Pentagon stops using Anthropic AI tools after blacklisting company, BBC told",
       "source": "BBC Technology",
       "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyd?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-08T20:00:00+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
+      "url": "https://www.bbc.co.uk/news/articles/c5j9x9pr0240o?at_medium=RSS&at_campaign=rss",
+      "published_at": "Mon, 05 Oct 2026 16:13:21 GMT",
+      "collected_at": "2026-10-06T17:39:43.806540+00:00"
     },
     {
-      "title": "Tech Now",
+      "title": "Trump chooses top spy boss to run new AI taskforce",
       "source": "BBC Technology",
       "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/iplayer/episode/m0032n6v?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-10-03T01:00:00+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
-    },
-    {
-      "title": "Tech Now",
-      "source": "BBC Technology",
-      "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/iplayer/episode/m0032d9k?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-26T01:00:13+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
-    },
-    {
-      "title": "Tech Now",
-      "source": "BBC Technology",
-      "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/iplayer/episode/m0032301?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-19T01:00:00+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
-    },
-    {
-      "title": "Tech Now",
-      "source": "BBC Technology",
-      "category": "AI & Robotics",
-      "url": "https://www.bbc.co.uk/iplayer/episode/m0031qjy?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-12T01:00:19+00:00",
-      "collected_at": "2026-10-04T18:29:28+00:00"
+      "url": "https://www.bbc.co.uk/news/articles/cqj6jenp26zyo?at_medium=RSS&at_campaign=rss",
+      "published_at": "Mon, 05 Oct 2026 10:03:38 GMT",
+      "collected_at": "2026-10-06T17:39:43.806545+00:00"
     }
   ]
 }

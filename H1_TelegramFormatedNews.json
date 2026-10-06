@@ -1,224 +1,122 @@
 {
   "news": [
     {
-      "title": "OpenAI fires workers for 'mishandling sensitive information'",
-      "formatted_text": "OpenAI fires workers for 'mishandling sensitive information' - Published OpenAI has fired three researchers for allegedly mishandling information, including work which involved an external organisation analysing AI models. \"Our investigation confirmed that these individuals mishandled sensitive information outside established company procedures, violating our policies and breaking the trust essential to\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\n2026-10-02\n────────────\n📢 @International_MetaTech",
+      "title": "Finland orders halt to work on two Google data centres",
+      "formatted_text": "Finland orders halt to work on two Google data centres - Published Finnish authorities have ordered a halt to building work at two planned Google data centres amid concerns over the clearance of more than 300 hectares of forest. The sites form part of Google's record â¬13bn (Â£11bn; $15bn) investment\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\nTue, 06 Oc\n────────────\n📢 @International_MetaTech",
       "link_text": "🔗 Read the full story",
-      "link_url": "https://www.bbc.co.uk/news/articles/c6y9z9r4ejzwo?at_medium=RSS&at_campaign=rss",
+      "link_url": "https://www.bbc.co.uk/news/articles/cvj6jkx6g1r0o?at_medium=RSS&at_campaign=rss",
       "hashtags": [
         "#robotics",
         "#ai"
       ],
       "source": "BBC Technology",
-      "published_date": "2026-10-02",
+      "published_date": "Tue, 06 Oc",
       "channel_id": "@International_MetaTech",
       "media_type": "photo",
       "media_urls": [
-        "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/136d/live/561b92b0-bdf9-11f1-a76b-bdcdab65a1b7.jpg"
+        "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/8809/live/12b85c00-c1a6-11f1-8fa2-19a1e9b6288f.jpg"
       ]
     },
     {
-      "title": "Crypto thieves attack man in home and threaten to kill pregnant wife's baby in 'horrific' robbery",
-      "formatted_text": "Crypto thieves attack man in home and threaten to kill pregnant wife's baby in 'horrific' robbery - Published Warning: This story contains distressing details A businessman was beaten with hammers by masked men who broke into his home and threatened to kill his heavily pregnant wife unless he transferred hundreds\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\n2026-10-01\n────────────\n📢 @International_MetaTech",
+      "title": "Italian PM files to trademark her voice against AI threats",
+      "formatted_text": "Italian PM files to trademark her voice against AI threats - Published Italian Prime Minister Giorgia Meloni has applied to trademark her voice in a move to protect herself against artificial intelligence (AI) deepfakes. The application to the European Union Intellectual Property Office (EUIPO) was made on Monday and can\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\nTue, 06 Oc\n────────────\n📢 @International_MetaTech",
       "link_text": "🔗 Read the full story",
-      "link_url": "https://www.bbc.co.uk/news/articles/c6eq84eygz0qo?at_medium=RSS&at_campaign=rss",
+      "link_url": "https://www.bbc.co.uk/news/articles/ckly0g1ljq2yo?at_medium=RSS&at_campaign=rss",
       "hashtags": [
         "#robotics",
         "#ai"
       ],
       "source": "BBC Technology",
-      "published_date": "2026-10-01",
+      "published_date": "Tue, 06 Oc",
+      "channel_id": "@International_MetaTech",
+      "media_type": "photo",
+      "media_urls": [
+        "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/cc57/live/ceb63ea0-c15f-11f1-ae7b-cfc528a6c828.jpg"
+      ]
+    },
+    {
+      "title": "ASOS app users receive push notifications apparently sent by hackers",
+      "formatted_text": "ASOS app users receive push notifications apparently sent by hackers - Published Asos users across the UK have been sent pop-up messages from its app that appear to have been sent by hackers trying to extort the company. Dozens of people have told the BBC about receiving a strange message\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\nTue, 06 Oc\n────────────\n📢 @International_MetaTech",
+      "link_text": "🔗 Read the full story",
+      "link_url": "https://www.bbc.co.uk/news/articles/cj62ylzpr6d3o?at_medium=RSS&at_campaign=rss",
+      "hashtags": [
+        "#robotics",
+        "#ai"
+      ],
+      "source": "BBC Technology",
+      "published_date": "Tue, 06 Oc",
+      "channel_id": "@International_MetaTech",
+      "media_type": "photo",
+      "media_urls": [
+        "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/384f/live/df1099d0-c169-11f1-a003-8be783290413.jpg"
+      ]
+    },
+    {
+      "title": "Ofcom investigates Meta over Instagram Instants feature",
+      "formatted_text": "Ofcom investigates Meta over Instagram Instants feature - Published Ofcom is investigating whether Meta breached its duties under the UK's online safety laws with the launch of its \"Instants\" feature on Instagram. The tool - allowing users to take and share an instant image with close friends, that disappears once\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\nTue, 06 Oc\n────────────\n📢 @International_MetaTech",
+      "link_text": "🔗 Read the full story",
+      "link_url": "https://www.bbc.co.uk/news/articles/cq8jzyey8e2ro?at_medium=RSS&at_campaign=rss",
+      "hashtags": [
+        "#robotics",
+        "#ai"
+      ],
+      "source": "BBC Technology",
+      "published_date": "Tue, 06 Oc",
+      "channel_id": "@International_MetaTech",
+      "media_type": "photo",
+      "media_urls": [
+        "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/d1cb/live/8dbea280-c163-11f1-ae7b-cfc528a6c828.jpg"
+      ]
+    },
+    {
+      "title": "Lego fraudster among last year's most high-profile insurance scammers",
+      "formatted_text": "Lego fraudster among last year's most high-profile insurance scammers - Published A scammer jailed for making false home insurance claims about supposedly stolen Lego has been listed as one of last year's most high-profile insurance fraudsters. The person was sentenced to 28 months in prison after an investigation found the\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\nTue, 06 Oc\n────────────\n📢 @International_MetaTech",
+      "link_text": "🔗 Read the full story",
+      "link_url": "https://www.bbc.co.uk/news/articles/cm86z9npj5deo?at_medium=RSS&at_campaign=rss",
+      "hashtags": [
+        "#robotics",
+        "#ai"
+      ],
+      "source": "BBC Technology",
+      "published_date": "Tue, 06 Oc",
+      "channel_id": "@International_MetaTech",
+      "media_type": "photo",
+      "media_urls": [
+        "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/9e41/live/98c51960-c0ba-11f1-9475-67b7bb314be1.jpg"
+      ]
+    },
+    {
+      "title": "Pentagon stops using Anthropic AI tools after blacklisting company, BBC told",
+      "formatted_text": "Pentagon stops using Anthropic AI tools after blacklisting company, BBC told - Published The US Department of Defence is no longer using Anthropic's AI tools, an official has told the BBC, months after it designated the company a supply chain risk on national security grounds. The Pentagon \"has ceased the\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\nMon, 05 Oc\n────────────\n📢 @International_MetaTech",
+      "link_text": "🔗 Read the full story",
+      "link_url": "https://www.bbc.co.uk/news/articles/c5j9x9pr0240o?at_medium=RSS&at_campaign=rss",
+      "hashtags": [
+        "#robotics",
+        "#ai"
+      ],
+      "source": "BBC Technology",
+      "published_date": "Mon, 05 Oc",
       "channel_id": "@International_MetaTech",
       "media_type": "video",
       "media_urls": [
-        "https://vod-hls-ww.live.cf.md.bbci.co.uk/usp/auth/vod/piff_abr_full_hd/c550b1-p0pdlj1d/vf_p0pdlj1d_cb931c0a-84ee-4e6f-b212-bc34b73d57e0.ism/vf_p0pdlj1d_cb931c0a-84ee-4e6f-b212-bc34b73d57e0-audio_eng=96000-video=5070000.m3u8"
+        "https://vod-hls-ww.live.cf.md.bbci.co.uk/usp/auth/vod/piff_abr_full_hd/b02af5-p0p9ck97/vf_p0p9ck97_92f00794-02ba-41ad-8722-f24e42d5cb26.ism/vf_p0p9ck97_92f00794-02ba-41ad-8722-f24e42d5cb26-audio_eng=96000-video=5070000.m3u8"
       ]
     },
     {
-      "title": "Trump's AI rebrand causes 'unprecedented' demand for Slovenian website names",
-      "formatted_text": "Trump's AI rebrand causes 'unprecedented' demand for Slovenian website names - Published Donald Trump's push to rename AI may be behind an \"unprecedented\" rise in registrations for domain names in Slovenia, according to its official national registry. The US president wants AI to be called \"super intelligence\" - or SI\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\n2026-10-01\n────────────\n📢 @International_MetaTech",
+      "title": "Trump chooses top spy boss to run new AI taskforce",
+      "formatted_text": "Trump chooses top spy boss to run new AI taskforce - Published US President Donald Trump has named the director of national intelligence as the head of a new taskforce on AI which, he said, will coordinate government engagement with consumers, companies and \"religious organizations\". Jay Clayton will head a\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\nMon, 05 Oc\n────────────\n📢 @International_MetaTech",
       "link_text": "🔗 Read the full story",
-      "link_url": "https://www.bbc.co.uk/news/articles/cqx2z23xj555o?at_medium=RSS&at_campaign=rss",
+      "link_url": "https://www.bbc.co.uk/news/articles/cqj6jenp26zyo?at_medium=RSS&at_campaign=rss",
       "hashtags": [
         "#robotics",
         "#ai"
       ],
       "source": "BBC Technology",
-      "published_date": "2026-10-01",
+      "published_date": "Mon, 05 Oc",
       "channel_id": "@International_MetaTech",
       "media_type": "photo",
       "media_urls": [
-        "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/4ff7/live/977f2bf0-bd85-11f1-ab03-fd866f8788d0.jpg"
-      ]
-    },
-    {
-      "title": "AI boom could trigger market shocks, Bank of England boss warns",
-      "formatted_text": "AI boom could trigger market shocks, Bank of England boss warns - Published Artificial intelligence (AI) could trigger financial market shocks and the UK needs to be prepared for them, the governor of the Bank of England has warned. Andrew Bailey said the central bank is watching the huge amounts\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\n2026-10-01\n────────────\n📢 @International_MetaTech",
-      "link_text": "🔗 Read the full story",
-      "link_url": "https://www.bbc.co.uk/news/articles/cv8e30enrkxyo?at_medium=RSS&at_campaign=rss",
-      "hashtags": [
-        "#robotics",
-        "#ai"
-      ],
-      "source": "BBC Technology",
-      "published_date": "2026-10-01",
-      "channel_id": "@International_MetaTech",
-      "media_type": "video",
-      "media_urls": [
-        "https://vod-hls-ww.live.cf.md.bbci.co.uk/usp/auth/vod/piff_abr_full_hd/dfef36-p0pd9kq1/vf_p0pd9kq1_845565a4-9eed-4d32-b238-e9f58d7953bc.ism/vf_p0pd9kq1_845565a4-9eed-4d32-b238-e9f58d7953bc-audio_eng=96000-video=5070000.m3u8"
-      ]
-    },
-    {
-      "title": "Tiny image sparks big backlash in Nikon photo contest",
-      "formatted_text": "Tiny image sparks big backlash in Nikon photo contest - Published The winning entry of a prestigious scientific photography competition is being re-evaluated following criticism from other scientists that it was made with AI. Nikon's annual Small World In Motion contest accepts photos and video taken using powerful microscopes, and\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\n2026-09-30\n────────────\n📢 @International_MetaTech",
-      "link_text": "🔗 Read the full story",
-      "link_url": "https://www.bbc.co.uk/news/articles/ck4gjn1yzprno?at_medium=RSS&at_campaign=rss",
-      "hashtags": [
-        "#robotics",
-        "#ai"
-      ],
-      "source": "BBC Technology",
-      "published_date": "2026-09-30",
-      "channel_id": "@International_MetaTech",
-      "media_type": "video",
-      "media_urls": [
-        "https://vod-hls-ww.live.cf.md.bbci.co.uk/usp/auth/vod/piff_abr_full_hd/7359a5-p0pb6yky/vf_p0pb6yky_1391ff8f-719b-4552-8487-4a035fcb0716.ism/vf_p0pb6yky_1391ff8f-719b-4552-8487-4a035fcb0716-audio_eng=96000-video=5070000.m3u8"
-      ]
-    },
-    {
-      "title": "The AI telling farmers when to harvest",
-      "formatted_text": "The AI telling farmers when to harvest - Published When the first day of the apple harvest rolled around in Washington State last year, the fruit was ripe and the pickers were ready â but the weather had other ideas. \"It was like 38Câ¦ it's not safe for people to\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\n2026-09-30\n────────────\n📢 @International_MetaTech",
-      "link_text": "🔗 Read the full story",
-      "link_url": "https://www.bbc.co.uk/news/articles/cgk53dkmyxko?at_medium=RSS&at_campaign=rss",
-      "hashtags": [
-        "#robotics",
-        "#ai"
-      ],
-      "source": "BBC Technology",
-      "published_date": "2026-09-30",
-      "channel_id": "@International_MetaTech",
-      "media_type": "photo",
-      "media_urls": [
-        "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/0645/live/cb36dd30-bd80-11f1-bc2e-018d645d8d21.jpg"
-      ]
-    },
-    {
-      "title": "Regulating AI 'not the right place to start' says Bailey",
-      "formatted_text": "Regulating AI 'not the right place to start' says Bailey - Published The Governor of the Bank of England has said regulating artificial intelligence (AI) \"is not the right place to start\" but instead called first for \"rigorous\" testing to find vulnerabilities and create safeguards to contain risk. Writing his\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\n2026-09-30\n────────────\n📢 @International_MetaTech",
-      "link_text": "🔗 Read the full story",
-      "link_url": "https://www.bbc.co.uk/news/articles/cvzez7k0pn40o?at_medium=RSS&at_campaign=rss",
-      "hashtags": [
-        "#robotics",
-        "#ai"
-      ],
-      "source": "BBC Technology",
-      "published_date": "2026-09-30",
-      "channel_id": "@International_MetaTech",
-      "media_type": "photo",
-      "media_urls": [
-        "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/e249/live/7e528b30-bcb4-11f1-a3e9-bbda6f9b9e25.jpg"
-      ]
-    },
-    {
-      "title": "WhatsApp introduces optional parental controls for teenagers",
-      "formatted_text": "WhatsApp introduces optional parental controls for teenagers - Published WhatsApp is introducing new parental controls for teenagers, as tech companies continue to come under pressure to provide more age-appropriate experiences for children. The social messaging app's new tools will give parents a range of options, such as being told when\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\n2026-09-30\n────────────\n📢 @International_MetaTech",
-      "link_text": "🔗 Read the full story",
-      "link_url": "https://www.bbc.co.uk/news/articles/cm986x65we88o?at_medium=RSS&at_campaign=rss",
-      "hashtags": [
-        "#robotics",
-        "#ai"
-      ],
-      "source": "BBC Technology",
-      "published_date": "2026-09-30",
-      "channel_id": "@International_MetaTech",
-      "media_type": "photo",
-      "media_urls": [
-        "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/f4b8/live/e7f33150-bcc5-11f1-ae14-0b840f99ba59.jpg"
-      ]
-    },
-    {
-      "title": "OpenAI unveils AI assistant 'dots' while safety worries delay new model",
-      "formatted_text": "OpenAI unveils AI assistant 'dots' while safety worries delay new model - Published OpenAI on Tuesday unveiled \"dots\", a new artificial intelligence (AI) assistant it says can proactively carry out tasks on a user's behalf. At its annual developer day in San Francisco, chief executive Sam Altman referred to \"dots\"\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\n2026-09-30\n────────────\n📢 @International_MetaTech",
-      "link_text": "🔗 Read the full story",
-      "link_url": "https://www.bbc.co.uk/news/articles/cw7v42rp083eo?at_medium=RSS&at_campaign=rss",
-      "hashtags": [
-        "#robotics",
-        "#ai"
-      ],
-      "source": "BBC Technology",
-      "published_date": "2026-09-30",
-      "channel_id": "@International_MetaTech",
-      "media_type": "photo",
-      "media_urls": [
-        "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/181a/live/455d3af0-bc41-11f1-bc1f-3f186ca4140c.jpg"
-      ]
-    },
-    {
-      "title": "Three takeaways from Trump's 'Super Intelligence' summit",
-      "formatted_text": "Three takeaways from Trump's 'Super Intelligence' summit - Published US President Donald Trump hosted a meeting of top technology bosses on Tuesday for what he called \"an extraordinary gathering\" of the minds that are \"building America's Golden Age\". The guest list included leaders from OpenAI, Anthropic, Nvidia, SpaceX, Meta and\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\n2026-09-30\n────────────\n📢 @International_MetaTech",
-      "link_text": "🔗 Read the full story",
-      "link_url": "https://www.bbc.co.uk/news/articles/cme30dz5vkzko?at_medium=RSS&at_campaign=rss",
-      "hashtags": [
-        "#robotics",
-        "#ai"
-      ],
-      "source": "BBC Technology",
-      "published_date": "2026-09-30",
-      "channel_id": "@International_MetaTech",
-      "media_type": "photo",
-      "media_urls": [
-        "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/af69/live/34e7c4c0-bc86-11f1-bc1f-3f186ca4140c.jpg"
-      ]
-    },
-    {
-      "title": "Chinese AI tool told researchers how to make bioweapons",
-      "formatted_text": "Chinese AI tool told researchers how to make bioweapons - Published Chinese AI developer Moonshot is conducting an internal review after researchers were able to persuade two of its popular Kimi models to tell them how to make biological weapons and carry out assassinations. Mindgard, which tests the security of\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\n2026-09-29\n────────────\n📢 @International_MetaTech",
-      "link_text": "🔗 Read the full story",
-      "link_url": "https://www.bbc.co.uk/news/articles/cmrergq3j7lgo?at_medium=RSS&at_campaign=rss",
-      "hashtags": [
-        "#robotics",
-        "#ai"
-      ],
-      "source": "BBC Technology",
-      "published_date": "2026-09-29",
-      "channel_id": "@International_MetaTech",
-      "media_type": "photo",
-      "media_urls": [
-        "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/925f/live/79ba4b60-bc25-11f1-bd53-1b67dc8fba34.jpg"
-      ]
-    },
-    {
-      "title": "The start-ups hoping to return battery making to the US",
-      "formatted_text": "The start-ups hoping to return battery making to the US - Published As heatwaves scorched Europe this summer, workers at a US battery company noticed an uptick in demand. San Diego-based Unigrid sells a nine kilowatt hour battery for people's homes. Sweltering European homeowners were apparently looking for ways of\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\n2026-09-29\n────────────\n📢 @International_MetaTech",
-      "link_text": "🔗 Read the full story",
-      "link_url": "https://www.bbc.co.uk/news/articles/cvgyexx4g8ro?at_medium=RSS&at_campaign=rss",
-      "hashtags": [
-        "#robotics",
-        "#ai"
-      ],
-      "source": "BBC Technology",
-      "published_date": "2026-09-29",
-      "channel_id": "@International_MetaTech",
-      "media_type": "photo",
-      "media_urls": [
-        "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/81ff/live/33895530-a5e8-11f1-a019-f3ea5e194221.png"
-      ]
-    },
-    {
-      "title": "Oura pulls $15bn stock market listing days after announcement",
-      "formatted_text": "Oura pulls $15bn stock market listing days after announcement - Published Oura has pulled its plan to sell shares in its business on the US stock market, in a move which would have valued the firm at $15bn (Â£11.3bn), just days after announcing it. The maker of smart rings which\n\n🔗 Read the full story\n\n#robotics #ai\nBBC Technology\n2026-09-29\n────────────\n📢 @International_MetaTech",
-      "link_text": "🔗 Read the full story",
-      "link_url": "https://www.bbc.co.uk/news/articles/cjwyz5v190qwo?at_medium=RSS&at_campaign=rss",
-      "hashtags": [
-        "#robotics",
-        "#ai"
-      ],
-      "source": "BBC Technology",
-      "published_date": "2026-09-29",
-      "channel_id": "@International_MetaTech",
-      "media_type": "photo",
-      "media_urls": [
-        "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/fc0e/live/21da3ca0-bc1d-11f1-a9cf-939723882d7f.jpg"
+        "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/9a97/live/e8568220-c056-11f1-ba75-170165fdb734.jpg"
       ]
     }
   ]
