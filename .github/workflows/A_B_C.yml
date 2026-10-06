@@ -1,4 +1,4 @@
-name: AI News Pipeline
+name: A_B_C
 
 on:
   workflow_dispatch:
