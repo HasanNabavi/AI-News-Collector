@@ -1,0 +1,20 @@
+{
+  "execution": {
+    "started_at": "2026-10-06T06:51:17.667001+00:00",
+    "finished_at": "2026-10-06T06:51:29.538708+00:00",
+    "channel_id": "@International_MetaTech"
+  },
+  "summary": {
+    "total_articles_in_H1": 13,
+    "published_successfully": 13,
+    "failed": 0,
+    "skipped": 0,
+    "articles_with_video_in_H1": 0,
+    "articles_with_photo_in_H1": 0,
+    "text_only_articles_in_H1": 13,
+    "published_with_video": 0,
+    "published_with_photo": 0,
+    "published_text_only": 13
+  },
+  "failures": []
+}
