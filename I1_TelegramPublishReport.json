@@ -1,20 +1,20 @@
 {
   "execution": {
-    "started_at": "2026-10-06T17:39:51.251197+00:00",
-    "finished_at": "2026-10-06T17:39:57.550626+00:00",
+    "started_at": "2026-10-06T22:54:47.314552+00:00",
+    "finished_at": "2026-10-06T22:54:48.884633+00:00",
     "channel_id": "@International_MetaTech"
   },
   "summary": {
-    "total_articles_in_H1": 7,
-    "published_successfully": 7,
+    "total_articles_in_H1": 4,
+    "published_successfully": 4,
     "failed": 0,
     "skipped": 0,
-    "articles_with_video_in_H1": 1,
-    "articles_with_photo_in_H1": 6,
+    "articles_with_video_in_H1": 2,
+    "articles_with_photo_in_H1": 2,
     "text_only_articles_in_H1": 0,
     "published_with_video": 0,
     "published_with_photo": 0,
-    "published_text_only": 7
+    "published_text_only": 4
   },
   "failures": []
 }
