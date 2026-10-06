@@ -1,3 +1,412 @@
 {
-  "news": []
+  "news": [
+    {
+      "title": "Weight-loss drugs show signs of slowing biological aging, say drugmakers",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1145836/weight-loss-drugs-glp1-lilly-novo-aging-clocks/",
+      "published_at": "Tue, 06 Oct 2026 16:40:36 +0000",
+      "collected_at": "2026-10-06T18:48:25.077309+00:00"
+    },
+    {
+      "title": "The Download: 10 climate tech companies to watch",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1145796/the-download-10-climate-tech-companies-to-watch/",
+      "published_at": "Tue, 06 Oct 2026 12:10:00 +0000",
+      "collected_at": "2026-10-06T18:48:25.077323+00:00"
+    },
+    {
+      "title": "2026 Climate Tech Companies to Watch",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1143800/2026-climate-tech-companies-to-watch/",
+      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
+      "collected_at": "2026-10-06T18:48:25.077326+00:00"
+    },
+    {
+      "title": "Here’s how our climate team picked 10 promising companies to watch",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1144978/2026-climate-tech-companies-to-watch-how-we-chose/",
+      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
+      "collected_at": "2026-10-06T18:48:25.077329+00:00"
+    },
+    {
+      "title": "WeLion New Energy and its semi-solid-state batteries",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1144987/2026-climate-tech-companies-to-watch-welion-semi-solid-state-batteries/",
+      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
+      "collected_at": "2026-10-06T18:48:25.077332+00:00"
+    },
+    {
+      "title": "Form Energy and its iron batteries",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1145020/2026-climate-tech-companies-to-watch-form-energy-iron-batteries/",
+      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
+      "collected_at": "2026-10-06T18:48:25.077335+00:00"
+    },
+    {
+      "title": "X-energy and its helium-cooled nuclear reactors",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1145025/2026-climate-tech-companies-to-watch-x-energy-helium-cooled-nuclear-reactors/",
+      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
+      "collected_at": "2026-10-06T18:48:25.077338+00:00"
+    },
+    {
+      "title": "Energy Dome and its carbon dioxide batteries",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1145032/2026-climate-tech-companies-to-watch-energy-dome-carbon-dioxide-batteries/",
+      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
+      "collected_at": "2026-10-06T18:48:25.077340+00:00"
+    },
+    {
+      "title": "Brimstone and its one-stop process for making cleaner cement and critical minerals",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1145172/2026-climate-tech-companies-to-watch-brimstone-one-stop-process-making-cleaner-cement-critical-minerals/",
+      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
+      "collected_at": "2026-10-06T18:48:25.077342+00:00"
+    },
+    {
+      "title": "WaveSave and its portable rubber dam",
+      "source": "MIT Technology Review",
+      "category": "AI",
+      "url": "https://www.technologyreview.com/2026/10/06/1145208/2026-climate-tech-companies-to-watch-wavesave-portable-rubber-dam/",
+      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
+      "collected_at": "2026-10-06T18:48:25.077345+00:00"
+    },
+    {
+      "title": "Vinod Khosla believes ex-DeepMind engineer’s Wajo will win agent market on trust",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/10/06/vinod-khosla-believes-ex-deepmind-engineers-wajo-will-win-agent-market-on-trust/",
+      "published_at": "Tue, 06 Oct 2026 15:15:00 +0000",
+      "collected_at": "2026-10-06T18:48:25.645327+00:00"
+    },
+    {
+      "title": "Reddit is killing RSS feeds and ending public API access because of AI bots",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/09/30/reddit-is-killing-rss-feeds-ending-public-api-access-because-of-ai-bots/",
+      "published_at": "Wed, 30 Sep 2026 17:45:00 +0000",
+      "collected_at": "2026-10-06T18:48:25.645340+00:00"
+    },
+    {
+      "title": "a16z-backed EliseAI raises $350M, doubles valuation to $4B",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/09/29/a16z-backed-eliseai-raises-350m-doubles-valuation-to-4b/",
+      "published_at": "Tue, 29 Sep 2026 21:51:36 +0000",
+      "collected_at": "2026-10-06T18:48:25.645345+00:00"
+    },
+    {
+      "title": "MAVI bets on the AI boom creating demand for a new kind of accountant",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/09/28/mavi-bets-on-the-ai-boom-creating-demand-for-a-new-kind-of-accountant/",
+      "published_at": "Mon, 28 Sep 2026 15:26:46 +0000",
+      "collected_at": "2026-10-06T18:48:25.645348+00:00"
+    },
+    {
+      "title": "Google Photos ‘Clueless’-inspired virtual closet is now available on Android and iOS",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/09/24/google-photos-clueless-inspired-virtual-closet-is-now-available-on-android-and-ios/",
+      "published_at": "Thu, 24 Sep 2026 17:00:00 +0000",
+      "collected_at": "2026-10-06T18:48:25.645351+00:00"
+    },
+    {
+      "title": "YouTube doubles down on video shopping with AI-powered ‘Ask YouTube’ feature",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/09/23/youtube-doubles-down-on-video-shopping-with-ai-powered-ask-youtube-feature/",
+      "published_at": "Wed, 23 Sep 2026 14:30:00 +0000",
+      "collected_at": "2026-10-06T18:48:25.645354+00:00"
+    },
+    {
+      "title": "Family offices are clamoring for AI investments",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/09/18/family-offices-are-clamoring-for-ai-investments/",
+      "published_at": "Fri, 18 Sep 2026 16:00:00 +0000",
+      "collected_at": "2026-10-06T18:48:25.645358+00:00"
+    },
+    {
+      "title": "How AI could make it harder for governments to use hacking tools",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/08/31/how-ai-could-make-it-harder-for-governments-to-use-hacking-tools/",
+      "published_at": "Mon, 31 Aug 2026 15:19:32 +0000",
+      "collected_at": "2026-10-06T18:48:25.645361+00:00"
+    },
+    {
+      "title": "Caterpillar is bringing to AI deployment what it learned from automating mining",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/08/30/caterpillar-is-bringing-to-ai-deployment-what-it-learned-from-automating-mining/",
+      "published_at": "Sun, 30 Aug 2026 15:00:00 +0000",
+      "collected_at": "2026-10-06T18:48:25.645363+00:00"
+    },
+    {
+      "title": "Amazon hikes hardware prices by 60%, blaming memory shortage",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/08/24/amazon-hikes-hardware-prices-by-60-percent-blaming-memory-shortage/",
+      "published_at": "Mon, 24 Aug 2026 19:54:50 +0000",
+      "collected_at": "2026-10-06T18:48:25.645366+00:00"
+    },
+    {
+      "title": "Apple is reportedly cutting hundreds of jobs from Siri, Vision Pro teams",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/08/21/apple-is-reportedly-cutting-hundreds-of-jobs-from-siri-vision-pro-teams/",
+      "published_at": "Fri, 21 Aug 2026 20:58:07 +0000",
+      "collected_at": "2026-10-06T18:48:25.645369+00:00"
+    },
+    {
+      "title": "AI data giant Alation confirms cyberattack",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/08/20/ai-data-giant-alation-confirms-cyberattack/",
+      "published_at": "Thu, 20 Aug 2026 13:01:24 +0000",
+      "collected_at": "2026-10-06T18:48:25.645372+00:00"
+    },
+    {
+      "title": "AI was supposed to win people over by now — it hasn’t",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/08/19/ai-was-supposed-to-win-people-over-by-now-it-hasnt/",
+      "published_at": "Wed, 19 Aug 2026 19:11:40 +0000",
+      "collected_at": "2026-10-06T18:48:25.645375+00:00"
+    },
+    {
+      "title": "Chinese AI model Kimi escaped its cybersecurity testing environment, researchers say",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/08/07/chinese-ai-model-kimi-escaped-its-cybersecurity-testing-environment-researchers-say/",
+      "published_at": "Fri, 07 Aug 2026 14:28:31 +0000",
+      "collected_at": "2026-10-06T18:48:25.645378+00:00"
+    },
+    {
+      "title": "Monday.com is the latest tech company to blame AI for layoffs — here are 20 others",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/07/25/the-running-list-major-tech-layoffs-in-2026-where-employers-cited-ai/",
+      "published_at": "Sun, 26 Jul 2026 01:30:00 +0000",
+      "collected_at": "2026-10-06T18:48:25.645380+00:00"
+    },
+    {
+      "title": "Anthropic’s new Claude feature is quietly selling you on AI",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/07/09/anthropics-new-claude-feature-is-quietly-selling-you-on-ai/",
+      "published_at": "Thu, 09 Jul 2026 14:53:09 +0000",
+      "collected_at": "2026-10-06T18:48:25.645383+00:00"
+    },
+    {
+      "title": "Meta wants its AI glasses to seem less creepy. Its AI strategy says otherwise.",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/07/08/meta-wants-its-ai-glasses-to-seem-less-creepy-its-ai-strategy-says-otherwise/",
+      "published_at": "Wed, 08 Jul 2026 17:11:18 +0000",
+      "collected_at": "2026-10-06T18:48:25.645387+00:00"
+    },
+    {
+      "title": "OpenAI releases new voice models for more natural live conversations",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/2026/07/08/openai-releases-new-voice-models-for-more-natural-live-conversations/",
+      "published_at": "Wed, 08 Jul 2026 17:00:00 +0000",
+      "collected_at": "2026-10-06T18:48:25.645389+00:00"
+    },
+    {
+      "title": "Why everyone from OpenAI to SpaceX is building their own chips (and turning up the heat on Nvidia)",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/video/why-everyone-from-openai-to-spacex-is-building-their-own-chips-and-turning-up-the-heat-on-nvidia/",
+      "published_at": "Fri, 26 Jun 2026 17:43:22 +0000",
+      "collected_at": "2026-10-06T18:48:25.645392+00:00"
+    },
+    {
+      "title": "OpenAI’s Jalapeño chip is Big Tech’s spiciest move away from Nvidia",
+      "source": "TechCrunch",
+      "category": "AI",
+      "url": "https://techcrunch.com/podcast/openais-jalapeno-chip-is-big-techs-spiciest-move-away-from-nvidia/",
+      "published_at": "Fri, 26 Jun 2026 14:00:00 +0000",
+      "collected_at": "2026-10-06T18:48:25.645395+00:00"
+    },
+    {
+      "title": "Asos confirms hackers sent 'unauthorised' notification to app users",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/cj62ylzpr6d3o?at_medium=RSS&at_campaign=rss",
+      "published_at": "Tue, 06 Oct 2026 17:50:19 GMT",
+      "collected_at": "2026-10-06T18:48:25.994574+00:00"
+    },
+    {
+      "title": "Finland orders halt to work on two Google data centres",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/cvj6jkx6g1r0o?at_medium=RSS&at_campaign=rss",
+      "published_at": "Tue, 06 Oct 2026 17:15:46 GMT",
+      "collected_at": "2026-10-06T18:48:25.994588+00:00"
+    },
+    {
+      "title": "Italian PM files to trademark her voice against AI threats",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/ckly0g1ljq2yo?at_medium=RSS&at_campaign=rss",
+      "published_at": "Tue, 06 Oct 2026 11:24:10 GMT",
+      "collected_at": "2026-10-06T18:48:25.994592+00:00"
+    },
+    {
+      "title": "Ofcom investigates Meta over Instagram Instants feature",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/cq8jzyey8e2ro?at_medium=RSS&at_campaign=rss",
+      "published_at": "Tue, 06 Oct 2026 09:04:02 GMT",
+      "collected_at": "2026-10-06T18:48:25.994595+00:00"
+    },
+    {
+      "title": "Lego fraudster among last year's most high-profile insurance scammers",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/cm86z9npj5deo?at_medium=RSS&at_campaign=rss",
+      "published_at": "Tue, 06 Oct 2026 07:03:35 GMT",
+      "collected_at": "2026-10-06T18:48:25.994598+00:00"
+    },
+    {
+      "title": "Pentagon stops using Anthropic AI tools after blacklisting company, BBC told",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/c5j9x9pr0240o?at_medium=RSS&at_campaign=rss",
+      "published_at": "Mon, 05 Oct 2026 16:13:21 GMT",
+      "collected_at": "2026-10-06T18:48:25.994600+00:00"
+    },
+    {
+      "title": "Trump chooses top spy boss to run new AI taskforce",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/cqj6jenp26zyo?at_medium=RSS&at_campaign=rss",
+      "published_at": "Mon, 05 Oct 2026 10:03:38 GMT",
+      "collected_at": "2026-10-06T18:48:25.994603+00:00"
+    },
+    {
+      "title": "OpenAI fires workers for 'mishandling sensitive information'",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/c6y9z9r4ejzwo?at_medium=RSS&at_campaign=rss",
+      "published_at": "Fri, 02 Oct 2026 08:20:32 GMT",
+      "collected_at": "2026-10-06T18:48:25.994606+00:00"
+    },
+    {
+      "title": "Crypto thieves attack man in home and threaten to kill pregnant wife's baby in 'horrific' robbery",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/c6eq84eygz0qo?at_medium=RSS&at_campaign=rss",
+      "published_at": "Thu, 01 Oct 2026 23:45:06 GMT",
+      "collected_at": "2026-10-06T18:48:25.994609+00:00"
+    },
+    {
+      "title": "Trump's AI rebrand causes 'unprecedented' demand for Slovenian website names",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/cqx2z23xj555o?at_medium=RSS&at_campaign=rss",
+      "published_at": "Thu, 01 Oct 2026 11:37:46 GMT",
+      "collected_at": "2026-10-06T18:48:25.994611+00:00"
+    },
+    {
+      "title": "AI boom could trigger market shocks, Bank of England boss warns",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/cv8e30enrkxyo?at_medium=RSS&at_campaign=rss",
+      "published_at": "Thu, 01 Oct 2026 10:05:25 GMT",
+      "collected_at": "2026-10-06T18:48:25.994614+00:00"
+    },
+    {
+      "title": "Tiny image sparks big backlash in Nikon photo contest",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/ck4gjn1yzprno?at_medium=RSS&at_campaign=rss",
+      "published_at": "Wed, 30 Sep 2026 23:10:19 GMT",
+      "collected_at": "2026-10-06T18:48:25.994617+00:00"
+    },
+    {
+      "title": "The AI telling farmers when to harvest",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/news/articles/cgk53dkmyxko?at_medium=RSS&at_campaign=rss",
+      "published_at": "Wed, 30 Sep 2026 23:02:21 GMT",
+      "collected_at": "2026-10-06T18:48:25.994620+00:00"
+    },
+    {
+      "title": "Tech Life",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyh?at_medium=RSS&at_campaign=rss",
+      "published_at": "Tue, 29 Sep 2026 19:30:00 GMT",
+      "collected_at": "2026-10-06T18:48:25.994622+00:00"
+    },
+    {
+      "title": "Tech Life",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyg?at_medium=RSS&at_campaign=rss",
+      "published_at": "Tue, 22 Sep 2026 20:00:00 GMT",
+      "collected_at": "2026-10-06T18:48:25.994625+00:00"
+    },
+    {
+      "title": "Tech Life",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyf?at_medium=RSS&at_campaign=rss",
+      "published_at": "Tue, 15 Sep 2026 19:30:00 GMT",
+      "collected_at": "2026-10-06T18:48:25.994628+00:00"
+    },
+    {
+      "title": "Tech Life",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/sounds/play/w3ct8jyd?at_medium=RSS&at_campaign=rss",
+      "published_at": "Tue, 08 Sep 2026 20:00:00 GMT",
+      "collected_at": "2026-10-06T18:48:25.994630+00:00"
+    },
+    {
+      "title": "Tech Now",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/iplayer/episode/m0032n6v?at_medium=RSS&at_campaign=rss",
+      "published_at": "Sat, 03 Oct 2026 01:00:00 GMT",
+      "collected_at": "2026-10-06T18:48:25.994633+00:00"
+    },
+    {
+      "title": "Tech Now",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/iplayer/episode/m0032d9k?at_medium=RSS&at_campaign=rss",
+      "published_at": "Sat, 26 Sep 2026 01:00:13 GMT",
+      "collected_at": "2026-10-06T18:48:25.994635+00:00"
+    },
+    {
+      "title": "Tech Now",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/iplayer/episode/m0032301?at_medium=RSS&at_campaign=rss",
+      "published_at": "Sat, 19 Sep 2026 01:00:00 GMT",
+      "collected_at": "2026-10-06T18:48:25.994638+00:00"
+    },
+    {
+      "title": "Tech Now",
+      "source": "BBC Technology",
+      "category": "AI & Robotics",
+      "url": "https://www.bbc.co.uk/iplayer/episode/m0031qjy?at_medium=RSS&at_campaign=rss",
+      "published_at": "Sat, 12 Sep 2026 01:00:19 GMT",
+      "collected_at": "2026-10-06T18:48:25.994640+00:00"
+    }
+  ]
 }
