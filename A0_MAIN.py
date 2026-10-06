@@ -5,6 +5,11 @@ import jdatetime
 
 from B0_NewsCollector import collect_news
 from C0_FilterLinkEquivalency import filter_link_equivalency
+from E0_ScraperManager import scrape_manager
+from F0_AIGrouping import main as run_ai_grouping
+from G0_AIContentGenerator import main as run_ai_content_generation
+from H0_TelegramFormatedNews import main as run_telegram_formatting
+from I0_TelegramInterface import main as run_telegram_interface
 
 
 def get_next_run_number():
@@ -55,8 +60,8 @@ def update_run_state(
 
     A1 keeps only the latest 100 successful runs.
 
-    If A1 still contains the old format, its old timestamp
-    is NOT converted into a fake run number.
+    A1 is updated only after every pipeline stage has
+    completed successfully.
     """
 
     try:
@@ -73,23 +78,10 @@ def update_run_state(
     ):
         state_data = {}
 
-    # --------------------------------------------------
-    # Read existing run history
-    # --------------------------------------------------
-
     runs = state_data.get(
         "runs",
         []
     )
-
-    # --------------------------------------------------
-    # If the old A1 format still exists, do NOT migrate
-    # it into the new run history.
-    #
-    # The old timestamp has already been used by B0
-    # during this run. From this successful run onward,
-    # A1 will use the new format.
-    # --------------------------------------------------
 
     new_run = {
         "run_number": run_number,
@@ -98,23 +90,14 @@ def update_run_state(
         "gregorian_utc": ""
     }
 
-    # --------------------------------------------------
-    # Convert UTC reference time to datetime
-    # --------------------------------------------------
-
     utc_datetime = datetime.fromisoformat(
         run_reference_time
     )
-
-    # --------------------------------------------------
-    # Iran local time
-    # --------------------------------------------------
 
     iran_datetime = utc_datetime.astimezone(
         ZoneInfo("Asia/Tehran")
     )
 
-    # Convert Gregorian date to Persian date
     iran_jalali = jdatetime.datetime.fromgregorian(
         datetime=iran_datetime
     )
@@ -128,10 +111,6 @@ def update_run_state(
         f"{iran_jalali.second:02d}"
     )
 
-    # --------------------------------------------------
-    # Gregorian UTC display
-    # --------------------------------------------------
-
     new_run["gregorian_utc"] = (
         f"{utc_datetime.year:04d}-"
         f"{utc_datetime.month:02d}-"
@@ -141,28 +120,16 @@ def update_run_state(
         f"{utc_datetime.second:02d}"
     )
 
-    # --------------------------------------------------
-    # Add the new successful run to the beginning
-    # --------------------------------------------------
-
     runs.insert(
         0,
         new_run
     )
-
-    # --------------------------------------------------
-    # Keep only the latest 100 successful runs
-    # --------------------------------------------------
 
     runs = runs[:100]
 
     state_data = {
         "runs": runs
     }
-
-    # --------------------------------------------------
-    # Save A1
-    # --------------------------------------------------
 
     with open(
         "A1_RunState.json",
@@ -178,21 +145,19 @@ def update_run_state(
 
 
 def main():
+
     # --------------------------------------------------
-    # Generate the real run number at the beginning.
+    # Run management
+    # --------------------------------------------------
     #
-    # This happens before any pipeline stage.
+    # A2 is updated at the beginning.
     # Therefore, even a failed run consumes its number.
+    #
+    # A1 is updated only after the complete pipeline
+    # succeeds and remains the final A0 step.
     # --------------------------------------------------
 
     run_number = get_next_run_number()
-
-    # --------------------------------------------------
-    # Capture the run reference time at the beginning.
-    #
-    # This timestamp is saved to A1 only if the entire
-    # pipeline succeeds.
-    # --------------------------------------------------
 
     run_reference_time = datetime.now(
         timezone.utc
@@ -215,20 +180,74 @@ def main():
     )
 
     # --------------------------------------------------
-    # Pipeline stages
+    # 1. News Collector
     # --------------------------------------------------
 
     print(
-        "\n[1/2] Collecting news..."
+        "\n[1/7] Collecting news..."
     )
 
     collect_news()
 
+    # --------------------------------------------------
+    # 2. Link Equivalency Filter
+    # --------------------------------------------------
+
     print(
-        "\n[2/2] Filtering link equivalency..."
+        "\n[2/7] Filtering link equivalency..."
     )
 
     filter_link_equivalency()
+
+    # --------------------------------------------------
+    # 3. Scraper Manager
+    # --------------------------------------------------
+
+    print(
+        "\n[3/7] Scraping news..."
+    )
+
+    scrape_manager()
+
+    # --------------------------------------------------
+    # 4. AI Grouping
+    # --------------------------------------------------
+
+    print(
+        "\n[4/7] Grouping news..."
+    )
+
+    run_ai_grouping()
+
+    # --------------------------------------------------
+    # 5. AI Content Generation
+    # --------------------------------------------------
+
+    print(
+        "\n[5/7] Generating content..."
+    )
+
+    run_ai_content_generation()
+
+    # --------------------------------------------------
+    # 6. Telegram Formatting
+    # --------------------------------------------------
+
+    print(
+        "\n[6/7] Formatting Telegram news..."
+    )
+
+    run_telegram_formatting()
+
+    # --------------------------------------------------
+    # 7. Telegram Interface
+    # --------------------------------------------------
+
+    print(
+        "\n[7/7] Publishing to Telegram..."
+    )
+
+    run_telegram_interface()
 
     # --------------------------------------------------
     # MUST REMAIN THE FINAL STEP
