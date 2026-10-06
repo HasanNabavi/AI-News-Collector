@@ -49,6 +49,10 @@ jobs:
         run: |
           python I0_TelegramInterface.py
 
+      - name: Check I1 report
+        run: |
+          ls -lh I1_TelegramPublishReport.json
+
       - name: Commit and push results
         run: |
           git config user.name "github-actions[bot]"
@@ -57,7 +61,8 @@ jobs:
           git add F1_NewsAfterAIGroupingRun.json
           git add G1_NewsAfterAIContentGenerationRun.json
           git add H1_TelegramFormatedNews.json
+          git add I1_TelegramPublishReport.json
 
-          git diff --cached --quiet || git commit -m "Update F1, G1 and H1 pipeline results"
+          git diff --cached --quiet || git commit -m "Update F1, G1, H1 and I1 pipeline results"
 
           git push
