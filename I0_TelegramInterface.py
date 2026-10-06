@@ -60,7 +60,10 @@ def send_message(article):
     payload = {
         "chat_id": CHANNEL_ID,
         "text": text,
-        "parse_mode": "HTML"
+        "parse_mode": "HTML",
+        "link_preview_options": json.dumps({
+            "is_disabled": True
+        })
     }
 
     response = requests.post(
