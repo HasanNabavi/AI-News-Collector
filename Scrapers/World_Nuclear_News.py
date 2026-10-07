@@ -32,20 +32,14 @@ def get_html(url):
 
 
 def extract_standfirst(soup):
-    selectors = [
-        "div.article-standfirst",
-        "div.standfirst",
-        "p.standfirst",
-        "[class*='standfirst']",
-        "[class*='Standfirst']",
-    ]
+    element = soup.select_one(
+        "div.news_list_intro.big_text.black_color_light"
+    )
 
-    for selector in selectors:
-        element = soup.select_one(selector)
-        if element:
-            text = element.get_text(" ", strip=True)
-            if text:
-                return text
+    if element:
+        text = element.get_text(" ", strip=True)
+        if text:
+            return text
 
     return ""
 
@@ -85,6 +79,7 @@ def remove_read_more(text):
     for paragraph in paragraphs:
         if paragraph.strip().lower().startswith("read more"):
             continue
+
         filtered.append(paragraph)
 
     return "\n".join(filtered).strip()
