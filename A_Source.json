@@ -11,6 +11,12 @@
       "category": "Robotics",
       "url": "https://www.therobotreport.com/",
       "rss_url": "https://www.therobotreport.com/feed/"
+    },
+    {
+      "name": "World Nuclear News",
+      "category": "Nuclear Energy",
+      "url": "https://www.world-nuclear-news.org/",
+      "rss_url": "https://www.world-nuclear-news.org/rss"
     }
   ]
 }
