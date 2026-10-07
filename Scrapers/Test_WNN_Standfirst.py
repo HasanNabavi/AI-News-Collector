@@ -21,7 +21,7 @@ HEADERS = {
 }
 
 
-def load_first_10_wnn_news():
+def load_wnn_news():
     input_path = Path(__file__).resolve().parent / INPUT_FILE
 
     with open(input_path, "r", encoding="utf-8") as file:
@@ -34,7 +34,7 @@ def load_first_10_wnn_news():
         if item.get("source") == "World Nuclear News"
     ]
 
-    return wnn_news[:10]
+    return wnn_news
 
 
 def get_html(url):
@@ -63,7 +63,9 @@ def find_standfirst_element(soup, meta_description):
         return None
 
     for element in container.find_all(["p", "div", "span"]):
-        text = normalize_text(element.get_text(" ", strip=True))
+        text = normalize_text(
+            element.get_text(" ", strip=True)
+        )
 
         if text == target:
             return element
@@ -80,7 +82,10 @@ def print_element_info(label, element):
     print(f"  Tag: {element.name}")
     print(f"  Class: {element.get('class')}")
     print(f"  ID: {element.get('id')}")
-    print(f"  Text: {normalize_text(element.get_text(' ', strip=True))[:500]}")
+    print(
+        f"  Text: "
+        f"{normalize_text(element.get_text(' ', strip=True))[:500]}"
+    )
 
 
 def inspect_article(url, index):
@@ -160,7 +165,7 @@ def inspect_article(url, index):
 
 
 def main():
-    news = load_first_10_wnn_news()
+    news = load_wnn_news()
 
     print("World Nuclear News - Standfirst HTML Test")
     print("=" * 80)
