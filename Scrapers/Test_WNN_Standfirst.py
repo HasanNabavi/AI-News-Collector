@@ -1,4 +1,5 @@
 import json
+import html
 import requests
 
 from bs4 import BeautifulSoup
@@ -48,6 +49,8 @@ def get_html(url):
 
 
 def normalize_text(text):
+    text = html.unescape(text)
+    text = text.replace("\xa0", " ")
     return " ".join(text.split())
 
 
@@ -95,14 +98,14 @@ def inspect_article(url, index):
     print(f"URL: {url}")
 
     try:
-        html = get_html(url)
+        html_content = get_html(url)
     except Exception as error:
         print(f"ERROR: {type(error).__name__}: {error}")
         return
 
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html_content, "html.parser")
 
-    print(f"HTML length: {len(html):,} characters")
+    print(f"HTML length: {len(html_content):,} characters")
 
     print("\n--- TITLE ---")
 
