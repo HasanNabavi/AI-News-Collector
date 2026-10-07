@@ -1,4 +1,4 @@
-name: Test WNN Standfirst
+name: Test Scrapers
 
 on:
   workflow_dispatch:
@@ -22,18 +22,18 @@ jobs:
 
       - name: Run Standfirst test
         run: |
-          python Scrapers/Test_WNN_Standfirst.py > Test_WNN_Standfirst.json
+          python Scrapers/Test_Scrapers.py > Test_Scrapers.json
 
       - name: Show test output
         run: |
-          cat Test_WNN_Standfirst.json
+          cat Test_Scrapers.json
 
       - name: Commit test output
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
-          git add Test_WNN_Standfirst.json
+          git add Test_Scrapers.json
 
           git commit -m "Update WNN standfirst test output" || echo "No changes to commit"
 
