@@ -1,6 +1,6 @@
 World Nuclear News - Standfirst HTML Test
 ================================================================================
-Found WNN articles: 10
+Found WNN articles: 44
 
 ================================================================================
 ARTICLE 1
@@ -15,57 +15,8 @@ GE Vernova, Hitachi, SGE and Samsung C&T sign BWRX-300s MoU - World Nuclear News
 An agreement to work together to identify and develop market opportunities for the deployment of BWRX-300 small modular reactors in Europe was signed on the sidelines of the United Nations General Assembly in New York.
 &nbsp;
 
---- FIRST TEXT ELEMENTS ---
-
-First text-containing elements:
-
-  Element #1
-  Tag: div
-  Class: ['container-xl', 'g-3', 'g-xl-0']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #2
-  Tag: div
-  Class: ['row']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #3
-  Tag: div
-  Class: ['col-12']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #4
-  Tag: div
-  Class: ['navbar-collapse', 'collapse', 'd-xl-inline-flex', 'justify-content-between', 'navbar_wrapper']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #5
-  Tag: div
-  Class: ['container-fluid']
-  ID: internal_news_container
-  Text: GE Vernova, Hitachi, SGE and Samsung C&T sign BWRX-300s MoU Wednesday, 23 September 2026 An agreement to work together to identify and develop market opportunities for the deployment of BWRX-300 small modular reactors in Europe was signed on the sidelines of the United Nations General Assembly in Ne
-
-  Element #6
-  Tag: div
-  Class: ['container-xl', 'gx-0']
-  ID: None
-  Text: GE Vernova, Hitachi, SGE and Samsung C&T sign BWRX-300s MoU Wednesday, 23 September 2026 An agreement to work together to identify and develop market opportunities for the deployment of BWRX-300 small modular reactors in Europe was signed on the sidelines of the United Nations General Assembly in Ne
-
-  Element #7
-  Tag: div
-  Class: ['row', 'gx-4', 'article_body_wrapper']
-  ID: None
-  Text: GE Vernova, Hitachi, SGE and Samsung C&T sign BWRX-300s MoU Wednesday, 23 September 2026 An agreement to work together to identify and develop market opportunities for the deployment of BWRX-300 small modular reactors in Europe was signed on the sidelines of the United Nations General Assembly in Ne
-
-  Element #8
-  Tag: div
-  Class: ['col-12', 'col-xl-7', 'g-4']
-  ID: None
-  Text: GE Vernova, Hitachi, SGE and Samsung C&T sign BWRX-300s MoU Wednesday, 23 September 2026 An agreement to work together to identify and develop market opportunities for the deployment of BWRX-300 small modular reactors in Europe was signed on the sidelines of the United Nations General Assembly in Ne
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
 
 ================================================================================
 ARTICLE 2
@@ -80,57 +31,8 @@ HTML length: 56,449 characters
 Czech company &Scaron;koda JS has been chosen as sole supplier of control rod drive mechanisms for Rolls-Royce SMR&#39;s future small modular reactors.
 &nbsp;
 
---- FIRST TEXT ELEMENTS ---
-
-First text-containing elements:
-
-  Element #1
-  Tag: div
-  Class: ['container-xl', 'g-3', 'g-xl-0']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #2
-  Tag: div
-  Class: ['row']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #3
-  Tag: div
-  Class: ['col-12']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #4
-  Tag: div
-  Class: ['navbar-collapse', 'collapse', 'd-xl-inline-flex', 'justify-content-between', 'navbar_wrapper']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #5
-  Tag: div
-  Class: ['container-fluid']
-  ID: internal_news_container
-  Text: Škoda JS to supply control rod drives for Rolls-Royce SMR's reactors Wednesday, 23 September 2026 Czech company Škoda JS has been chosen as sole supplier of control rod drive mechanisms for Rolls-Royce SMR's future small modular reactors. (Image: CEZ) Škoda JS is part of the Czech majority state-own
-
-  Element #6
-  Tag: div
-  Class: ['container-xl', 'gx-0']
-  ID: None
-  Text: Škoda JS to supply control rod drives for Rolls-Royce SMR's reactors Wednesday, 23 September 2026 Czech company Škoda JS has been chosen as sole supplier of control rod drive mechanisms for Rolls-Royce SMR's future small modular reactors. (Image: CEZ) Škoda JS is part of the Czech majority state-own
-
-  Element #7
-  Tag: div
-  Class: ['row', 'gx-4', 'article_body_wrapper']
-  ID: None
-  Text: Škoda JS to supply control rod drives for Rolls-Royce SMR's reactors Wednesday, 23 September 2026 Czech company Škoda JS has been chosen as sole supplier of control rod drive mechanisms for Rolls-Royce SMR's future small modular reactors. (Image: CEZ) Škoda JS is part of the Czech majority state-own
-
-  Element #8
-  Tag: div
-  Class: ['col-12', 'col-xl-7', 'g-4']
-  ID: None
-  Text: Škoda JS to supply control rod drives for Rolls-Royce SMR's reactors Wednesday, 23 September 2026 Czech company Škoda JS has been chosen as sole supplier of control rod drive mechanisms for Rolls-Royce SMR's future small modular reactors. (Image: CEZ) Škoda JS is part of the Czech majority state-own
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
 
 ================================================================================
 ARTICLE 3
@@ -145,57 +47,8 @@ SGE confident of UK SMR fleet prospects - World Nuclear News
 The team behind plans for a fleet of 14 BWRX-300 small modular reactors in the UK says they are confident of the economic model and supply chain capability to deliver these units.
 &nbsp;
 
---- FIRST TEXT ELEMENTS ---
-
-First text-containing elements:
-
-  Element #1
-  Tag: div
-  Class: ['container-xl', 'g-3', 'g-xl-0']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #2
-  Tag: div
-  Class: ['row']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #3
-  Tag: div
-  Class: ['col-12']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #4
-  Tag: div
-  Class: ['navbar-collapse', 'collapse', 'd-xl-inline-flex', 'justify-content-between', 'navbar_wrapper']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #5
-  Tag: div
-  Class: ['container-fluid']
-  ID: internal_news_container
-  Text: SGE confident of UK SMR fleet prospects By Alex Hunt World Nuclear News, in London Wednesday, 23 September 2026 The team behind plans for a fleet of 14 BWRX-300 small modular reactors in the UK says they are confident of the economic model and supply chain capability to deliver these units. How a BW
-
-  Element #6
-  Tag: div
-  Class: ['container-xl', 'gx-0']
-  ID: None
-  Text: SGE confident of UK SMR fleet prospects By Alex Hunt World Nuclear News, in London Wednesday, 23 September 2026 The team behind plans for a fleet of 14 BWRX-300 small modular reactors in the UK says they are confident of the economic model and supply chain capability to deliver these units. How a BW
-
-  Element #7
-  Tag: div
-  Class: ['row', 'gx-4', 'article_body_wrapper']
-  ID: None
-  Text: SGE confident of UK SMR fleet prospects By Alex Hunt World Nuclear News, in London Wednesday, 23 September 2026 The team behind plans for a fleet of 14 BWRX-300 small modular reactors in the UK says they are confident of the economic model and supply chain capability to deliver these units. How a BW
-
-  Element #8
-  Tag: div
-  Class: ['col-12', 'col-xl-7', 'g-4']
-  ID: None
-  Text: SGE confident of UK SMR fleet prospects By Alex Hunt World Nuclear News, in London Wednesday, 23 September 2026 The team behind plans for a fleet of 14 BWRX-300 small modular reactors in the UK says they are confident of the economic model and supply chain capability to deliver these units. How a BW
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
 
 ================================================================================
 ARTICLE 4
@@ -210,57 +63,8 @@ Second reactor manufactured for floating nuclear plant - World Nuclear News
 The second RITM-200C small modular reactor unit has been manufactured for the floating nuclear power plant destined to supply electricity to a copper mining centre in Chukotka.
 &nbsp;
 
---- FIRST TEXT ELEMENTS ---
-
-First text-containing elements:
-
-  Element #1
-  Tag: div
-  Class: ['container-xl', 'g-3', 'g-xl-0']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #2
-  Tag: div
-  Class: ['row']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #3
-  Tag: div
-  Class: ['col-12']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #4
-  Tag: div
-  Class: ['navbar-collapse', 'collapse', 'd-xl-inline-flex', 'justify-content-between', 'navbar_wrapper']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #5
-  Tag: div
-  Class: ['container-fluid']
-  ID: internal_news_container
-  Text: Second reactor manufactured for floating nuclear plant Thursday, 24 September 2026 The second RITM-200C small modular reactor unit has been manufactured for the floating nuclear power plant destined to supply electricity to a copper mining centre in Chukotka. (Image: Rosatom) The floating nuclear po
-
-  Element #6
-  Tag: div
-  Class: ['container-xl', 'gx-0']
-  ID: None
-  Text: Second reactor manufactured for floating nuclear plant Thursday, 24 September 2026 The second RITM-200C small modular reactor unit has been manufactured for the floating nuclear power plant destined to supply electricity to a copper mining centre in Chukotka. (Image: Rosatom) The floating nuclear po
-
-  Element #7
-  Tag: div
-  Class: ['row', 'gx-4', 'article_body_wrapper']
-  ID: None
-  Text: Second reactor manufactured for floating nuclear plant Thursday, 24 September 2026 The second RITM-200C small modular reactor unit has been manufactured for the floating nuclear power plant destined to supply electricity to a copper mining centre in Chukotka. (Image: Rosatom) The floating nuclear po
-
-  Element #8
-  Tag: div
-  Class: ['col-12', 'col-xl-7', 'g-4']
-  ID: None
-  Text: Second reactor manufactured for floating nuclear plant Thursday, 24 September 2026 The second RITM-200C small modular reactor unit has been manufactured for the floating nuclear power plant destined to supply electricity to a copper mining centre in Chukotka. (Image: Rosatom) The floating nuclear po
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
 
 ================================================================================
 ARTICLE 5
@@ -275,57 +79,8 @@ US-Turkey agreement to accelerate SMR deployment - World Nuclear News
 The US Trade and Development Agency has signed an agreement with Turkey&#39;s state-owned nuclear development enterprise T&Uuml;NAŞ to fund technical assistance to create the regulatory, institutional, and financial roadmap needed for Turkish private sector companies to deploy small modular reactor nuclear technology.
 &nbsp;
 
---- FIRST TEXT ELEMENTS ---
-
-First text-containing elements:
-
-  Element #1
-  Tag: div
-  Class: ['container-xl', 'g-3', 'g-xl-0']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #2
-  Tag: div
-  Class: ['row']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #3
-  Tag: div
-  Class: ['col-12']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #4
-  Tag: div
-  Class: ['navbar-collapse', 'collapse', 'd-xl-inline-flex', 'justify-content-between', 'navbar_wrapper']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #5
-  Tag: div
-  Class: ['container-fluid']
-  ID: internal_news_container
-  Text: US-Turkey agreement to accelerate SMR deployment Thursday, 24 September 2026 The US Trade and Development Agency has signed an agreement with Turkey's state-owned nuclear development enterprise TÜNAŞ to fund technical assistance to create the regulatory, institutional, and financial roadmap needed f
-
-  Element #6
-  Tag: div
-  Class: ['container-xl', 'gx-0']
-  ID: None
-  Text: US-Turkey agreement to accelerate SMR deployment Thursday, 24 September 2026 The US Trade and Development Agency has signed an agreement with Turkey's state-owned nuclear development enterprise TÜNAŞ to fund technical assistance to create the regulatory, institutional, and financial roadmap needed f
-
-  Element #7
-  Tag: div
-  Class: ['row', 'gx-4', 'article_body_wrapper']
-  ID: None
-  Text: US-Turkey agreement to accelerate SMR deployment Thursday, 24 September 2026 The US Trade and Development Agency has signed an agreement with Turkey's state-owned nuclear development enterprise TÜNAŞ to fund technical assistance to create the regulatory, institutional, and financial roadmap needed f
-
-  Element #8
-  Tag: div
-  Class: ['col-12', 'col-xl-7', 'g-4']
-  ID: None
-  Text: US-Turkey agreement to accelerate SMR deployment Thursday, 24 September 2026 The US Trade and Development Agency has signed an agreement with Turkey's state-owned nuclear development enterprise TÜNAŞ to fund technical assistance to create the regulatory, institutional, and financial roadmap needed f
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
 
 ================================================================================
 ARTICLE 6
@@ -340,57 +95,8 @@ Polish plant contract negotiations move to next stage - World Nuclear News
 The Westinghouse-Bechtel consortium and Polskie Elektrownie Jądrowe have agreed the main commercial and legal terms of the Engineering, Procurement and Construction contract that will deliver Poland&#39;s first nuclear power plant, and plan to complete the contract negotiation process by the end of this year.
 &nbsp;
 
---- FIRST TEXT ELEMENTS ---
-
-First text-containing elements:
-
-  Element #1
-  Tag: div
-  Class: ['container-xl', 'g-3', 'g-xl-0']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #2
-  Tag: div
-  Class: ['row']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #3
-  Tag: div
-  Class: ['col-12']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #4
-  Tag: div
-  Class: ['navbar-collapse', 'collapse', 'd-xl-inline-flex', 'justify-content-between', 'navbar_wrapper']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #5
-  Tag: div
-  Class: ['container-fluid']
-  ID: internal_news_container
-  Text: Polish plant contract negotiations move to next stage Thursday, 24 September 2026 The Westinghouse-Bechtel consortium and Polskie Elektrownie Jądrowe have agreed the main commercial and legal terms of the Engineering, Procurement and Construction contract that will deliver Poland's first nuclear pow
-
-  Element #6
-  Tag: div
-  Class: ['container-xl', 'gx-0']
-  ID: None
-  Text: Polish plant contract negotiations move to next stage Thursday, 24 September 2026 The Westinghouse-Bechtel consortium and Polskie Elektrownie Jądrowe have agreed the main commercial and legal terms of the Engineering, Procurement and Construction contract that will deliver Poland's first nuclear pow
-
-  Element #7
-  Tag: div
-  Class: ['row', 'gx-4', 'article_body_wrapper']
-  ID: None
-  Text: Polish plant contract negotiations move to next stage Thursday, 24 September 2026 The Westinghouse-Bechtel consortium and Polskie Elektrownie Jądrowe have agreed the main commercial and legal terms of the Engineering, Procurement and Construction contract that will deliver Poland's first nuclear pow
-
-  Element #8
-  Tag: div
-  Class: ['col-12', 'col-xl-7', 'g-4']
-  ID: None
-  Text: Polish plant contract negotiations move to next stage Thursday, 24 September 2026 The Westinghouse-Bechtel consortium and Polskie Elektrownie Jądrowe have agreed the main commercial and legal terms of the Engineering, Procurement and Construction contract that will deliver Poland's first nuclear pow
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
 
 ================================================================================
 ARTICLE 7
@@ -405,57 +111,8 @@ First concrete poured for Bailong 2 nuclear power unit - World Nuclear News
 First concrete was poured for the nuclear island of Bailong Nuclear Power Plant&#39;s unit 2 at 18:27 on Sunday 27 September.
 &nbsp;
 
---- FIRST TEXT ELEMENTS ---
-
-First text-containing elements:
-
-  Element #1
-  Tag: div
-  Class: ['container-xl', 'g-3', 'g-xl-0']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #2
-  Tag: div
-  Class: ['row']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #3
-  Tag: div
-  Class: ['col-12']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #4
-  Tag: div
-  Class: ['navbar-collapse', 'collapse', 'd-xl-inline-flex', 'justify-content-between', 'navbar_wrapper']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #5
-  Tag: div
-  Class: ['container-fluid']
-  ID: internal_news_container
-  Text: First concrete poured for Bailong 2 nuclear power unit Monday, 28 September 2026 First concrete was poured for the nuclear island of Bailong Nuclear Power Plant's unit 2 at 18:27 on Sunday 27 September. (Image: Screengrab from a CCTV video on the construction start) The landmark moment at the State 
-
-  Element #6
-  Tag: div
-  Class: ['container-xl', 'gx-0']
-  ID: None
-  Text: First concrete poured for Bailong 2 nuclear power unit Monday, 28 September 2026 First concrete was poured for the nuclear island of Bailong Nuclear Power Plant's unit 2 at 18:27 on Sunday 27 September. (Image: Screengrab from a CCTV video on the construction start) The landmark moment at the State 
-
-  Element #7
-  Tag: div
-  Class: ['row', 'gx-4', 'article_body_wrapper']
-  ID: None
-  Text: First concrete poured for Bailong 2 nuclear power unit Monday, 28 September 2026 First concrete was poured for the nuclear island of Bailong Nuclear Power Plant's unit 2 at 18:27 on Sunday 27 September. (Image: Screengrab from a CCTV video on the construction start) The landmark moment at the State 
-
-  Element #8
-  Tag: div
-  Class: ['col-12', 'col-xl-7', 'g-4']
-  ID: None
-  Text: First concrete poured for Bailong 2 nuclear power unit Monday, 28 September 2026 First concrete was poured for the nuclear island of Bailong Nuclear Power Plant's unit 2 at 18:27 on Sunday 27 September. (Image: Screengrab from a CCTV video on the construction start) The landmark moment at the State 
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
 
 ================================================================================
 ARTICLE 8
@@ -470,57 +127,8 @@ Tianwan 7 brought to minimum controllable power level - World Nuclear News
 The new Tianwan Nuclear Power Plant unit 7 has achieved a self-sustaining controlled nuclear chain reaction and is at its minimum controllable power level.
 &nbsp;
 
---- FIRST TEXT ELEMENTS ---
-
-First text-containing elements:
-
-  Element #1
-  Tag: div
-  Class: ['container-xl', 'g-3', 'g-xl-0']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #2
-  Tag: div
-  Class: ['row']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #3
-  Tag: div
-  Class: ['col-12']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #4
-  Tag: div
-  Class: ['navbar-collapse', 'collapse', 'd-xl-inline-flex', 'justify-content-between', 'navbar_wrapper']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #5
-  Tag: div
-  Class: ['container-fluid']
-  ID: internal_news_container
-  Text: Tianwan 7 brought to minimum controllable power level Tuesday, 29 September 2026 The new Tianwan Nuclear Power Plant unit 7 has achieved a self-sustaining controlled nuclear chain reaction and is at its minimum controllable power level. (Image: Rosatom) Nuclear fuel was loaded into the reactor core 
-
-  Element #6
-  Tag: div
-  Class: ['container-xl', 'gx-0']
-  ID: None
-  Text: Tianwan 7 brought to minimum controllable power level Tuesday, 29 September 2026 The new Tianwan Nuclear Power Plant unit 7 has achieved a self-sustaining controlled nuclear chain reaction and is at its minimum controllable power level. (Image: Rosatom) Nuclear fuel was loaded into the reactor core 
-
-  Element #7
-  Tag: div
-  Class: ['row', 'gx-4', 'article_body_wrapper']
-  ID: None
-  Text: Tianwan 7 brought to minimum controllable power level Tuesday, 29 September 2026 The new Tianwan Nuclear Power Plant unit 7 has achieved a self-sustaining controlled nuclear chain reaction and is at its minimum controllable power level. (Image: Rosatom) Nuclear fuel was loaded into the reactor core 
-
-  Element #8
-  Tag: div
-  Class: ['col-12', 'col-xl-7', 'g-4']
-  ID: None
-  Text: Tianwan 7 brought to minimum controllable power level Tuesday, 29 September 2026 The new Tianwan Nuclear Power Plant unit 7 has achieved a self-sustaining controlled nuclear chain reaction and is at its minimum controllable power level. (Image: Rosatom) Nuclear fuel was loaded into the reactor core 
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
 
 ================================================================================
 ARTICLE 9
@@ -535,57 +143,8 @@ Armenia to make new nuclear decision 'in near future' - World Nuclear News
 Armenian Prime Minister Nikol Pashinyan met with Rosatom Director General Alexey Likhachev to discuss further life extension options for the Armenian Nuclear Power Plant, as well as options for new nuclear capacity.
 &nbsp;
 
---- FIRST TEXT ELEMENTS ---
-
-First text-containing elements:
-
-  Element #1
-  Tag: div
-  Class: ['container-xl', 'g-3', 'g-xl-0']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #2
-  Tag: div
-  Class: ['row']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #3
-  Tag: div
-  Class: ['col-12']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #4
-  Tag: div
-  Class: ['navbar-collapse', 'collapse', 'd-xl-inline-flex', 'justify-content-between', 'navbar_wrapper']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
-
-  Element #5
-  Tag: div
-  Class: ['container-fluid']
-  ID: internal_news_container
-  Text: Armenia to make new nuclear decision 'in near future' Wednesday, 30 September 2026 Armenian Prime Minister Nikol Pashinyan met with Rosatom Director General Alexey Likhachev to discuss further life extension options for the Armenian Nuclear Power Plant, as well as options for new nuclear capacity. (
-
-  Element #6
-  Tag: div
-  Class: ['container-xl', 'gx-0']
-  ID: None
-  Text: Armenia to make new nuclear decision 'in near future' Wednesday, 30 September 2026 Armenian Prime Minister Nikol Pashinyan met with Rosatom Director General Alexey Likhachev to discuss further life extension options for the Armenian Nuclear Power Plant, as well as options for new nuclear capacity. (
-
-  Element #7
-  Tag: div
-  Class: ['row', 'gx-4', 'article_body_wrapper']
-  ID: None
-  Text: Armenia to make new nuclear decision 'in near future' Wednesday, 30 September 2026 Armenian Prime Minister Nikol Pashinyan met with Rosatom Director General Alexey Likhachev to discuss further life extension options for the Armenian Nuclear Power Plant, as well as options for new nuclear capacity. (
-
-  Element #8
-  Tag: div
-  Class: ['col-12', 'col-xl-7', 'g-4']
-  ID: None
-  Text: Armenia to make new nuclear decision 'in near future' Wednesday, 30 September 2026 Armenian Prime Minister Nikol Pashinyan met with Rosatom Director General Alexey Likhachev to discuss further life extension options for the Armenian Nuclear Power Plant, as well as options for new nuclear capacity. (
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
 
 ================================================================================
 ARTICLE 10
@@ -600,57 +159,552 @@ First construction permit issued for BWRX-300 SMR in the US - World Nuclear News
 The US Nuclear Regulatory Commission has issued a construction permit for the Tennessee Valley Authority&#39;s planned GE Vernova Hitachi BWRX‑300 small modular reactor at the Clinch River site.
 &nbsp;
 
---- FIRST TEXT ELEMENTS ---
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
 
-First text-containing elements:
+================================================================================
+ARTICLE 11
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/hinkley-point-c-completes-620-metre-tunnel-for-fish
+HTML length: 52,926 characters
 
-  Element #1
-  Tag: div
-  Class: ['container-xl', 'g-3', 'g-xl-0']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
+--- TITLE ---
+Hinkley Point C completes 620-metre tunnel for fish - World Nuclear News
 
-  Element #2
-  Tag: div
-  Class: ['row']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
+--- META DESCRIPTION ---
+A tunnel boring machine has finished digging a 620-metre tunnel which will form part of Hinkley Point C&#39;s system for returning fish to the sea.
+&nbsp;
 
-  Element #3
-  Tag: div
-  Class: ['col-12']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
 
-  Element #4
-  Tag: div
-  Class: ['navbar-collapse', 'collapse', 'd-xl-inline-flex', 'justify-content-between', 'navbar_wrapper']
-  ID: None
-  Text: Home · Energy & Environment · New Nuclear · Regulation & Safety · Nuclear Policies · Corporate · Uranium & Fuel · Waste & Recycling · Podcasts & Features · Fusion · Country Index About WNN
+================================================================================
+ARTICLE 12
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/moves-to-bolster-us-nuclear-workforce-development
+HTML length: 57,345 characters
 
-  Element #5
-  Tag: div
-  Class: ['container-fluid']
-  ID: internal_news_container
-  Text: First construction permit issued for BWRX-300 SMR in the US Wednesday, 30 September 2026 The US Nuclear Regulatory Commission has issued a construction permit for the Tennessee Valley Authority's planned GE Vernova Hitachi BWRX‑300 small modular reactor at the Clinch River site. A rendering of the C
+--- TITLE ---
+Moves to bolster US nuclear workforce development - World Nuclear News
 
-  Element #6
-  Tag: div
-  Class: ['container-xl', 'gx-0']
-  ID: None
-  Text: First construction permit issued for BWRX-300 SMR in the US Wednesday, 30 September 2026 The US Nuclear Regulatory Commission has issued a construction permit for the Tennessee Valley Authority's planned GE Vernova Hitachi BWRX‑300 small modular reactor at the Clinch River site. A rendering of the C
+--- META DESCRIPTION ---
+Westinghouse and the University of South Carolina are partnering to create a multidisciplinary nuclear workforce development programme to support US fleet deployment of AP1000 plants. Meanwhile, the New York Power Authority has awarded USD10 million in funding to support nuclear workforce development programmes across the state.
+&nbsp;
 
-  Element #7
-  Tag: div
-  Class: ['row', 'gx-4', 'article_body_wrapper']
-  ID: None
-  Text: First construction permit issued for BWRX-300 SMR in the US Wednesday, 30 September 2026 The US Nuclear Regulatory Commission has issued a construction permit for the Tennessee Valley Authority's planned GE Vernova Hitachi BWRX‑300 small modular reactor at the Clinch River site. A rendering of the C
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
 
-  Element #8
-  Tag: div
-  Class: ['col-12', 'col-xl-7', 'g-4']
-  ID: None
-  Text: First construction permit issued for BWRX-300 SMR in the US Wednesday, 30 September 2026 The US Nuclear Regulatory Commission has issued a construction permit for the Tennessee Valley Authority's planned GE Vernova Hitachi BWRX‑300 small modular reactor at the Clinch River site. A rendering of the C
+================================================================================
+ARTICLE 13
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/bwxts-banr-microreactor-selected-for-canadian-project
+HTML length: 55,095 characters
+
+--- TITLE ---
+BWXT's BANR microreactor selected for Canadian project - World Nuclear News
+
+--- META DESCRIPTION ---
+BWX Technologies says that its BANR microreactor has been selected by Prodigy Clean Energy, Pabineau First Nation and Eel River Bar First Nation for a proposed project in Belledune in New Brunswick.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 14
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/concreting-milestones-at-chinese-hualong-one-units
+HTML length: 55,659 characters
+
+--- TITLE ---
+Concreting milestones at Chinese Hualong One units - World Nuclear News
+
+--- META DESCRIPTION ---
+The concreting of the inner containment dome has been completed at unit 3 of the Zhangzhou nuclear power plant in China&#39;s Fujian province, while concrete pours have also been completed at units 1 and 2 of the Zhaoyuan plant in Shandong province.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 15
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/taiwan-regulator-completes-review-of-restart-plan
+HTML length: 52,444 characters
+
+--- TITLE ---
+Taiwan regulator completes review of restart plan - World Nuclear News
+
+--- META DESCRIPTION ---
+Taiwan&#39;s nuclear regulator has completed its review of Taipower&#39;s plans for the restart of the Maanshan nuclear power plant, which was submitted earlier this year.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 16
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/nrc-completes-environmental-review-of-crane-restart
+HTML length: 53,475 characters
+
+--- TITLE ---
+NRC completes environmental review of Crane restart - World Nuclear News
+
+--- META DESCRIPTION ---
+The US regulator, together with the Department of Energy Office of Energy Dominance Financing, has issued an environmental assessment and finding of no significant impact for environmental effects from proposed Federal actions related to reauthorising power operations at the Christopher Crane Clean Energy Center in Pennsylvania.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 17
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/wano-stresses-importance-of-collaboration-for-nuclear-growth
+HTML length: 53,692 characters
+
+--- TITLE ---
+WANO stresses importance of collaboration for nuclear growth - World Nuclear News
+
+--- META DESCRIPTION ---
+&quot;As nuclear energy expands globally, success will depend on our ability to learn faster, collaborate more deeply and translate insight into action,&quot; said World Association of Nuclear Operators CEO Naoki Chigusa.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 18
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/second-part-of-construction-permit-application-submitted-for-pioneer-smrs
+HTML length: 55,568 characters
+
+--- TITLE ---
+Second part of construction permit application submitted for SMRs at Palisades - World Nuclear News
+
+--- META DESCRIPTION ---
+Holtec has submitted the Preliminary Safety Analysis Report to the US Nuclear Regulatory Commission for two small modular reactor units at the Palisades Energy Center in Michigan, completing the second phase of the Construction Permit Application process.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 19
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/italys-senate-approves-a-return-to-nuclear-power
+HTML length: 57,100 characters
+
+--- TITLE ---
+Italy's Senate approves a return to nuclear power - World Nuclear News
+
+--- META DESCRIPTION ---
+Prime Minister Giorgia Meloni&#39;s bill paving the way for a return to nuclear power in Italy after four decades was passed in the Senate by 81 votes to 51, with seven abstentions.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 20
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/white-paper-aims-to-facilitate-safe-transport-of-radioactive-materials
+HTML length: 58,923 characters
+
+--- TITLE ---
+White Paper aims to facilitate safe and secure transport of radioactive materials - World Nuclear News
+
+--- META DESCRIPTION ---
+A series of recommendations have been made to mitigate the denial or delay of transport of radioactive materials which nuclear power plants, hospitals, industries and researchers rely on.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 21
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/inter-american-development-bank-and-iaea-nuclear-energy-mou
+HTML length: 52,532 characters
+
+--- TITLE ---
+Inter-American Development Bank and IAEA sign nuclear energy MoU - World Nuclear News
+
+--- META DESCRIPTION ---
+The Inter-American Development Bank and the International Atomic Energy Agency have signed a memorandum of understanding to strengthen cooperation on the use of nuclear energy in Latin America and the Caribbean.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 22
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/legislative-amendment-paves-way-for-continued-operation-of-borssele
+HTML length: 55,547 characters
+
+--- TITLE ---
+Legislative amendment paves way for continued operation of Borssele - World Nuclear News
+
+--- META DESCRIPTION ---
+As the Dutch Senate approves an amendment to the Nuclear Energy Act, allowing a possible life extension of the Borssele nuclear power plant beyond 2033, the government said it has reached an agreement on acquiring 70% of the shares of operator EPZ.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 23
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/saskatchewan-firms-up-nuclear-power-ambitions
+HTML length: 56,232 characters
+
+--- TITLE ---
+Saskatchewan firms up nuclear power ambitions - World Nuclear News
+
+--- META DESCRIPTION ---
+The Government of Saskatchewan has released a plan that establishes a goal of having at least 2,600 MWe of nuclear generating capacity online in the Canadian province by 2050.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 24
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/four-priority-issues-building-nuclear-different-countries-according-rosatom
+HTML length: 60,704 characters
+
+--- TITLE ---
+Four key issues when building nuclear in different countries, according to Rosatom - World Nuclear News
+
+--- META DESCRIPTION ---
+Scaling-up nuclear capacity remains one of the major challenges for the global nuclear industry, and Polina Lion, chief sustainability officer of Russia&rsquo;s state nuclear corporation Rosatom, outlined four priority areas for action at&nbsp;World Nuclear Symposium in London.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 25
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/usa-south-korea-targeting-six-ap1000-two-apr1400-units
+HTML length: 56,749 characters
+
+--- TITLE ---
+USA, South Korea targeting six AP1000 and two APR1400 units - World Nuclear News
+
+--- META DESCRIPTION ---
+A USD120 billion framework agreement to build six Westinghouse AP1000 units and two of South Korea&#39;s APR1400 units in the USA has been outlined by the US Department of Commerce.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 26
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/npcil-signs-mou-for-gujarat-nuclear-power-projects
+HTML length: 51,248 characters
+
+--- TITLE ---
+NPCIL signs MoU for Gujarat nuclear power projects - World Nuclear News
+
+--- META DESCRIPTION ---
+Nuclear Power Corporation of India Limited and Gujarat State Electricity Corporation Limited have signed a memorandum of understanding to explore and identify suitable sites in India&#39;s Gujarat state for new nuclear power plant projects.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 27
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/green-party-members-drop-nuclear-phase-out-policy
+HTML length: 51,078 characters
+
+--- TITLE ---
+Green Party drops nuclear phase-out policy - World Nuclear News
+
+--- META DESCRIPTION ---
+Members of the Green Party of England and Wales have voted at their autumn conference to include nuclear among a list of low-carbon forms of energy.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 28
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/timeline-for-polish-nuclear-units-slips-in-updated-programme
+HTML length: 58,220 characters
+
+--- TITLE ---
+Timeline for Polish nuclear units slips in updated programme - World Nuclear News
+
+--- META DESCRIPTION ---
+Poland&#39;s Council of Ministers has adopted an update to the country&#39;s nuclear power programme - a strategic document outlining the&nbsp; development of nuclear energy in Poland - with the first nuclear power plant now expected to start up in 2036 and the second one in 2040.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 29
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/china-launches-giant-crane-for-nuclear-power-plant-construction
+HTML length: 53,020 characters
+
+--- TITLE ---
+China's giant crane for nuclear power plant construction - World Nuclear News
+
+--- META DESCRIPTION ---
+China General Nuclear says the 250,000-ton-metre lifting torque ring-rail crane rolled off the production line last month to support the construction of Hualong One 2.0 nuclear power plants.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 30
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/contracts-announced-as-pickering-refurb-approaches
+HTML length: 58,168 characters
+
+--- TITLE ---
+Contracts announced as Pickering refurb approaches - World Nuclear News
+
+--- META DESCRIPTION ---
+The Province of Ontario has announced the signature of more than CAD3 billion (USD2.1 billion) worth of contracts for the refurbishment of four units at Ontario Power Generation&#39;s Pickering plant as site construction for the project gets under way.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 31
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/polimex-mostostal-to-build-polish-ap1000-assembly-halls
+HTML length: 58,543 characters
+
+--- TITLE ---
+Polimex Mostostal to build Polish AP1000 assembly halls - World Nuclear News
+
+--- META DESCRIPTION ---
+Polish construction engineering firm Polimex Mostostal has been selected by Bechtel to deliver, assemble and commission two large-scale assembly halls as part of the project to construct the country&#39;s first nuclear power plant.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 32
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/sellafield-selects-partners-for-asset-care-framework
+HTML length: 56,723 characters
+
+--- TITLE ---
+Sellafield selects partners for asset care framework - World Nuclear News
+
+--- META DESCRIPTION ---
+The successful partners have been identified for a new delivery framework, valued at up to GBP3.6 billion (USD4.8 billion), for asset care and asset creation activities at the UK&#39;s Sellafield site in Cumbria, in northwest England.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 33
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/constellation-amazon-agree-nuclear-focused-power-purchase-deal
+HTML length: 54,382 characters
+
+--- TITLE ---
+Constellation, Amazon agree nuclear-focused power purchase deal - World Nuclear News
+
+--- META DESCRIPTION ---
+A 20-year power purchase agreement signed by tech giant Amazon will enable Constellation to add 190 MW of capacity and extend the operating life of the Calvert Cliffs nuclear power plant in Maryland in the US.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 34
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/polish-entrepreneurs-invest-in-sges-bwrx-300-projects
+HTML length: 53,427 characters
+
+--- TITLE ---
+Polish entrepreneurs invest in SGE's BWRX-300 projects - World Nuclear News
+
+--- META DESCRIPTION ---
+A group of Polish business people have invested a total of PLN500 million (USD128 million) in SGE&rsquo;s plans to build fleets of small modular reactors in Poland, the UK and elsewhere in Europe.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 35
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/hinkley-pointb-second-agr-transferred-for-decommissioning
+HTML length: 58,201 characters
+
+--- TITLE ---
+Hinkley Point B becomes second AGR plant transferred for decommissioning - World Nuclear News
+
+--- META DESCRIPTION ---
+Ownership of the Hinkley Point B nuclear power station in Somerset, England - which was permanently shut down four years ago - has transferred from EDF Energy to the Nuclear Decommissioning Authority for the plant&#39;s decommissioning.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 36
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/doe-offers-vistra-loan-for-reactor-upgrades-and-uprates
+HTML length: 55,872 characters
+
+--- TITLE ---
+DOE offers Vistra loan for reactor upgrades and uprates - World Nuclear News
+
+--- META DESCRIPTION ---
+The US Department of Energy has announced a conditional loan commitment of up to USD4.2 billion to finance uprates and modernisation projects at Vistra Corp&#39;s Beaver Valley, Davis-Besse and Perry nuclear power plants.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 37
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/new-end-user-agreements-support-long-term-us-plant-operations
+HTML length: 58,421 characters
+
+--- TITLE ---
+Google and Oracle deals support long-term US plant operations  - World Nuclear News
+
+--- META DESCRIPTION ---
+Google and Constellation Energy have announced a long-term collaboration to bring 890 MW of new nuclear capacity onto the PJM Interconnection grid, as well as a power purchase agreement. Meanwhile, Oracle is to subscribe to output from the Point Beach nuclear power plant.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 38
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/agreement-clears-way-for-resumption-of-niger-uranium-project
+HTML length: 54,102 characters
+
+--- TITLE ---
+Agreement clears way for resumption of Niger uranium project - World Nuclear News
+
+--- META DESCRIPTION ---
+The Mining Convention for the Madouela project formalises a framework agreement announced in August and triggers the process to discontinue international arbitration proceedings over the project in Niger.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 39
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/milestone-for-x-energys-triso-xs-fuel-facility
+HTML length: 54,182 characters
+
+--- TITLE ---
+Milestone for X-Energy's TRISO-X fuel facility - World Nuclear News
+
+--- META DESCRIPTION ---
+Construction of the 214,000-square-foot building which will house the TX-1 advanced nuclear fuel facility in Oak Ridge, Tennessee, has been completed.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 40
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/general-matter-submits-enrichment-plant-licence-application
+HTML length: 53,564 characters
+
+--- TITLE ---
+General Matter submits licence application for enrichment plant - World Nuclear News
+
+--- META DESCRIPTION ---
+A licence application has been submitted to the US Nuclear Regulatory Commission by General Matter for its proposed commercial uranium enrichment facility in Paducah, Kentucky.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 41
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/demolition-of-exhaust-stack-changes-stade-skyline
+HTML length: 53,216 characters
+
+--- TITLE ---
+Demolition of exhaust stack changes Stade skyline - World Nuclear News
+
+--- META DESCRIPTION ---
+The 80-metre-high exhaust stack has been demolished at the decommissioned Stade nuclear power plant in Lower Saxony, Germany. Since 1970, the stack had been a prominent feature of the power plant&#39;s skyline and shaped the site for decades.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 42
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/orano-inaugurates-lead-212-production-facility
+HTML length: 53,063 characters
+
+--- TITLE ---
+Orano inaugurates lead-212 production facility - World Nuclear News
+
+--- META DESCRIPTION ---
+An opening ceremony has been held for Europe&#39;s first industrial-scale facility for the production of lead-212-based targeted alpha therapies, the Alpha Therapy Laboratory in Valenciennes, France.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 43
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/uk-aims-to-build-on-fusion-research-record-to-establish-industrial-base
+HTML length: 60,772 characters
+
+--- TITLE ---
+UK aims to build on fusion research record to establish industrial base - World Nuclear News
+
+--- META DESCRIPTION ---
+The UK is seeking to translate its position in fusion research into industrial and commercial leadership, with government, industry and the UK Atomic Energy Authority highlighting the need to develop supply chains, skills, regulation and investment alongside fusion technology.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
+
+================================================================================
+ARTICLE 44
+================================================================================
+URL: https://www.world-nuclear-news.org/articles/europe-delivers-final-iter-vacuum-vessel-sector
+HTML length: 56,874 characters
+
+--- TITLE ---
+Europe delivers final ITER vacuum vessel sector - World Nuclear News
+
+--- META DESCRIPTION ---
+Fusion for Energy, in collaboration with Ansaldo Nucleare, Westinghouse and Walter Tosto, has completed manufacturing Europe&#39;s final vacuum vessel sector for the International Thermonuclear Experimental Reactor at Cadarache in south-eastern France.
+&nbsp;
+
+--- STANDFIRST ELEMENT ---
+Matched element: Not found
 
 ================================================================================
 Test completed.
