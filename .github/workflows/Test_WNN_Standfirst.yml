@@ -1,0 +1,40 @@
+name: Test WNN Standfirst
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-standfirst:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4
+
+      - name: Run Standfirst test
+        run: |
+          python Scrapers/Test_WNN_Standfirst.py > Test_WNN_Standfirst.json
+
+      - name: Show test output
+        run: |
+          cat Test_WNN_Standfirst.json
+
+      - name: Commit test output
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
+          git add Test_WNN_Standfirst.json
+
+          git commit -m "Update WNN standfirst test output" || echo "No changes to commit"
+
+          git push
