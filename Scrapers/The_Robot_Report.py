@@ -89,6 +89,27 @@ def extract_with_newspaper(url):
     return ""
 
 
+def remove_about_author(text):
+    """
+    Remove everything from 'About the author' to the end of the text.
+
+    Matching is case-insensitive, so both:
+    'About the author'
+    and
+    'About the Author'
+    are detected.
+    """
+
+    marker = "about the author"
+
+    position = text.lower().find(marker)
+
+    if position != -1:
+        text = text[:position]
+
+    return text.strip()
+
+
 def extract_main_image(soup, article_url):
     # 1. Open Graph image
     og_image = soup.find(
@@ -275,6 +296,9 @@ def scrape(url):
         raise ValueError(
             "Article text could not be extracted."
         )
+
+    # Remove author section and everything after it
+    text = remove_about_author(text)
 
     # ---------------------------------------------------------
     # Main image
