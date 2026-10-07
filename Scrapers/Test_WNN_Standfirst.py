@@ -47,30 +47,40 @@ def get_html(url):
     return response.text
 
 
-def inspect_first_text_elements(soup):
-    print("\nFirst text-containing elements:")
+def normalize_text(text):
+    return " ".join(text.split())
 
-    count = 0
 
-    for element in soup.find_all(["p", "div", "span"]):
-        text = element.get_text(" ", strip=True)
+def find_standfirst_element(soup, meta_description):
+    container = soup.find(id="internal_news_container")
 
-        if not text:
-            continue
+    if not container:
+        return None
 
-        if len(text) < 40:
-            continue
+    target = normalize_text(meta_description)
 
-        count += 1
+    if not target:
+        return None
 
-        print(f"\n  Element #{count}")
-        print(f"  Tag: {element.name}")
-        print(f"  Class: {element.get('class')}")
-        print(f"  ID: {element.get('id')}")
-        print(f"  Text: {text[:300]}")
+    for element in container.find_all(["p", "div", "span"]):
+        text = normalize_text(element.get_text(" ", strip=True))
 
-        if count >= 8:
-            break
+        if text == target:
+            return element
+
+    return None
+
+
+def print_element_info(label, element):
+    if element is None:
+        print(f"{label}: Not found")
+        return
+
+    print(f"{label}:")
+    print(f"  Tag: {element.name}")
+    print(f"  Class: {element.get('class')}")
+    print(f"  ID: {element.get('id')}")
+    print(f"  Text: {normalize_text(element.get_text(' ', strip=True))[:500]}")
 
 
 def inspect_article(url, index):
@@ -100,19 +110,53 @@ def inspect_article(url, index):
 
     print("\n--- META DESCRIPTION ---")
 
-    meta_description = soup.find(
+    meta_description_tag = soup.find(
         "meta",
         attrs={"name": "description"}
     )
 
-    if meta_description:
-        print(meta_description.get("content", "").strip())
+    if meta_description_tag:
+        meta_description = meta_description_tag.get(
+            "content",
+            ""
+        ).strip()
+
+        print(meta_description)
     else:
+        meta_description = ""
         print("Not found")
 
-    print("\n--- FIRST TEXT ELEMENTS ---")
+    print("\n--- STANDFIRST ELEMENT ---")
 
-    inspect_first_text_elements(soup)
+    standfirst = find_standfirst_element(
+        soup,
+        meta_description
+    )
+
+    print_element_info(
+        "Matched element",
+        standfirst
+    )
+
+    if standfirst is not None:
+        print("\n--- PARENT OF STANDFIRST ---")
+
+        parent = standfirst.parent
+
+        print_element_info(
+            "Parent",
+            parent
+        )
+
+        if parent is not None:
+            print("\n--- GRANDPARENT OF STANDFIRST ---")
+
+            grandparent = parent.parent
+
+            print_element_info(
+                "Grandparent",
+                grandparent
+            )
 
 
 def main():
