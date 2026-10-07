@@ -7,7 +7,6 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 import json
 
-
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -23,23 +22,32 @@ HEADERS = {
 
 
 def empty_scraped_data():
-    return {
-        "text": "",
-        "main_image": "",
-        "videos": [],
-    }
+    return {"text": "", "main_image": "", "videos": []}
 
 
 def get_html(url):
-    response = requests.get(
-        url,
-        headers=HEADERS,
-        timeout=30,
-    )
-
+    response = requests.get(url, headers=HEADERS, timeout=30)
     response.raise_for_status()
-
     return response.text
+
+
+def extract_standfirst(soup):
+    selectors = [
+        "div.article-standfirst",
+        "div.standfirst",
+        "p.standfirst",
+        "[class*='standfirst']",
+        "[class*='Standfirst']",
+    ]
+
+    for selector in selectors:
+        element = soup.select_one(selector)
+        if element:
+            text = element.get_text(" ", strip=True)
+            if text:
+                return text
+
+    return ""
 
 
 def extract_with_trafilatura(html):
@@ -50,7 +58,6 @@ def extract_with_trafilatura(html):
             include_tables=False,
             include_links=False,
         )
-
         if text:
             return text.strip()
 
@@ -60,10 +67,8 @@ def extract_with_trafilatura(html):
             include_tables=False,
             include_links=False,
         )
-
         if result:
             text = result.get("text")
-
             if text:
                 return text.strip()
 
@@ -73,16 +78,23 @@ def extract_with_trafilatura(html):
     return ""
 
 
+def remove_read_more(text):
+    paragraphs = text.split("\n")
+    filtered = []
+
+    for paragraph in paragraphs:
+        if paragraph.strip().lower().startswith("read more"):
+            continue
+        filtered.append(paragraph)
+
+    return "\n".join(filtered).strip()
+
+
 def extract_with_newspaper(url):
     try:
-        article = newspaper.article(
-            url,
-            language="en",
-        )
-
+        article = newspaper.article(url, language="en")
         if article and article.text:
             return article.text.strip()
-
     except Exception:
         pass
 
@@ -90,46 +102,24 @@ def extract_with_newspaper(url):
 
 
 def extract_main_image(soup, article_url):
-    # 1. Open Graph image
-    og_image = soup.find(
-        "meta",
-        attrs={
-            "property": "og:image"
-        },
-    )
-
+    og_image = soup.find("meta", attrs={"property": "og:image"})
     if og_image:
         image_url = og_image.get("content")
-
         if image_url:
             return urljoin(article_url, image_url)
 
-    # 2. Twitter image
-    twitter_image = soup.find(
-        "meta",
-        attrs={
-            "name": "twitter:image"
-        },
-    )
-
+    twitter_image = soup.find("meta", attrs={"name": "twitter:image"})
     if twitter_image:
         image_url = twitter_image.get("content")
-
         if image_url:
             return urljoin(article_url, image_url)
 
-    # 3. JSON-LD image
     for script in soup.find_all(
         "script",
-        attrs={
-            "type": "application/ld+json"
-        },
+        attrs={"type": "application/ld+json"}
     ):
         try:
-            data = json.loads(
-                script.string or script.get_text()
-            )
-
+            data = json.loads(script.string or script.get_text())
             items = data
 
             if isinstance(data, dict):
@@ -143,33 +133,21 @@ def extract_main_image(soup, article_url):
                     image = item.get("image")
 
                     if isinstance(image, str):
-                        return urljoin(
-                            article_url,
-                            image,
-                        )
+                        return urljoin(article_url, image)
 
                     if isinstance(image, list) and image:
                         if isinstance(image[0], str):
-                            return urljoin(
-                                article_url,
-                                image[0],
-                            )
+                            return urljoin(article_url, image[0])
 
                     if isinstance(image, dict):
                         image_url = image.get("url")
-
                         if image_url:
-                            return urljoin(
-                                article_url,
-                                image_url,
-                            )
+                            return urljoin(article_url, image_url)
 
         except Exception:
             continue
 
-    # 4. First figure image
     figure = soup.find("figure")
-
     if figure:
         image = figure.find("img")
 
@@ -181,10 +159,7 @@ def extract_main_image(soup, article_url):
             )
 
             if image_url:
-                return urljoin(
-                    article_url,
-                    image_url,
-                )
+                return urljoin(article_url, image_url)
 
     return ""
 
@@ -201,11 +176,7 @@ def extract_videos_from_html(soup, article_url):
         if not src:
             continue
 
-        video_url = urljoin(
-            article_url,
-            src,
-        )
-
+        video_url = urljoin(article_url, src)
         parsed = urlparse(video_url)
 
         host = parsed.netloc.lower()
@@ -257,15 +228,9 @@ def scrape(url):
         return None
 
     html = get_html(url)
+    soup = BeautifulSoup(html, "html.parser")
 
-    soup = BeautifulSoup(
-        html,
-        "html.parser",
-    )
-
-    # ---------------------------------------------------------
-    # Text
-    # ---------------------------------------------------------
+    standfirst = extract_standfirst(soup)
 
     text = extract_with_trafilatura(html)
 
@@ -273,36 +238,18 @@ def scrape(url):
         text = extract_with_newspaper(url)
 
     if not text:
-        raise ValueError(
-            "Article text could not be extracted."
-        )
+        raise ValueError("Article text could not be extracted.")
 
-    # ---------------------------------------------------------
-    # Main image
-    # ---------------------------------------------------------
+    text = remove_read_more(text)
 
-    main_image = extract_main_image(
-        soup,
-        url,
-    )
-
-    # ---------------------------------------------------------
-    # Videos
-    # ---------------------------------------------------------
-
-    videos = extract_videos_from_html(
-        soup,
-        url,
-    )
-
-    # ---------------------------------------------------------
-    # Validation
-    # ---------------------------------------------------------
+    if standfirst:
+        text = standfirst + "\n" + text
 
     if len(text.strip()) < 100:
-        raise ValueError(
-            "Extracted article text is too short."
-        )
+        raise ValueError("Extracted article text is too short.")
+
+    main_image = extract_main_image(soup, url)
+    videos = extract_videos_from_html(soup, url)
 
     return {
         "text": text.strip(),
