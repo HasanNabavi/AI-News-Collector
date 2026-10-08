@@ -1,164 +1,12 @@
 {
   "news": [
     {
-      "title": "Changing Your Career Isn’t Easy",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/career-pivots-for-software-engineers",
-      "published_at": "Wed, 07 Oct 2026 17:04:02 +0000",
-      "collected_at": "2026-10-08T10:10:29.421581+00:00"
-    },
-    {
-      "title": "The U.S. Just Bet $1 Billion on Quantum Chip Manufacturing",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/anderon-quantum-fab",
-      "published_at": "Wed, 07 Oct 2026 13:09:13 +0000",
-      "collected_at": "2026-10-08T10:10:29.421592+00:00"
-    },
-    {
-      "title": "Europe’s Circuit4EU Initiative Targets Rare Earths From E-Waste",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/e-waste-european-union-circuit4eu",
-      "published_at": "Tue, 06 Oct 2026 13:00:02 +0000",
-      "collected_at": "2026-10-08T10:10:29.421595+00:00"
-    },
-    {
-      "title": "Attempts to Keep Humans in the AI Loop May Actually Push Them Out",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/agentic-ai-humans-in-loop",
-      "published_at": "Mon, 05 Oct 2026 15:57:11 +0000",
-      "collected_at": "2026-10-08T10:10:29.421598+00:00"
-    },
-    {
-      "title": "AI Solves a Major Unsolved Math Problem. Not Everyone Is Happy",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/millennium-prize-ai",
-      "published_at": "Mon, 05 Oct 2026 12:00:02 +0000",
-      "collected_at": "2026-10-08T10:10:29.421601+00:00"
-    },
-    {
-      "title": "Garlic-Peel Sensor Powers Low-Cost Home-Security Sensor",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/garlic-peel-biowaste-sensor",
-      "published_at": "Sun, 04 Oct 2026 13:00:01 +0000",
-      "collected_at": "2026-10-08T10:10:29.421604+00:00"
-    },
-    {
-      "title": "Video Friday: Albatross Falls, Spins, Self-Rights, and Sails Away",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/video-friday-bioinspired-robotics",
-      "published_at": "Fri, 02 Oct 2026 16:30:02 +0000",
-      "collected_at": "2026-10-08T10:10:29.421606+00:00"
-    },
-    {
-      "title": "Atlas Robot’s New Hand May Outperform Humanlike Designs",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/robust-robot-hand",
-      "published_at": "Thu, 01 Oct 2026 14:40:12 +0000",
-      "collected_at": "2026-10-08T10:10:29.421609+00:00"
-    },
-    {
-      "title": "Can These EEG Headphones Sense When Your Brain Needs a Break?",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/eeg-headphones-neurable-one",
-      "published_at": "Thu, 01 Oct 2026 13:00:03 +0000",
-      "collected_at": "2026-10-08T10:10:29.421611+00:00"
-    },
-    {
-      "title": "Electricity Theft Is Rampant, but Delhi Found a Fix",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/electricity-theft",
-      "published_at": "Thu, 01 Oct 2026 12:00:02 +0000",
-      "collected_at": "2026-10-08T10:10:29.421614+00:00"
-    },
-    {
-      "title": "World’s First Fully Implanted Cochlear Implant Reaches Patients",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/fully-implantable-cochlear-implant",
-      "published_at": "Wed, 30 Sep 2026 16:19:59 +0000",
-      "collected_at": "2026-10-08T10:10:29.421616+00:00"
-    },
-    {
-      "title": "A Brief History of the Bloomberg Terminal",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/bloomberg-terminal",
-      "published_at": "Wed, 30 Sep 2026 13:00:02 +0000",
-      "collected_at": "2026-10-08T10:10:29.421619+00:00"
-    },
-    {
-      "title": "Ukraine’s Air Defenses Have No Answer for Russia’s New Jet Drones",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/jet-powered-shahed-drone",
-      "published_at": "Wed, 30 Sep 2026 11:00:02 +0000",
-      "collected_at": "2026-10-08T10:10:29.421621+00:00"
-    },
-    {
-      "title": "Tech to Replace Animal Testing Is Almost Ready. Scientists Are Not",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/alternatives-to-animal-testing",
-      "published_at": "Tue, 29 Sep 2026 13:00:02 +0000",
-      "collected_at": "2026-10-08T10:10:29.421624+00:00"
-    },
-    {
-      "title": "How to Stop AI Agents From Secretly Collaborating",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/ai-agent-security",
-      "published_at": "Tue, 29 Sep 2026 12:00:02 +0000",
-      "collected_at": "2026-10-08T10:10:29.421626+00:00"
-    },
-    {
-      "title": "A Day in the Life of a Roboticist: Charlie Kemp",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/day-in-the-life-of-a-roboticist-charlie-kemp",
-      "published_at": "Mon, 28 Sep 2026 21:48:56 +0000",
-      "collected_at": "2026-10-08T10:10:29.421628+00:00"
-    },
-    {
-      "title": "Here’s How Delhi Achieved Its Epic Power-Grid Fix",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/delhi-electricity-loss",
-      "published_at": "Mon, 28 Sep 2026 13:00:04 +0000",
-      "collected_at": "2026-10-08T10:10:29.421631+00:00"
-    },
-    {
-      "title": "Generative AI Gives Spacecraft the Autonomy Engineers Once Feared",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/generative-ai-in-space-exploration",
-      "published_at": "Mon, 28 Sep 2026 11:00:05 +0000",
-      "collected_at": "2026-10-08T10:10:29.421633+00:00"
-    },
-    {
-      "title": "Poetry for Engineers: The UI Designer’s Dream",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/poetry-user-interface-design",
-      "published_at": "Sun, 27 Sep 2026 13:00:03 +0000",
-      "collected_at": "2026-10-08T10:10:29.421635+00:00"
-    },
-    {
-      "title": "Tiny Flaws in Glass Fiber Can Help Reveal Undersea Cable Threats",
-      "source": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/undersea-cables-acoustic-sensing",
-      "published_at": "Sat, 26 Sep 2026 10:00:07 +0000",
-      "collected_at": "2026-10-08T10:10:29.421638+00:00"
+      "title": "This Disembodied Hand Is All the Robot You Need",
+      "source": "IEEE Spectrum - Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/walking-robotic-hand",
+      "published_at": "Thu, 08 Oct 2026 12:00:02 +0000",
+      "collected_at": "2026-10-08T20:18:40.330755+00:00"
     },
     {
       "title": "HiPHI: A Large-Scale Benchmark for High-Precision Human Motion and Object Interaction",
@@ -166,7 +14,7 @@
       "category": "Robotics",
       "url": "https://content.knowledgehub.wiley.com/hiphi-a-large-scale-benchmark-for-high-precision-human-motion-and-object-interaction/",
       "published_at": "Wed, 07 Oct 2026 13:49:48 +0000",
-      "collected_at": "2026-10-08T10:10:29.829928+00:00"
+      "collected_at": "2026-10-08T20:18:40.330772+00:00"
     },
     {
       "title": "Video Friday: Albatross Falls, Spins, Self-Rights, and Sails Away",
@@ -174,7 +22,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/video-friday-bioinspired-robotics",
       "published_at": "Fri, 02 Oct 2026 16:30:02 +0000",
-      "collected_at": "2026-10-08T10:10:29.829940+00:00"
+      "collected_at": "2026-10-08T20:18:40.330777+00:00"
     },
     {
       "title": "Atlas Robot’s New Hand May Outperform Humanlike Designs",
@@ -182,7 +30,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/robust-robot-hand",
       "published_at": "Thu, 01 Oct 2026 14:40:12 +0000",
-      "collected_at": "2026-10-08T10:10:29.829943+00:00"
+      "collected_at": "2026-10-08T20:18:40.330781+00:00"
     },
     {
       "title": "A Day in the Life of a Roboticist: Charlie Kemp",
@@ -190,7 +38,7 @@
       "category": "Robotics",
       "url": "https://robotsguide.com/learn/a-day-in-the-life-of-a-roboticist-charlie-kemp",
       "published_at": "Mon, 28 Sep 2026 21:48:56 +0000",
-      "collected_at": "2026-10-08T10:10:29.829947+00:00"
+      "collected_at": "2026-10-08T20:18:40.330785+00:00"
     },
     {
       "title": "Video Friday: Life’s Better With a Little Robot Goose",
@@ -198,7 +46,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/video-friday-goose-household-robots",
       "published_at": "Fri, 25 Sep 2026 16:00:04 +0000",
-      "collected_at": "2026-10-08T10:10:29.829949+00:00"
+      "collected_at": "2026-10-08T20:18:40.330789+00:00"
     },
     {
       "title": "Mexican EPICS in IEEE Team Builds Portable Educational Platform",
@@ -206,7 +54,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/epics-in-ieee-portable-educational",
       "published_at": "Thu, 24 Sep 2026 18:00:04 +0000",
-      "collected_at": "2026-10-08T10:10:29.829952+00:00"
+      "collected_at": "2026-10-08T20:18:40.330793+00:00"
     },
     {
       "title": "Barbara Mazzolai Wants to Build a New Field of Robotics",
@@ -214,7 +62,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/sustainability-robotics-barbara-mazzolai",
       "published_at": "Tue, 22 Sep 2026 14:00:04 +0000",
-      "collected_at": "2026-10-08T10:10:29.829955+00:00"
+      "collected_at": "2026-10-08T20:18:40.330797+00:00"
     },
     {
       "title": "Video Friday: Two Birotors Make a Quadrotor",
@@ -222,7 +70,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/video-friday-quadrotor-from-birotor",
       "published_at": "Fri, 18 Sep 2026 16:01:05 +0000",
-      "collected_at": "2026-10-08T10:10:29.829957+00:00"
+      "collected_at": "2026-10-08T20:18:40.330800+00:00"
     },
     {
       "title": "Rethinking Robot Safety in the Age of AI",
@@ -230,7 +78,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/physical-ai-robot-cybersecurity-vicone",
       "published_at": "Wed, 16 Sep 2026 16:51:02 +0000",
-      "collected_at": "2026-10-08T10:10:29.829960+00:00"
+      "collected_at": "2026-10-08T20:18:40.330804+00:00"
     },
     {
       "title": "Digit 5 May Be the First Humanoid Robot Worker That’s Truly Safe",
@@ -238,7 +86,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/humanoid-robot-safety",
       "published_at": "Tue, 15 Sep 2026 15:22:30 +0000",
-      "collected_at": "2026-10-08T10:10:29.829962+00:00"
+      "collected_at": "2026-10-08T20:18:40.330807+00:00"
     },
     {
       "title": "Video Friday: Humanoid Robot Takes On Monkey Bars",
@@ -246,7 +94,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/video-friday-disaster-response-robots",
       "published_at": "Fri, 11 Sep 2026 15:30:04 +0000",
-      "collected_at": "2026-10-08T10:10:29.829965+00:00"
+      "collected_at": "2026-10-08T20:18:40.330811+00:00"
     },
     {
       "title": "Robots Are Learning to Feel",
@@ -254,7 +102,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/tactile-data-robots",
       "published_at": "Thu, 10 Sep 2026 18:22:35 +0000",
-      "collected_at": "2026-10-08T10:10:29.829967+00:00"
+      "collected_at": "2026-10-08T20:18:40.330814+00:00"
     },
     {
       "title": "This Robot Will Draw Your Blood Now",
@@ -262,7 +110,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/blood-draw-robot-vitestro-aletta",
       "published_at": "Mon, 07 Sep 2026 13:00:01 +0000",
-      "collected_at": "2026-10-08T10:10:29.829970+00:00"
+      "collected_at": "2026-10-08T20:18:40.330817+00:00"
     },
     {
       "title": "Cyborg Roaches Can Stab You With Needles",
@@ -270,7 +118,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/cyborg-rescue-roach",
       "published_at": "Sat, 05 Sep 2026 13:00:04 +0000",
-      "collected_at": "2026-10-08T10:10:29.829973+00:00"
+      "collected_at": "2026-10-08T20:18:40.330820+00:00"
     },
     {
       "title": "Video Friday: Digit Redecorates",
@@ -278,7 +126,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/video-friday-agility-robotics-digit",
       "published_at": "Fri, 04 Sep 2026 16:00:05 +0000",
-      "collected_at": "2026-10-08T10:10:29.829976+00:00"
+      "collected_at": "2026-10-08T20:18:40.330824+00:00"
     },
     {
       "title": "Protecting Dynamic Industrial Robot Cable Carriers",
@@ -286,7 +134,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/industrial-robot-cable-carrier-protection",
       "published_at": "Thu, 03 Sep 2026 12:18:21 +0000",
-      "collected_at": "2026-10-08T10:10:29.829978+00:00"
+      "collected_at": "2026-10-08T20:18:40.330827+00:00"
     },
     {
       "title": "The Best Way to Explore Lunar Craters Is a Giant Robot Ball",
@@ -294,7 +142,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/moon-ball-robot",
       "published_at": "Thu, 03 Sep 2026 12:00:01 +0000",
-      "collected_at": "2026-10-08T10:10:29.829981+00:00"
+      "collected_at": "2026-10-08T20:18:40.330830+00:00"
     },
     {
       "title": "Video Friday: Meet Microduck",
@@ -302,7 +150,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/video-friday-microduck-robot",
       "published_at": "Fri, 28 Aug 2026 16:00:03 +0000",
-      "collected_at": "2026-10-08T10:10:29.829983+00:00"
+      "collected_at": "2026-10-08T20:18:40.330833+00:00"
     },
     {
       "title": "AI Companion Robots Are Closing the Human Connection in Modern Homes",
@@ -310,7 +158,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/ollobot-ai-companion-robot",
       "published_at": "Tue, 25 Aug 2026 10:00:03 +0000",
-      "collected_at": "2026-10-08T10:10:29.829985+00:00"
+      "collected_at": "2026-10-08T20:18:40.330836+00:00"
     },
     {
       "title": "Video Friday: Do We Need Superhuman Humanoid Robots?",
@@ -318,7 +166,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/video-friday-unitree-superhuman",
       "published_at": "Fri, 21 Aug 2026 16:00:01 +0000",
-      "collected_at": "2026-10-08T10:10:29.829988+00:00"
+      "collected_at": "2026-10-08T20:18:40.330840+00:00"
     },
     {
       "title": "Drones With Claws Perch on Arctic Icebergs",
@@ -326,7 +174,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/arctic-iceberg-drones",
       "published_at": "Tue, 18 Aug 2026 13:00:01 +0000",
-      "collected_at": "2026-10-08T10:10:29.829990+00:00"
+      "collected_at": "2026-10-08T20:18:40.330843+00:00"
     },
     {
       "title": "Is Shipyard Welding the Right First Job for Humanoid Robots?",
@@ -334,7 +182,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/persona-ai-humanoid-robot-welding",
       "published_at": "Mon, 17 Aug 2026 15:33:42 +0000",
-      "collected_at": "2026-10-08T10:10:29.829993+00:00"
+      "collected_at": "2026-10-08T20:18:40.330846+00:00"
     },
     {
       "title": "Video Friday: Lift Happens",
@@ -342,7 +190,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/video-friday-darpa-heavy-lift-challenge",
       "published_at": "Fri, 14 Aug 2026 17:00:01 +0000",
-      "collected_at": "2026-10-08T10:10:29.829995+00:00"
+      "collected_at": "2026-10-08T20:18:40.330855+00:00"
     },
     {
       "title": "Robot Recycler Salvages Parts From Broken Machines",
@@ -350,7 +198,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/recycling-robot",
       "published_at": "Mon, 10 Aug 2026 18:01:25 +0000",
-      "collected_at": "2026-10-08T10:10:29.829998+00:00"
+      "collected_at": "2026-10-08T20:18:40.330858+00:00"
     },
     {
       "title": "Video Friday: Drones Go Heavy in DARPA Lift Challenge",
@@ -358,7 +206,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/video-friday-heavy-lift-drone",
       "published_at": "Fri, 07 Aug 2026 16:00:01 +0000",
-      "collected_at": "2026-10-08T10:10:29.830000+00:00"
+      "collected_at": "2026-10-08T20:18:40.330861+00:00"
     },
     {
       "title": "What Robotics Companies Think About the U.S. Foreign Robot Ban",
@@ -366,7 +214,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/fcc-covered-list-mobile-robots",
       "published_at": "Tue, 04 Aug 2026 11:00:01 +0000",
-      "collected_at": "2026-10-08T10:10:29.830003+00:00"
+      "collected_at": "2026-10-08T20:18:40.330864+00:00"
     },
     {
       "title": "Walden Robotics Partners With Toyota on Practical Humanoids",
@@ -374,7 +222,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/humanoid-robots-walden-robotics-toyota",
       "published_at": "Mon, 03 Aug 2026 16:05:39 +0000",
-      "collected_at": "2026-10-08T10:10:29.830005+00:00"
+      "collected_at": "2026-10-08T20:18:40.330868+00:00"
     },
     {
       "title": "Video Friday: Meet Google DeepMind’s Gemini Robotics 2",
@@ -382,7 +230,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/video-robot-gemini2-ai-robot",
       "published_at": "Fri, 31 Jul 2026 16:00:03 +0000",
-      "collected_at": "2026-10-08T10:10:29.830008+00:00"
+      "collected_at": "2026-10-08T20:18:40.330871+00:00"
     },
     {
       "title": "Robot Finger Feels in Color",
@@ -390,15 +238,7 @@
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/robot-finger",
       "published_at": "Tue, 28 Jul 2026 15:00:03 +0000",
-      "collected_at": "2026-10-08T10:10:29.830010+00:00"
-    },
-    {
-      "title": "Optical Tech Would Update a Robot’s AI on the Fly",
-      "source": "IEEE Spectrum - Robotics",
-      "category": "Robotics",
-      "url": "https://spectrum.ieee.org/ai-in-robotics",
-      "published_at": "Sun, 26 Jul 2026 13:00:01 +0000",
-      "collected_at": "2026-10-08T10:10:29.830012+00:00"
+      "collected_at": "2026-10-08T20:18:40.330874+00:00"
     }
   ]
 }
