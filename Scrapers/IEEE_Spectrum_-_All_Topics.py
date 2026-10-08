@@ -1,3 +1,4 @@
+import json
 import requests
 import trafilatura
 import newspaper
@@ -5,7 +6,6 @@ import yt_dlp
 
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
-import json
 
 
 HEADERS = {
@@ -13,20 +13,15 @@ HEADERS = {
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
         "AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/140.0.0.0 Safari/537.36"
-    ),
-    "Accept": (
-        "text/html,application/xhtml+xml,application/xml;"
-        "q=0.9,image/avif,image/webp,*/*;q=0.8"
-    ),
-    "Accept-Language": "en-US,en;q=0.9",
+    )
 }
 
 
 def empty_scraped_data():
     return {
         "text": "",
-        "main_image": "",
-        "videos": [],
+        "main_image": None,
+        "videos": []
     }
 
 
@@ -34,62 +29,48 @@ def get_html(url):
     response = requests.get(
         url,
         headers=HEADERS,
-        timeout=30,
+        timeout=30
     )
-
     response.raise_for_status()
-
     return response.text
 
 
 def is_article_url(url):
-    if not url:
-        return False
-
     parsed = urlparse(url)
 
-    if parsed.netloc.lower() not in {
-        "spectrum.ieee.org",
-        "www.spectrum.ieee.org",
-    }:
+    if parsed.netloc != "spectrum.ieee.org":
         return False
 
-    path = parsed.path.lower()
-
-    excluded_paths = (
-        "/topic/",
+    excluded_paths = [
         "/tag/",
-        "/category/",
-        "/search",
+        "/topic/",
         "/author/",
-        "/newsletter",
-        "/podcasts",
-        "/videos",
-    )
+        "/search",
+        "/newsletter"
+    ]
 
-    if path.startswith(excluded_paths):
-        return False
-
-    if path in {"", "/"}:
-        return False
+    for path in excluded_paths:
+        if parsed.path.startswith(path):
+            return False
 
     return True
 
 
 def extract_article_text(soup):
     """
-    Extract the actual IEEE Spectrum article body.
+    Extract the actual article body from IEEE Spectrum.
 
-    Based on the tested HTML structure:
+    The article content is contained inside:
+        div.body-description
 
-        div.body.js-listicle-body
-            └── div.body-description
-                    ├── article content
-                    ├── ...
-                    ├── first h2
-                    └── related/promotional content
+    Related content starts at:
+        div.around-the-web
 
-    The first h2 marks the beginning of related content.
+    Therefore, we keep all direct article elements before
+    the around-the-web block.
+
+    Article headings (h2/h3) are valid article content and
+    must NOT be treated as the end of the article.
     """
 
     body_description = soup.select_one(
@@ -105,36 +86,41 @@ def extract_article_text(soup):
         recursive=False
     ):
 
-        # -----------------------------------------------------
-        # The first H2 marks the beginning of related content.
-        # -----------------------------------------------------
-
-        if element.name == "h2":
+        # Related content starts here.
+        if (
+            element.name == "div"
+            and "around-the-web" in (
+                element.get("class") or []
+            )
+        ):
             break
 
-        # -----------------------------------------------------
-        # Keep normal article paragraphs.
-        # -----------------------------------------------------
-
+        # Ignore empty advertising placeholders.
         if element.name == "p":
+            if element.select_one(
+                ".rblad-ieee_in_content"
+            ):
+                text = element.get_text(
+                    " ",
+                    strip=True
+                )
+
+                if not text:
+                    continue
 
             text = element.get_text(
                 " ",
-                strip=True,
+                strip=True
             )
 
             if text:
                 content_parts.append(text)
 
-        # -----------------------------------------------------
-        # Keep article section headings.
-        # -----------------------------------------------------
-
-        elif element.name == "h3":
-
+        # Article section headings are part of the article.
+        elif element.name in ["h2", "h3"]:
             text = element.get_text(
                 " ",
-                strip=True,
+                strip=True
             )
 
             if text:
@@ -151,521 +137,273 @@ def extract_with_trafilatura(html):
             html,
             include_comments=False,
             include_tables=False,
-            include_links=False,
+            favor_precision=True
         )
 
-        if text:
-            return text.strip()
-
-        result = trafilatura.bare_extraction(
-            html,
-            include_comments=False,
-            include_tables=False,
-            include_links=False,
-        )
-
-        if result:
-            text = result.get("text")
-
-            if text:
-                return text.strip()
+        return text.strip() if text else ""
 
     except Exception:
-        pass
-
-    return ""
+        return ""
 
 
 def extract_with_newspaper(url):
     try:
-        article = newspaper.article(
-            url,
-            language="en",
-        )
+        article = newspaper.article(url)
 
-        if article and article.text:
-            return article.text.strip()
+        text = article.text.strip()
+
+        return text
 
     except Exception:
-        pass
-
-    return ""
+        return ""
 
 
-def extract_main_image(soup, article_url):
-
-    # ---------------------------------------------------------
-    # 1. IEEE Spectrum hero image
-    #
-    # Tested structure:
-    #
-    # img.rm-lazyloadable-image.rm-hero-media
-    # ---------------------------------------------------------
-
+def extract_main_image(soup):
+    # IEEE Spectrum's actual hero image.
     hero_image = soup.select_one(
         "img.rm-lazyloadable-image.rm-hero-media"
     )
 
     if hero_image:
-
-        image_url = (
+        src = (
             hero_image.get("src")
             or hero_image.get("data-src")
-            or hero_image.get("data-lazy-src")
             or hero_image.get("data-original")
         )
 
-        if image_url:
+        if src:
             return urljoin(
-                article_url,
-                image_url,
+                "https://spectrum.ieee.org/",
+                src
             )
 
-        srcset = hero_image.get("srcset")
-
-        if srcset:
-
-            image_url = (
-                srcset
-                .split(",")[0]
-                .strip()
-                .split()[0]
-            )
-
-            if image_url:
-                return urljoin(
-                    article_url,
-                    image_url,
-                )
-
-    # ---------------------------------------------------------
-    # 2. Open Graph image
-    # ---------------------------------------------------------
-
+    # Fallback 1: Open Graph image.
     og_image = soup.find(
         "meta",
-        attrs={
-            "property": "og:image"
-        },
+        property="og:image"
     )
 
-    if og_image:
-
-        image_url = og_image.get(
-            "content"
+    if og_image and og_image.get("content"):
+        return urljoin(
+            "https://spectrum.ieee.org/",
+            og_image["content"]
         )
 
-        if image_url:
-            return urljoin(
-                article_url,
-                image_url,
-            )
-
-    # ---------------------------------------------------------
-    # 3. Twitter image
-    # ---------------------------------------------------------
-
+    # Fallback 2: Twitter image.
     twitter_image = soup.find(
         "meta",
         attrs={
             "name": "twitter:image"
-        },
+        }
     )
 
-    if twitter_image:
-
-        image_url = twitter_image.get(
-            "content"
+    if twitter_image and twitter_image.get("content"):
+        return urljoin(
+            "https://spectrum.ieee.org/",
+            twitter_image["content"]
         )
 
-        if image_url:
-            return urljoin(
-                article_url,
-                image_url,
-            )
-
-    # ---------------------------------------------------------
-    # 4. JSON-LD image
-    # ---------------------------------------------------------
-
+    # Fallback 3: JSON-LD.
     for script in soup.find_all(
         "script",
-        attrs={
-            "type": "application/ld+json"
-        },
+        type="application/ld+json"
     ):
-
         try:
             data = json.loads(
-                script.string
-                or script.get_text()
+                script.string or script.get_text()
             )
+
+            if isinstance(data, dict):
+                image = data.get("image")
+
+                if isinstance(image, str):
+                    return urljoin(
+                        "https://spectrum.ieee.org/",
+                        image
+                    )
+
+                if isinstance(image, list) and image:
+                    return urljoin(
+                        "https://spectrum.ieee.org/",
+                        image[0]
+                    )
+
+                if isinstance(image, dict):
+                    image_url = image.get("url")
+
+                    if image_url:
+                        return urljoin(
+                            "https://spectrum.ieee.org/",
+                            image_url
+                        )
 
         except Exception:
             continue
 
-        items = []
+    return None
 
-        if isinstance(data, dict):
 
-            items.append(data)
+def extract_videos_from_html(soup):
+    videos = []
 
-            graph = data.get(
-                "@graph"
+    # Real YouTube embeds only.
+    for iframe in soup.find_all("iframe"):
+
+        src = iframe.get("src")
+
+        if not src:
+            continue
+
+        parsed = urlparse(src)
+        hostname = parsed.netloc.lower()
+
+        if (
+            "youtube.com" in hostname
+            or "youtube-nocookie.com" in hostname
+            or "youtu.be" in hostname
+        ):
+            video_url = urljoin(
+                "https://spectrum.ieee.org/",
+                src
             )
 
-            if isinstance(graph, list):
-                items.extend(graph)
+            if video_url not in videos:
+                videos.append(video_url)
 
-        elif isinstance(data, list):
+    # HTML5 video elements.
+    for video in soup.find_all("video"):
 
-            items.extend(data)
+        src = video.get("src")
 
-        for item in items:
+        if src:
+            video_url = urljoin(
+                "https://spectrum.ieee.org/",
+                src
+            )
 
-            if not isinstance(
-                item,
-                dict,
-            ):
+            if video_url not in videos:
+                videos.append(video_url)
+
+        for source in video.find_all("source"):
+
+            src = source.get("src")
+
+            if not src:
                 continue
 
-            image = item.get(
-                "image"
+            video_url = urljoin(
+                "https://spectrum.ieee.org/",
+                src
             )
 
-            if isinstance(
-                image,
-                str,
-            ):
+            if video_url not in videos:
+                videos.append(video_url)
 
-                return urljoin(
-                    article_url,
-                    image,
-                )
-
-            if isinstance(
-                image,
-                dict,
-            ):
-
-                image_url = image.get(
-                    "url"
-                )
-
-                if image_url:
-                    return urljoin(
-                        article_url,
-                        image_url,
-                    )
-
-            if isinstance(
-                image,
-                list,
-            ):
-
-                for image_item in image:
-
-                    if isinstance(
-                        image_item,
-                        str,
-                    ):
-
-                        return urljoin(
-                            article_url,
-                            image_item,
-                        )
-
-                    if isinstance(
-                        image_item,
-                        dict,
-                    ):
-
-                        image_url = image_item.get(
-                            "url"
-                        )
-
-                        if image_url:
-                            return urljoin(
-                                article_url,
-                                image_url,
-                            )
-
-    # ---------------------------------------------------------
-    # 5. First figure image
-    # ---------------------------------------------------------
-
-    figure = soup.find(
-        "figure"
-    )
-
-    if figure:
-
-        image = figure.find(
-            "img"
-        )
-
-        if image:
-
-            image_url = (
-                image.get("src")
-                or image.get("data-src")
-                or image.get("data-lazy-src")
-                or image.get("data-original")
-            )
-
-            if image_url:
-
-                return urljoin(
-                    article_url,
-                    image_url,
-                )
-
-            srcset = image.get(
-                "srcset"
-            )
-
-            if srcset:
-
-                image_url = (
-                    srcset
-                    .split(",")[0]
-                    .strip()
-                    .split()[0]
-                )
-
-                if image_url:
-
-                    return urljoin(
-                        article_url,
-                        image_url,
-                    )
-
-    return ""
+    return videos
 
 
 def extract_videos_with_yt_dlp(url):
-
     videos = []
 
     try:
-
-        options = {
+        ydl_opts = {
             "quiet": True,
-            "no_warnings": True,
             "skip_download": True,
-            "extract_flat": False,
+            "extract_flat": True
         }
 
-        with yt_dlp.YoutubeDL(
-            options
-        ) as ydl:
-
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(
                 url,
-                download=False,
+                download=False
             )
 
         if not info:
             return videos
 
-        entries = info.get(
-            "entries"
-        )
+        webpage_url = info.get("webpage_url")
 
-        if entries is None:
-            entries = [info]
-
-        for entry in entries:
-
-            if not entry:
-                continue
-
-            video_url = entry.get(
-                "url"
-            )
-
-            if (
-                video_url
-                and video_url not in videos
-            ):
-
-                videos.append(
-                    video_url
-                )
+        if webpage_url:
+            videos.append(webpage_url)
 
     except Exception:
         pass
-
-    return videos
-
-
-def extract_videos_from_html(
-    soup,
-    article_url,
-):
-
-    videos = []
-
-    for iframe in soup.find_all(
-        "iframe"
-    ):
-
-        src = iframe.get(
-            "src"
-        )
-
-        if not src:
-            src = iframe.get(
-                "data-src"
-            )
-
-        if not src:
-            continue
-
-        video_url = urljoin(
-            article_url,
-            src,
-        )
-
-        parsed = urlparse(
-            video_url
-        )
-
-        host = parsed.netloc.lower()
-        path = parsed.path.lower()
-
-        is_youtube = host in {
-            "youtube.com",
-            "www.youtube.com",
-            "youtube-nocookie.com",
-            "www.youtube-nocookie.com",
-        }
-
-        is_youtube_embed = path.startswith(
-            "/embed/"
-        )
-
-        if (
-            is_youtube
-            and is_youtube_embed
-        ):
-
-            if video_url not in videos:
-                videos.append(
-                    video_url
-                )
 
     return videos
 
 
 def scrape(url):
 
-    # ---------------------------------------------------------
-    # Page type detection
-    # ---------------------------------------------------------
+    result = empty_scraped_data()
 
     if not is_article_url(url):
-        return None
+        return result
 
-    # ---------------------------------------------------------
-    # Download page
-    # ---------------------------------------------------------
+    try:
+        html = get_html(url)
 
-    html = get_html(
-        url
-    )
-
-    soup = BeautifulSoup(
-        html,
-        "html.parser",
-    )
-
-    # ---------------------------------------------------------
-    # Text extraction
-    #
-    # Primary:
-    # IEEE Spectrum's actual article HTML structure
-    #
-    # Fallback:
-    # Trafilatura
-    #
-    # Final fallback:
-    # Newspaper4k
-    # ---------------------------------------------------------
-
-    text = extract_article_text(
-        soup
-    )
-
-    if not text:
-
-        text = extract_with_trafilatura(
-            html
+        soup = BeautifulSoup(
+            html,
+            "html.parser"
         )
 
-    if not text:
+        # --------------------------------------------------
+        # ARTICLE TEXT
+        # --------------------------------------------------
 
-        text = extract_with_newspaper(
-            url
-        )
+        text = extract_article_text(soup)
 
-    # ---------------------------------------------------------
-    # Main image
-    # ---------------------------------------------------------
-
-    main_image = extract_main_image(
-        soup,
-        url,
-    )
-
-    # ---------------------------------------------------------
-    # Videos
-    #
-    # First try HTML iframe detection.
-    # Then try yt-dlp.
-    # ---------------------------------------------------------
-
-    videos = extract_videos_from_html(
-        soup,
-        url,
-    )
-
-    yt_dlp_videos = (
-        extract_videos_with_yt_dlp(
-            url
-        )
-    )
-
-    for video_url in yt_dlp_videos:
-
-        if video_url not in videos:
-
-            videos.append(
-                video_url
+        # Fallback only if the dedicated IEEE extraction
+        # fails completely.
+        if not text:
+            text = extract_with_trafilatura(
+                html
             )
 
-    # ---------------------------------------------------------
-    # Validation
-    # ---------------------------------------------------------
+        if not text:
+            text = extract_with_newspaper(
+                url
+            )
 
-    if not text:
+        # --------------------------------------------------
+        # MAIN IMAGE
+        # --------------------------------------------------
 
-        raise ValueError(
-            "Article text could not be extracted."
+        main_image = extract_main_image(
+            soup
         )
 
-    if len(text.strip()) < 100:
+        # --------------------------------------------------
+        # VIDEOS
+        # --------------------------------------------------
 
-        raise ValueError(
-            "Extracted article text is too short."
+        videos = extract_videos_from_html(
+            soup
         )
 
-    # ---------------------------------------------------------
-    # Final scraped data
-    # ---------------------------------------------------------
+        if not videos:
+            videos = extract_videos_with_yt_dlp(
+                url
+            )
 
-    return {
-        "text": text.strip(),
-        "main_image": main_image,
-        "videos": videos,
-    }
+        # --------------------------------------------------
+        # VALIDATION
+        # --------------------------------------------------
+
+        if not text or len(text.strip()) < 100:
+            return {
+                "text": "",
+                "main_image": main_image,
+                "videos": videos
+            }
+
+        result = {
+            "text": text.strip(),
+            "main_image": main_image,
+            "videos": videos
+        }
+
+        return result
+
+    except Exception:
+        return result
