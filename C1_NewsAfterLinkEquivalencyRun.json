@@ -1,636 +1,548 @@
 {
   "news": [
     {
-      "title": "GE Vernova, Hitachi, SGE and Samsung C&T sign BWRX-300s MoU",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/ge-vernova-hitachi-sge-and-samsung-ct-sign-mou-on-bwrx-300s-in-europe",
-      "published_at": "Wed, 23 Sep 2026 10:34:49 GMT",
-      "collected_at": "2026-10-06T20:23:52.052232+00:00"
+      "title": "Changing Your Career Isn’t Easy",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/career-pivots-for-software-engineers",
+      "published_at": "Wed, 07 Oct 2026 17:04:02 +0000",
+      "collected_at": "2026-10-08T06:11:46.574929+00:00"
     },
     {
-      "title": "Škoda JS to supply control rod drives for Rolls-Royce SMR's reactors",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/skoda-js-to-supply-control-rod-drives-for-rolls-royce-smrs",
-      "published_at": "Wed, 23 Sep 2026 12:36:30 GMT",
-      "collected_at": "2026-10-06T20:23:52.052252+00:00"
+      "title": "The U.S. Just Bet $1 Billion on Quantum Chip Manufacturing",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/anderon-quantum-fab",
+      "published_at": "Wed, 07 Oct 2026 13:09:13 +0000",
+      "collected_at": "2026-10-08T06:11:46.574940+00:00"
     },
     {
-      "title": "SGE confident of UK SMR fleet prospects",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/sge-confident-of-uk-smr-fleet-prospects",
-      "published_at": "Wed, 23 Sep 2026 13:26:32 GMT",
-      "collected_at": "2026-10-06T20:23:52.052257+00:00"
+      "title": "Europe’s Circuit4EU Initiative Targets Rare Earths From E-Waste",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/e-waste-european-union-circuit4eu",
+      "published_at": "Tue, 06 Oct 2026 13:00:02 +0000",
+      "collected_at": "2026-10-08T06:11:46.574943+00:00"
     },
     {
-      "title": "Second reactor manufactured for floating nuclear plant",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/second-reactor-manufactured-for-floating-nuclear-plant",
-      "published_at": "Thu, 24 Sep 2026 08:19:15 GMT",
-      "collected_at": "2026-10-06T20:23:52.052260+00:00"
+      "title": "Attempts to Keep Humans in the AI Loop May Actually Push Them Out",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/agentic-ai-humans-in-loop",
+      "published_at": "Mon, 05 Oct 2026 15:57:11 +0000",
+      "collected_at": "2026-10-08T06:11:46.574945+00:00"
     },
     {
-      "title": "US-Turkey agreement to accelerate SMR deployment",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/us-turkey-agreement-to-accelerate-smr-deployment",
-      "published_at": "Thu, 24 Sep 2026 09:07:22 GMT",
-      "collected_at": "2026-10-06T20:23:52.052264+00:00"
+      "title": "AI Solves a Major Unsolved Math Problem. Not Everyone Is Happy",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/millennium-prize-ai",
+      "published_at": "Mon, 05 Oct 2026 12:00:02 +0000",
+      "collected_at": "2026-10-08T06:11:46.574947+00:00"
     },
     {
-      "title": "Polish plant contract negotiations move to next stage",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/polish-plant-contract-negotiations-move-to-next-stage",
-      "published_at": "Thu, 24 Sep 2026 10:03:56 GMT",
-      "collected_at": "2026-10-06T20:23:52.052267+00:00"
+      "title": "Garlic-Peel Sensor Powers Low-Cost Home-Security Sensor",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/garlic-peel-biowaste-sensor",
+      "published_at": "Sun, 04 Oct 2026 13:00:01 +0000",
+      "collected_at": "2026-10-08T06:11:46.574950+00:00"
     },
     {
-      "title": "First concrete poured for Bailong 2 nuclear power unit",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/first-concrete-poured-for-bailong-2-nuclear-power-unit",
-      "published_at": "Mon, 28 Sep 2026 11:12:52 GMT",
-      "collected_at": "2026-10-06T20:23:52.052270+00:00"
+      "title": "Video Friday: Albatross Falls, Spins, Self-Rights, and Sails Away",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/video-friday-bioinspired-robotics",
+      "published_at": "Fri, 02 Oct 2026 16:30:02 +0000",
+      "collected_at": "2026-10-08T06:11:46.574952+00:00"
     },
     {
-      "title": "Tianwan 7 brought to minimum controllable power level",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/tianwan-7-brought-to-minimum-controllable-power-level",
-      "published_at": "Tue, 29 Sep 2026 15:37:41 GMT",
-      "collected_at": "2026-10-06T20:23:52.052274+00:00"
+      "title": "Atlas Robot’s New Hand May Outperform Humanlike Designs",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/robust-robot-hand",
+      "published_at": "Thu, 01 Oct 2026 14:40:12 +0000",
+      "collected_at": "2026-10-08T06:11:46.574954+00:00"
     },
     {
-      "title": "Armenia to make new nuclear decision 'in near future'",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/armenia-to-make-new-nuclear-plant-decision-in-near-future",
-      "published_at": "Wed, 30 Sep 2026 10:51:44 GMT",
-      "collected_at": "2026-10-06T20:23:52.052277+00:00"
+      "title": "Can These EEG Headphones Sense When Your Brain Needs a Break?",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/eeg-headphones-neurable-one",
+      "published_at": "Thu, 01 Oct 2026 13:00:03 +0000",
+      "collected_at": "2026-10-08T06:11:46.574956+00:00"
     },
     {
-      "title": "First construction permit issued for BWRX-300 SMR in the US",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/first-construction-permit-issued-for-bwrx300-smr-in-us",
-      "published_at": "Wed, 30 Sep 2026 15:02:24 GMT",
-      "collected_at": "2026-10-06T20:23:52.052280+00:00"
+      "title": "Electricity Theft Is Rampant, but Delhi Found a Fix",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/electricity-theft",
+      "published_at": "Thu, 01 Oct 2026 12:00:02 +0000",
+      "collected_at": "2026-10-08T06:11:46.574958+00:00"
     },
     {
-      "title": "Hinkley Point C completes 620-metre tunnel for fish",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/hinkley-point-c-completes-620-metre-tunnel-for-fish",
-      "published_at": "Thu, 01 Oct 2026 08:02:22 GMT",
-      "collected_at": "2026-10-06T20:23:52.052283+00:00"
+      "title": "World’s First Fully Implanted Cochlear Implant Reaches Patients",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/fully-implantable-cochlear-implant",
+      "published_at": "Wed, 30 Sep 2026 16:19:59 +0000",
+      "collected_at": "2026-10-08T06:11:46.574960+00:00"
     },
     {
-      "title": "Moves to bolster US nuclear workforce development",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/moves-to-bolster-us-nuclear-workforce-development",
-      "published_at": "Fri, 02 Oct 2026 09:00:16 GMT",
-      "collected_at": "2026-10-06T20:23:52.052285+00:00"
+      "title": "A Brief History of the Bloomberg Terminal",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/bloomberg-terminal",
+      "published_at": "Wed, 30 Sep 2026 13:00:02 +0000",
+      "collected_at": "2026-10-08T06:11:46.574962+00:00"
     },
     {
-      "title": "BWXT's BANR microreactor selected for Canadian project",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/bwxts-banr-microreactor-selected-for-canadian-project",
-      "published_at": "Tue, 06 Oct 2026 12:34:56 GMT",
-      "collected_at": "2026-10-06T20:23:52.052288+00:00"
+      "title": "Ukraine’s Air Defenses Have No Answer for Russia’s New Jet Drones",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/jet-powered-shahed-drone",
+      "published_at": "Wed, 30 Sep 2026 11:00:02 +0000",
+      "collected_at": "2026-10-08T06:11:46.574964+00:00"
     },
     {
-      "title": "Concreting milestones at Chinese Hualong One units",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/concreting-milestones-at-chinese-hualong-one-units",
-      "published_at": "Tue, 06 Oct 2026 15:21:32 GMT",
-      "collected_at": "2026-10-06T20:23:52.052291+00:00"
+      "title": "Tech to Replace Animal Testing Is Almost Ready. Scientists Are Not",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/alternatives-to-animal-testing",
+      "published_at": "Tue, 29 Sep 2026 13:00:02 +0000",
+      "collected_at": "2026-10-08T06:11:46.574965+00:00"
     },
     {
-      "title": "Taiwan regulator completes review of restart plan",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/taiwan-regulator-completes-review-of-restart-plan",
-      "published_at": "Mon, 28 Sep 2026 10:55:12 GMT",
-      "collected_at": "2026-10-06T20:23:52.052294+00:00"
+      "title": "How to Stop AI Agents From Secretly Collaborating",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/ai-agent-security",
+      "published_at": "Tue, 29 Sep 2026 12:00:02 +0000",
+      "collected_at": "2026-10-08T06:11:46.574967+00:00"
     },
     {
-      "title": "NRC completes environmental review of Crane restart",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/nrc-completes-environmental-review-of-crane-restart",
-      "published_at": "Mon, 28 Sep 2026 15:38:44 GMT",
-      "collected_at": "2026-10-06T20:23:52.052297+00:00"
+      "title": "A Day in the Life of a Roboticist: Charlie Kemp",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/day-in-the-life-of-a-roboticist-charlie-kemp",
+      "published_at": "Mon, 28 Sep 2026 21:48:56 +0000",
+      "collected_at": "2026-10-08T06:11:46.574969+00:00"
     },
     {
-      "title": "WANO stresses importance of collaboration for nuclear growth",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/wano-stresses-importance-of-collaboration-for-nuclear-growth",
-      "published_at": "Thu, 01 Oct 2026 07:43:39 GMT",
-      "collected_at": "2026-10-06T20:23:52.052300+00:00"
+      "title": "Here’s How Delhi Achieved Its Epic Power-Grid Fix",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/delhi-electricity-loss",
+      "published_at": "Mon, 28 Sep 2026 13:00:04 +0000",
+      "collected_at": "2026-10-08T06:11:46.574971+00:00"
     },
     {
-      "title": "Second part of construction permit application submitted for SMRs at Palisades",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/second-part-of-construction-permit-application-submitted-for-pioneer-smrs",
-      "published_at": "Fri, 02 Oct 2026 14:38:26 GMT",
-      "collected_at": "2026-10-06T20:23:52.052303+00:00"
+      "title": "Generative AI Gives Spacecraft the Autonomy Engineers Once Feared",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/generative-ai-in-space-exploration",
+      "published_at": "Mon, 28 Sep 2026 11:00:05 +0000",
+      "collected_at": "2026-10-08T06:11:46.574973+00:00"
     },
     {
-      "title": "Italy's Senate approves a return to nuclear power",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/italys-senate-approves-a-return-to-nuclear-power",
-      "published_at": "Thu, 24 Sep 2026 11:11:17 GMT",
-      "collected_at": "2026-10-06T20:23:52.052306+00:00"
+      "title": "Poetry for Engineers: The UI Designer’s Dream",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/poetry-user-interface-design",
+      "published_at": "Sun, 27 Sep 2026 13:00:03 +0000",
+      "collected_at": "2026-10-08T06:11:46.574975+00:00"
     },
     {
-      "title": "White Paper aims to facilitate safe and secure transport of radioactive materials",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/white-paper-aims-to-facilitate-safe-transport-of-radioactive-materials",
-      "published_at": "Fri, 25 Sep 2026 13:25:04 GMT",
-      "collected_at": "2026-10-06T20:23:52.052308+00:00"
+      "title": "Tiny Flaws in Glass Fiber Can Help Reveal Undersea Cable Threats",
+      "source": "IEEE Spectrum - All Topics",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/undersea-cables-acoustic-sensing",
+      "published_at": "Sat, 26 Sep 2026 10:00:07 +0000",
+      "collected_at": "2026-10-08T06:11:46.574977+00:00"
     },
     {
-      "title": "Inter-American Development Bank and IAEA sign nuclear energy MoU",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/inter-american-development-bank-and-iaea-nuclear-energy-mou",
-      "published_at": "Mon, 28 Sep 2026 09:51:51 GMT",
-      "collected_at": "2026-10-06T20:23:52.052311+00:00"
+      "title": "IEEE Report Predicts Tech That Will Transform Lives",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/ieee-report-predicts-tech",
+      "published_at": "Wed, 07 Oct 2026 18:00:02 +0000",
+      "collected_at": "2026-10-08T06:11:46.980787+00:00"
     },
     {
-      "title": "Legislative amendment paves way for continued operation of Borssele",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/legislative-amendment-paves-way-for-continued-operation-of-borssele",
-      "published_at": "Tue, 29 Sep 2026 13:44:42 GMT",
-      "collected_at": "2026-10-06T20:23:52.052314+00:00"
+      "title": "HiPHI: A Large-Scale Benchmark for High-Precision Human Motion and Object Interaction",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://content.knowledgehub.wiley.com/hiphi-a-large-scale-benchmark-for-high-precision-human-motion-and-object-interaction/",
+      "published_at": "Wed, 07 Oct 2026 13:49:48 +0000",
+      "collected_at": "2026-10-08T06:11:46.980802+00:00"
     },
     {
-      "title": "Saskatchewan firms up nuclear power ambitions",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/saskatchewan-firms-up-nuclear-power-ambitions",
-      "published_at": "Wed, 30 Sep 2026 14:59:31 GMT",
-      "collected_at": "2026-10-06T20:23:52.052317+00:00"
+      "title": "Happy IEEE Day!",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/ieee-day",
+      "published_at": "Tue, 06 Oct 2026 09:21:18 +0000",
+      "collected_at": "2026-10-08T06:11:46.980805+00:00"
     },
     {
-      "title": "Four key issues when building nuclear in different countries, according to Rosatom",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/four-priority-issues-building-nuclear-different-countries-according-rosatom",
-      "published_at": "Thu, 01 Oct 2026 08:43:37 GMT",
-      "collected_at": "2026-10-06T20:23:52.052319+00:00"
+      "title": "6 Guidelines for Governing AI",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/6-guidelines-governing-ai",
+      "published_at": "Mon, 05 Oct 2026 18:00:02 +0000",
+      "collected_at": "2026-10-08T06:11:46.980807+00:00"
     },
     {
-      "title": "USA, South Korea targeting six AP1000 and two APR1400 units",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/usa-south-korea-targeting-six-ap1000-two-apr1400-units",
-      "published_at": "Thu, 01 Oct 2026 12:08:45 GMT",
-      "collected_at": "2026-10-06T20:23:52.052322+00:00"
+      "title": "Smart Car Researcher Wants to Eliminate Stoplights",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/smart-car-researcher-eliminate-stoplights",
+      "published_at": "Fri, 02 Oct 2026 18:00:02 +0000",
+      "collected_at": "2026-10-08T06:11:46.980809+00:00"
     },
     {
-      "title": "NPCIL signs MoU for Gujarat nuclear power projects",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/npcil-signs-mou-for-gujarat-nuclear-power-projects",
-      "published_at": "Fri, 02 Oct 2026 14:08:08 GMT",
-      "collected_at": "2026-10-06T20:23:52.052325+00:00"
+      "title": "Engineering Multipole Resonances in Dielectric Metasurfaces for Transmission, Reflection, and Absorption Control",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://event.on24.com/wcc/r/5510255/64A1C3695631E727E756BFCA0490437A?utm_source=IEEE",
+      "published_at": "Fri, 02 Oct 2026 10:00:03 +0000",
+      "collected_at": "2026-10-08T06:11:46.980811+00:00"
     },
     {
-      "title": "Green Party drops nuclear phase-out policy",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/green-party-members-drop-nuclear-phase-out-policy",
-      "published_at": "Mon, 05 Oct 2026 06:26:23 GMT",
-      "collected_at": "2026-10-06T20:23:52.052328+00:00"
+      "title": "IEEE Celebrates Innovators Shaping the Future",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/ieee-technical-field-awards-2027",
+      "published_at": "Wed, 30 Sep 2026 18:00:02 +0000",
+      "collected_at": "2026-10-08T06:11:46.980815+00:00"
     },
     {
-      "title": "Timeline for Polish nuclear units slips in updated programme",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/timeline-for-polish-nuclear-units-slips-in-updated-programme",
-      "published_at": "Mon, 05 Oct 2026 13:23:57 GMT",
-      "collected_at": "2026-10-06T20:23:52.052331+00:00"
+      "title": "Unveiling IC-STAR: Full-Flow Autonomy from Digital to Analog",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://event.on24.com/wcc/r/5507421/A45CEFBA43BC7B2A43F265520AFDBA32",
+      "published_at": "Tue, 29 Sep 2026 10:00:06 +0000",
+      "collected_at": "2026-10-08T06:11:46.980820+00:00"
     },
     {
-      "title": "China's giant crane for nuclear power plant construction",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/china-launches-giant-crane-for-nuclear-power-plant-construction",
-      "published_at": "Wed, 23 Sep 2026 07:27:54 GMT",
-      "collected_at": "2026-10-06T20:23:52.052334+00:00"
+      "title": "A Day in the Life of a Roboticist: Charlie Kemp",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://robotsguide.com/learn/a-day-in-the-life-of-a-roboticist-charlie-kemp",
+      "published_at": "Mon, 28 Sep 2026 21:48:56 +0000",
+      "collected_at": "2026-10-08T06:11:46.980822+00:00"
     },
     {
-      "title": "Contracts announced as Pickering refurb approaches",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/contracts-announced-as-pickering-refurb-approaches",
-      "published_at": "Wed, 23 Sep 2026 15:16:37 GMT",
-      "collected_at": "2026-10-06T20:23:52.052337+00:00"
+      "title": "A New IEEE STEM Book Series for Tweens from TryEngineering",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/ieee-stem-books-tweens-tryengineering",
+      "published_at": "Mon, 28 Sep 2026 18:00:03 +0000",
+      "collected_at": "2026-10-08T06:11:46.980824+00:00"
     },
     {
-      "title": "Polimex Mostostal to build Polish AP1000 assembly halls",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/polimex-mostostal-to-build-polish-ap1000-assembly-halls",
-      "published_at": "Tue, 29 Sep 2026 14:54:32 GMT",
-      "collected_at": "2026-10-06T20:23:52.052340+00:00"
+      "title": "Social Media Bans Aren’t Enough to Make Children Safe",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/social-media-bans",
+      "published_at": "Fri, 25 Sep 2026 13:00:04 +0000",
+      "collected_at": "2026-10-08T06:11:46.980830+00:00"
     },
     {
-      "title": "Sellafield selects partners for asset care framework",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/sellafield-selects-partners-for-asset-care-framework",
-      "published_at": "Wed, 30 Sep 2026 14:11:29 GMT",
-      "collected_at": "2026-10-06T20:23:52.052343+00:00"
+      "title": "Mexican EPICS in IEEE Team Builds Portable Educational Platform",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/epics-in-ieee-portable-educational",
+      "published_at": "Thu, 24 Sep 2026 18:00:04 +0000",
+      "collected_at": "2026-10-08T06:11:46.980832+00:00"
     },
     {
-      "title": "Constellation, Amazon agree nuclear-focused power purchase deal",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/constellation-amazon-agree-nuclear-focused-power-purchase-deal",
-      "published_at": "Thu, 01 Oct 2026 10:32:26 GMT",
-      "collected_at": "2026-10-06T20:23:52.052345+00:00"
+      "title": "Measure Distant Asteroids With a DIY Rig",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/asteroid-shadow",
+      "published_at": "Thu, 24 Sep 2026 13:00:04 +0000",
+      "collected_at": "2026-10-08T06:11:46.980834+00:00"
     },
     {
-      "title": "Polish entrepreneurs invest in SGE's BWRX-300 projects",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/polish-entrepreneurs-invest-in-sges-bwrx-300-projects",
-      "published_at": "Fri, 02 Oct 2026 07:04:24 GMT",
-      "collected_at": "2026-10-06T20:23:52.052348+00:00"
+      "title": "Engineering the Substation Exit for Reliability, Capacity, and Expansion",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://content.knowledgehub.wiley.com/aerial-cable-systems-for-substation-exit-construction/",
+      "published_at": "Thu, 24 Sep 2026 10:00:06 +0000",
+      "collected_at": "2026-10-08T06:11:46.980835+00:00"
     },
     {
-      "title": "Hinkley Point B becomes second AGR plant transferred for decommissioning",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/hinkley-pointb-second-agr-transferred-for-decommissioning",
-      "published_at": "Fri, 02 Oct 2026 11:14:46 GMT",
-      "collected_at": "2026-10-06T20:23:52.052351+00:00"
+      "title": "3 Skills That Will Matter More in the Age of AI",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/top-engineering-skills",
+      "published_at": "Wed, 23 Sep 2026 15:40:04 +0000",
+      "collected_at": "2026-10-08T06:11:46.980837+00:00"
     },
     {
-      "title": "DOE offers Vistra loan for reactor upgrades and uprates",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/doe-offers-vistra-loan-for-reactor-upgrades-and-uprates",
-      "published_at": "Tue, 06 Oct 2026 14:03:53 GMT",
-      "collected_at": "2026-10-06T20:23:52.052353+00:00"
+      "title": "Spain’s First Astronaut, Pedro Duque, Named IEEE Honorary Member",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/spain-astronaut-ieee-honorary-member",
+      "published_at": "Tue, 22 Sep 2026 18:00:05 +0000",
+      "collected_at": "2026-10-08T06:11:46.980839+00:00"
     },
     {
-      "title": "Google and Oracle deals support long-term US plant operations",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/new-end-user-agreements-support-long-term-us-plant-operations",
-      "published_at": "Tue, 06 Oct 2026 15:23:47 GMT",
-      "collected_at": "2026-10-06T20:23:52.052356+00:00"
+      "title": "Barbara Mazzolai Wants to Build a New Field of Robotics",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/sustainability-robotics-barbara-mazzolai",
+      "published_at": "Tue, 22 Sep 2026 14:00:04 +0000",
+      "collected_at": "2026-10-08T06:11:46.980841+00:00"
     },
     {
-      "title": "Agreement clears way for resumption of Niger uranium project",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/agreement-clears-way-for-resumption-of-niger-uranium-project",
-      "published_at": "Fri, 25 Sep 2026 10:05:09 GMT",
-      "collected_at": "2026-10-06T20:23:52.052359+00:00"
+      "title": "The Future Is Fanless: 100% Heat Capture for Liquid Cooled AI Servers",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/fanless-liquid-cooled-ai-servers-coolit",
+      "published_at": "Tue, 22 Sep 2026 12:22:50 +0000",
+      "collected_at": "2026-10-08T06:11:46.980843+00:00"
     },
     {
-      "title": "Milestone for X-Energy's TRISO-X fuel facility",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/milestone-for-x-energys-triso-xs-fuel-facility",
-      "published_at": "Fri, 25 Sep 2026 10:46:11 GMT",
-      "collected_at": "2026-10-06T20:23:52.052361+00:00"
+      "title": "This Digital Radio Gets Messages to the World’s Remotest Locations",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/hermes-shortwave-radio-digital-data",
+      "published_at": "Mon, 21 Sep 2026 13:00:04 +0000",
+      "collected_at": "2026-10-08T06:11:46.980845+00:00"
     },
     {
-      "title": "General Matter submits licence application for enrichment plant",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/general-matter-submits-enrichment-plant-licence-application",
-      "published_at": "Tue, 29 Sep 2026 09:44:27 GMT",
-      "collected_at": "2026-10-06T20:23:52.052364+00:00"
+      "title": "Parallel Reads and Write Optimization for Large-Scale Data Replication",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://content.knowledgehub.wiley.com/76-faster-replication-same-infrastructure/",
+      "published_at": "Fri, 18 Sep 2026 18:29:50 +0000",
+      "collected_at": "2026-10-08T06:11:46.980847+00:00"
     },
     {
-      "title": "Demolition of exhaust stack changes Stade skyline",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/demolition-of-exhaust-stack-changes-stade-skyline",
-      "published_at": "Fri, 25 Sep 2026 07:54:44 GMT",
-      "collected_at": "2026-10-06T20:23:52.052366+00:00"
+      "title": "Turning Tech Talent Into Leadership Legacy",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/tech-talent-into-leadership-legacy",
+      "published_at": "Fri, 18 Sep 2026 18:00:04 +0000",
+      "collected_at": "2026-10-08T06:11:46.980848+00:00"
     },
     {
-      "title": "Orano inaugurates lead-212 production facility",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/orano-inaugurates-lead-212-production-facility",
-      "published_at": "Mon, 05 Oct 2026 12:45:19 GMT",
-      "collected_at": "2026-10-06T20:23:52.052369+00:00"
+      "title": "Andrew Ng: Unbiggen AI",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/andrew-ng-data-centric-ai",
+      "published_at": "Wed, 09 Feb 2022 15:31:12 +0000",
+      "collected_at": "2026-10-08T06:11:46.980850+00:00"
     },
     {
-      "title": "UK aims to build on fusion research record to establish industrial base",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/uk-aims-to-build-on-fusion-research-record-to-establish-industrial-base",
-      "published_at": "Mon, 28 Sep 2026 10:28:50 GMT",
-      "collected_at": "2026-10-06T20:23:52.052372+00:00"
+      "title": "How AI Will Change Chip Design",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/ai-chip-design-matlab",
+      "published_at": "Tue, 08 Feb 2022 14:00:01 +0000",
+      "collected_at": "2026-10-08T06:11:46.980852+00:00"
     },
     {
-      "title": "Europe delivers final ITER vacuum vessel sector",
-      "source": "World Nuclear News",
-      "category": "Nuclear Energy",
-      "url": "https://www.world-nuclear-news.org/articles/europe-delivers-final-iter-vacuum-vessel-sector",
-      "published_at": "Mon, 05 Oct 2026 15:04:03 GMT",
-      "collected_at": "2026-10-06T20:23:52.052374+00:00"
+      "title": "Atomically Thin Materials Significantly Shrink Qubits",
+      "source": "IEEE Spectrum - Full Text",
+      "category": "Technology",
+      "url": "https://spectrum.ieee.org/2d-hbn-qubit",
+      "published_at": "Mon, 07 Feb 2022 16:12:05 +0000",
+      "collected_at": "2026-10-08T06:11:46.980854+00:00"
     },
     {
-      "title": "Sovereign AI, same landlord — thoughts on the physical AI race",
-      "source": "The Robot Report",
+      "title": "Video Friday: Life’s Better With a Little Robot Goose",
+      "source": "IEEE Spectrum - Robotics",
       "category": "Robotics",
-      "url": "https://www.therobotreport.com/sovereign-ai-same-landlord-thoughts-physical-ai-race/",
-      "published_at": "Tue, 06 Oct 2026 17:47:50 +0000",
-      "collected_at": "2026-10-06T20:23:52.346231+00:00"
+      "url": "https://spectrum.ieee.org/video-friday-goose-household-robots",
+      "published_at": "Fri, 25 Sep 2026 16:00:04 +0000",
+      "collected_at": "2026-10-08T06:11:47.644268+00:00"
     },
     {
-      "title": "FireDome builds autonomous ‘artillery’ for wildfire defense",
-      "source": "The Robot Report",
+      "title": "Video Friday: Two Birotors Make a Quadrotor",
+      "source": "IEEE Spectrum - Robotics",
       "category": "Robotics",
-      "url": "https://www.therobotreport.com/firedome-builds-autonomous-artillery-for-wildfire-defense/",
-      "published_at": "Tue, 06 Oct 2026 16:00:31 +0000",
-      "collected_at": "2026-10-06T20:23:52.346248+00:00"
+      "url": "https://spectrum.ieee.org/video-friday-quadrotor-from-birotor",
+      "published_at": "Fri, 18 Sep 2026 16:01:05 +0000",
+      "collected_at": "2026-10-08T06:11:47.644274+00:00"
     },
     {
-      "title": "Overview AI launches OV Spark line of AI inspection cameras",
-      "source": "The Robot Report",
+      "title": "Rethinking Robot Safety in the Age of AI",
+      "source": "IEEE Spectrum - Robotics",
       "category": "Robotics",
-      "url": "https://www.therobotreport.com/overview-ai-launches-ov-spark-line-ai-inspection-cameras/",
-      "published_at": "Tue, 06 Oct 2026 14:51:48 +0000",
-      "collected_at": "2026-10-06T20:23:52.346252+00:00"
+      "url": "https://spectrum.ieee.org/physical-ai-robot-cybersecurity-vicone",
+      "published_at": "Wed, 16 Sep 2026 16:51:02 +0000",
+      "collected_at": "2026-10-08T06:11:47.644276+00:00"
     },
     {
-      "title": "Teradyne invests in Bright Machines to bring robotics to AI infrastructure manufacturing",
-      "source": "The Robot Report",
+      "title": "Digit 5 May Be the First Humanoid Robot Worker That’s Truly Safe",
+      "source": "IEEE Spectrum - Robotics",
       "category": "Robotics",
-      "url": "https://www.therobotreport.com/teradyne-invests-ibright-machines-brings-robotics-ai-infrastructure-manufacturing/",
-      "published_at": "Mon, 05 Oct 2026 23:34:35 +0000",
-      "collected_at": "2026-10-06T20:23:52.346255+00:00"
+      "url": "https://spectrum.ieee.org/humanoid-robot-safety",
+      "published_at": "Tue, 15 Sep 2026 15:22:30 +0000",
+      "collected_at": "2026-10-08T06:11:47.644278+00:00"
     },
     {
-      "title": "FCC robot restrictions could accelerate shift to local AI",
-      "source": "The Robot Report",
+      "title": "Video Friday: Humanoid Robot Takes On Monkey Bars",
+      "source": "IEEE Spectrum - Robotics",
       "category": "Robotics",
-      "url": "https://www.therobotreport.com/fcc-robot-restrictions-could-accelerate-shift-to-local-ai/",
-      "published_at": "Mon, 05 Oct 2026 17:30:12 +0000",
-      "collected_at": "2026-10-06T20:23:52.346259+00:00"
+      "url": "https://spectrum.ieee.org/video-friday-disaster-response-robots",
+      "published_at": "Fri, 11 Sep 2026 15:30:04 +0000",
+      "collected_at": "2026-10-08T06:11:47.644280+00:00"
     },
     {
-      "title": "How robotics and physical AI can responsibly tackle key physical security challenges",
-      "source": "The Robot Report",
+      "title": "Robots Are Learning to Feel",
+      "source": "IEEE Spectrum - Robotics",
       "category": "Robotics",
-      "url": "https://www.therobotreport.com/how-robotics-physical-ai-can-responsibly-tackle-key-physical-security-challenges/",
-      "published_at": "Sun, 04 Oct 2026 12:52:11 +0000",
-      "collected_at": "2026-10-06T20:23:52.346262+00:00"
+      "url": "https://spectrum.ieee.org/tactile-data-robots",
+      "published_at": "Thu, 10 Sep 2026 18:22:35 +0000",
+      "collected_at": "2026-10-08T06:11:47.644282+00:00"
     },
     {
-      "title": "The physical AI race will be won in the patent office",
-      "source": "The Robot Report",
+      "title": "This Robot Will Draw Your Blood Now",
+      "source": "IEEE Spectrum - Robotics",
       "category": "Robotics",
-      "url": "https://www.therobotreport.com/physical-ai-race-will-be-won-in-patent-office/",
-      "published_at": "Sat, 03 Oct 2026 14:30:07 +0000",
-      "collected_at": "2026-10-06T20:23:52.346265+00:00"
+      "url": "https://spectrum.ieee.org/blood-draw-robot-vitestro-aletta",
+      "published_at": "Mon, 07 Sep 2026 13:00:01 +0000",
+      "collected_at": "2026-10-08T06:11:47.644284+00:00"
     },
     {
-      "title": "Inside Omron’s next-generation LD mobile robots",
-      "source": "The Robot Report",
+      "title": "Cyborg Roaches Can Stab You With Needles",
+      "source": "IEEE Spectrum - Robotics",
       "category": "Robotics",
-      "url": "https://www.therobotreport.com/inside-omrons-next-generation-ld-mobile-robots/",
-      "published_at": "Fri, 02 Oct 2026 23:01:36 +0000",
-      "collected_at": "2026-10-06T20:23:52.346268+00:00"
+      "url": "https://spectrum.ieee.org/cyborg-rescue-roach",
+      "published_at": "Sat, 05 Sep 2026 13:00:04 +0000",
+      "collected_at": "2026-10-08T06:11:47.644286+00:00"
     },
     {
-      "title": "Eli Lilly, Purdue to share field learnings on human robot interaction at RoboBusiness",
-      "source": "The Robot Report",
+      "title": "Video Friday: Digit Redecorates",
+      "source": "IEEE Spectrum - Robotics",
       "category": "Robotics",
-      "url": "https://www.therobotreport.com/eli-lilly-purdue-to-share-field-learnings-on-human-robot-interaction-at-robobusiness/",
-      "published_at": "Fri, 02 Oct 2026 21:12:14 +0000",
-      "collected_at": "2026-10-06T20:23:52.346271+00:00"
+      "url": "https://spectrum.ieee.org/video-friday-agility-robotics-digit",
+      "published_at": "Fri, 04 Sep 2026 16:00:05 +0000",
+      "collected_at": "2026-10-08T06:11:47.644288+00:00"
     },
     {
-      "title": "Runway introduces Praxis-1 world action model for robotics",
-      "source": "The Robot Report",
+      "title": "Protecting Dynamic Industrial Robot Cable Carriers",
+      "source": "IEEE Spectrum - Robotics",
       "category": "Robotics",
-      "url": "https://www.therobotreport.com/runway-introduces-praxis-1-world-action-model-robotics/",
-      "published_at": "Fri, 02 Oct 2026 18:32:13 +0000",
-      "collected_at": "2026-10-06T20:23:52.346275+00:00"
+      "url": "https://spectrum.ieee.org/industrial-robot-cable-carrier-protection",
+      "published_at": "Thu, 03 Sep 2026 12:18:21 +0000",
+      "collected_at": "2026-10-08T06:11:47.644290+00:00"
     },
     {
-      "title": "Calling robotics startups: Submissions for the 2026 Robotics Startup Radar close soon",
-      "source": "The Robot Report",
+      "title": "The Best Way to Explore Lunar Craters Is a Giant Robot Ball",
+      "source": "IEEE Spectrum - Robotics",
       "category": "Robotics",
-      "url": "https://www.therobotreport.com/calling-all-robotics-startups-apply-now-2026-robotics-startup-radar/",
-      "published_at": "Fri, 02 Oct 2026 14:00:59 +0000",
-      "collected_at": "2026-10-06T20:23:52.346277+00:00"
+      "url": "https://spectrum.ieee.org/moon-ball-robot",
+      "published_at": "Thu, 03 Sep 2026 12:00:01 +0000",
+      "collected_at": "2026-10-08T06:11:47.644292+00:00"
     },
     {
-      "title": "Top 10 robotics stories of September 2026",
-      "source": "The Robot Report",
+      "title": "Video Friday: Meet Microduck",
+      "source": "IEEE Spectrum - Robotics",
       "category": "Robotics",
-      "url": "https://www.therobotreport.com/top-10-robotics-stories-of-september-2026/",
-      "published_at": "Thu, 01 Oct 2026 20:42:08 +0000",
-      "collected_at": "2026-10-06T20:23:52.346280+00:00"
+      "url": "https://spectrum.ieee.org/video-friday-microduck-robot",
+      "published_at": "Fri, 28 Aug 2026 16:00:03 +0000",
+      "collected_at": "2026-10-08T06:11:47.644294+00:00"
     },
     {
-      "title": "Boston Dynamics drops pinkie on new humanoid hand",
-      "source": "The Robot Report",
+      "title": "AI Companion Robots Are Closing the Human Connection in Modern Homes",
+      "source": "IEEE Spectrum - Robotics",
       "category": "Robotics",
-      "url": "https://www.therobotreport.com/boston-dynamics-drops-pinkie-on-new-humanoid-hand/",
-      "published_at": "Thu, 01 Oct 2026 17:52:51 +0000",
-      "collected_at": "2026-10-06T20:23:52.346283+00:00"
+      "url": "https://spectrum.ieee.org/ollobot-ai-companion-robot",
+      "published_at": "Tue, 25 Aug 2026 10:00:03 +0000",
+      "collected_at": "2026-10-08T06:11:47.644295+00:00"
     },
     {
-      "title": "Precision In Motion. Vishay Precision Group, Inc. (VPG) to Showcase Custom Sensing Capabilities for Humanoid Robotics at RoboBusiness 2026",
-      "source": "The Robot Report",
+      "title": "Video Friday: Do We Need Superhuman Humanoid Robots?",
+      "source": "IEEE Spectrum - Robotics",
       "category": "Robotics",
-      "url": "https://www.therobotreport.com/precision-in-motion-vishay-precision-group-inc-vpg-to-showcase-custom-sensing-capabilities-for-humanoid-robotics-at-robobusiness-2026/",
-      "published_at": "Thu, 01 Oct 2026 15:29:55 +0000",
-      "collected_at": "2026-10-06T20:23:52.346286+00:00"
+      "url": "https://spectrum.ieee.org/video-friday-unitree-superhuman",
+      "published_at": "Fri, 21 Aug 2026 16:00:01 +0000",
+      "collected_at": "2026-10-08T06:11:47.644297+00:00"
     },
     {
-      "title": "Your Robot’s Safety Functions Already Work. What If the Input Lies?",
-      "source": "The Robot Report",
+      "title": "Drones With Claws Perch on Arctic Icebergs",
+      "source": "IEEE Spectrum - Robotics",
       "category": "Robotics",
-      "url": "https://www.therobotreport.com/your-robots-safety-functions-already-work-what-if-the-input-lies/",
-      "published_at": "Thu, 01 Oct 2026 15:02:19 +0000",
-      "collected_at": "2026-10-06T20:23:52.346289+00:00"
+      "url": "https://spectrum.ieee.org/arctic-iceberg-drones",
+      "published_at": "Tue, 18 Aug 2026 13:00:01 +0000",
+      "collected_at": "2026-10-08T06:11:47.644299+00:00"
     },
     {
-      "title": "Chip Industry Technical Paper Roundup: Oct. 6",
-      "source": "Semiconductor Engineering",
-      "category": "Semiconductors",
-      "url": "https://semiengineering.com/chip-industry-technical-paper-roundup-oct-6/",
-      "published_at": "Tue, 06 Oct 2026 07:01:55 +0000",
-      "collected_at": "2026-10-06T20:23:53.304517+00:00"
+      "title": "Is Shipyard Welding the Right First Job for Humanoid Robots?",
+      "source": "IEEE Spectrum - Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/persona-ai-humanoid-robot-welding",
+      "published_at": "Mon, 17 Aug 2026 15:33:42 +0000",
+      "collected_at": "2026-10-08T06:11:47.644305+00:00"
     },
     {
-      "title": "Advancing The CFET-Based Device Roadmap: Novel Integration Modules And Standard Cell Configurations",
-      "source": "Semiconductor Engineering",
-      "category": "Semiconductors",
-      "url": "https://semiengineering.com/advancing-the-cfet-based-device-roadmap-novel-integration-modules-and-standard-cell-configurations-2/",
-      "published_at": "Tue, 06 Oct 2026 07:01:13 +0000",
-      "collected_at": "2026-10-06T20:23:53.304533+00:00"
+      "title": "Video Friday: Lift Happens",
+      "source": "IEEE Spectrum - Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/video-friday-darpa-heavy-lift-challenge",
+      "published_at": "Fri, 14 Aug 2026 17:00:01 +0000",
+      "collected_at": "2026-10-08T06:11:47.644307+00:00"
     },
     {
-      "title": "Backside Clock Meshes Cut Skew and Power in 2nm Nanosheets (UCSC)",
-      "source": "Semiconductor Engineering",
-      "category": "Semiconductors",
-      "url": "https://semiengineering.com/backside-clock-meshes-cut-skew-and-power-in-2nm-nanosheets-ucsc/",
-      "published_at": "Mon, 05 Oct 2026 18:07:21 +0000",
-      "collected_at": "2026-10-06T20:23:53.304538+00:00"
+      "title": "Robot Recycler Salvages Parts From Broken Machines",
+      "source": "IEEE Spectrum - Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/recycling-robot",
+      "published_at": "Mon, 10 Aug 2026 18:01:25 +0000",
+      "collected_at": "2026-10-08T06:11:47.644308+00:00"
     },
     {
-      "title": "Reducing Contact Resistance Pushes 2D Transistors Toward Advanced CMOS (HUST, PolyU, UCSB, NUS)",
-      "source": "Semiconductor Engineering",
-      "category": "Semiconductors",
-      "url": "https://semiengineering.com/reducing-contact-resistance-pushes-2d-transistors-toward-advanced-cmos-hust-polyu-ucsb-nus/",
-      "published_at": "Mon, 05 Oct 2026 17:25:40 +0000",
-      "collected_at": "2026-10-06T20:23:53.304541+00:00"
+      "title": "Video Friday: Drones Go Heavy in DARPA Lift Challenge",
+      "source": "IEEE Spectrum - Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/video-friday-heavy-lift-drone",
+      "published_at": "Fri, 07 Aug 2026 16:00:01 +0000",
+      "collected_at": "2026-10-08T06:11:47.644310+00:00"
     },
     {
-      "title": "Row-Parallel DRAM Computing Cuts Data-Reorganization Overhead (Syracuse, FAU, TU Dresden)",
-      "source": "Semiconductor Engineering",
-      "category": "Semiconductors",
-      "url": "https://semiengineering.com/row-parallel-dram-computing-cuts-data-reorganization-overhead-syracuse-fau-tu-dresden/",
-      "published_at": "Mon, 05 Oct 2026 16:16:28 +0000",
-      "collected_at": "2026-10-06T20:23:53.304544+00:00"
+      "title": "What Robotics Companies Think About the U.S. Foreign Robot Ban",
+      "source": "IEEE Spectrum - Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/fcc-covered-list-mobile-robots",
+      "published_at": "Tue, 04 Aug 2026 11:00:01 +0000",
+      "collected_at": "2026-10-08T06:11:47.644312+00:00"
     },
     {
-      "title": "The Agentic AI Super Cycle",
-      "source": "Semiconductor Engineering",
-      "category": "Semiconductors",
-      "url": "https://semiengineering.com/the-agentic-ai-supercycle/",
-      "published_at": "Mon, 05 Oct 2026 07:01:51 +0000",
-      "collected_at": "2026-10-06T20:23:53.304547+00:00"
+      "title": "Walden Robotics Partners With Toyota on Practical Humanoids",
+      "source": "IEEE Spectrum - Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/humanoid-robots-walden-robotics-toyota",
+      "published_at": "Mon, 03 Aug 2026 16:05:39 +0000",
+      "collected_at": "2026-10-08T06:11:47.644314+00:00"
     },
     {
-      "title": "Extreme Environments Push Chips To Their Breaking Point",
-      "source": "Semiconductor Engineering",
-      "category": "Semiconductors",
-      "url": "https://semiengineering.com/extreme-environments-push-chips-to-their-breaking-point/",
-      "published_at": "Mon, 05 Oct 2026 07:01:21 +0000",
-      "collected_at": "2026-10-06T20:23:53.304550+00:00"
+      "title": "Video Friday: Meet Google DeepMind’s Gemini Robotics 2",
+      "source": "IEEE Spectrum - Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/video-robot-gemini2-ai-robot",
+      "published_at": "Fri, 31 Jul 2026 16:00:03 +0000",
+      "collected_at": "2026-10-08T06:11:47.644316+00:00"
     },
     {
-      "title": "Tracing Hardware Design From Physical Devices to RTL (Infineon, TU Munich)",
-      "source": "Semiconductor Engineering",
-      "category": "Semiconductors",
-      "url": "https://semiengineering.com/tracing-hardware-design-from-physical-devices-to-rtl-infineon-tu-munich/",
-      "published_at": "Fri, 02 Oct 2026 22:46:46 +0000",
-      "collected_at": "2026-10-06T20:23:53.304553+00:00"
+      "title": "Robot Finger Feels in Color",
+      "source": "IEEE Spectrum - Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/robot-finger",
+      "published_at": "Tue, 28 Jul 2026 15:00:03 +0000",
+      "collected_at": "2026-10-08T06:11:47.644318+00:00"
     },
     {
-      "title": "HBF for High-Throughput LLM Serving (UC Berkeley, FuriosaAI)",
-      "source": "Semiconductor Engineering",
-      "category": "Semiconductors",
-      "url": "https://semiengineering.com/hbf-for-high-throughput-llm-serving-uc-berkeley-furiosaai/",
-      "published_at": "Fri, 02 Oct 2026 20:15:40 +0000",
-      "collected_at": "2026-10-06T20:23:53.304556+00:00"
-    },
-    {
-      "title": "Formal Automotive Security Analysis Of CAN XL  (Georgia Tech, QCRI, Purdue)",
-      "source": "Semiconductor Engineering",
-      "category": "Semiconductors",
-      "url": "https://semiengineering.com/formal-analysis-uncovers-security-flaws-in-can-xl-georgia-tech-qcri-purdue/",
-      "published_at": "Fri, 02 Oct 2026 19:05:52 +0000",
-      "collected_at": "2026-10-06T20:23:53.304558+00:00"
-    },
-    {
-      "title": "Weight-loss drugs show signs of slowing biological aging, say drugmakers",
-      "source": "MIT Technology Review",
-      "category": "Artificial Intelligence",
-      "url": "https://www.technologyreview.com/2026/10/06/1145836/weight-loss-drugs-glp1-lilly-novo-aging-clocks/",
-      "published_at": "Tue, 06 Oct 2026 16:40:36 +0000",
-      "collected_at": "2026-10-06T20:23:53.480464+00:00"
-    },
-    {
-      "title": "The Download: 10 climate tech companies to watch",
-      "source": "MIT Technology Review",
-      "category": "Artificial Intelligence",
-      "url": "https://www.technologyreview.com/2026/10/06/1145796/the-download-10-climate-tech-companies-to-watch/",
-      "published_at": "Tue, 06 Oct 2026 12:10:00 +0000",
-      "collected_at": "2026-10-06T20:23:53.480480+00:00"
-    },
-    {
-      "title": "2026 Climate Tech Companies to Watch",
-      "source": "MIT Technology Review",
-      "category": "Artificial Intelligence",
-      "url": "https://www.technologyreview.com/2026/10/06/1143800/2026-climate-tech-companies-to-watch/",
-      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
-      "collected_at": "2026-10-06T20:23:53.480483+00:00"
-    },
-    {
-      "title": "Here’s how our climate team picked 10 promising companies to watch",
-      "source": "MIT Technology Review",
-      "category": "Artificial Intelligence",
-      "url": "https://www.technologyreview.com/2026/10/06/1144978/2026-climate-tech-companies-to-watch-how-we-chose/",
-      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
-      "collected_at": "2026-10-06T20:23:53.480486+00:00"
-    },
-    {
-      "title": "WeLion New Energy and its semi-solid-state batteries",
-      "source": "MIT Technology Review",
-      "category": "Artificial Intelligence",
-      "url": "https://www.technologyreview.com/2026/10/06/1144987/2026-climate-tech-companies-to-watch-welion-semi-solid-state-batteries/",
-      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
-      "collected_at": "2026-10-06T20:23:53.480489+00:00"
-    },
-    {
-      "title": "Form Energy and its iron batteries",
-      "source": "MIT Technology Review",
-      "category": "Artificial Intelligence",
-      "url": "https://www.technologyreview.com/2026/10/06/1145020/2026-climate-tech-companies-to-watch-form-energy-iron-batteries/",
-      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
-      "collected_at": "2026-10-06T20:23:53.480492+00:00"
-    },
-    {
-      "title": "X-energy and its helium-cooled nuclear reactors",
-      "source": "MIT Technology Review",
-      "category": "Artificial Intelligence",
-      "url": "https://www.technologyreview.com/2026/10/06/1145025/2026-climate-tech-companies-to-watch-x-energy-helium-cooled-nuclear-reactors/",
-      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
-      "collected_at": "2026-10-06T20:23:53.480495+00:00"
-    },
-    {
-      "title": "Energy Dome and its carbon dioxide batteries",
-      "source": "MIT Technology Review",
-      "category": "Artificial Intelligence",
-      "url": "https://www.technologyreview.com/2026/10/06/1145032/2026-climate-tech-companies-to-watch-energy-dome-carbon-dioxide-batteries/",
-      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
-      "collected_at": "2026-10-06T20:23:53.480498+00:00"
-    },
-    {
-      "title": "Brimstone and its one-stop process for making cleaner cement and critical minerals",
-      "source": "MIT Technology Review",
-      "category": "Artificial Intelligence",
-      "url": "https://www.technologyreview.com/2026/10/06/1145172/2026-climate-tech-companies-to-watch-brimstone-one-stop-process-making-cleaner-cement-critical-minerals/",
-      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
-      "collected_at": "2026-10-06T20:23:53.480501+00:00"
-    },
-    {
-      "title": "WaveSave and its portable rubber dam",
-      "source": "MIT Technology Review",
-      "category": "Artificial Intelligence",
-      "url": "https://www.technologyreview.com/2026/10/06/1145208/2026-climate-tech-companies-to-watch-wavesave-portable-rubber-dam/",
-      "published_at": "Tue, 06 Oct 2026 10:35:00 +0000",
-      "collected_at": "2026-10-06T20:23:53.480504+00:00"
+      "title": "Optical Tech Would Update a Robot’s AI on the Fly",
+      "source": "IEEE Spectrum - Robotics",
+      "category": "Robotics",
+      "url": "https://spectrum.ieee.org/ai-in-robotics",
+      "published_at": "Sun, 26 Jul 2026 13:00:01 +0000",
+      "collected_at": "2026-10-08T06:11:47.644320+00:00"
     }
   ]
 }
