@@ -1,26 +1,746 @@
-{
-  "url": "https://spectrum.ieee.org/career-pivots-for-software-engineers",
-  "status": "success",
-  "body_selector": "div.body.js-expandable.clearfix.js-listicle-body",
-  "body_tag": "div",
-  "body_class": [
-    "body",
-    "js-expandable",
-    "clearfix",
-    "js-listicle-body",
-    "css-listicle-body-2678016338"
-  ],
-  "direct_children_count": 1,
-  "direct_children": [
-    {
-      "index": 1,
-      "tag": "div",
-      "class": [
-        "body-description"
-      ],
-      "id": null,
-      "text": "This article is crossposted from IEEE Spectrum ’s careers newsletter. Sign up now to get insider tips, expert advice, and practical strategies, written i n partnership with tech career development company Parsity and delivered to your inbox for free! When I changed careers at 30 to become a software engineer, I expected it to be hard. I expected to struggle to fit in, and I expected to bomb a lot of interviews (I did). What I didn’t expect was how few people would support me. As a parent, I get it now. A career change is a risk, and the people who care about you tend to project their fears onto you. They don’t want to watch you struggle or fail, so they discourage you or just don’t offer much enthusiasm. Right now is a strange time to be in engineering, or knowledge work in general. Plenty of us are excited about what AI means for our jobs. More of us are nervous, and I think that fear is justified. Employment for entry-level software developers has fallen nearly 20 percent since late 2022, according to Stanford’s 2026 AI Index , and it can feel like the knowledge we spent our careers building is being commoditized. Lately I’ve seen a flood of social media content telling software developers to go into the trades. YouTubers are telling you to become a plumber or a goat herder. But before you do that, I want to warn you, there is no EASY path. Even if you want to become a goat herder. I’ve changed careers once so far, but my business has forced me through several pivots that felt a lot like career changes—new audiences, new skills, new identity. Here’s what I’d tell anyone considering a change, whether you’re moving into engineering, leaving it, or finding a new speciality. Find someone who’s done it and ask how This is exactly what I told my oldest son, who’s getting ready to enter the job market full-time. Outside of the primary social media feeds, the internet is full of free and paid communities on Facebook , LinkedIn , and other sites. Reddit works, too, if you can stomach the trolls, because there’s valuable information buried in there. Many of these spaces are flooded with people trying to break in, so look for the ones full of people who already do the work and talk openly about what is and isn’t going well. Then find one or two people in your own circle who’ve done it and ask what the job takes. You’ll often find the degree matters less than you assumed. Indeed Hiring Lab found the share of U.S. postings requiring a bachelor’s degree fell from 20.4 percent in 2019 to 17.8 percent in early 2024, and more than half listed no education requirement at all. Build proof of work, even if it’s unpaid Yes, you’ll probably need to do some work for free, or at least far cheaper than you’re used to. I’ve had to do this in my business over and over. Nobody cares that I’ve been a software engineer for 12 years. They want to know whether I can do the thing they need. When I started pitching businesses, I offered to build something for free as a case study, then used it to land clients who paid well. You can copy this in most fields. Say you want to get into marketing: Learn how Facebook ads work, find a friend or small business that needs help, and run the campaigns at a low price. Now you’ve picked up the jargon, and you have something concrete to show a hiring manager. Stability is a myth It may be corny, but change is the only constant. If you’re a software engineer, you could argue you’re in the middle of a career change already, whether you opted in or not. Programmers in the 1990s had the same experience when the web showed up and they had to quickly learn new tools just to stay relevant. If you’re looking for stability, you’re in the wrong place, and I think it will get scarcer as AI and other forces reshape work. The best move is to build a strong foundation so you can adapt when the ground shifts. I wrote about the foundational skills to focus on if you’re interested. —Brian Barbara Mazzolai Wants to Build a New Field of Robotics Roboticist Barbara Mazzolai is a prime example of someone who advanced her career by switching fields—and now, she’s helping to create a new one. Learn how her background in biology led her to co-author a manifesto on “sustainability robotics.” Read more here . Turning Tech Talent Into Leadership Legacy The transition from a technical role to a leadership position can be challenging. To help seasoned professionals navigate the shift, IEEE is hosting its first International Leadership Conference in Budapest. Read more here . IEEE Celebrates Innovators Shaping the Future Every year, IEEE recognizes engineers whose technical achievements and leadership have made a lasting impact with its Technical Field Awards. See who’s on the 2027 list of awardees, which was announced in late September. Read more here . From Your Site Articles A Journey From Software Engineering to Product Management › How to Stay Ahead of AI as an Early-Career Engineer › Related Articles Around the Web Ask HN: Those of you who've left the SWE world, what did you transition into? | Hacker News › The Right Time to Pivot: A Software Engineer’s Journey of Continuous Learning (Now Into AI) | by TechWithAnkit | Medium ›",
-      "html": "<div class=\"body-description\"><p><em>This article is crossposted from </em>IEEE Spectrum<em>’s careers newsletter. <a href=\"https://engage.ieee.org/Career-Alert-Sign-Up.html\" rel=\"noopener noreferrer\" target=\"_blank\"><em>Sign up now</em></a><em> to get insider tips, expert advice, and practical strategies, <em><em>written i<em>n partnership with tech career development company <a href=\"https://www.parsity.io/\" rel=\"noopener noreferrer\" target=\"_blank\">Parsity</a> and </em></em></em>delivered to your inbox for free!</em></em></p><p><em><em></em></em><span>When I changed careers at 30 to become a software engineer, I expected it to be hard. I expected to struggle to fit in, and I expected to bomb a lot of interviews (I did). What I didn’t expect was how few people would support me.</span></p><p>As a parent, I get it now.</p><p>A career change is a risk, and the people who care about you tend to project their fears onto you. They don’t want to watch you struggle or fail, so they discourage you or just don’t offer much enthusiasm.</p><p>Right now is a strange time to be in engineering, or knowledge work in general. Plenty of us are excited about <a href=\"https://spectrum.ieee.org/ai-code-review-software-engineers\" target=\"_self\">what AI means for our jobs.</a> More of us are nervous, and I think that fear is justified. <a href=\"https://spectrum.ieee.org/ai-impact-on-job-market\" target=\"_self\">Employment for entry-level</a> software developers has fallen nearly 20 percent since late 2022, according to <a href=\"https://spectrum.ieee.org/state-of-ai-index-2026\" target=\"_self\">Stanford’s 2026 AI Index</a>, and it can feel like the knowledge we spent our careers building is being commoditized. </p><p>Lately I’ve seen a flood of <a href=\"https://spectrum.ieee.org/tag/social-media\">social media</a> content telling software developers to go into the trades. YouTubers are telling you to become a plumber or a goat herder. </p><p>But before you do that, I want to warn you, there is no EASY path. Even if you want to become a goat herder.</p><p><div class=\"rblad-ieee_in_content\"></div></p><p>I’ve changed careers once so far, but my business has forced me through several pivots that felt a lot like career changes—new audiences, new skills, new identity. Here’s what I’d tell anyone considering a change, whether you’re moving into engineering, leaving it, or finding a new speciality.</p><h3>Find someone who’s done it and ask how</h3><p>This is exactly what I told my oldest son, who’s getting ready to enter the <a href=\"https://spectrum.ieee.org/tag/job-market\">job market</a> full-time. Outside of the primary social media feeds, the internet is full of free and paid communities on <a href=\"https://spectrum.ieee.org/tag/facebook\">Facebook</a>, <a href=\"https://spectrum.ieee.org/tag/linkedin\">LinkedIn</a>, and other sites. Reddit works, too, if you can stomach the trolls, because there’s valuable information buried in there. </p><p>Many of these spaces are flooded with people trying to break in, so look for the ones full of people who already do the work and talk openly about what is and isn’t going well. Then find one or two people in your own circle who’ve done it and ask what the job takes. </p><p>You’ll often find the degree matters less than you assumed. Indeed Hiring Lab found the share of U.S. postings requiring a bachelor’s degree fell from 20.4 percent in 2019 to 17.8 percent in early 2024, and more than half listed no education requirement at all.</p><h3>Build proof of work, even if it’s unpaid</h3><p>Yes, you’ll probably need to do some work for free, or at least far cheaper than you’re used to. I’ve had to do this in my business over and over. Nobody cares that I’ve been a software engineer for 12 years. They want to know whether I can do the thing they need.</p><p>When I started pitching businesses, I offered to build something for free as a case study, then used it to land clients who paid well. You can copy this in most fields. Say you want to get into marketing: Learn how Facebook ads work, find a friend or small business that needs help, and run the campaigns at a low price. Now you’ve picked up the jargon, and you have something concrete to show a hiring manager.</p><h3>Stability is a myth</h3><p>It may be corny, but change is the only constant. If you’re a software engineer, you could argue you’re in the middle of a career change already, whether you opted in or not. Programmers in the 1990s had the same experience when the web showed up and they had to quickly learn new tools just to stay relevant.</p><p>If you’re looking for stability, you’re in the wrong place, and I think it will get scarcer as AI and other forces reshape work. The best move is to build a strong foundation so you can adapt when the ground shifts. I wrote about <a href=\"https://spectrum.ieee.org/top-engineering-skills\" target=\"_self\">the foundational skills to focus on</a> if you’re interested.</p><p>—Brian</p><h2><a href=\"https://spectrum.ieee.org/sustainability-robotics-barbara-mazzolai\" target=\"_self\">Barbara Mazzolai Wants to Build a New Field of Robotics</a></h2><p>Roboticist Barbara Mazzolai is a prime example of someone who advanced her career by switching fields—and now, she’s helping to create a new one. Learn how her background in biology led her to co-author a manifesto on “sustainability robotics.”</p><p><div class=\"rblad-ieee_in_content\"></div></p><p>Read more <a href=\"https://spectrum.ieee.org/sustainability-robotics-barbara-mazzolai\" target=\"_self\">here</a>. </p><h2><a href=\"https://spectrum.ieee.org/tech-talent-into-leadership-legacy\" target=\"_self\">Turning Tech Talent Into Leadership Legacy</a></h2><p>The transition from a technical role to a leadership position can be challenging. To help seasoned professionals navigate the shift, IEEE is hosting its first International Leadership Conference in Budapest. </p><p>Read more <a href=\"https://spectrum.ieee.org/tech-talent-into-leadership-legacy\" target=\"_self\">here</a>.</p><h2><a href=\"https://spectrum.ieee.org/ieee-technical-field-awards-2027\" target=\"_self\">IEEE Celebrates Innovators Shaping the Future</a></h2><p>Every year, IEEE recognizes engineers whose technical achievements and leadership have made a lasting impact with its Technical Field Awards. See who’s on the 2027 list of awardees, which was announced in late September. </p><p>Read more <a href=\"https://spectrum.ieee.org/ieee-technical-field-awards-2027\" target=\"_self\">here</a>. </p><div class=\"around-the-web\"><div class=\"from-your-site__headline\">From Your Site Articles</div><ul class=\"around-the-web__list\"><li class=\"from-your-site__item\"><a class=\"from-your-site__link\" href=\"https://spectrum.ieee.org/product-management-career\" rel=\"noopener noreferrer\" target=\"_blank\">A Journey From Software Engineering to Product Management ›</a></li><li class=\"from-your-site__item\"><a class=\"from-your-site__link\" href=\"https://spectrum.ieee.org/ai-effect-entry-level-jobs\" rel=\"noopener noreferrer\" target=\"_blank\">How to Stay Ahead of AI as an Early-Career Engineer ›</a></li></ul><div class=\"around-the-web__headline\">Related Articles Around the Web</div><ul class=\"around-the-web__list\"><li class=\"around-the-web__item\"><a class=\"around-the-web__link\" href=\"https://news.ycombinator.com/item?id=40780940\" rel=\"noopener noreferrer\" target=\"_blank\">Ask HN: Those of you who've left the SWE world, what did you transition into? | Hacker News ›</a></li><li class=\"around-the-web__item\"><a class=\"around-the-web__link\" href=\"https://medium.com/@techwithankit/the-right-time-to-pivot-a-software-engineers-journey-of-continuous-learning-now-into-ai-5e7da14a303d\" rel=\"noopener noreferrer\" target=\"_blank\">The Right Time to Pivot: A Software Engineer’s Journey of Continuous Learning (Now Into AI) | by TechWithAnkit | Medium ›</a></li></ul></div></div>"
-    }
-  ]
-}
+[
+  {
+    "url": "https://spectrum.ieee.org/career-pivots-for-software-engineers",
+    "status": "success",
+    "body_selector": "div.body.js-expandable.clearfix.js-listicle-body",
+    "body_tag": "div",
+    "body_class": [
+      "body",
+      "js-expandable",
+      "clearfix",
+      "js-listicle-body",
+      "css-listicle-body-2678016338"
+    ],
+    "body_description_tag": "div",
+    "body_description_class": [
+      "body-description"
+    ],
+    "direct_children_count": 31,
+    "direct_children": [
+      {
+        "index": 1,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "This article is crossposted from IEEE Spectrum ’s careers newsletter. Sign up now to get insider tips, expert advice, and practical strategies, written i n partnership with tech career development company Parsity and delivered to your inbox for free!",
+        "html": "<p><em>This article is crossposted from </em>IEEE Spectrum<em>’s careers newsletter. <a href=\"https://engage.ieee.org/Career-Alert-Sign-Up.html\" rel=\"noopener noreferrer\" target=\"_blank\"><em>Sign up now</em></a><em> to get insider tips, expert advice, and practical strategies, <em><em>written i<em>n partnership with tech career development company <a href=\"https://www.parsity.io/\" rel=\"noopener noreferrer\" target=\"_blank\">Parsity</a> and </em></em></em>delivered to your inbox for free!</em></em></p>"
+      },
+      {
+        "index": 2,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "When I changed careers at 30 to become a software engineer, I expected it to be hard. I expected to struggle to fit in, and I expected to bomb a lot of interviews (I did). What I didn’t expect was how few people would support me.",
+        "html": "<p><em><em></em></em><span>When I changed careers at 30 to become a software engineer, I expected it to be hard. I expected to struggle to fit in, and I expected to bomb a lot of interviews (I did). What I didn’t expect was how few people would support me.</span></p>"
+      },
+      {
+        "index": 3,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "As a parent, I get it now.",
+        "html": "<p>As a parent, I get it now.</p>"
+      },
+      {
+        "index": 4,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "A career change is a risk, and the people who care about you tend to project their fears onto you. They don’t want to watch you struggle or fail, so they discourage you or just don’t offer much enthusiasm.",
+        "html": "<p>A career change is a risk, and the people who care about you tend to project their fears onto you. They don’t want to watch you struggle or fail, so they discourage you or just don’t offer much enthusiasm.</p>"
+      },
+      {
+        "index": 5,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Right now is a strange time to be in engineering, or knowledge work in general. Plenty of us are excited about what AI means for our jobs. More of us are nervous, and I think that fear is justified. Employment for entry-level software developers has fallen nearly 20 percent since late 2022, according to Stanford’s 2026 AI Index , and it can feel like the knowledge we spent our careers building is being commoditized.",
+        "html": "<p>Right now is a strange time to be in engineering, or knowledge work in general. Plenty of us are excited about <a href=\"https://spectrum.ieee.org/ai-code-review-software-engineers\" target=\"_self\">what AI means for our jobs.</a> More of us are nervous, and I think that fear is justified. <a href=\"https://spectrum.ieee.org/ai-impact-on-job-market\" target=\"_self\">Employment for entry-level</a> software developers has fallen nearly 20 percent since late 2022, according to <a href=\"https://spectrum.ieee.org/state-of-ai-index-2026\" target=\"_self\">Stanford’s 2026 AI Index</a>, and it can feel like the knowledge we spent our careers building is being commoditized. </p>"
+      },
+      {
+        "index": 6,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Lately I’ve seen a flood of social media content telling software developers to go into the trades. YouTubers are telling you to become a plumber or a goat herder.",
+        "html": "<p>Lately I’ve seen a flood of <a href=\"https://spectrum.ieee.org/tag/social-media\">social media</a> content telling software developers to go into the trades. YouTubers are telling you to become a plumber or a goat herder. </p>"
+      },
+      {
+        "index": 7,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "But before you do that, I want to warn you, there is no EASY path. Even if you want to become a goat herder.",
+        "html": "<p>But before you do that, I want to warn you, there is no EASY path. Even if you want to become a goat herder.</p>"
+      },
+      {
+        "index": 8,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "",
+        "html": "<p><div class=\"rblad-ieee_in_content\"></div></p>"
+      },
+      {
+        "index": 9,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "I’ve changed careers once so far, but my business has forced me through several pivots that felt a lot like career changes—new audiences, new skills, new identity. Here’s what I’d tell anyone considering a change, whether you’re moving into engineering, leaving it, or finding a new speciality.",
+        "html": "<p>I’ve changed careers once so far, but my business has forced me through several pivots that felt a lot like career changes—new audiences, new skills, new identity. Here’s what I’d tell anyone considering a change, whether you’re moving into engineering, leaving it, or finding a new speciality.</p>"
+      },
+      {
+        "index": 10,
+        "tag": "h3",
+        "class": null,
+        "id": null,
+        "text": "Find someone who’s done it and ask how",
+        "html": "<h3>Find someone who’s done it and ask how</h3>"
+      },
+      {
+        "index": 11,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "This is exactly what I told my oldest son, who’s getting ready to enter the job market full-time. Outside of the primary social media feeds, the internet is full of free and paid communities on Facebook , LinkedIn , and other sites. Reddit works, too, if you can stomach the trolls, because there’s valuable information buried in there.",
+        "html": "<p>This is exactly what I told my oldest son, who’s getting ready to enter the <a href=\"https://spectrum.ieee.org/tag/job-market\">job market</a> full-time. Outside of the primary social media feeds, the internet is full of free and paid communities on <a href=\"https://spectrum.ieee.org/tag/facebook\">Facebook</a>, <a href=\"https://spectrum.ieee.org/tag/linkedin\">LinkedIn</a>, and other sites. Reddit works, too, if you can stomach the trolls, because there’s valuable information buried in there. </p>"
+      },
+      {
+        "index": 12,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Many of these spaces are flooded with people trying to break in, so look for the ones full of people who already do the work and talk openly about what is and isn’t going well. Then find one or two people in your own circle who’ve done it and ask what the job takes.",
+        "html": "<p>Many of these spaces are flooded with people trying to break in, so look for the ones full of people who already do the work and talk openly about what is and isn’t going well. Then find one or two people in your own circle who’ve done it and ask what the job takes. </p>"
+      },
+      {
+        "index": 13,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "You’ll often find the degree matters less than you assumed. Indeed Hiring Lab found the share of U.S. postings requiring a bachelor’s degree fell from 20.4 percent in 2019 to 17.8 percent in early 2024, and more than half listed no education requirement at all.",
+        "html": "<p>You’ll often find the degree matters less than you assumed. Indeed Hiring Lab found the share of U.S. postings requiring a bachelor’s degree fell from 20.4 percent in 2019 to 17.8 percent in early 2024, and more than half listed no education requirement at all.</p>"
+      },
+      {
+        "index": 14,
+        "tag": "h3",
+        "class": null,
+        "id": null,
+        "text": "Build proof of work, even if it’s unpaid",
+        "html": "<h3>Build proof of work, even if it’s unpaid</h3>"
+      },
+      {
+        "index": 15,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Yes, you’ll probably need to do some work for free, or at least far cheaper than you’re used to. I’ve had to do this in my business over and over. Nobody cares that I’ve been a software engineer for 12 years. They want to know whether I can do the thing they need.",
+        "html": "<p>Yes, you’ll probably need to do some work for free, or at least far cheaper than you’re used to. I’ve had to do this in my business over and over. Nobody cares that I’ve been a software engineer for 12 years. They want to know whether I can do the thing they need.</p>"
+      },
+      {
+        "index": 16,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "When I started pitching businesses, I offered to build something for free as a case study, then used it to land clients who paid well. You can copy this in most fields. Say you want to get into marketing: Learn how Facebook ads work, find a friend or small business that needs help, and run the campaigns at a low price. Now you’ve picked up the jargon, and you have something concrete to show a hiring manager.",
+        "html": "<p>When I started pitching businesses, I offered to build something for free as a case study, then used it to land clients who paid well. You can copy this in most fields. Say you want to get into marketing: Learn how Facebook ads work, find a friend or small business that needs help, and run the campaigns at a low price. Now you’ve picked up the jargon, and you have something concrete to show a hiring manager.</p>"
+      },
+      {
+        "index": 17,
+        "tag": "h3",
+        "class": null,
+        "id": null,
+        "text": "Stability is a myth",
+        "html": "<h3>Stability is a myth</h3>"
+      },
+      {
+        "index": 18,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "It may be corny, but change is the only constant. If you’re a software engineer, you could argue you’re in the middle of a career change already, whether you opted in or not. Programmers in the 1990s had the same experience when the web showed up and they had to quickly learn new tools just to stay relevant.",
+        "html": "<p>It may be corny, but change is the only constant. If you’re a software engineer, you could argue you’re in the middle of a career change already, whether you opted in or not. Programmers in the 1990s had the same experience when the web showed up and they had to quickly learn new tools just to stay relevant.</p>"
+      },
+      {
+        "index": 19,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "If you’re looking for stability, you’re in the wrong place, and I think it will get scarcer as AI and other forces reshape work. The best move is to build a strong foundation so you can adapt when the ground shifts. I wrote about the foundational skills to focus on if you’re interested.",
+        "html": "<p>If you’re looking for stability, you’re in the wrong place, and I think it will get scarcer as AI and other forces reshape work. The best move is to build a strong foundation so you can adapt when the ground shifts. I wrote about <a href=\"https://spectrum.ieee.org/top-engineering-skills\" target=\"_self\">the foundational skills to focus on</a> if you’re interested.</p>"
+      },
+      {
+        "index": 20,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "—Brian",
+        "html": "<p>—Brian</p>"
+      },
+      {
+        "index": 21,
+        "tag": "h2",
+        "class": null,
+        "id": null,
+        "text": "Barbara Mazzolai Wants to Build a New Field of Robotics",
+        "html": "<h2><a href=\"https://spectrum.ieee.org/sustainability-robotics-barbara-mazzolai\" target=\"_self\">Barbara Mazzolai Wants to Build a New Field of Robotics</a></h2>"
+      },
+      {
+        "index": 22,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Roboticist Barbara Mazzolai is a prime example of someone who advanced her career by switching fields—and now, she’s helping to create a new one. Learn how her background in biology led her to co-author a manifesto on “sustainability robotics.”",
+        "html": "<p>Roboticist Barbara Mazzolai is a prime example of someone who advanced her career by switching fields—and now, she’s helping to create a new one. Learn how her background in biology led her to co-author a manifesto on “sustainability robotics.”</p>"
+      },
+      {
+        "index": 23,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "",
+        "html": "<p><div class=\"rblad-ieee_in_content\"></div></p>"
+      },
+      {
+        "index": 24,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Read more here .",
+        "html": "<p>Read more <a href=\"https://spectrum.ieee.org/sustainability-robotics-barbara-mazzolai\" target=\"_self\">here</a>. </p>"
+      },
+      {
+        "index": 25,
+        "tag": "h2",
+        "class": null,
+        "id": null,
+        "text": "Turning Tech Talent Into Leadership Legacy",
+        "html": "<h2><a href=\"https://spectrum.ieee.org/tech-talent-into-leadership-legacy\" target=\"_self\">Turning Tech Talent Into Leadership Legacy</a></h2>"
+      },
+      {
+        "index": 26,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "The transition from a technical role to a leadership position can be challenging. To help seasoned professionals navigate the shift, IEEE is hosting its first International Leadership Conference in Budapest.",
+        "html": "<p>The transition from a technical role to a leadership position can be challenging. To help seasoned professionals navigate the shift, IEEE is hosting its first International Leadership Conference in Budapest. </p>"
+      },
+      {
+        "index": 27,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Read more here .",
+        "html": "<p>Read more <a href=\"https://spectrum.ieee.org/tech-talent-into-leadership-legacy\" target=\"_self\">here</a>.</p>"
+      },
+      {
+        "index": 28,
+        "tag": "h2",
+        "class": null,
+        "id": null,
+        "text": "IEEE Celebrates Innovators Shaping the Future",
+        "html": "<h2><a href=\"https://spectrum.ieee.org/ieee-technical-field-awards-2027\" target=\"_self\">IEEE Celebrates Innovators Shaping the Future</a></h2>"
+      },
+      {
+        "index": 29,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Every year, IEEE recognizes engineers whose technical achievements and leadership have made a lasting impact with its Technical Field Awards. See who’s on the 2027 list of awardees, which was announced in late September.",
+        "html": "<p>Every year, IEEE recognizes engineers whose technical achievements and leadership have made a lasting impact with its Technical Field Awards. See who’s on the 2027 list of awardees, which was announced in late September. </p>"
+      },
+      {
+        "index": 30,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Read more here .",
+        "html": "<p>Read more <a href=\"https://spectrum.ieee.org/ieee-technical-field-awards-2027\" target=\"_self\">here</a>. </p>"
+      },
+      {
+        "index": 31,
+        "tag": "div",
+        "class": [
+          "around-the-web"
+        ],
+        "id": null,
+        "text": "From Your Site Articles A Journey From Software Engineering to Product Management › How to Stay Ahead of AI as an Early-Career Engineer › Related Articles Around the Web Ask HN: Those of you who've left the SWE world, what did you transition into? | Hacker News › The Right Time to Pivot: A Software Engineer’s Journey of Continuous Learning (Now Into AI) | by TechWithAnkit | Medium ›",
+        "html": "<div class=\"around-the-web\"><div class=\"from-your-site__headline\">From Your Site Articles</div><ul class=\"around-the-web__list\"><li class=\"from-your-site__item\"><a class=\"from-your-site__link\" href=\"https://spectrum.ieee.org/product-management-career\" rel=\"noopener noreferrer\" target=\"_blank\">A Journey From Software Engineering to Product Management ›</a></li><li class=\"from-your-site__item\"><a class=\"from-your-site__link\" href=\"https://spectrum.ieee.org/ai-effect-entry-level-jobs\" rel=\"noopener noreferrer\" target=\"_blank\">How to Stay Ahead of AI as an Early-Career Engineer ›</a></li></ul><div class=\"around-the-web__headline\">Related Articles Around the Web</div><ul class=\"around-the-web__list\"><li class=\"around-the-web__item\"><a class=\"around-the-web__link\" href=\"https://news.ycombinator.com/item?id=40780940\" rel=\"noopener noreferrer\" target=\"_blank\">Ask HN: Those of you who've left the SWE world, what did you transition into? | Hacker News ›</a></li><li class=\"around-the-web__item\"><a class=\"around-the-web__link\" href=\"https://medium.com/@techwithankit/the-right-time-to-pivot-a-software-engineers-journey-of-continuous-learning-now-into-ai-5e7da14a303d\" rel=\"noopener noreferrer\" target=\"_blank\">The Right Time to Pivot: A Software Engineer’s Journey of Continuous Learning (Now Into AI) | by TechWithAnkit | Medium ›</a></li></ul></div>"
+      }
+    ]
+  },
+  {
+    "url": "https://spectrum.ieee.org/anderon-quantum-fab",
+    "status": "success",
+    "body_selector": "div.body.js-expandable.clearfix.js-listicle-body",
+    "body_tag": "div",
+    "body_class": [
+      "body",
+      "js-expandable",
+      "clearfix",
+      "js-listicle-body",
+      "css-listicle-body-2677908386"
+    ],
+    "body_description_tag": "div",
+    "body_description_class": [
+      "body-description"
+    ],
+    "direct_children_count": 20,
+    "direct_children": [
+      {
+        "index": 1,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "The U.S. Department of Commerce has finalized a CHIPS and Science Act R&D award of up to $1 billion for Anderon, a quantum foundry IBM established earlier this year. The 16 September announcement backs a manufacturing service for IBM and other quantum-hardware developers.",
+        "html": "<p>The U.S. Department of Commerce has finalized a <a href=\"https://spectrum.ieee.org/chips-act-of-2022\" target=\"_self\">CHIPS and Science Act</a> R&amp;D award of up to $1 billion for Anderon, a quantum <a href=\"https://spectrum.ieee.org/tag/foundry\">foundry</a> <a href=\"https://spectrum.ieee.org/tag/ibm\">IBM</a> established earlier this year. The 16 September <a href=\"https://www.nist.gov/news-events/news/2026/09/department-commerce-announces-finalization-chips-rd-award-anderon\" rel=\"noopener noreferrer\" target=\"_blank\">announcement</a> backs a manufacturing service for IBM and other quantum-hardware developers.</p>"
+      },
+      {
+        "index": 2,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "IBM is matching the award with $1 billion in cash and contributing intellectual property , assets, and skilled workers. Headquartered in Albany, N.Y., Anderon builds on an existing operation at Albany NanoTech , where IBM has made quantum wafers for more than five years, says CEO Mukesh Khare . That existing infrastructure has helped Anderon get started: Its first wafers are already moving through a production-scale, 300-millimeter line.",
+        "html": "<p><a href=\"https://newsroom.ibm.com/2026-09-16-anderon,-an-ibm-company,-finalizes-agreement-with-the-u-s-department-of-commerce-for-a-1-billion-chips-award-to-accelerate-r-d-for-u-s-based-pure-play-quantum-foundry\" rel=\"noopener noreferrer\" target=\"_blank\">IBM is matching the award</a> with $1 billion in cash and contributing <a href=\"https://spectrum.ieee.org/tag/intellectual-property\">intellectual property</a>, assets, and skilled workers. Headquartered in Albany, N.Y., Anderon builds on an existing operation at Albany <a href=\"https://spectrum.ieee.org/tag/nanotech\">NanoTech</a>, where IBM has made quantum wafers for more than five years, says <a href=\"https://www.linkedin.com/in/mvkhare/\" rel=\"noopener noreferrer\" target=\"_blank\">CEO Mukesh Khare</a>. That existing infrastructure has helped Anderon get started: Its first wafers are already moving through a production-scale, 300-millimeter line.</p>"
+      },
+      {
+        "index": 3,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Quantum computing “is moving from science to real commercial impact now,” Khare says. “That means the industry also needs a more stable manufacturing source for building quantum chips.”",
+        "html": "<p><a href=\"https://spectrum.ieee.org/tag/quantum-computing\">Quantum computing</a> “is moving from science to real commercial impact now,” Khare says. “That means the industry also needs a more stable manufacturing source for building quantum chips.”</p>"
+      },
+      {
+        "index": 4,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "If Anderon is successful, it could do for quantum hardware what TSMC did for conventional chips: let companies focus on designing chips without each one having to build a multibillion-dollar factory for the underlying hardware.",
+        "html": "<p>If Anderon is successful, it could do for quantum hardware what <a href=\"https://spectrum.ieee.org/tag/tsmc\">TSMC</a> did for conventional chips: let companies focus on designing chips without each one having to build a multibillion-dollar factory for the underlying hardware.</p>"
+      },
+      {
+        "index": 5,
+        "tag": "h2",
+        "class": null,
+        "id": null,
+        "text": "What an Automated Quantum Fab Can Offer",
+        "html": "<h2>What an Automated Quantum Fab Can Offer</h2>"
+      },
+      {
+        "index": 6,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "IBM says shifting much of its quantum wafer R&D from the 200-millimeter fabrication lab at the IBM Research headquarters in Yorktown Heights, N.Y., to the Albany 300-millimeter line, beginning in 2021, doubled chip-development speed and increased its chips’ physical complexity tenfold. Round-the-clock processing shortened fabrication cycles, and advanced manufacturing techniques enabled more elaborate wiring and qubit connections. Anderon draws on Albany NanoTech’s manufacturing capability and IBM’s experience deploying more than 90 quantum systems since 2016. The challenge now is extending those capabilities to outside designers. Anderon’s potential customers include processor developers without fabs, system builders, and national laboratories. Even companies with their own manual chipmaking facilities may be interested in outsourcing fabrication to an automated foundry. Rigetti Computing , for example, another CHIPS Act R&D award winner , is in talks with Anderon, according to CEO Subodh Kulkarni .",
+        "html": "<p>IBM says shifting much of its quantum wafer R&amp;D from the 200-millimeter fabrication lab at the IBM Research headquarters in Yorktown Heights, N.Y., to the Albany 300-millimeter line, beginning in 2021, doubled chip-development speed and increased its chips’ physical complexity tenfold. Round-the-clock processing shortened fabrication cycles, and <a href=\"https://spectrum.ieee.org/tag/advanced-manufacturing\">advanced manufacturing</a> techniques enabled more elaborate wiring and qubit connections. Anderon draws on Albany NanoTech’s manufacturing capability and IBM’s experience deploying more than 90 quantum systems since 2016. The challenge now is extending those capabilities to outside designers. Anderon’s potential customers include processor developers without fabs, system builders, and national laboratories. Even companies with their own manual chipmaking facilities may be interested in outsourcing fabrication to an automated foundry. <a href=\"https://spectrum.ieee.org/tag/rigetti-computing\">Rigetti Computing</a>, for example, another <a href=\"https://www.nist.gov/news-events/news/2026/09/department-commerce-announces-finalization-chips-rd-award-rigetti\" rel=\"noopener noreferrer\" target=\"_blank\">CHIPS Act R&amp;D award winner</a>, is in talks with Anderon, according to <a href=\"https://www.linkedin.com/in/subodh-kulkarni-21001611\" rel=\"noopener noreferrer\" target=\"_blank\">CEO Subodh Kulkarni</a>. </p>"
+      },
+      {
+        "index": 7,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "",
+        "html": "<p><div class=\"rblad-ieee_in_content\"></div></p>"
+      },
+      {
+        "index": 8,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Rigetti currently makes processors on 150-millimeter wafers in its manual fab in Fremont, Calif. Kulkarni puts its yield near 50 percent, which he says is “good enough” for R&D when specs are changing frequently. But Anderon promises more reliable automated chip production that companies like Rigetti could retain to advance their own chip development. “We find that to be very attractive,” Kulkarni said, “not because of capacity, but because of capability.”",
+        "html": "<p>Rigetti currently makes <a href=\"https://spectrum.ieee.org/tag/processors\">processors</a> on 150-millimeter wafers in its manual fab in Fremont, Calif. Kulkarni puts its yield near 50 percent, which he says is “good enough” for R&amp;D when specs are changing frequently. But Anderon promises more reliable automated chip production that companies like Rigetti could retain to advance their own chip development. “We find that to be very attractive,” Kulkarni said, “not because of capacity, but because of capability.”</p>"
+      },
+      {
+        "index": 9,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Like conventional silicon foundries , Anderon plans to offer process design kits, or PDKs, specifying the rules designers must follow to use its manufacturing processes. “They design, we build,” Khare says. Customization will also be available, he said, and the foundry will protect clients’ intellectual property and operate neutrally, including for IBM’s competitors.",
+        "html": "<p>Like conventional silicon <a href=\"https://spectrum.ieee.org/tag/foundries\">foundries</a>, Anderon plans to offer process design kits, or PDKs, specifying the rules designers must follow to use its manufacturing processes. “They design, we build,” Khare says. Customization will also be available, he said, and the foundry will protect clients’ intellectual property and operate neutrally, including for IBM’s competitors.</p>"
+      },
+      {
+        "index": 10,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Making that model work will require predictable fabrication. For superconducting qubits , a critical component is the Josephson junction , which consists of two superconductors separated by a thin insulating barrier. Variations in junction area and barrier thickness can change critical current and qubit frequency, potentially creating unwanted frequency overlaps and reducing chip yield.",
+        "html": "<p>Making that model work will require predictable fabrication. For <a href=\"https://spectrum.ieee.org/tag/superconducting-qubits\">superconducting qubits</a>, a critical component is the <a href=\"https://spectrum.ieee.org/tag/josephson-junction\">Josephson junction</a>, which consists of two <a href=\"https://spectrum.ieee.org/tag/superconductors\">superconductors</a> separated by a thin insulating barrier. Variations in junction area and barrier thickness can change critical current and qubit frequency, potentially creating unwanted frequency overlaps and reducing chip yield.</p>"
+      },
+      {
+        "index": 11,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Anderon’s automated line could help control variation through repeatable patterning, deposition, and oxidation, with in-line testing to identify process drift. But customers will need to measure the actual improvement in qubit performance, Kulkarni says.",
+        "html": "<p>Anderon’s automated line could help control variation through repeatable patterning, deposition, and oxidation, with in-line testing to identify process drift. But customers will need to measure the actual improvement in qubit performance, Kulkarni says.</p>"
+      },
+      {
+        "index": 12,
+        "tag": "p",
+        "class": [
+          "shortcode-media",
+          "shortcode-media-rebelmouse-image",
+          "rm-float-left",
+          "rm-resized-container",
+          "rm-resized-container-25"
+        ],
+        "id": null,
+        "text": "Anderon’s latest-generation 300mm quantum wafers. Anderon",
+        "html": "<p class=\"shortcode-media shortcode-media-rebelmouse-image rm-float-left rm-resized-container rm-resized-container-25\" data-rm-resized-container=\"25%\" style=\"float: left;\"> <img alt=\"Three semiconductor wafers floating against a black background.\" class=\"rm-shortcode rm-lazyloadable-image\" data-rm-shortcode-id=\"7fac4aef400a5a6b1146b859583a5844\" data-rm-shortcode-name=\"rebelmouse-image\" data-runner-src=\"https://spectrum.ieee.org/media-library/three-semiconductor-wafers-floating-against-a-black-background.jpg?id=68054179&amp;width=980\" height=\"5000\" id=\"cd28c\" lazy-loadable=\"true\" src=\"data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%203125%205000'%3E%3C/svg%3E\" width=\"3125\"/> <small class=\"image-media media-caption\" placeholder=\"Add Photo Caption...\">Anderon’s latest-generation 300mm quantum wafers.</small><small class=\"image-media media-photo-credit\" placeholder=\"Add Photo Credit...\">Anderon</small></p>"
+      },
+      {
+        "index": 13,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Much of the fabrication equipment overlaps with that used for silicon chips, although superconducting circuits require specialized materials and process steps. Anderon advertises superconducting qubit arrays, microwave components, and through-silicon connections. But extending manufacturing capabilities to other quantum technologies, like trapped ion or photonic qubits , would require additional process development that Anderon has not publicly detailed yet.",
+        "html": "<p>Much of the fabrication equipment overlaps with that used for silicon chips, although superconducting circuits require specialized materials and process steps. Anderon <a href=\"https://www.anderon.com/\" target=\"_blank\">advertises</a> superconducting qubit arrays, microwave components, and through-silicon connections. But extending manufacturing capabilities to other quantum technologies, like <a href=\"https://spectrum.ieee.org/tag/trapped-ion\">trapped ion</a> or photonic <a href=\"https://spectrum.ieee.org/tag/qubits\">qubits</a>, would require additional process development that Anderon has not publicly detailed yet.</p>"
+      },
+      {
+        "index": 14,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Semiconductor spin qubits can already be fabricated on conventional chip production lines, says Lieven Vandersypen of Delft University of Technology in the Netherlands , while superconducting qubits require specialized steps that may require new development.",
+        "html": "<p>Semiconductor spin qubits can already be fabricated on conventional chip production lines, says <a href=\"https://qutech.nl/person/lieven-vandersypen/\" target=\"_blank\">Lieven Vandersypen</a> of Delft University of Technology in the <a href=\"https://spectrum.ieee.org/tag/netherlands\">Netherlands</a>, while superconducting qubits require specialized steps that may require new development. </p>"
+      },
+      {
+        "index": 15,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "A dedicated quantum facility could spread costs and support the development of processes optimized for quantum devices, according to Vandersypen. “Understanding how to make this transition is timely and important,” he says.",
+        "html": "<p>A dedicated quantum facility could spread costs and support the development of processes optimized for quantum devices, according to Vandersypen. “Understanding how to make this transition is timely and important,” he says.</p>"
+      },
+      {
+        "index": 16,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Manufacturing capabilities alone will not make Anderon quantum computing’s TSMC. It also needs sustained demand beyond IBM. Designers have alternatives. Vandersypen points to QuantWare’s investment in its own wafer-scale facility and Belgium’s imec , which supplies prototype quantum chips rather than pursuing high-volume manufacturing. “Time will tell which model will prevail. Perhaps both will co-exist,” he says.",
+        "html": "<p>Manufacturing capabilities alone will not make Anderon quantum computing’s TSMC. It also needs sustained demand beyond IBM. Designers have alternatives. Vandersypen points to QuantWare’s investment in its own wafer-scale facility and Belgium’s <a href=\"https://spectrum.ieee.org/tag/imec\">imec</a>, which supplies prototype quantum chips rather than pursuing high-volume manufacturing. “Time will tell which model will prevail. Perhaps both will co-exist,” he says.</p>"
+      },
+      {
+        "index": 17,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "",
+        "html": "<p><div class=\"rblad-ieee_in_content\"></div></p>"
+      },
+      {
+        "index": 18,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Commerce is backing several approaches to strengthen U.S. competitiveness in the global quantum market. While Anderon’s award is the largest so far, Commerce has finalized up to $375 million for GlobalFoundries and up to $100 million each for Rigetti, D-Wave , Quantinuum, and PsiQuantum. Those awards support manufacturing for multiple quantum architectures and address bottlenecks including readout electronics, cryostats, superconducting materials, optical components, and photonic packaging. Shared wafer fabrication is one piece of the larger engineering effort.",
+        "html": "<p>Commerce is backing several approaches to strengthen U.S. competitiveness in the global quantum market. While Anderon’s award is the largest so far, Commerce has finalized up to $375 million for <a href=\"https://spectrum.ieee.org/tag/globalfoundries\">GlobalFoundries</a> and up to $100 million each for Rigetti, <a href=\"https://spectrum.ieee.org/tag/d-wave\">D-Wave</a>, Quantinuum, and PsiQuantum. <a href=\"https://spectrum.ieee.org/chips-act-impact-semiconductor-manufacturing\" target=\"_blank\">Those awards</a> support manufacturing for multiple quantum architectures and address bottlenecks including readout electronics, cryostats, superconducting materials, optical components, and photonic packaging. Shared wafer fabrication is one piece of the larger engineering effort.</p>"
+      },
+      {
+        "index": 19,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Khare says he can deliver wafers to outside customers by the end of the year. For potential customers such as Rigetti the test will be how reliably those chips meet increasingly demanding designs. As Kulkarni puts it: “If we tighten the specification, what would the yield be?”",
+        "html": "<p>Khare says he can deliver wafers to outside customers by the end of the year. For potential customers such as Rigetti the test will be how reliably those chips meet increasingly demanding designs. As Kulkarni puts it: “If we tighten the specification, what would the yield be?”</p>"
+      },
+      {
+        "index": 20,
+        "tag": "div",
+        "class": [
+          "around-the-web"
+        ],
+        "id": null,
+        "text": "From Your Site Articles Rigetti Launches Full-Stack Quantum Computing Service and Quantum IC Fab › PsiQuantum Plans Quantum Supercomputer That Runs on Light › Chip Fab-in-a-Box Could Democratize Semiconductors › Related Articles Around the Web IBM's Anderon Quantum Foundry and What It Means for U.S. Industry - Environment+Energy Leader ›",
+        "html": "<div class=\"around-the-web\"><div class=\"from-your-site__headline\">From Your Site Articles</div><ul class=\"around-the-web__list\"><li class=\"from-your-site__item\"><a class=\"from-your-site__link\" href=\"https://spectrum.ieee.org/rigetti-launches-fullstack-quantum-computing-service-and-quantum-ic-fab\" rel=\"noopener noreferrer\" target=\"_blank\">Rigetti Launches Full-Stack Quantum Computing Service and Quantum IC Fab ›</a></li><li class=\"from-your-site__item\"><a class=\"from-your-site__link\" href=\"https://spectrum.ieee.org/psiquantum-supercomputer\" rel=\"noopener noreferrer\" target=\"_blank\">PsiQuantum Plans Quantum Supercomputer That Runs on Light ›</a></li><li class=\"from-your-site__item\"><a class=\"from-your-site__link\" href=\"https://spectrum.ieee.org/inchfab\" rel=\"noopener noreferrer\" target=\"_blank\">Chip Fab-in-a-Box Could Democratize Semiconductors ›</a></li></ul><div class=\"around-the-web__headline\">Related Articles Around the Web</div><ul class=\"around-the-web__list\"><li class=\"around-the-web__item\"><a class=\"around-the-web__link\" href=\"https://www.environmentenergyleader.com/stories/ibms-anderon-quantum-foundry-and-what-it-means-for-us-industry,126971\" rel=\"noopener noreferrer\" target=\"_blank\">IBM's Anderon Quantum Foundry and What It Means for U.S. Industry - Environment+Energy Leader ›</a></li></ul></div>"
+      }
+    ]
+  },
+  {
+    "url": "https://spectrum.ieee.org/e-waste-european-union-circuit4eu",
+    "status": "success",
+    "body_selector": "div.body.js-expandable.clearfix.js-listicle-body",
+    "body_tag": "div",
+    "body_class": [
+      "body",
+      "js-expandable",
+      "clearfix",
+      "js-listicle-body",
+      "css-listicle-body-2677843218"
+    ],
+    "body_description_tag": "div",
+    "body_description_class": [
+      "body-description"
+    ],
+    "direct_children_count": 33,
+    "direct_children": [
+      {
+        "index": 1,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Circuit4EU is a major European Union initiative to advance 10 different technologies to recover, reuse, and recycle critical raw materials found in old printed circuit boards , permanent magnets , and other electronic device components.",
+        "html": "<p><a href=\"https://circuit4eu.org/\" rel=\"noopener noreferrer\" target=\"_blank\">Circuit4EU</a> is a major <a href=\"https://spectrum.ieee.org/tag/european-union\">European Union</a> initiative to advance 10 different technologies to recover, reuse, and recycle critical raw materials found in old <a href=\"https://spectrum.ieee.org/tag/printed-circuit-boards\">printed circuit boards</a>, <a href=\"https://spectrum.ieee.org/tag/permanent-magnets\">permanent magnets</a>, and other electronic device components. </p>"
+      },
+      {
+        "index": 2,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Publicly launched on 4 September, the 3.5-year project brings together 21 partners in nine countries to support an EU target to derive 25 percent of annual rare earth minerals from recycling by 2030. French engineering school Arts et Métiers ParisTech is leading the initiative.",
+        "html": "<p>Publicly launched on 4 September, the 3.5-year project brings together 21 partners in nine countries to support an <a href=\"https://single-market-economy.ec.europa.eu/sectors/raw-materials/areas-specific-interest/critical-raw-materials/critical-raw-materials-act_en\" rel=\"noopener noreferrer\" target=\"_blank\">EU target</a> to derive 25 percent of annual rare earth minerals from recycling by 2030. French engineering school <a href=\"https://artsetmetiers.fr/fr\" rel=\"noopener noreferrer\" target=\"_blank\">Arts et Métiers ParisTech</a> is leading the initiative.</p>"
+      },
+      {
+        "index": 3,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "The EU remains heavily reliant on foreign imports essential for green-transition technologies like solar panels and electric vehicles , the advancement of new digital technologies, and defense, in part because recycling rates remain extremely low.",
+        "html": "<p>The EU remains heavily reliant on foreign imports essential for green-transition technologies like <a data-linked-post=\"2673860973\" href=\"https://spectrum.ieee.org/solar-panels-micro-cpv\" target=\"_blank\">solar panels</a> and <a href=\"https://spectrum.ieee.org/tag/electric-vehicles\">electric vehicles</a>, the advancement of new digital technologies, and defense, in part because recycling rates remain extremely low.</p>"
+      },
+      {
+        "index": 4,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Among the 10 technologies are AI-driven quality inspection, robotic disassembly, digital product passports, desoldering, and hydrometallurgical recycling. These technologies are being piloted across recycling efforts for laptops, Wi-Fi boxes, e-scooters, and dishwashers.",
+        "html": "<p>Among the 10 technologies are AI-driven quality inspection, robotic disassembly, digital product passports, desoldering, and hydrometallurgical recycling. These technologies are being piloted across recycling efforts for laptops, <a href=\"https://spectrum.ieee.org/tag/wi-fi\">Wi-Fi</a> boxes, e-scooters, and dishwashers. </p>"
+      },
+      {
+        "index": 5,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "The Circuit4EU initiative aims to achieve a technology readiness level 7 with at least some of the pilot technologies. That’s equivalent to a live prototype in a factory environment. “We hope pilots will move from a research phase to industrial scale, being integrated directly by project partners and available as future technology on the market,” says Nicolas Perry , the project’s coordinator at Circuit4EU.",
+        "html": "<p>The Circuit4EU initiative aims to achieve a <a href=\"https://en.wikipedia.org/wiki/Technology_readiness_level\" rel=\"noopener noreferrer\" target=\"_blank\">technology readiness level 7</a> with at least some of the pilot technologies. That’s equivalent to a live prototype in a factory environment. “We hope pilots will move from a research phase to industrial scale, being integrated directly by project partners and available as future technology on the market,” says <a href=\"https://www.linkedin.com/in/nicolas-perry-a222268/?trk=public-profile-join-page\" rel=\"noopener noreferrer\" target=\"_blank\">Nicolas Perry</a>, the project’s coordinator at Circuit4EU.</p>"
+      },
+      {
+        "index": 6,
+        "tag": "h2",
+        "class": null,
+        "id": null,
+        "text": "AI Quality Inspection for E‑Waste",
+        "html": "<h2>AI Quality Inspection for E‑Waste</h2>"
+      },
+      {
+        "index": 7,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Separating buried treasure from useless junk at scale will mean using AI to automate quality inspection. Trained AI models will help make decisions about the value of components in products such as an old laptop, a wheel from an e-scooter, or a printed circuit board, and whether it’s worth investing time and money to extract them. Circuit boards , for example, could be inspected to find functional components suitable for reuse, as well as defective or damaged components that could be recycled or refined instead.",
+        "html": "<p>Separating buried treasure from useless junk at scale will mean using AI to automate quality inspection. Trained <a href=\"https://spectrum.ieee.org/tag/ai-models\">AI models</a> will help make decisions about the value of components in products such as an old laptop, a wheel from an e-scooter, or a printed circuit board, and whether it’s worth investing time and money to extract them. <a href=\"https://spectrum.ieee.org/tag/circuit-boards\">Circuit boards</a>, for example, could be inspected to find functional components suitable for reuse, as well as defective or damaged components that could be recycled or refined instead.</p>"
+      },
+      {
+        "index": 8,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "",
+        "html": "<p><div class=\"rblad-ieee_in_content\"></div></p>"
+      },
+      {
+        "index": 9,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Circuit4EU hasn’t settled on specific AI models yet, but it is exploring computer vision and machine learning options. A pilot program at the University of Ljubljana , in Slovenia, to test AI inspection will involve e-waste recycling and repair companies including Arianee , EcoWise , GAD Elektronika , and Tech Takeback .",
+        "html": "<p>Circuit4EU hasn’t settled on specific AI models yet, but it is exploring <a href=\"https://spectrum.ieee.org/tag/computer-vision\">computer vision</a> and <a href=\"https://spectrum.ieee.org/tag/machine-learning\">machine learning</a> options. A pilot program at the <a href=\"https://www.uni-lj.si/en/university\" rel=\"noopener noreferrer\" target=\"_blank\">University of Ljubljana</a>, in Slovenia, to test AI inspection will involve <a href=\"https://spectrum.ieee.org/tag/e-waste\">e-waste</a> recycling and repair companies including <a href=\"https://www.arianee.com/en\" rel=\"noopener noreferrer\" target=\"_blank\">Arianee</a>, <a href=\"https://www.eco-wise.co.uk/\" rel=\"noopener noreferrer\" target=\"_blank\">EcoWise</a>, <a href=\"https://www.gad.si/\" rel=\"noopener noreferrer\" target=\"_blank\">GAD Elektronika</a>, and <a href=\"https://www.techtakeback.com/\" rel=\"noopener noreferrer\" target=\"_blank\">Tech Takeback</a>.</p>"
+      },
+      {
+        "index": 10,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "However, heavy reliance on computer vision to survey e-waste streams is not always the best option. According to Sebastian Pattinson , an associate professor at the University of Cambridge and cofounder of the AI-for-manufacturing spin-out Matta, conventional visible-light imaging systems may not be able to see through a product’s external plastic casing to directly flag items like internal batteries or circuit boards, making alternative detection methods more appropriate. “If you really need to see inside a box, and you don’t have any additional information, then a different sensor technology may be more appropriate, such as X-ray inspection, although that could impact the economics,” says Pattinson.",
+        "html": "<p>However, heavy reliance on computer vision to survey e-waste streams is not always the best option. According to <a href=\"https://www.linkedin.com/in/sebastian-pattinson-09519010b/\" rel=\"noopener noreferrer\" target=\"_blank\">Sebastian Pattinson</a>, an associate professor at the University of Cambridge and cofounder of the AI-for-manufacturing spin-out <a href=\"https://matta.ai/\" rel=\"noopener noreferrer\" target=\"_blank\">Matta, </a>conventional visible-light imaging systems may not be able to see through a product’s external plastic casing to directly flag items like internal <a href=\"https://spectrum.ieee.org/tag/batteries\">batteries</a> or circuit boards, making alternative detection methods more appropriate. “If you really need to see inside a box, and you don’t have any additional information, then a different sensor technology may be more appropriate, such as X-ray inspection, although that could impact the economics,” says Pattinson.</p>"
+      },
+      {
+        "index": 11,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "The waste industry has conventionally deployed sensor fusion systems in commercial material recovery facilities to reveal components that would otherwise be concealed from view. These use machine learning and deep-learning algorithms to combine data from multiple sensors, such as near-infrared spectroscopy , X-ray fluorescence , and hyperspectral imaging , to enhance the accuracy of material classification.",
+        "html": "<p>The waste industry has conventionally deployed <a href=\"https://spectrum.ieee.org/tag/sensor-fusion\">sensor fusion</a> systems in commercial material recovery facilities to reveal components that would otherwise be concealed from view. These use machine learning and deep-learning <a href=\"https://spectrum.ieee.org/tag/algorithms\">algorithms</a> to combine data from multiple sensors, such as near-infrared <a href=\"https://spectrum.ieee.org/tag/spectroscopy\">spectroscopy</a>, X-ray <a href=\"https://spectrum.ieee.org/tag/fluorescence\">fluorescence</a>, and <a href=\"https://spectrum.ieee.org/tag/hyperspectral-imaging\">hyperspectral imaging</a>, to enhance the accuracy of material classification.</p>"
+      },
+      {
+        "index": 12,
+        "tag": "h2",
+        "class": null,
+        "id": null,
+        "text": "Robotic Disassembly of Laptops",
+        "html": "<h2>Robotic Disassembly of Laptops</h2>"
+      },
+      {
+        "index": 13,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Another Circuit4EU pilot—led by Tech Takeback working alongside Arts et Métiers spin-out AMValor and nonprofit tech research center Lortek , in Spain—is testing robotic disassembly techniques. Circuit4EU’s work stream will focus on laptops and dishwashers. For laptops, for example, an industrial robotic arm would take them apart and remove motherboards or RAM.",
+        "html": "<p>Another Circuit4EU pilot—led by Tech Takeback working alongside Arts et Métiers spin-out <a href=\"https://artsetmetiers.fr/en/amvalor-le-bras-economique-des-arts-et-metiers\" rel=\"noopener noreferrer\" target=\"_blank\">AMValor</a> and nonprofit tech research center <a href=\"https://www.lortek.es/en/\" rel=\"noopener noreferrer\" target=\"_blank\">Lortek</a>, in Spain—is testing robotic disassembly techniques. Circuit4EU’s work stream will focus on laptops and dishwashers. For laptops, for example, an industrial <a href=\"https://spectrum.ieee.org/tag/robotic-arm\">robotic arm</a> would take them apart and remove motherboards or RAM. </p>"
+      },
+      {
+        "index": 14,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "A system of pressure contacts and internal sensors will enable the robot to adjust its position to reach the ideal position for disassembly. Printed circuit boards in dishwashers will be removed by hand before being worked on by a robot.",
+        "html": "<p>A system of pressure contacts and internal sensors will enable the robot to adjust its position to reach the ideal position for disassembly. Printed circuit boards in dishwashers will be removed by hand before being worked on by a robot.</p>"
+      },
+      {
+        "index": 15,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Here, AI computer vision may again play a role. Optical character recognition can scan text to help characterize the product, while other computer-vision models would study the positions of chips, RAM, CPU, screws, connectors, and more.",
+        "html": "<p>Here, AI computer vision may again play a role. Optical character recognition can scan text to help characterize the product, while other computer-vision models would study the positions of chips, RAM, CPU, screws, connectors, and more.</p>"
+      },
+      {
+        "index": 16,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "The aim is to automate the process as much as possible, says Perry, to enable accurate unscrewing or desoldering, potentially even when there is zero data on a specific product.",
+        "html": "<p>The aim is to automate the process as much as possible, says Perry, to enable accurate unscrewing or desoldering, potentially even when there is zero data on a specific product.</p>"
+      },
+      {
+        "index": 17,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "José Saenz , who leads a separate e-waste automation initiative at Germany’s Fraunhofer Institute for Factory Operation and Automation , says a key challenge for robotic disassembly is understanding “how deep to go” when taking products apart.",
+        "html": "<p><a href=\"https://www.linkedin.com/in/jose-saenz-1826876/\" rel=\"noopener noreferrer\" target=\"_blank\">José Saenz</a>, who leads a separate e-waste <a href=\"https://spectrum.ieee.org/tag/automation\">automation</a> initiative at Germany’s <a href=\"https://www.iff.fraunhofer.de/en.html\" rel=\"noopener noreferrer\" target=\"_blank\">Fraunhofer Institute for Factory Operation and Automation</a>, says a key challenge for robotic disassembly is understanding “how deep to go” when taking products apart. </p>"
+      },
+      {
+        "index": 18,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "“Are there potentially hazardous chemicals or materials, are there sharp corners, is it glued, and is there a way to unscrew it without having to break it?” Saenz asks. He says it’s important to have a database detailing historic product changes and any disassembly processes that failed to work, which can enable a system to make better decisions in the future.",
+        "html": "<p>“Are there potentially hazardous chemicals or materials, are there sharp corners, is it glued, and is there a way to unscrew it without having to break it?” Saenz asks. He says it’s important to have a database detailing historic product changes and any disassembly processes that failed to work, which can enable a system to make better decisions in the future.</p>"
+      },
+      {
+        "index": 19,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "",
+        "html": "<p><div class=\"rblad-ieee_in_content\"></div></p>"
+      },
+      {
+        "index": 20,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "The economics behind different disassembly pathways, for example, whether to unscrew, unglue, mill out screws, or rip apart the entire housing, are all aspects to consider when scaling up the system for factory operation.",
+        "html": "<p>The economics behind different disassembly pathways, for example, whether to unscrew, unglue, mill out screws, or rip apart the entire housing, are all aspects to consider when scaling up the system for factory operation.</p>"
+      },
+      {
+        "index": 21,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Understanding factors such as the value of what’s inside, possible contamination, and the energy being put into the process by the robot “will help determine how to reach higher levels of technology readiness,” says Saenz.",
+        "html": "<p>Understanding factors such as the value of what’s inside, possible contamination, and the energy being put into the process by the robot “will help determine how to reach higher levels of technology readiness,” says Saenz.</p>"
+      },
+      {
+        "index": 22,
+        "tag": "h2",
+        "class": null,
+        "id": null,
+        "text": "Desoldering and Chemical Recycling",
+        "html": "<h2>Desoldering and Chemical Recycling</h2>"
+      },
+      {
+        "index": 23,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "After the hardware is dismantled, the focus shifts to targeted desoldering and chemical recycling to extract the actual raw materials, alongside digital material tracking.",
+        "html": "<p>After the hardware is dismantled, the focus shifts to targeted desoldering and chemical recycling to extract the actual raw materials, alongside digital material tracking.</p>"
+      },
+      {
+        "index": 24,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Circuit4EU will benchmark different desoldering technologies when developing an end-effector tool for the robot arm , with image recognition and thermal measurement both likely to feature.",
+        "html": "<p>Circuit4EU will benchmark different desoldering technologies when developing an end-effector tool for the <a href=\"https://spectrum.ieee.org/tag/robot-arm\">robot arm</a>, with <a href=\"https://spectrum.ieee.org/tag/image-recognition\">image recognition</a> and thermal measurement both likely to feature.</p>"
+      },
+      {
+        "index": 25,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Data from quality inspection, robotic disassembly, and other processes will form the basis of a digital product passport—a virtual ID card for recovered rare earth minerals–which Perry says could be linked to a digital twin providing detailed information on origin, quality, environmental footprint, and recycling options.",
+        "html": "<p>Data from quality inspection, robotic disassembly, and other processes will form the basis of a digital product passport—a virtual ID card for recovered rare earth minerals–which Perry says could be linked to a <a href=\"https://spectrum.ieee.org/living-heart-project-virtual-twins\" target=\"_self\">digital twin</a> providing detailed information on origin, quality, environmental footprint, and recycling options. </p>"
+      },
+      {
+        "index": 26,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Beyond the technical concerns, Circuit4EU has been investigating the value chain for recovered components, including brokers, reusers, and remanufacturers, as well as potential knowledge sharing or synergies with other European projects tackling critical materials recovery.",
+        "html": "<p>Beyond the technical concerns, Circuit4EU has been investigating the value chain for recovered components, including brokers, reusers, and remanufacturers, as well as potential knowledge sharing or synergies with other European projects tackling critical materials recovery.</p>"
+      },
+      {
+        "index": 27,
+        "tag": "h2",
+        "class": null,
+        "id": null,
+        "text": "EU Critical Raw Materials Policy",
+        "html": "<h2>EU Critical Raw Materials Policy</h2>"
+      },
+      {
+        "index": 28,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "The shift to more advanced recycling isn’t happening in a vacuum: New EU policies are driving change. The EU’s Critical Raw Materials Act from 2024 introduces a nonbinding commitment to obtain 25 percent of all CRMs needed for the energy transition via recycling by 2030.",
+        "html": "<p>The shift to more advanced recycling isn’t happening in a vacuum: New EU policies are driving change. The EU’s Critical Raw Materials Act from 2024 introduces a nonbinding commitment to obtain 25 percent of all CRMs needed for the <a href=\"https://spectrum.ieee.org/tag/energy-transition\">energy transition</a> via recycling by 2030. </p>"
+      },
+      {
+        "index": 29,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "Amendments to the regulation, slated for approval some time in 2027, would increase pressure on large companies by requiring them to map out full supply chains of components containing rare metals. It would also expand the recycling of permanent magnets in consumer electronics , such as hard-disk drives and loudspeakers.",
+        "html": "<p><a href=\"https://www.europarl.europa.eu/legislative-train/theme-a-new-plan-for-europe-s-sustainable-prosperity-and-competitiveness/file-amendments-to-the-critical-raw-materials-act\" rel=\"noopener noreferrer\" target=\"_blank\">Amendments</a> to the regulation, slated for approval some time in 2027, would increase pressure on large companies by requiring them to map out full supply chains of components containing rare metals. It would also expand the recycling of permanent magnets in <a href=\"https://spectrum.ieee.org/topic/consumer-electronics/\">consumer electronics</a>, such as <a href=\"https://spectrum.ieee.org/tag/hard-disk-drives\">hard-disk drives</a> and loudspeakers.</p>"
+      },
+      {
+        "index": 30,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "A related proposal to transform the EU Waste Electrical and Electronic Equipment (WEEE) Directive into binding legislation across all member states would oblige product manufacturers to create detailed Bill Of Material-level mapping of CRMs in products to support downstream recycling.",
+        "html": "<p>A related proposal to transform the EU <a href=\"https://environment.ec.europa.eu/topics/waste-and-recycling/waste-electrical-and-electronic-equipment-weee_en\" rel=\"noopener noreferrer\" target=\"_blank\">Waste Electrical and Electronic Equipment (WEEE) Directive</a> into binding legislation across all member states would oblige product manufacturers to create detailed Bill Of Material-level mapping of CRMs in products to support downstream recycling. </p>"
+      },
+      {
+        "index": 31,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "“All this is a reaction to very poor e-waste collection rates and insufficient recycling in Europe,” says Theresa Mörsen , the waste and resources policy manager at environmental NGO Zero Waste Europe, who argues that greater efforts should be made to improve the waste-management system.",
+        "html": "<p>“All this is a reaction to very poor e-waste collection rates and insufficient recycling in Europe,” says <a href=\"https://zerowasteeurope.eu/about/team/#team3-theresa-morsen\" rel=\"noopener noreferrer\" target=\"_blank\">Theresa Mörsen</a>, the waste and resources policy manager at environmental NGO Zero Waste Europe, who argues that greater efforts should be made to improve the waste-management system.</p>"
+      },
+      {
+        "index": 32,
+        "tag": "p",
+        "class": null,
+        "id": null,
+        "text": "“Some member states have better systems than others, but essentially there’s a realization at the EU level that it doesn’t work,” says Mörsen. “There are no real incentives to recycle e-waste, the right option is usually more of an effort and more costly for the end consumer, and there are no clear collection pathways.”",
+        "html": "<p>“Some member states have better systems than others, but essentially there’s a realization at the EU level that it doesn’t work,” says Mörsen. “There are no real incentives to recycle e-waste, the right option is usually more of an effort and more costly for the end consumer, and there are no clear collection pathways.”</p>"
+      },
+      {
+        "index": 33,
+        "tag": "div",
+        "class": [
+          "around-the-web"
+        ],
+        "id": null,
+        "text": "From Your Site Articles The IoT’s E-Waste Problem Isn’t Inevitable › Generative AI Has a Massive E-Waste Problem › E-Waste Is a Cybersecurity Problem, Too › Related Articles Around the Web Electronic waste (e-waste) ›",
+        "html": "<div class=\"around-the-web\"><div class=\"from-your-site__headline\">From Your Site Articles</div><ul class=\"around-the-web__list\"><li class=\"from-your-site__item\"><a class=\"from-your-site__link\" href=\"https://spectrum.ieee.org/the-iots-ewaste-problem-isnt-inevitable\" rel=\"noopener noreferrer\" target=\"_blank\">The IoT’s E-Waste Problem Isn’t Inevitable ›</a></li><li class=\"from-your-site__item\"><a class=\"from-your-site__link\" href=\"https://spectrum.ieee.org/e-waste\" rel=\"noopener noreferrer\" target=\"_blank\">Generative AI Has a Massive E-Waste Problem ›</a></li><li class=\"from-your-site__item\"><a class=\"from-your-site__link\" href=\"https://spectrum.ieee.org/the-cybersecurity-of-e-waste\" rel=\"noopener noreferrer\" target=\"_blank\">E-Waste Is a Cybersecurity Problem, Too ›</a></li></ul><div class=\"around-the-web__headline\">Related Articles Around the Web</div><ul class=\"around-the-web__list\"><li class=\"around-the-web__item\"><a class=\"around-the-web__link\" href=\"https://www.who.int/news-room/fact-sheets/detail/electronic-waste-(e-waste)\" rel=\"noopener noreferrer\" target=\"_blank\">Electronic waste (e-waste) ›</a></li></ul></div>"
+      }
+    ]
+  }
+]
