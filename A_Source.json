@@ -7,46 +7,10 @@
       "rss_url": "https://spectrum.ieee.org/customfeeds/feed/all-topics/rss"
     },
     {
-      "name": "IEEE Spectrum - Full Text",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/",
-      "rss_url": "http://feeds.feedburner.com/IeeeSpectrumFullText"
-    },
-    {
-      "name": "IEEE Spectrum",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/",
-      "rss_url": "http://feeds.feedburner.com/IeeeSpectrum"
-    },
-    {
       "name": "IEEE Spectrum - Robotics",
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/",
       "rss_url": "http://feeds.feedburner.com/IeeeSpectrumRoboticsChannel"
-    },
-    {
-      "name": "IEEE Spectrum - Robotics Full Text",
-      "category": "Robotics",
-      "url": "https://spectrum.ieee.org/",
-      "rss_url": "https://spectrum.ieee.org/rss/robotics/fulltext"
-    },
-    {
-      "name": "IEEE Spectrum - Automaton",
-      "category": "Robotics",
-      "url": "https://spectrum.ieee.org/",
-      "rss_url": "http://feeds.feedburner.com/ieeespectrum/automaton"
-    },
-    {
-      "name": "IEEE Spectrum - Automaton Full Text",
-      "category": "Robotics",
-      "url": "https://spectrum.ieee.org/",
-      "rss_url": "https://spectrum.ieee.org/rss/blog/automaton/fulltext"
-    },
-    {
-      "name": "IEEE Spectrum - Feed",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/",
-      "rss_url": "https://spectrum.ieee.org/feeds/feed.rss"
     }
   ]
 }
