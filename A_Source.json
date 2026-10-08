@@ -1,12 +1,6 @@
 {
   "sources": [
     {
-      "name": "IEEE Spectrum - All Topics",
-      "category": "Technology",
-      "url": "https://spectrum.ieee.org/",
-      "rss_url": "https://spectrum.ieee.org/customfeeds/feed/all-topics/rss"
-    },
-    {
       "name": "IEEE Spectrum - Robotics",
       "category": "Robotics",
       "url": "https://spectrum.ieee.org/",
