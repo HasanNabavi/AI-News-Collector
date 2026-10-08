@@ -1,8 +1,11 @@
+import json
 import requests
 from bs4 import BeautifulSoup
 
 
 URL = "https://spectrum.ieee.org/career-pivots-for-software-engineers"
+
+OUTPUT_FILE = "Test_Scrapers.json"
 
 
 headers = {
@@ -24,47 +27,53 @@ body = soup.select_one(
     "div.body.js-expandable.clearfix.js-listicle-body"
 )
 
+
 if not body:
-    print("BODY NOT FOUND")
-    raise SystemExit(1)
+    result = {
+        "url": URL,
+        "status": "error",
+        "error": "Main article body not found",
+        "direct_children": []
+    }
+
+else:
+
+    children = body.find_all(recursive=False)
+
+    direct_children = []
+
+    for index, child in enumerate(children, start=1):
+
+        text = child.get_text(" ", strip=True)
+
+        direct_children.append({
+            "index": index,
+            "tag": child.name,
+            "class": child.get("class"),
+            "id": child.get("id"),
+            "text": text,
+            "html": str(child)
+        })
 
 
-print("=" * 100)
-print("BODY FOUND")
-print("=" * 100)
-
-print(f"Tag   : {body.name}")
-print(f"Class : {body.get('class')}")
-print()
-
-
-children = body.find_all(recursive=False)
-
-print(f"Direct children: {len(children)}")
-print()
+    result = {
+        "url": URL,
+        "status": "success",
+        "body_selector": "div.body.js-expandable.clearfix.js-listicle-body",
+        "body_tag": body.name,
+        "body_class": body.get("class"),
+        "direct_children_count": len(children),
+        "direct_children": direct_children
+    }
 
 
-for index, child in enumerate(children, start=1):
+# ---------------------------------------------------------
+# Create / overwrite Test_Scrapers.json
+# ---------------------------------------------------------
 
-    text = child.get_text(" ", strip=True)
+with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    json.dump(result, f, ensure_ascii=False, indent=2)
 
-    if len(text) > 250:
-        text = text[:250] + "..."
 
-    print("-" * 100)
-    print(f"CHILD #{index}")
-    print(f"Tag     : {child.name}")
-    print(f"Class   : {child.get('class')}")
-    print(f"ID      : {child.get('id')}")
-    print(f"Text    : {text}")
-    print()
-
-print("=" * 100)
-print("RAW HTML OF DIRECT CHILDREN")
-print("=" * 100)
-
-for index, child in enumerate(children, start=1):
-
-    print()
-    print(f"### CHILD #{index}")
-    print(child.prettify())
+print(f"Test completed successfully.")
+print(f"Output written to: {OUTPUT_FILE}")
