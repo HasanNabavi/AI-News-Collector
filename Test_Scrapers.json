@@ -1,0 +1,26 @@
+================================================================================
+IEEE Spectrum HTML Structure Test
+================================================================================
+
+Testing article 1: Changing Your Career Isn’t Easy
+  HTML length: 467,612
+  <article> count: 9
+  Images: 4
+  Videos/iframes: 1
+
+Testing article 2: The U.S. Just Bet $1 Billion on Quantum Chip Manufacturing
+  HTML length: 475,860
+  <article> count: 9
+  Images: 6
+  Videos/iframes: 1
+
+Testing article 3: Europe’s Circuit4EU Initiative Targets Rare Earths From E-Waste
+  HTML length: 480,312
+  <article> count: 9
+  Images: 5
+  Videos/iframes: 1
+
+================================================================================
+Test completed.
+Output: /home/runner/work/AI-News-Collector/AI-News-Collector/Scrapers/Test_Scrapers.json
+================================================================================
