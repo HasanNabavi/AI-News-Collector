@@ -1,3 +1,4 @@
+
 import json
 import time
 import urllib.request
@@ -19,9 +20,9 @@ OUTPUT_FILE = SCRIPT_DIR / "Test_AIforContentGeneration.json"
 
 OLLAMA_URL = "http://127.0.0.1:11434"
 
+# Diagnostic test: Qwen3 only.
 MODELS = [
     "qwen3:4b",
-    "gemma3:4b",
 ]
 
 # Maximum time allowed for one generation request.
@@ -312,6 +313,10 @@ def call_ollama(model_name, prompt):
             }
         ],
         "stream": False,
+
+        # Diagnostic change: disable Qwen3 thinking mode.
+        "think": False,
+
         "format": "json",
         "options": {
             "temperature": 0.2,
@@ -337,7 +342,8 @@ def call_ollama(model_name, prompt):
     print(
         f"[REQUEST START] Model={model_name} "
         f"Time={utc_now()} "
-        f"Timeout={REQUEST_TIMEOUT_SECONDS}s",
+        f"Timeout={REQUEST_TIMEOUT_SECONDS}s "
+        f"Think=False",
         flush=True,
     )
 
@@ -479,6 +485,10 @@ def main():
 
     articles = input_data.get("news", [])
 
+    # Diagnostic change: test only the first complete article.
+    # The article text is not truncated or modified.
+    articles = articles[:1]
+
     if not isinstance(articles, list):
         raise ValueError(
             "The input JSON must contain a 'news' list."
@@ -494,7 +504,7 @@ def main():
         flush=True,
     )
     print(
-        f"Articles found: {len(articles)}",
+        f"Articles selected for this test: {len(articles)}",
         flush=True,
     )
     print(
@@ -503,6 +513,10 @@ def main():
     )
     print(
         f"Request timeout: {REQUEST_TIMEOUT_SECONDS} seconds",
+        flush=True,
+    )
+    print(
+        "Thinking mode: disabled (think=False)",
         flush=True,
     )
 
@@ -534,11 +548,13 @@ def main():
         "test_metadata": {
             "test_name": "Test_AIforContentGeneration",
             "purpose": (
-                "Compare local Ollama models for Persian "
-                "news content generation."
+                "Diagnose Qwen3 generation timeout with "
+                "thinking mode disabled, using one complete article."
             ),
             "models": MODELS,
             "temperature": 0.2,
+            "think": False,
+            "articles_per_model": len(articles),
             "request_timeout_seconds": REQUEST_TIMEOUT_SECONDS,
             "started_at": started_at,
             "finished_at": None,
