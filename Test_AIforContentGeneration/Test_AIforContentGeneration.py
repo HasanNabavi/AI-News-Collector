@@ -20,7 +20,7 @@ OUTPUT_FILE = SCRIPT_DIR / "Test_AIforContentGeneration.json"
 
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 API_KEY = os.getenv("OPENROUTER_API_KEY", "").strip()
-MODEL = "qwen/qwen3.8-27b:free"
+MODEL = "nvidia/nemotron-3-super-120b-a12b:free"
 
 ARTICLES_PER_TEST = 1
 REQUEST_TIMEOUT_SECONDS = 180
