@@ -1,5 +1,4 @@
-
-name: Test AI for Content Generation
+name: Test AI Headline Translation
 
 on:
   workflow_dispatch:
@@ -8,7 +7,7 @@ permissions:
   contents: write
 
 jobs:
-  test-ai-content-generation:
+  test-ai-headline-translation:
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -21,12 +20,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests
-
-      - name: Run AI content generation test
+      - name: Run headline translation test
         id: run_test
         continue-on-error: true
         env:
@@ -54,8 +48,8 @@ jobs:
               sys.exit(1)
 
           try:
-              with output_file.open("r", encoding="utf-8") as f:
-                  data = json.load(f)
+              with output_file.open("r", encoding="utf-8") as file:
+                  data = json.load(file)
           except Exception as exc:
               print(f"ERROR: Invalid JSON: {exc}")
               sys.exit(1)
@@ -64,79 +58,62 @@ jobs:
               print("ERROR: Root JSON value must be an object.")
               sys.exit(1)
 
-          if "article_count" not in data:
-              print("ERROR: Missing 'article_count'.")
+          metadata = data.get("test_metadata", {})
+          if metadata.get("method") != "headline_translation_en_to_fa":
+              print("ERROR: Unexpected test method.")
               sys.exit(1)
 
-          if "method_results" not in data:
-              print("ERROR: Missing 'method_results'.")
+          results = data.get("translation_results")
+
+          if not isinstance(results, dict) or not results:
+              print("ERROR: Missing translation results.")
               sys.exit(1)
 
-          method_results = data["method_results"]
-
-          if not isinstance(method_results, dict) or not method_results:
-              print("ERROR: 'method_results' must be a non-empty object.")
+          if data.get("article_count") != len(results):
+              print("ERROR: article_count does not match results.")
               sys.exit(1)
 
-          expected_methods = {
-              "method_2_english_then_persian",
-          }
+          failed = []
 
-          allowed_metadata = {
-              "input_title",
-              "original_text",
-              "source",
-          }
+          for article_id, result in results.items():
+              if not isinstance(result, dict):
+                  print(f"ERROR: Invalid result for article {article_id}.")
+                  sys.exit(1)
 
-          found_methods = set()
+              if not result.get("input_title"):
+                  print(f"ERROR: Missing input title for {article_id}.")
+                  sys.exit(1)
 
-          for article_id, article_result in method_results.items():
-              if not isinstance(article_result, dict):
+              if result.get("status") != "success":
+                  failed.append(article_id)
                   print(
-                      f"ERROR: Results for article {article_id} "
-                      "must be an object."
+                      f"FAILED: Article {article_id}: "
+                      f"{result.get('error', 'Unknown error')}"
+                  )
+                  continue
+
+              translated = result.get("translated_title")
+
+              if not isinstance(translated, str) or not translated.strip():
+                  print(
+                      f"ERROR: Missing translated title for {article_id}."
                   )
                   sys.exit(1)
 
-              article_methods = (
-                  set(article_result.keys()) - allowed_metadata
-              )
-              found_methods.update(article_methods)
-
-              unexpected = article_methods - expected_methods
-              if unexpected:
-                  print(
-                      f"ERROR: Unexpected methods for article {article_id}: "
-                      f"{sorted(unexpected)}"
-                  )
-                  sys.exit(1)
-
-          if found_methods != expected_methods:
+              print(f"Article {article_id}: success")
+              print(f"Original: {result['input_title']}")
+              print(f"Persian:  {translated}")
+              print(f"Tokens:   {result.get('total_tokens', 0)}")
               print(
-                  "ERROR: Expected only method "
-                  "'method_2_english_then_persian'."
+                  f"Elapsed:  {result.get('elapsed_seconds', 'unknown')}s"
               )
-              print(f"Found methods: {sorted(found_methods)}")
+
+          if failed:
+              print(f"ERROR: Failed translations: {failed}")
               sys.exit(1)
 
           print("Output JSON is valid.")
           print(f"Articles processed: {data['article_count']}")
-          print(f"Methods found: {sorted(found_methods)}")
-
-          for article_id, article_result in method_results.items():
-              result = article_result.get(
-                  "method_2_english_then_persian", {}
-              )
-              status = result.get("status", "unknown")
-              print(f"Article {article_id}: status={status}")
-
-              output = result.get("output", {})
-              if isinstance(output, dict):
-                  print(f"Generated title: {output.get('title', '')}")
-                  print(
-                      "Generated text length: "
-                      f"{len(output.get('text', '') or '')} characters"
-                  )
 
           PY
 
@@ -152,7 +129,7 @@ jobs:
             if git diff --cached --quiet; then
               echo "No output changes to commit."
             else
-              git commit -m "Update AI content generation test results"
+              git commit -m "Update AI headline translation test results"
               git push
             fi
           else
@@ -163,7 +140,7 @@ jobs:
         if: always()
         run: |
           if [ "${{ steps.run_test.outcome }}" != "success" ]; then
-            echo "ERROR: AI content generation test failed."
+            echo "ERROR: Headline translation test failed."
             exit 1
           fi
 
@@ -172,4 +149,4 @@ jobs:
             exit 1
           fi
 
-          echo "AI content generation test and validation completed successfully."
+          echo "Headline translation test completed successfully."
