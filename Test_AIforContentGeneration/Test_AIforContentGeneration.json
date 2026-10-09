@@ -1,12 +1,12 @@
 {
   "test_metadata": {
-    "started_at": "2026-10-09T17:42:38.090812+00:00",
-    "model": "google/gemma-4-26b-a4b-it:free",
+    "started_at": "2026-10-09T18:14:58.380798+00:00",
+    "model": "thinkingmachines/inkling:free",
     "method": "method_2_english_then_persian",
     "input_file": "F1_NewsAfterAIGroupingRun.json",
     "output_file": "Test_AIforContentGeneration/Test_AIforContentGeneration.json",
     "article_limit": 1,
-    "finished_at": "2026-10-09T17:42:38.433652+00:00",
+    "finished_at": "2026-10-09T18:14:58.514750+00:00",
     "failed_article_count": 1
   },
   "article_count": 1,
@@ -18,10 +18,10 @@
       "method_2_english_then_persian": {
         "status": "error",
         "request_count": 1,
-        "wall_clock_elapsed_seconds": 0.34,
+        "wall_clock_elapsed_seconds": 0.13,
         "total_tokens": 0,
         "stages": [],
-        "error": "خطای HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+        "error": "خطای HTTP 403: {\"error\":{\"message\":\"thinkingmachines/inkling:free is only available on agentic harnesses. Try plugging it into a coding agent or productivity app listed on https://openrouter.ai/apps\",\"code\":403,\"metadata\":{\"routing_funnel\":[{\"step\":\"Initial Endpoints\",\"endpoint_count\":1}],\"failed_routing_step\":\"Gate Free Endpoints by Agentic Harness\"}}}"
       }
     }
   }
