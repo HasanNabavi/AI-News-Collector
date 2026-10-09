@@ -1,6 +1,6 @@
-
 import json
 import os
+import re
 import time
 import urllib.error
 import urllib.request
@@ -24,7 +24,11 @@ MODEL = "nvidia/nemotron-3-super-120b-a12b:free"
 
 ARTICLES_PER_TEST = 1
 REQUEST_TIMEOUT_SECONDS = 180
-MAX_TOKENS = 1400
+
+# سقف توکن جداگانه برای هر مرحله
+ENGLISH_MAX_TOKENS = 900
+PERSIAN_MAX_TOKENS = 1000
+
 TEMPERATURE = 0.2
 SAVE_ORIGINAL_TEXT = True
 
@@ -39,6 +43,7 @@ def utc_now():
 
 def save_json(data):
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
+
     with OUTPUT_FILE.open("w", encoding="utf-8") as file:
         json.dump(data, file, ensure_ascii=False, indent=2)
 
@@ -66,10 +71,13 @@ def extract_json(text):
 
     if text.startswith("```"):
         lines = text.splitlines()
+
         if lines and lines[0].startswith("```"):
             lines = lines[1:]
+
         if lines and lines[-1].strip() == "```":
             lines = lines[:-1]
+
         text = "\n".join(lines).strip()
 
     try:
@@ -92,8 +100,11 @@ def validate_news_output(data):
 
     for field in ("title", "text"):
         value = data.get(field)
+
         if not isinstance(value, str) or not value.strip():
-            raise ValueError(f"فیلد {field} خالی یا نامعتبر است.")
+            raise ValueError(
+                f"فیلد {field} خالی یا نامعتبر است."
+            )
 
     return data
 
@@ -101,14 +112,127 @@ def validate_news_output(data):
 def sum_tokens(usage):
     if not isinstance(usage, dict):
         return 0
+
     return int(usage.get("total_tokens") or 0)
+
+
+def paragraph_count(text):
+    paragraphs = [
+        p.strip()
+        for p in re.split(r"\n\s*\n", text.strip())
+        if p.strip()
+    ]
+
+    return len(paragraphs)
+
+
+# ============================================================
+# Persian quality checks
+# ============================================================
+
+def check_persian_quality(output):
+    title = output["title"]
+    text = output["text"]
+
+    warnings = []
+
+    # بررسی تعداد پاراگراف‌ها
+    count = paragraph_count(text)
+
+    if count < 1 or count > 3:
+        warnings.append(
+            f"تعداد پاراگراف‌ها {count} است؛ "
+            "انتظار می‌رود بین ۱ تا ۳ باشد."
+        )
+
+    # شناسایی واژه‌های انگلیسی متوالی در متن فارسی
+    # نام‌های خاص و اصطلاحات شناخته‌شده را تا حدی مستثنا می‌کنیم.
+    allowed_phrases = {
+        "OpenAI",
+        "ChatGPT",
+        "Hugging Face",
+        "Google",
+        "Microsoft",
+        "Nvidia",
+        "Figure AI",
+        "Boston Dynamics",
+        "Tesla",
+        "DeepMind",
+        "Anthropic",
+        "AI",
+        "AGI",
+        "GPU",
+        "CPU",
+        "API",
+        "NASA",
+        "BBC",
+        "CEO",
+        "VVER-1000",
+        "MELCOR",
+        "RELAP5",
+    }
+
+    combined_text = f"{title}\n{text}"
+
+    latin_words = re.findall(
+        r"[A-Za-z][A-Za-z0-9.'’_-]*",
+        combined_text,
+    )
+
+    # رشته‌هایی از چند واژه انگلیسی پشت سر هم
+    consecutive_english = re.findall(
+        r"\b[A-Za-z][A-Za-z'-]*"
+        r"(?:\s+[A-Za-z][A-Za-z'-]*){1,5}\b",
+        combined_text,
+    )
+
+    suspicious_phrases = []
+
+    for phrase in consecutive_english:
+        normalized = phrase.strip(" .,;:!?()[]{}\"'")
+
+        if normalized in allowed_phrases:
+            continue
+
+        # وجود چند واژه لاتین متوالی در خبر فارسی
+        if normalized and normalized not in suspicious_phrases:
+            suspicious_phrases.append(normalized)
+
+    # شناسایی واژه‌ای که هم‌زمان حروف فارسی و لاتین دارد
+    mixed_script = re.findall(
+        r"\S*[A-Za-z]+\S*[\u0600-\u06FF]"
+        r"\S*|"
+        r"\S*[\u0600-\u06FF]\S*[A-Za-z]+\S*",
+        combined_text,
+    )
+
+    mixed_script = list(dict.fromkeys(mixed_script))
+
+    if suspicious_phrases:
+        warnings.append({
+            "type": "possible_english_left_in_text",
+            "items": suspicious_phrases,
+        })
+
+    if mixed_script:
+        warnings.append({
+            "type": "mixed_persian_english_tokens",
+            "items": mixed_script,
+        })
+
+    return {
+        "paragraph_count": count,
+        "latin_word_count": len(latin_words),
+        "warnings": warnings,
+        "needs_manual_review": bool(warnings),
+    }
 
 
 # ============================================================
 # OpenRouter API
 # ============================================================
 
-def call_model(messages):
+def call_model(messages, max_tokens):
     if not API_KEY:
         raise RuntimeError(
             "متغیر OPENROUTER_API_KEY تنظیم نشده است."
@@ -118,7 +242,7 @@ def call_model(messages):
         "model": MODEL,
         "messages": messages,
         "temperature": TEMPERATURE,
-        "max_tokens": MAX_TOKENS,
+        "max_tokens": max_tokens,
     }
 
     request = urllib.request.Request(
@@ -149,6 +273,7 @@ def call_model(messages):
         error_text = error.read().decode(
             "utf-8", errors="replace"
         )
+
         raise RuntimeError(
             f"خطای HTTP {error.code}: {error_text[:1500]}"
         ) from error
@@ -173,6 +298,7 @@ def call_model(messages):
         ) from error
 
     choices = data.get("choices", [])
+
     if not choices:
         raise RuntimeError(
             f"پاسخ API فاقد choices است: {response_text[:1000]}"
@@ -194,6 +320,13 @@ def call_model(messages):
     if not content:
         raise RuntimeError("مدل پاسخ متنی خالی برگرداند.")
 
+    finish_reason = choice.get("finish_reason")
+
+    if finish_reason == "length":
+        raise RuntimeError(
+            "پاسخ مدل به سقف توکن رسید و احتمالاً ناقص است."
+        )
+
     usage = data.get("usage", {})
 
     return {
@@ -202,52 +335,33 @@ def call_model(messages):
         "http_status": status_code,
         "usage": usage,
         "total_tokens": sum_tokens(usage),
-        "finish_reason": choice.get("finish_reason"),
+        "finish_reason": finish_reason,
     }
 
 
 # ============================================================
-# Prompts
+# Stage 1: English news generation
 # ============================================================
-
-def prompt_direct_persian(article, article_text):
-    return [
-        {
-            "role": "system",
-            "content": (
-                "تو دبیر حرفه‌ای یک کانال خبری فارسی درباره هوش مصنوعی، "
-                "رباتیک و فناوری‌های آینده هستی. از متن اصلی مقاله، "
-                "یک خبر کوتاه، دقیق، روان و جذاب به فارسی بنویس. "
-                "هیچ واقعیتی را اختراع نکن. عنوان اصلی فقط اطلاعات "
-                "کمکی برای شناسایی موضوع است و به‌تنهایی مدرک factual "
-                "محسوب نمی‌شود. خروجی فقط JSON معتبر با دو فیلد "
-                "title و text باشد؛ بدون توضیح اضافی."
-            ),
-        },
-        {
-            "role": "user",
-            "content": json.dumps(
-                {
-                    "original_title": article.get("title", ""),
-                    "source": article.get("source", ""),
-                    "category": article.get("category", ""),
-                    "article_text": article_text,
-                },
-                ensure_ascii=False,
-            ),
-        },
-    ]
-
 
 def prompt_english_draft(article, article_text):
     return [
         {
             "role": "system",
             "content": (
-                "Write a concise English news brief using only facts "
-                "explicitly supported by the article text. Do not invent "
-                "details. Treat the headline as metadata, not evidence. "
-                "Return only valid JSON with fields title and text."
+                "You are a professional news editor covering AI, "
+                "robotics, and future technology.\n"
+                "Write a concise English news brief based only on "
+                "the supplied article text.\n"
+                "Requirements:\n"
+                "- Focus on the main event and its most important facts.\n"
+                "- Keep the brief suitable for a short Telegram news post.\n"
+                "- Use 1 to 3 short paragraphs.\n"
+                "- Do not invent facts, numbers, dates, quotes, or causes.\n"
+                "- Preserve uncertainty and attribution from the source.\n"
+                "- Do not treat the headline as evidence for extra claims.\n"
+                "- Do not include unrelated recommendations or page metadata.\n"
+                "- Return only valid JSON with one field: text.\n"
+                "- Do not use Markdown or add explanations."
             ),
         },
         {
@@ -263,42 +377,54 @@ def prompt_english_draft(article, article_text):
     ]
 
 
-def prompt_persian_from_english(english_draft):
+# ============================================================
+# Stage 2: Faithful title translation + Persian news
+# ============================================================
+
+def prompt_persian_from_english(original_title, english_draft):
     return [
         {
             "role": "system",
             "content": (
-                "پیش‌نویس انگلیسی را به یک خبر کوتاه و روان فارسی تبدیل کن. "
-                "ترجمه طبیعی باشد، نه کلمه‌به‌کلمه. واقعیت جدید اضافه نکن. "
-                "خروجی فقط JSON معتبر با فیلدهای title و text باشد."
-            ),
-        },
-        {
-            "role": "user",
-            "content": english_draft,
-        },
-    ]
+                "تو ویراستار حرفه‌ای فارسی برای یک کانال خبری "
+                "درباره هوش مصنوعی، رباتیک و فناوری‌های آینده هستی.\n\n"
 
+                "وظیفه تو تولید خروجی نهایی با دو فیلد title و text است.\n\n"
 
-def prompt_extract_facts(article, article_text):
-    return [
-        {
-            "role": "system",
-            "content": (
-                "Extract only facts explicitly stated in the article text. "
-                "Do not infer missing details. The headline is metadata, "
-                "not evidence. Return only valid JSON with fields: "
-                "main_event, organizations, people, numbers, dates, "
-                "location, technical_details, uncertainties. "
-                "Use empty strings or arrays when information is absent."
+                "قواعد عنوان:\n"
+                "- عنوان اصلی انگلیسی را با ترجمه‌ای وفادار و نزدیک "
+                "به متن اصلی به فارسی برگردان.\n"
+                "- معنی، لحن و میزان قطعیت عنوان را حفظ کن.\n"
+                "- عنوان تازه یا جذاب‌تر از خودت نساز.\n"
+                "- نام شرکت‌ها و اشخاص را درست حفظ کن.\n\n"
+
+                "قواعد متن خبر:\n"
+                "- پیش‌نویس انگلیسی را به فارسی طبیعی و روان تبدیل کن.\n"
+                "- متن نهایی باید فقط ۱ تا ۳ پاراگراف کوتاه داشته باشد.\n"
+                "- جمله‌ها روشن، مختصر و مناسب انتشار در تلگرام باشند.\n"
+                "- تمام جمله‌های متن خبری باید فارسی طبیعی باشند.\n"
+                "- نام خاص یا اصطلاح فنی شناخته‌شده می‌تواند انگلیسی بماند؛ "
+                "اما عبارت‌های معمول انگلیسی را به فارسی ترجمه کن.\n"
+                "- هیچ واژه انگلیسی ناقص، عبارت تصادفی یا ترکیب خراب "
+                "فارسی‌ـ‌انگلیسی باقی نگذار.\n"
+                "- هیچ اطلاعات، عدد، نام، نقل‌قول یا ادعای جدیدی اضافه نکن.\n"
+                "- ادعاها، انتساب‌ها و عدم قطعیت‌های متن انگلیسی را حفظ کن.\n"
+                "- اطلاعات موجود در عنوان را به‌تنهایی مبنای افزودن "
+                "واقعیت جدید به متن قرار نده.\n"
+                "- ترجمه طبیعی باشد، نه ترجمه کلمه‌به‌کلمه.\n"
+                "- متن را از نظر املا، دستور زبان و روانی بازبینی کن.\n\n"
+
+                "خروجی فقط JSON معتبر با فیلدهای title و text باشد. "
+                "از Markdown و توضیحات اضافی استفاده نکن."
             ),
         },
         {
             "role": "user",
             "content": json.dumps(
                 {
-                    "original_title": article.get("title", ""),
-                    "article_text": article_text,
+                    "original_title_to_translate_faithfully":
+                        original_title,
+                    "english_news_draft": english_draft,
                 },
                 ensure_ascii=False,
             ),
@@ -306,87 +432,8 @@ def prompt_extract_facts(article, article_text):
     ]
 
 
-def prompt_persian_from_facts(facts):
-    return [
-        {
-            "role": "system",
-            "content": (
-                "بر اساس واقعیت‌های استخراج‌شده، یک خبر کوتاه و روان "
-                "به فارسی بنویس. فقط از اطلاعات موجود در JSON استفاده کن؛ "
-                "چیزی را حدس نزن. خروجی فقط JSON معتبر با فیلدهای "
-                "title و text باشد."
-            ),
-        },
-        {
-            "role": "user",
-            "content": json.dumps(facts, ensure_ascii=False),
-        },
-    ]
-
-
 # ============================================================
-# Shared result helpers
-# ============================================================
-
-def stage_info(name, response):
-    return {
-        "name": name,
-        "elapsed_seconds": response["elapsed_seconds"],
-        "tokens": response["total_tokens"],
-        "finish_reason": response["finish_reason"],
-    }
-
-
-def error_result(started, request_count, total_tokens, error, stages=None):
-    return {
-        "status": "error",
-        "request_count": request_count,
-        "wall_clock_elapsed_seconds": round(time.time() - started, 2),
-        "total_tokens": total_tokens,
-        "stages": stages or [],
-        "error": str(error),
-    }
-
-
-# ============================================================
-# Method 1: Direct Persian generation
-# ============================================================
-
-def run_method_1(article, article_text):
-    started = time.time()
-    request_count = 0
-    total_tokens = 0
-    stages = []
-
-    try:
-        request_count += 1
-        response = call_model(
-            prompt_direct_persian(article, article_text)
-        )
-        total_tokens += response["total_tokens"]
-        stages.append(stage_info("direct_persian", response))
-
-        output = validate_news_output(
-            extract_json(response["content"])
-        )
-
-        return {
-            "status": "success",
-            "request_count": request_count,
-            "wall_clock_elapsed_seconds": round(time.time() - started, 2),
-            "total_tokens": total_tokens,
-            "stages": stages,
-            "output": output,
-        }
-
-    except Exception as error:
-        return error_result(
-            started, request_count, total_tokens, error, stages
-        )
-
-
-# ============================================================
-# Method 2: English draft, then Persian adaptation
+# Method 2 only: English -> Persian
 # ============================================================
 
 def run_method_2(article, article_text):
@@ -396,93 +443,87 @@ def run_method_2(article, article_text):
     stages = []
 
     try:
+        # Stage 1: English draft
         request_count += 1
+
         first = call_model(
-            prompt_english_draft(article, article_text)
+            prompt_english_draft(article, article_text),
+            max_tokens=ENGLISH_MAX_TOKENS,
         )
+
         total_tokens += first["total_tokens"]
-        stages.append(stage_info("english_draft", first))
 
-        english_draft = extract_json(first["content"])
-        if not isinstance(english_draft, dict):
-            raise ValueError("پیش‌نویس انگلیسی JSON معتبر نیست.")
+        stages.append({
+            "name": "english_draft",
+            "elapsed_seconds": first["elapsed_seconds"],
+            "tokens": first["total_tokens"],
+            "finish_reason": first["finish_reason"],
+        })
 
+        english_data = extract_json(first["content"])
+
+        if not isinstance(english_data, dict):
+            raise ValueError(
+                "پیش‌نویس انگلیسی JSON معتبر نیست."
+            )
+
+        english_draft = english_data.get("text", "")
+
+        if not isinstance(english_draft, str) or not english_draft.strip():
+            raise ValueError(
+                "متن پیش‌نویس انگلیسی خالی یا نامعتبر است."
+            )
+
+        # Stage 2: Faithful Persian title + Persian text
         request_count += 1
+
         second = call_model(
             prompt_persian_from_english(
-                json.dumps(english_draft, ensure_ascii=False)
-            )
+                article.get("title", ""),
+                english_draft,
+            ),
+            max_tokens=PERSIAN_MAX_TOKENS,
         )
+
         total_tokens += second["total_tokens"]
-        stages.append(stage_info("persian_adaptation", second))
+
+        stages.append({
+            "name": "persian_adaptation",
+            "elapsed_seconds": second["elapsed_seconds"],
+            "tokens": second["total_tokens"],
+            "finish_reason": second["finish_reason"],
+        })
 
         output = validate_news_output(
             extract_json(second["content"])
         )
 
+        quality_checks = check_persian_quality(output)
+
         return {
             "status": "success",
             "request_count": request_count,
-            "wall_clock_elapsed_seconds": round(time.time() - started, 2),
+            "wall_clock_elapsed_seconds": round(
+                time.time() - started, 2
+            ),
             "total_tokens": total_tokens,
             "stages": stages,
             "english_draft": english_draft,
             "output": output,
+            "quality_checks": quality_checks,
         }
 
     except Exception as error:
-        return error_result(
-            started, request_count, total_tokens, error, stages
-        )
-
-
-# ============================================================
-# Method 3: Fact extraction, then Persian generation
-# ============================================================
-
-def run_method_3(article, article_text):
-    started = time.time()
-    request_count = 0
-    total_tokens = 0
-    stages = []
-
-    try:
-        request_count += 1
-        first = call_model(
-            prompt_extract_facts(article, article_text)
-        )
-        total_tokens += first["total_tokens"]
-        stages.append(stage_info("fact_extraction", first))
-
-        facts = extract_json(first["content"])
-        if not isinstance(facts, dict):
-            raise ValueError("خروجی استخراج واقعیت‌ها معتبر نیست.")
-
-        request_count += 1
-        second = call_model(
-            prompt_persian_from_facts(facts)
-        )
-        total_tokens += second["total_tokens"]
-        stages.append(stage_info("persian_generation", second))
-
-        output = validate_news_output(
-            extract_json(second["content"])
-        )
-
         return {
-            "status": "success",
+            "status": "error",
             "request_count": request_count,
-            "wall_clock_elapsed_seconds": round(time.time() - started, 2),
+            "wall_clock_elapsed_seconds": round(
+                time.time() - started, 2
+            ),
             "total_tokens": total_tokens,
             "stages": stages,
-            "extracted_facts": facts,
-            "output": output,
+            "error": str(error),
         }
-
-    except Exception as error:
-        return error_result(
-            started, request_count, total_tokens, error, stages
-        )
 
 
 # ============================================================
@@ -491,7 +532,7 @@ def run_method_3(article, article_text):
 
 def main():
     print("=" * 60)
-    print("AI Content Generation Test")
+    print("AI Content Generation Test - Method 2 only")
     print(f"Model: {MODEL}")
     print(f"Input: {INPUT_FILE}")
     print(f"Output: {OUTPUT_FILE}")
@@ -515,13 +556,18 @@ def main():
         articles = input_data
     elif isinstance(input_data, dict):
         articles = input_data.get("articles", [])
+
         if not articles:
             articles = input_data.get("news", [])
     else:
-        raise ValueError("ساختار فایل ورودی پشتیبانی نمی‌شود.")
+        raise ValueError(
+            "ساختار فایل ورودی پشتیبانی نمی‌شود."
+        )
 
     if not isinstance(articles, list) or not articles:
-        raise ValueError("هیچ مقاله‌ای در فایل ورودی پیدا نشد.")
+        raise ValueError(
+            "هیچ مقاله‌ای در فایل ورودی پیدا نشد."
+        )
 
     articles = articles[:ARTICLES_PER_TEST]
 
@@ -529,6 +575,7 @@ def main():
         "test_metadata": {
             "started_at": utc_now(),
             "model": MODEL,
+            "method": "method_2_english_then_persian",
             "input_file": str(INPUT_FILE.relative_to(PROJECT_DIR)),
             "output_file": str(OUTPUT_FILE.relative_to(PROJECT_DIR)),
             "article_limit": ARTICLES_PER_TEST,
@@ -539,13 +586,7 @@ def main():
 
     save_json(results)
 
-    methods = {
-        "method_1_direct_persian": run_method_1,
-        "method_2_english_then_persian": run_method_2,
-        "method_3_facts_then_persian": run_method_3,
-    }
-
-    failed_methods = []
+    failed_articles = []
 
     for index, article in enumerate(articles, start=1):
         article_text = get_article_text(article)
@@ -559,53 +600,66 @@ def main():
             article_result["original_text"] = article_text
 
         if not article_text:
-            article_result["status"] = "skipped"
-            article_result["error"] = "متن مقاله خالی است."
+            article_result["method_2_english_then_persian"] = {
+                "status": "error",
+                "request_count": 0,
+                "error": "متن مقاله خالی است.",
+            }
+
+            failed_articles.append(index)
             results["method_results"][str(index)] = article_result
             save_json(results)
-            failed_methods.append(f"article_{index}: متن مقاله خالی است")
             continue
 
-        for method_name, method_function in methods.items():
-            print(f"\nمقاله {index}: {method_name}")
+        print(f"\nمقاله {index}: روش انگلیسی سپس فارسی")
 
-            method_result = method_function(article, article_text)
-            article_result[method_name] = method_result
+        method_result = run_method_2(article, article_text)
 
+        article_result["method_2_english_then_persian"] = method_result
+        results["method_results"][str(index)] = article_result
+
+        print(
+            f"Status: {method_result.get('status')} | "
+            f"Requests: {method_result.get('request_count')} | "
+            f"Elapsed: "
+            f"{method_result.get('wall_clock_elapsed_seconds')}s"
+        )
+
+        if method_result.get("error"):
+            print(f"Error: {method_result['error']}")
+            failed_articles.append(index)
+
+        quality = method_result.get("quality_checks", {})
+
+        if quality.get("warnings"):
+            print("هشدارهای کنترل کیفیت:")
             print(
-                f"Status: {method_result.get('status')} | "
-                f"Requests: {method_result.get('request_count')} | "
-                f"Elapsed: "
-                f"{method_result.get('wall_clock_elapsed_seconds')}s"
+                json.dumps(
+                    quality["warnings"],
+                    ensure_ascii=False,
+                    indent=2,
+                )
             )
 
-            if method_result.get("error"):
-                print(f"Error: {method_result['error']}")
-                failed_methods.append(
-                    f"article_{index}/{method_name}: "
-                    f"{method_result['error']}"
-                )
-
-            results["method_results"][str(index)] = article_result
-            save_json(results)
+        save_json(results)
 
     results["test_metadata"]["finished_at"] = utc_now()
-    results["test_metadata"]["failed_method_count"] = len(failed_methods)
+    results["test_metadata"]["failed_article_count"] = len(
+        failed_articles
+    )
+
     save_json(results)
 
     print("\nآزمایش تمام شد.")
     print(f"فایل خروجی: {OUTPUT_FILE}")
 
-    if failed_methods:
-        print("\nروش‌های ناموفق:")
-        for failure in failed_methods:
-            print(f"- {failure}")
+    if failed_articles:
         raise RuntimeError(
-            f"{len(failed_methods)} مورد ناموفق بود. "
+            f"{len(failed_articles)} مقاله ناموفق بود. "
             "جزئیات در فایل خروجی ثبت شده است."
         )
 
-    print("هر سه روش با موفقیت اجرا شدند.")
+    print("تولید محتوا با روش دوم انجام شد.")
 
 
 if __name__ == "__main__":
