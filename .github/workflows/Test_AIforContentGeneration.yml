@@ -1,4 +1,4 @@
-name: Test AI Content Generation Models
+name: Test AI Content Generation Methods
 
 on:
   workflow_dispatch:
@@ -11,76 +11,132 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  test-models:
+  test-content-generation:
     runs-on: ubuntu-latest
-    timeout-minutes: 240
+    timeout-minutes: 30
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           ref: main
-          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Install Ollama
-        run: |
-          curl -fsSL https://ollama.com/install.sh | sh
-
-      - name: Start Ollama server
-        run: |
-          ollama serve > /tmp/ollama.log 2>&1 &
-          echo $! > /tmp/ollama.pid
-
-          for i in $(seq 1 60); do
-            if curl -fsS http://127.0.0.1:11434/api/tags > /dev/null; then
-              echo "Ollama server is ready."
-              exit 0
-            fi
-            sleep 2
-          done
-
-          echo "Ollama server failed to start."
-          cat /tmp/ollama.log
-          exit 1
-
-      - name: Download Qwen model
-        run: ollama pull qwen3:4b
-
-      - name: Download Gemma model
-        run: ollama pull gemma3:4b
-
-      - name: Run content generation test
+      - name: Run AI content generation test
+        id: run_test
+        continue-on-error: true
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: |
           python -u Test_AIforContentGeneration/Test_AIforContentGeneration.py
 
-      - name: Validate test output
+      - name: Validate output JSON
+        if: always()
+        id: validate_output
+        continue-on-error: true
         run: |
-          python -u -c "import json; from pathlib import Path; p=Path('Test_AIforContentGeneration/Test_AIforContentGeneration.json'); assert p.is_file(), 'Output file was not created'; d=json.loads(p.read_text(encoding='utf-8')); assert 'model_results' in d, 'Missing model_results'; print('Output JSON is valid.'); print('Articles:', d.get('article_count'))"
+          python - <<'PY'
+          import json
+          from pathlib import Path
 
-      - name: Commit and push test results
+          path = Path(
+              "Test_AIforContentGeneration/"
+              "Test_AIforContentGeneration.json"
+          )
+
+          if not path.is_file():
+              raise SystemExit("Output JSON was not created.")
+
+          with path.open("r", encoding="utf-8") as file:
+              data = json.load(file)
+
+          if not isinstance(data, dict):
+              raise SystemExit("Output must be a JSON object.")
+
+          if "test_metadata" not in data:
+              raise SystemExit("Missing test_metadata.")
+
+          if "method_results" not in data:
+              raise SystemExit("Missing method_results.")
+
+          print("Output JSON is valid.")
+          print("Article count:", data.get("article_count"))
+
+          for article_id, article in data["method_results"].items():
+              print(f"\nArticle {article_id}")
+
+              if not isinstance(article, dict):
+                  continue
+
+              for method_name, result in article.items():
+                  if not method_name.startswith("method_"):
+                      continue
+
+                  if not isinstance(result, dict):
+                      continue
+
+                  print(
+                      f"{method_name}: "
+                      f"status={result.get('status')}, "
+                      f"requests={result.get('request_count')}, "
+                      f"elapsed="
+                      f"{result.get('wall_clock_elapsed_seconds')}s"
+                  )
+          PY
+
+      - name: Commit and push output
+        if: always()
+        id: commit_push
+        continue-on-error: true
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add Test_AIforContentGeneration/Test_AIforContentGeneration.json
+          OUTPUT_FILE="Test_AIforContentGeneration/Test_AIforContentGeneration.json"
 
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-          else
-            git commit -m "Update AI content generation test results"
-            git push origin HEAD:main
+          if [ ! -f "$OUTPUT_FILE" ]; then
+            echo "::error::Output file does not exist."
+            exit 1
           fi
 
-      - name: Show output file
-        if: always()
-        run: |
-          if [ -f Test_AIforContentGeneration/Test_AIforContentGeneration.json ]; then
-            ls -lh Test_AIforContentGeneration/Test_AIforContentGeneration.json
+          git add "$OUTPUT_FILE"
+
+          if git diff --cached --quiet; then
+            echo "No output changes to commit."
           else
-            echo "Output file does not exist."
+            git commit -m "Update AI content generation test results"
+          fi
+
+          git push origin HEAD:main
+
+      - name: Report final status
+        if: always()
+        env:
+          TEST_OUTCOME: ${{ steps.run_test.outcome }}
+          VALIDATION_OUTCOME: ${{ steps.validate_output.outcome }}
+          PUSH_OUTCOME: ${{ steps.commit_push.outcome }}
+        run: |
+          echo "Test: $TEST_OUTCOME"
+          echo "Output validation: $VALIDATION_OUTCOME"
+          echo "Commit and push: $PUSH_OUTCOME"
+
+          if [ "$PUSH_OUTCOME" != "success" ]; then
+            echo "::error::Output commit/push failed."
+            exit 1
+          fi
+
+          if [ "$VALIDATION_OUTCOME" != "success" ]; then
+            echo "::error::Output validation failed."
+            exit 1
+          fi
+
+          if [ "$TEST_OUTCOME" != "success" ]; then
+            echo "::error::The AI content generation test failed."
+            exit 1
           fi
