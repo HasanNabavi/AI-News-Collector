@@ -18,7 +18,7 @@ INPUT_FILE = PROJECT_DIR / "F1_NewsAfterAIGroupingRun.json"
 OUTPUT_FILE = SCRIPT_DIR / "Test_AIforContentGeneration.json"
 
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
-API_KEY = os.getenv("OPENROUTER_API_KEY", "").strip()
+API_KEY = "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"
 MODEL = "qwen/qwen3.8-27b:free"
 
 ARTICLES_PER_TEST = 1
