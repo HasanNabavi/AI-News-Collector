@@ -1,11 +1,8 @@
-
 import json
 import time
 import urllib.request
-import urllib.error
 import subprocess
 import shutil
-import threading
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -21,15 +18,22 @@ INPUT_FILE = PROJECT_DIR / "F1_NewsAfterAIGroupingRun.json"
 OUTPUT_FILE = SCRIPT_DIR / "Test_AIforContentGeneration.json"
 
 OLLAMA_URL = "http://127.0.0.1:11434"
+
 MODELS = [
     "qwen3:4b",
     "gemma3:4b",
 ]
 
-REQUEST_TIMEOUT_SECONDS = 1800
+# Maximum time allowed for one generation request.
+REQUEST_TIMEOUT_SECONDS = 300
+
+# Maximum time allowed for downloading/checking a model.
 MODEL_PULL_TIMEOUT_SECONDS = 1800
 
-# Keep the original article text in the output for comparison.
+# Time allowed for Ollama server startup.
+SERVER_START_TIMEOUT_SECONDS = 60
+
+# Keep the original article text in the output.
 SAVE_ORIGINAL_TEXT = True
 
 
@@ -42,13 +46,19 @@ def utc_now():
 
 
 def save_json(data):
-    """Save the current results, including partial results."""
+    """Save the current report, including partial results."""
+
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
 
     temporary_file = OUTPUT_FILE.with_suffix(".tmp")
 
     with temporary_file.open("w", encoding="utf-8") as file:
-        json.dump(data, file, ensure_ascii=False, indent=2)
+        json.dump(
+            data,
+            file,
+            ensure_ascii=False,
+            indent=2,
+        )
 
     temporary_file.replace(OUTPUT_FILE)
 
@@ -63,10 +73,8 @@ def get_article_text(article):
 
 
 def extract_json(text):
-    """
-    Extract a JSON object from the model response.
-    Also handles responses surrounded by Markdown code fences.
-    """
+    """Extract a JSON object from a model response."""
+
     text = text.strip()
 
     if text.startswith("```"):
@@ -83,7 +91,6 @@ def extract_json(text):
         if text.lower().startswith("json"):
             text = text[4:].strip()
 
-    # First try parsing the entire response.
     try:
         result = json.loads(text)
 
@@ -93,7 +100,6 @@ def extract_json(text):
     except json.JSONDecodeError:
         pass
 
-    # If extra text surrounds the JSON, try the outermost object.
     start = text.find("{")
     end = text.rfind("}")
 
@@ -103,7 +109,13 @@ def extract_json(text):
         if isinstance(result, dict):
             return result
 
-    raise ValueError("The model did not return a valid JSON object.")
+    raise ValueError(
+        "The model did not return a valid JSON object."
+    )
+
+
+def format_duration(seconds):
+    return f"{seconds:.2f} seconds"
 
 
 # ============================================================
@@ -128,31 +140,41 @@ def ollama_is_running():
 
 
 def start_ollama_if_needed():
-    """Start the Ollama server if it is not already running."""
+    """Start Ollama only if it is not already running."""
 
     if ollama_is_running():
-        print("Ollama server is already running.")
+        print(
+            "[OLLAMA] Server is already running.",
+            flush=True,
+        )
         return None
 
-    ollama_executable = shutil.which("ollama")
+    executable = shutil.which("ollama")
 
-    if not ollama_executable:
+    if not executable:
         raise RuntimeError(
-            "Ollama executable was not found. "
-            "Install Ollama and make sure it is available in PATH."
+            "Ollama executable was not found in PATH."
         )
 
-    print("Starting Ollama server...")
+    print(
+        "[OLLAMA] Starting server...",
+        flush=True,
+    )
 
     process = subprocess.Popen(
-        [ollama_executable, "serve"],
+        [executable, "serve"],
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
     )
 
-    for _ in range(30):
+    deadline = time.monotonic() + SERVER_START_TIMEOUT_SECONDS
+
+    while time.monotonic() < deadline:
         if ollama_is_running():
-            print("Ollama server is ready.")
+            print(
+                "[OLLAMA] Server is ready.",
+                flush=True,
+            )
             return process
 
         if process.poll() is not None:
@@ -162,43 +184,67 @@ def start_ollama_if_needed():
 
         time.sleep(2)
 
+    process.terminate()
+
     raise RuntimeError(
-        "Ollama server did not become ready within 60 seconds."
+        "Ollama server did not become ready within "
+        f"{SERVER_START_TIMEOUT_SECONDS} seconds."
     )
 
 
 def ensure_model_available(model_name):
-    """Download a model if necessary."""
+    """Check/download the model using the Ollama CLI."""
 
-    print(f"\nChecking model: {model_name}")
+    print(
+        f"[MODEL] Checking model: {model_name}",
+        flush=True,
+    )
 
     executable = shutil.which("ollama")
 
     if not executable:
-        raise RuntimeError("Ollama executable was not found.")
+        raise RuntimeError(
+            "Ollama executable was not found."
+        )
 
-    result = subprocess.run(
-        [executable, "pull", model_name],
-        capture_output=True,
-        text=True,
-        timeout=MODEL_PULL_TIMEOUT_SECONDS,
-        check=False,
-    )
+    started = time.monotonic()
+
+    try:
+        result = subprocess.run(
+            [executable, "pull", model_name],
+            capture_output=True,
+            text=True,
+            timeout=MODEL_PULL_TIMEOUT_SECONDS,
+            check=False,
+        )
+
+    except subprocess.TimeoutExpired as error:
+        raise TimeoutError(
+            f"Model setup timed out after "
+            f"{MODEL_PULL_TIMEOUT_SECONDS} seconds: "
+            f"{model_name}"
+        ) from error
+
+    elapsed = time.monotonic() - started
 
     if result.returncode != 0:
         error_message = (
             result.stderr.strip()
             or result.stdout.strip()
-            or f"Failed to download model {model_name}."
+            or f"Failed to prepare model {model_name}."
         )
 
         raise RuntimeError(error_message)
 
-    print(f"Model ready: {model_name}")
+    print(
+        f"[MODEL] Ready: {model_name} "
+        f"({format_duration(elapsed)})",
+        flush=True,
+    )
 
 
 # ============================================================
-# Content generation
+# Prompt construction
 # ============================================================
 
 def build_prompt(article):
@@ -210,21 +256,23 @@ def build_prompt(article):
     return f"""
 You are a careful Persian-language news editor.
 
-Your task is to turn the original news article below into a
-short, accurate, readable Persian news item.
+Turn the original news article below into a short,
+accurate, readable Persian news item.
 
 IMPORTANT RULES:
-1. Use only facts explicitly supported by the original article.
-2. Do not invent names, numbers, dates, quotes, causes, or conclusions.
-3. If a detail is uncertain or absent, do not guess.
-4. Preserve the meaning and factual nuance of the article.
-5. Write natural, clear Persian suitable for a general audience.
-6. Do not translate word-for-word when that would sound unnatural.
+1. Use only facts explicitly supported by the article.
+2. Do not invent names, numbers, dates, quotes, causes,
+   or conclusions.
+3. Do not guess when information is uncertain or absent.
+4. Preserve factual meaning and nuance.
+5. Write natural, clear Persian for a general audience.
+6. Avoid awkward word-for-word translation.
 7. The headline must be concise and informative.
-8. The short_text should usually be 2 to 4 short Persian sentences.
+8. The short_text should usually contain 2 to 4 short
+   Persian sentences.
 9. Provide 3 to 5 concise key points in Persian.
-10. Do not add an introduction, commentary, opinion, or source list.
-11. Return ONLY one valid JSON object. No Markdown or code fences.
+10. Do not add commentary, opinions, or a source list.
+11. Return only one valid JSON object.
 12. All generated content must be in Persian.
 
 Return exactly this JSON structure:
@@ -248,8 +296,12 @@ ORIGINAL ARTICLE TEXT:
 """.strip()
 
 
+# ============================================================
+# Ollama generation request
+# ============================================================
+
 def call_ollama(model_name, prompt):
-    """Call Ollama and return the model response and token statistics."""
+    """Send one request to Ollama and return its response."""
 
     payload = {
         "model": model_name,
@@ -280,57 +332,118 @@ def call_ollama(model_name, prompt):
         method="POST",
     )
 
-    with urllib.request.urlopen(
-        request,
-        timeout=REQUEST_TIMEOUT_SECONDS,
-    ) as response:
+    request_started = time.monotonic()
+
+    print(
+        f"[REQUEST START] Model={model_name} "
+        f"Time={utc_now()} "
+        f"Timeout={REQUEST_TIMEOUT_SECONDS}s",
+        flush=True,
+    )
+
+    try:
+        with urllib.request.urlopen(
+            request,
+            timeout=REQUEST_TIMEOUT_SECONDS,
+        ) as response:
+
+            response_body = response.read()
+
+        elapsed = time.monotonic() - request_started
+
         response_data = json.loads(
-            response.read().decode("utf-8")
+            response_body.decode("utf-8")
         )
+
+    except Exception as error:
+        elapsed = time.monotonic() - request_started
+
+        print(
+            f"[REQUEST FAILED] Model={model_name} "
+            f"Elapsed={format_duration(elapsed)} "
+            f"Error={type(error).__name__}: {error}",
+            flush=True,
+        )
+
+        raise
 
     message = response_data.get("message", {})
     raw_output = message.get("content", "")
 
     if not raw_output.strip():
-        raise ValueError("Ollama returned an empty response.")
+        raise ValueError(
+            "Ollama returned an empty response."
+        )
+
+    print(
+        f"[REQUEST END] Model={model_name} "
+        f"Elapsed={format_duration(elapsed)} "
+        f"Time={utc_now()}",
+        flush=True,
+    )
 
     return {
         "raw_output": raw_output,
-        "prompt_tokens": response_data.get("prompt_eval_count"),
-        "output_tokens": response_data.get("eval_count"),
-        "total_duration_ns": response_data.get("total_duration"),
-        "load_duration_ns": response_data.get("load_duration"),
+        "request_elapsed_seconds": round(elapsed, 3),
+        "prompt_tokens": response_data.get(
+            "prompt_eval_count"
+        ),
+        "output_tokens": response_data.get(
+            "eval_count"
+        ),
+        "total_duration_ns": response_data.get(
+            "total_duration"
+        ),
+        "load_duration_ns": response_data.get(
+            "load_duration"
+        ),
         "prompt_eval_duration_ns": response_data.get(
             "prompt_eval_duration"
         ),
-        "eval_duration_ns": response_data.get("eval_duration"),
+        "eval_duration_ns": response_data.get(
+            "eval_duration"
+        ),
     }
 
 
+# ============================================================
+# Output validation
+# ============================================================
+
 def validate_generated_content(content):
-    """Check the required output fields and their types."""
+    """Validate the required output fields."""
 
     if not isinstance(content, dict):
-        raise ValueError("Output is not a JSON object.")
+        raise ValueError(
+            "Output is not a JSON object."
+        )
 
     headline = content.get("headline")
     short_text = content.get("short_text")
     key_points = content.get("key_points")
 
     if not isinstance(headline, str) or not headline.strip():
-        raise ValueError("Missing or invalid headline.")
+        raise ValueError(
+            "Missing or invalid headline."
+        )
 
     if not isinstance(short_text, str) or not short_text.strip():
-        raise ValueError("Missing or invalid short_text.")
+        raise ValueError(
+            "Missing or invalid short_text."
+        )
 
     if not isinstance(key_points, list):
-        raise ValueError("key_points must be a list.")
+        raise ValueError(
+            "key_points must be a list."
+        )
 
     if not all(
         isinstance(point, str) and point.strip()
         for point in key_points
     ):
-        raise ValueError("One or more key_points are invalid.")
+        raise ValueError(
+            "One or more key_points are invalid."
+        )
 
     return {
         "headline": headline.strip(),
@@ -346,19 +459,22 @@ def validate_generated_content(content):
 # ============================================================
 
 def main():
+    run_started = time.monotonic()
     started_at = utc_now()
-    run_started = time.time()
 
-    print("=" * 60)
-    print("AI CONTENT GENERATION MODEL TEST")
-    print("=" * 60)
+    print("=" * 60, flush=True)
+    print("AI CONTENT GENERATION MODEL TEST", flush=True)
+    print("=" * 60, flush=True)
 
     if not INPUT_FILE.exists():
         raise FileNotFoundError(
             f"Input file not found: {INPUT_FILE}"
         )
 
-    with INPUT_FILE.open("r", encoding="utf-8") as file:
+    with INPUT_FILE.open(
+        "r",
+        encoding="utf-8",
+    ) as file:
         input_data = json.load(file)
 
     articles = input_data.get("news", [])
@@ -369,13 +485,27 @@ def main():
         )
 
     if not articles:
-        raise ValueError("The input file contains no news articles.")
+        raise ValueError(
+            "The input file contains no news articles."
+        )
 
-    print(f"Input file: {INPUT_FILE}")
-    print(f"Articles found: {len(articles)}")
-    print(f"Models: {', '.join(MODELS)}")
+    print(
+        f"Input file: {INPUT_FILE}",
+        flush=True,
+    )
+    print(
+        f"Articles found: {len(articles)}",
+        flush=True,
+    )
+    print(
+        f"Models: {', '.join(MODELS)}",
+        flush=True,
+    )
+    print(
+        f"Request timeout: {REQUEST_TIMEOUT_SECONDS} seconds",
+        flush=True,
+    )
 
-    # Store each article once, including its original text.
     saved_articles = []
 
     for index, article in enumerate(articles):
@@ -404,16 +534,19 @@ def main():
         "test_metadata": {
             "test_name": "Test_AIforContentGeneration",
             "purpose": (
-                "Compare local Ollama models for Persian news "
-                "content generation."
+                "Compare local Ollama models for Persian "
+                "news content generation."
             ),
             "models": MODELS,
             "temperature": 0.2,
+            "request_timeout_seconds": REQUEST_TIMEOUT_SECONDS,
             "started_at": started_at,
             "finished_at": None,
             "elapsed_seconds": None,
         },
-        "input_file": str(INPUT_FILE.relative_to(PROJECT_DIR)),
+        "input_file": str(
+            INPUT_FILE.relative_to(PROJECT_DIR)
+        ),
         "output_file": str(
             OUTPUT_FILE.relative_to(PROJECT_DIR)
         ),
@@ -422,7 +555,6 @@ def main():
         "model_results": {},
     }
 
-    # Save the initial report before doing any model work.
     save_json(results)
 
     server_process = None
@@ -431,9 +563,9 @@ def main():
         server_process = start_ollama_if_needed()
 
         for model_name in MODELS:
-            print("\n" + "=" * 60)
-            print(f"MODEL: {model_name}")
-            print("=" * 60)
+            print("\n" + "=" * 60, flush=True)
+            print(f"MODEL: {model_name}", flush=True)
+            print("=" * 60, flush=True)
 
             model_result = {
                 "model": model_name,
@@ -449,33 +581,44 @@ def main():
             results["model_results"][model_name] = model_result
             save_json(results)
 
-            model_started = time.time()
+            model_started = time.monotonic()
 
             try:
                 ensure_model_available(model_name)
 
             except Exception as error:
-                model_result["status"] = "model_setup_failed"
-                model_result["setup_error"] = str(error)
-                model_result["finished_at"] = utc_now()
-                model_result["elapsed_seconds"] = round(
-                    time.time() - model_started, 3
+                error_message = (
+                    f"{type(error).__name__}: {error}"
                 )
 
-                # Record a failed result for every article.
+                model_result["status"] = "model_setup_failed"
+                model_result["setup_error"] = error_message
+
                 for index, article in enumerate(articles):
                     model_result["results"].append({
                         "article_index": index,
                         "status": "error",
                         "error": (
-                            "Model setup failed: " + str(error)
+                            "Model setup failed: "
+                            + error_message
                         ),
                     })
 
                 model_result["error_count"] = len(articles)
+                model_result["finished_at"] = utc_now()
+                model_result["elapsed_seconds"] = round(
+                    time.monotonic() - model_started,
+                    3,
+                )
+
                 save_json(results)
 
-                print(f"Could not prepare {model_name}: {error}")
+                print(
+                    f"[MODEL SETUP FAILED] {model_name}: "
+                    f"{error_message}",
+                    flush=True,
+                )
+
                 continue
 
             for index, article in enumerate(articles):
@@ -484,19 +627,24 @@ def main():
 
                 print(
                     f"\n[{model_name}] "
-                    f"Article {index + 1}/{len(articles)}: {title}"
+                    f"Article {index + 1}/{len(articles)}: "
+                    f"{title}",
+                    flush=True,
                 )
 
-                article_started = time.time()
+                article_started = time.monotonic()
 
                 item_result = {
                     "article_index": index,
                     "original_title": title,
                     "status": "error",
+                    "started_at": utc_now(),
+                    "finished_at": None,
                     "elapsed_seconds": None,
                     "json_valid": False,
                     "prompt_tokens": None,
                     "output_tokens": None,
+                    "request_elapsed_seconds": None,
                     "total_duration_ns": None,
                     "load_duration_ns": None,
                     "prompt_eval_duration_ns": None,
@@ -525,6 +673,9 @@ def main():
                         )
                         item_result["output_tokens"] = (
                             response["output_tokens"]
+                        )
+                        item_result["request_elapsed_seconds"] = (
+                            response["request_elapsed_seconds"]
                         )
                         item_result["total_duration_ns"] = (
                             response["total_duration_ns"]
@@ -556,7 +707,9 @@ def main():
 
                         except Exception as error:
                             item_result["status"] = "invalid_output"
-                            item_result["error"] = str(error)
+                            item_result["error"] = (
+                                f"{type(error).__name__}: {error}"
+                            )
                             item_result["raw_output"] = raw_output
 
                     except Exception as error:
@@ -565,23 +718,34 @@ def main():
                             f"{type(error).__name__}: {error}"
                         )
 
+                item_result["finished_at"] = utc_now()
                 item_result["elapsed_seconds"] = round(
-                    time.time() - article_started, 3
+                    time.monotonic() - article_started,
+                    3,
                 )
 
                 if item_result["status"] == "success":
                     model_result["success_count"] += 1
-                    print("Result: SUCCESS")
+
+                    print(
+                        f"[RESULT] SUCCESS | "
+                        f"Elapsed={item_result['elapsed_seconds']}s",
+                        flush=True,
+                    )
+
                 else:
                     model_result["error_count"] += 1
+
                     print(
-                        f"Result: {item_result['status']} - "
-                        f"{item_result['error']}"
+                        f"[RESULT] {item_result['status']} | "
+                        f"Elapsed={item_result['elapsed_seconds']}s | "
+                        f"Error={item_result['error']}",
+                        flush=True,
                     )
 
                 model_result["results"].append(item_result)
 
-                # Save after every article so partial results survive.
+                # Persist each article immediately.
                 save_json(results)
 
             model_result["status"] = (
@@ -589,12 +753,22 @@ def main():
                 if model_result["error_count"] > 0
                 else "completed"
             )
+
             model_result["finished_at"] = utc_now()
             model_result["elapsed_seconds"] = round(
-                time.time() - model_started, 3
+                time.monotonic() - model_started,
+                3,
             )
 
             save_json(results)
+
+            print(
+                f"\n[MODEL FINISHED] {model_name} | "
+                f"Success={model_result['success_count']} | "
+                f"Errors={model_result['error_count']} | "
+                f"Elapsed={model_result['elapsed_seconds']}s",
+                flush=True,
+            )
 
     except Exception as error:
         results["test_metadata"]["fatal_error"] = (
@@ -605,24 +779,29 @@ def main():
     finally:
         results["test_metadata"]["finished_at"] = utc_now()
         results["test_metadata"]["elapsed_seconds"] = round(
-            time.time() - run_started, 3
+            time.monotonic() - run_started,
+            3,
         )
 
         save_json(results)
 
-        # Stop only the Ollama server started by this script.
         if server_process is not None:
+            print(
+                "[OLLAMA] Stopping server started by this script...",
+                flush=True,
+            )
+
             server_process.terminate()
 
             try:
                 server_process.wait(timeout=10)
+
             except subprocess.TimeoutExpired:
                 server_process.kill()
 
-        print("\n" + "=" * 60)
-        print("TEST FINISHED")
-        print("=" * 60)
-        print(f"Output file: {OUTPUT_FILE}")
+        print("\n" + "=" * 60, flush=True)
+        print("TEST FINISHED", flush=True)
+        print(f"Output file: {OUTPUT_FILE}", flush=True)
 
         for model_name, model_result in (
             results["model_results"].items()
@@ -630,10 +809,10 @@ def main():
             print(
                 f"{model_name}: "
                 f"{model_result['success_count']} successful, "
-                f"{model_result['error_count']} errors"
+                f"{model_result['error_count']} errors",
+                flush=True,
             )
 
 
 if __name__ == "__main__":
     main()
-
