@@ -20,10 +20,13 @@ OUTPUT_FILE = SCRIPT_DIR / "Test_AIforContentGeneration.json"
 
 OLLAMA_URL = "http://127.0.0.1:11434"
 
-# Diagnostic test: Qwen3 only.
+# Test Qwen3 only.
 MODELS = [
     "qwen3:4b",
 ]
+
+# Test five complete articles.
+ARTICLES_PER_MODEL = 5
 
 # Maximum time allowed for one generation request.
 REQUEST_TIMEOUT_SECONDS = 300
@@ -34,7 +37,7 @@ MODEL_PULL_TIMEOUT_SECONDS = 1800
 # Time allowed for Ollama server startup.
 SERVER_START_TIMEOUT_SECONDS = 60
 
-# Keep the original article text in the output.
+# Keep original article text in the output report.
 SAVE_ORIGINAL_TEXT = True
 
 
@@ -50,16 +53,10 @@ def save_json(data):
     """Save the current report, including partial results."""
 
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-
     temporary_file = OUTPUT_FILE.with_suffix(".tmp")
 
     with temporary_file.open("w", encoding="utf-8") as file:
-        json.dump(
-            data,
-            file,
-            ensure_ascii=False,
-            indent=2,
-        )
+        json.dump(data, file, ensure_ascii=False, indent=2)
 
     temporary_file.replace(OUTPUT_FILE)
 
@@ -74,7 +71,7 @@ def get_article_text(article):
 
 
 def extract_json(text):
-    """Extract a JSON object from a model response."""
+    """Extract a JSON object from the model response."""
 
     text = text.strip()
 
@@ -110,9 +107,7 @@ def extract_json(text):
         if isinstance(result, dict):
             return result
 
-    raise ValueError(
-        "The model did not return a valid JSON object."
-    )
+    raise ValueError("The model did not return a valid JSON object.")
 
 
 def format_duration(seconds):
@@ -130,10 +125,7 @@ def ollama_is_running():
             method="GET",
         )
 
-        with urllib.request.urlopen(
-            request,
-            timeout=5,
-        ) as response:
+        with urllib.request.urlopen(request, timeout=5) as response:
             return response.status == 200
 
     except Exception:
@@ -144,23 +136,15 @@ def start_ollama_if_needed():
     """Start Ollama only if it is not already running."""
 
     if ollama_is_running():
-        print(
-            "[OLLAMA] Server is already running.",
-            flush=True,
-        )
+        print("[OLLAMA] Server is already running.", flush=True)
         return None
 
     executable = shutil.which("ollama")
 
     if not executable:
-        raise RuntimeError(
-            "Ollama executable was not found in PATH."
-        )
+        raise RuntimeError("Ollama executable was not found in PATH.")
 
-    print(
-        "[OLLAMA] Starting server...",
-        flush=True,
-    )
+    print("[OLLAMA] Starting server...", flush=True)
 
     process = subprocess.Popen(
         [executable, "serve"],
@@ -172,23 +156,18 @@ def start_ollama_if_needed():
 
     while time.monotonic() < deadline:
         if ollama_is_running():
-            print(
-                "[OLLAMA] Server is ready.",
-                flush=True,
-            )
+            print("[OLLAMA] Server is ready.", flush=True)
             return process
 
         if process.poll() is not None:
-            raise RuntimeError(
-                "Ollama server stopped unexpectedly."
-            )
+            raise RuntimeError("Ollama server stopped unexpectedly.")
 
         time.sleep(2)
 
     process.terminate()
 
     raise RuntimeError(
-        "Ollama server did not become ready within "
+        f"Ollama server did not become ready within "
         f"{SERVER_START_TIMEOUT_SECONDS} seconds."
     )
 
@@ -196,17 +175,12 @@ def start_ollama_if_needed():
 def ensure_model_available(model_name):
     """Check/download the model using the Ollama CLI."""
 
-    print(
-        f"[MODEL] Checking model: {model_name}",
-        flush=True,
-    )
+    print(f"[MODEL] Checking model: {model_name}", flush=True)
 
     executable = shutil.which("ollama")
 
     if not executable:
-        raise RuntimeError(
-            "Ollama executable was not found."
-        )
+        raise RuntimeError("Ollama executable was not found.")
 
     started = time.monotonic()
 
@@ -222,8 +196,7 @@ def ensure_model_available(model_name):
     except subprocess.TimeoutExpired as error:
         raise TimeoutError(
             f"Model setup timed out after "
-            f"{MODEL_PULL_TIMEOUT_SECONDS} seconds: "
-            f"{model_name}"
+            f"{MODEL_PULL_TIMEOUT_SECONDS} seconds: {model_name}"
         ) from error
 
     elapsed = time.monotonic() - started
@@ -234,7 +207,6 @@ def ensure_model_available(model_name):
             or result.stdout.strip()
             or f"Failed to prepare model {model_name}."
         )
-
         raise RuntimeError(error_message)
 
     print(
@@ -275,6 +247,10 @@ IMPORTANT RULES:
 10. Do not add commentary, opinions, or a source list.
 11. Return only one valid JSON object.
 12. All generated content must be in Persian.
+13. Each key point must contain a distinct fact.
+14. Do not repeat the short_text as key points.
+15. Do not combine separate events or imply a causal
+    relationship unless the article explicitly supports it.
 
 Return exactly this JSON structure:
 {{
@@ -314,7 +290,7 @@ def call_ollama(model_name, prompt):
         ],
         "stream": False,
 
-        # Diagnostic change: disable Qwen3 thinking mode.
+        # Keep the successful diagnostic setting.
         "think": False,
 
         "format": "json",
@@ -331,9 +307,7 @@ def call_ollama(model_name, prompt):
     request = urllib.request.Request(
         f"{OLLAMA_URL}/api/chat",
         data=request_data,
-        headers={
-            "Content-Type": "application/json",
-        },
+        headers={"Content-Type": "application/json"},
         method="POST",
     )
 
@@ -352,14 +326,10 @@ def call_ollama(model_name, prompt):
             request,
             timeout=REQUEST_TIMEOUT_SECONDS,
         ) as response:
-
             response_body = response.read()
 
         elapsed = time.monotonic() - request_started
-
-        response_data = json.loads(
-            response_body.decode("utf-8")
-        )
+        response_data = json.loads(response_body.decode("utf-8"))
 
     except Exception as error:
         elapsed = time.monotonic() - request_started
@@ -370,16 +340,13 @@ def call_ollama(model_name, prompt):
             f"Error={type(error).__name__}: {error}",
             flush=True,
         )
-
         raise
 
     message = response_data.get("message", {})
     raw_output = message.get("content", "")
 
     if not raw_output.strip():
-        raise ValueError(
-            "Ollama returned an empty response."
-        )
+        raise ValueError("Ollama returned an empty response.")
 
     print(
         f"[REQUEST END] Model={model_name} "
@@ -391,24 +358,14 @@ def call_ollama(model_name, prompt):
     return {
         "raw_output": raw_output,
         "request_elapsed_seconds": round(elapsed, 3),
-        "prompt_tokens": response_data.get(
-            "prompt_eval_count"
-        ),
-        "output_tokens": response_data.get(
-            "eval_count"
-        ),
-        "total_duration_ns": response_data.get(
-            "total_duration"
-        ),
-        "load_duration_ns": response_data.get(
-            "load_duration"
-        ),
+        "prompt_tokens": response_data.get("prompt_eval_count"),
+        "output_tokens": response_data.get("eval_count"),
+        "total_duration_ns": response_data.get("total_duration"),
+        "load_duration_ns": response_data.get("load_duration"),
         "prompt_eval_duration_ns": response_data.get(
             "prompt_eval_duration"
         ),
-        "eval_duration_ns": response_data.get(
-            "eval_duration"
-        ),
+        "eval_duration_ns": response_data.get("eval_duration"),
     }
 
 
@@ -420,43 +377,31 @@ def validate_generated_content(content):
     """Validate the required output fields."""
 
     if not isinstance(content, dict):
-        raise ValueError(
-            "Output is not a JSON object."
-        )
+        raise ValueError("Output is not a JSON object.")
 
     headline = content.get("headline")
     short_text = content.get("short_text")
     key_points = content.get("key_points")
 
     if not isinstance(headline, str) or not headline.strip():
-        raise ValueError(
-            "Missing or invalid headline."
-        )
+        raise ValueError("Missing or invalid headline.")
 
     if not isinstance(short_text, str) or not short_text.strip():
-        raise ValueError(
-            "Missing or invalid short_text."
-        )
+        raise ValueError("Missing or invalid short_text.")
 
     if not isinstance(key_points, list):
-        raise ValueError(
-            "key_points must be a list."
-        )
+        raise ValueError("key_points must be a list.")
 
     if not all(
         isinstance(point, str) and point.strip()
         for point in key_points
     ):
-        raise ValueError(
-            "One or more key_points are invalid."
-        )
+        raise ValueError("One or more key_points are invalid.")
 
     return {
         "headline": headline.strip(),
         "short_text": short_text.strip(),
-        "key_points": [
-            point.strip() for point in key_points
-        ],
+        "key_points": [point.strip() for point in key_points],
     }
 
 
@@ -473,58 +418,40 @@ def main():
     print("=" * 60, flush=True)
 
     if not INPUT_FILE.exists():
-        raise FileNotFoundError(
-            f"Input file not found: {INPUT_FILE}"
-        )
+        raise FileNotFoundError(f"Input file not found: {INPUT_FILE}")
 
-    with INPUT_FILE.open(
-        "r",
-        encoding="utf-8",
-    ) as file:
+    with INPUT_FILE.open("r", encoding="utf-8") as file:
         input_data = json.load(file)
 
     articles = input_data.get("news", [])
 
-    # Diagnostic change: test only the first complete article.
-    # The article text is not truncated or modified.
-    articles = articles[:1]
-
+    # Validate the input before slicing.
     if not isinstance(articles, list):
-        raise ValueError(
-            "The input JSON must contain a 'news' list."
-        )
+        raise ValueError("The input JSON must contain a 'news' list.")
 
     if not articles:
-        raise ValueError(
-            "The input file contains no news articles."
-        )
+        raise ValueError("The input file contains no news articles.")
 
-    print(
-        f"Input file: {INPUT_FILE}",
-        flush=True,
-    )
-    print(
-        f"Articles selected for this test: {len(articles)}",
-        flush=True,
-    )
-    print(
-        f"Models: {', '.join(MODELS)}",
-        flush=True,
-    )
+    # Select the first five complete articles.
+    # Do not truncate or modify their scraped text.
+    articles = articles[:ARTICLES_PER_MODEL]
+
+    print(f"Input file: {INPUT_FILE}", flush=True)
+    print(f"Articles selected: {len(articles)}", flush=True)
+    print(f"Models: {', '.join(MODELS)}", flush=True)
     print(
         f"Request timeout: {REQUEST_TIMEOUT_SECONDS} seconds",
         flush=True,
     )
-    print(
-        "Thinking mode: disabled (think=False)",
-        flush=True,
-    )
+    print("Thinking mode: disabled (think=False)", flush=True)
 
     saved_articles = []
 
     for index, article in enumerate(articles):
         if not isinstance(article, dict):
-            article = {}
+            raise ValueError(
+                f"Article at index {index} is not a JSON object."
+            )
 
         item = {
             "article_index": index,
@@ -534,9 +461,7 @@ def main():
             "url": article.get("url", ""),
             "published_at": article.get("published_at"),
             "group_id": article.get("group_id"),
-            "original_text_characters": len(
-                get_article_text(article)
-            ),
+            "original_text_characters": len(get_article_text(article)),
         }
 
         if SAVE_ORIGINAL_TEXT:
@@ -548,8 +473,8 @@ def main():
         "test_metadata": {
             "test_name": "Test_AIforContentGeneration",
             "purpose": (
-                "Diagnose Qwen3 generation timeout with "
-                "thinking mode disabled, using one complete article."
+                "Test Qwen3 content generation with thinking mode "
+                "disabled, using five complete articles."
             ),
             "models": MODELS,
             "temperature": 0.2,
@@ -560,19 +485,14 @@ def main():
             "finished_at": None,
             "elapsed_seconds": None,
         },
-        "input_file": str(
-            INPUT_FILE.relative_to(PROJECT_DIR)
-        ),
-        "output_file": str(
-            OUTPUT_FILE.relative_to(PROJECT_DIR)
-        ),
+        "input_file": str(INPUT_FILE.relative_to(PROJECT_DIR)),
+        "output_file": str(OUTPUT_FILE.relative_to(PROJECT_DIR)),
         "article_count": len(articles),
         "articles": saved_articles,
         "model_results": {},
     }
 
     save_json(results)
-
     server_process = None
 
     try:
@@ -603,9 +523,7 @@ def main():
                 ensure_model_available(model_name)
 
             except Exception as error:
-                error_message = (
-                    f"{type(error).__name__}: {error}"
-                )
+                error_message = f"{type(error).__name__}: {error}"
 
                 model_result["status"] = "model_setup_failed"
                 model_result["setup_error"] = error_message
@@ -614,10 +532,7 @@ def main():
                     model_result["results"].append({
                         "article_index": index,
                         "status": "error",
-                        "error": (
-                            "Model setup failed: "
-                            + error_message
-                        ),
+                        "error": "Model setup failed: " + error_message,
                     })
 
                 model_result["error_count"] = len(articles)
@@ -634,7 +549,6 @@ def main():
                     f"{error_message}",
                     flush=True,
                 )
-
                 continue
 
             for index, article in enumerate(articles):
@@ -643,8 +557,7 @@ def main():
 
                 print(
                     f"\n[{model_name}] "
-                    f"Article {index + 1}/{len(articles)}: "
-                    f"{title}",
+                    f"Article {index + 1}/{len(articles)}: {title}",
                     flush=True,
                 )
 
@@ -678,11 +591,7 @@ def main():
                 else:
                     try:
                         prompt = build_prompt(article)
-
-                        response = call_ollama(
-                            model_name,
-                            prompt,
-                        )
+                        response = call_ollama(model_name, prompt)
 
                         item_result["prompt_tokens"] = (
                             response["prompt_tokens"]
@@ -710,11 +619,8 @@ def main():
 
                         try:
                             parsed_output = extract_json(raw_output)
-
                             validated_output = (
-                                validate_generated_content(
-                                    parsed_output
-                                )
+                                validate_generated_content(parsed_output)
                             )
 
                             item_result["status"] = "success"
@@ -748,7 +654,6 @@ def main():
                         f"Elapsed={item_result['elapsed_seconds']}s",
                         flush=True,
                     )
-
                 else:
                     model_result["error_count"] += 1
 
@@ -761,7 +666,7 @@ def main():
 
                 model_result["results"].append(item_result)
 
-                # Persist each article immediately.
+                # Save after every article so partial results survive.
                 save_json(results)
 
             model_result["status"] = (
@@ -811,7 +716,6 @@ def main():
 
             try:
                 server_process.wait(timeout=10)
-
             except subprocess.TimeoutExpired:
                 server_process.kill()
 
@@ -819,9 +723,7 @@ def main():
         print("TEST FINISHED", flush=True)
         print(f"Output file: {OUTPUT_FILE}", flush=True)
 
-        for model_name, model_result in (
-            results["model_results"].items()
-        ):
+        for model_name, model_result in results["model_results"].items():
             print(
                 f"{model_name}: "
                 f"{model_result['success_count']} successful, "
