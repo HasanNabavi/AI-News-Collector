@@ -1,3 +1,4 @@
+
 import json
 import os
 import re
@@ -25,9 +26,9 @@ MODEL = "nvidia/nemotron-3-super-120b-a12b:free"
 ARTICLES_PER_TEST = 1
 REQUEST_TIMEOUT_SECONDS = 180
 
-# سقف توکن جداگانه برای هر مرحله
+# Token limits for each stage
 ENGLISH_MAX_TOKENS = 900
-PERSIAN_MAX_TOKENS = 1000
+PERSIAN_MAX_TOKENS = 1600
 
 TEMPERATURE = 0.2
 SAVE_ORIGINAL_TEXT = True
@@ -106,7 +107,10 @@ def validate_news_output(data):
                 f"فیلد {field} خالی یا نامعتبر است."
             )
 
-    return data
+    return {
+        "title": data["title"].strip(),
+        "text": data["text"].strip(),
+    }
 
 
 def sum_tokens(usage):
@@ -136,7 +140,6 @@ def check_persian_quality(output):
 
     warnings = []
 
-    # بررسی تعداد پاراگراف‌ها
     count = paragraph_count(text)
 
     if count < 1 or count > 3:
@@ -145,8 +148,6 @@ def check_persian_quality(output):
             "انتظار می‌رود بین ۱ تا ۳ باشد."
         )
 
-    # شناسایی واژه‌های انگلیسی متوالی در متن فارسی
-    # نام‌های خاص و اصطلاحات شناخته‌شده را تا حدی مستثنا می‌کنیم.
     allowed_phrases = {
         "OpenAI",
         "ChatGPT",
@@ -179,7 +180,6 @@ def check_persian_quality(output):
         combined_text,
     )
 
-    # رشته‌هایی از چند واژه انگلیسی پشت سر هم
     consecutive_english = re.findall(
         r"\b[A-Za-z][A-Za-z'-]*"
         r"(?:\s+[A-Za-z][A-Za-z'-]*){1,5}\b",
@@ -194,14 +194,11 @@ def check_persian_quality(output):
         if normalized in allowed_phrases:
             continue
 
-        # وجود چند واژه لاتین متوالی در خبر فارسی
         if normalized and normalized not in suspicious_phrases:
             suspicious_phrases.append(normalized)
 
-    # شناسایی واژه‌ای که هم‌زمان حروف فارسی و لاتین دارد
     mixed_script = re.findall(
-        r"\S*[A-Za-z]+\S*[\u0600-\u06FF]"
-        r"\S*|"
+        r"\S*[A-Za-z]+\S*[\u0600-\u06FF]\S*|"
         r"\S*[\u0600-\u06FF]\S*[A-Za-z]+\S*",
         combined_text,
     )
@@ -316,18 +313,33 @@ def call_model(messages, max_tokens):
         )
 
     content = str(content).strip()
-
-    if not content:
-        raise RuntimeError("مدل پاسخ متنی خالی برگرداند.")
-
     finish_reason = choice.get("finish_reason")
+    usage = data.get("usage", {})
 
     if finish_reason == "length":
+        usage_summary = {
+            "prompt_tokens": usage.get("prompt_tokens"),
+            "completion_tokens": usage.get("completion_tokens"),
+            "total_tokens": usage.get("total_tokens"),
+            "completion_tokens_details": usage.get(
+                "completion_tokens_details"
+            ),
+        }
+
         raise RuntimeError(
-            "پاسخ مدل به سقف توکن رسید و احتمالاً ناقص است."
+            "پاسخ مدل به سقف توکن رسید و احتمالاً ناقص است. "
+            f"Model={MODEL}; "
+            f"max_tokens={max_tokens}; "
+            f"finish_reason={finish_reason}; "
+            f"usage={json.dumps(usage_summary, ensure_ascii=False)}"
         )
 
-    usage = data.get("usage", {})
+    if not content:
+        raise RuntimeError(
+            "مدل پاسخ متنی خالی برگرداند. "
+            f"finish_reason={finish_reason}; "
+            f"usage={json.dumps(usage, ensure_ascii=False)}"
+        )
 
     return {
         "content": content,
@@ -458,6 +470,7 @@ def run_method_2(article, article_text):
             "elapsed_seconds": first["elapsed_seconds"],
             "tokens": first["total_tokens"],
             "finish_reason": first["finish_reason"],
+            "usage": first["usage"],
         })
 
         english_data = extract_json(first["content"])
@@ -492,6 +505,7 @@ def run_method_2(article, article_text):
             "elapsed_seconds": second["elapsed_seconds"],
             "tokens": second["total_tokens"],
             "finish_reason": second["finish_reason"],
+            "usage": second["usage"],
         })
 
         output = validate_news_output(
@@ -534,6 +548,8 @@ def main():
     print("=" * 60)
     print("AI Content Generation Test - Method 2 only")
     print(f"Model: {MODEL}")
+    print(f"English max tokens: {ENGLISH_MAX_TOKENS}")
+    print(f"Persian max tokens: {PERSIAN_MAX_TOKENS}")
     print(f"Input: {INPUT_FILE}")
     print(f"Output: {OUTPUT_FILE}")
     print("=" * 60)
@@ -585,7 +601,6 @@ def main():
     }
 
     save_json(results)
-
     failed_articles = []
 
     for index, article in enumerate(articles, start=1):
@@ -641,6 +656,7 @@ def main():
                 )
             )
 
+        # Save after every article, including failed results
         save_json(results)
 
     results["test_metadata"]["finished_at"] = utc_now()
