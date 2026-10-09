@@ -72,7 +72,6 @@ def load_articles():
             "فهرست اخبار در فایل ورودی معتبر نیست."
         )
 
-    # فقط خبرهایی که عنوان دارند.
     valid_articles = [
         article
         for article in articles
@@ -131,6 +130,9 @@ def translate_headline(original_title):
         "messages": messages,
         "temperature": TEMPERATURE,
         "max_tokens": MAX_TOKENS,
+        "reasoning": {
+            "enabled": False
+        },
     }
 
     request = urllib.request.Request(
@@ -155,7 +157,10 @@ def translate_headline(original_title):
             timeout=REQUEST_TIMEOUT_SECONDS,
         ) as response:
             status_code = response.status
-            response_text = response.read().decode("utf-8")
+            response_text = response.read().decode(
+                "utf-8",
+                errors="replace",
+            )
 
     except urllib.error.HTTPError as error:
         error_text = error.read().decode(
@@ -164,7 +169,7 @@ def translate_headline(original_title):
         )
 
         raise RuntimeError(
-            f"خطای HTTP {error.code}: {error_text[:1500]}"
+            f"خطای HTTP {error.code}: {error_text[:2000]}"
         ) from error
 
     except urllib.error.URLError as error:
@@ -184,41 +189,94 @@ def translate_headline(original_title):
 
     except json.JSONDecodeError as error:
         raise RuntimeError(
-            f"پاسخ API شامل JSON معتبر نیست: {response_text[:1000]}"
+            f"پاسخ API شامل JSON معتبر نیست: {response_text[:1500]}"
         ) from error
+
+    if not isinstance(data, dict):
+        raise RuntimeError(
+            f"ساختار پاسخ API معتبر نیست: {response_text[:1500]}"
+        )
+
+    # ثبت دقیق خطاهای داخل پاسخ JSON، حتی اگر HTTP برابر 200 باشد.
+    if data.get("error"):
+        api_error = data["error"]
+
+        raise RuntimeError(
+            "خطای اعلام‌شده از طرف API: "
+            + json.dumps(api_error, ensure_ascii=False)[:2000]
+        )
 
     choices = data.get("choices", [])
 
-    if not choices:
+    if not isinstance(choices, list) or not choices:
         raise RuntimeError(
-            f"پاسخ API فاقد choices است: {response_text[:1000]}"
+            "پاسخ API فاقد choices است. "
+            f"HTTP={status_code}; "
+            f"Response={response_text[:2000]}"
         )
 
     choice = choices[0]
-    message = choice.get("message", {})
-    content = message.get("content", "")
 
-    # بعضی مدل‌ها ممکن است محتوا را به‌صورت فهرست برگردانند.
-    if isinstance(content, list):
-        content = "".join(
-            part.get("text", "")
-            for part in content
-            if isinstance(part, dict)
+    if not isinstance(choice, dict):
+        raise RuntimeError(
+            f"ساختار اولین choice معتبر نیست: {choice!r}"
         )
 
-    translated_title = str(content).strip()
+    message = choice.get("message", {})
+
+    if not isinstance(message, dict):
+        message = {}
+
+    content = message.get("content", "")
+
+    # پشتیبانی از پاسخ‌هایی که محتوا را به شکل فهرست برمی‌گردانند.
+    if isinstance(content, list):
+        text_parts = []
+
+        for part in content:
+            if isinstance(part, dict):
+                part_text = part.get("text", "")
+
+                if isinstance(part_text, str):
+                    text_parts.append(part_text)
+
+        content = "".join(text_parts)
+
+    if content is None:
+        content = ""
+
+    translated_title = (
+        content if isinstance(content, str) else str(content)
+    ).strip()
+
     finish_reason = choice.get("finish_reason")
     usage = data.get("usage", {})
+
+    if not isinstance(usage, dict):
+        usage = {}
+
+    # اطلاعات تشخیصی برای بررسی دقیق اجرای بعدی.
+    diagnostics = {
+        "model_requested": MODEL,
+        "model_returned": data.get("model"),
+        "http_status": status_code,
+        "finish_reason": finish_reason,
+        "elapsed_seconds": elapsed,
+        "usage": usage,
+        "response_id": data.get("id"),
+        "response_content": translated_title[:2000],
+    }
 
     if finish_reason == "length":
         raise RuntimeError(
             "پاسخ مدل به سقف توکن رسید و احتمالاً ناقص است. "
-            f"Model={MODEL}; max_tokens={MAX_TOKENS}"
+            + json.dumps(diagnostics, ensure_ascii=False)
         )
 
     if not translated_title:
         raise RuntimeError(
-            "مدل عنوان ترجمه‌شده‌ای برنگرداند."
+            "مدل عنوان ترجمه‌شده‌ای برنگرداند. "
+            + json.dumps(diagnostics, ensure_ascii=False)
         )
 
     return {
@@ -228,6 +286,8 @@ def translate_headline(original_title):
         "usage": usage,
         "total_tokens": int(usage.get("total_tokens") or 0),
         "finish_reason": finish_reason,
+        "model_returned": data.get("model"),
+        "response_id": data.get("id"),
     }
 
 
@@ -240,6 +300,7 @@ def main():
     print("AI News Headline Translation Test")
     print(f"Model: {MODEL}")
     print(f"Max tokens: {MAX_TOKENS}")
+    print("Reasoning: disabled")
     print(f"Input: {INPUT_FILE}")
     print(f"Output: {OUTPUT_FILE}")
     print("=" * 60)
@@ -260,6 +321,7 @@ def main():
             "input_file": str(INPUT_FILE.relative_to(PROJECT_DIR)),
             "output_file": str(OUTPUT_FILE.relative_to(PROJECT_DIR)),
             "article_limit": ARTICLES_PER_TEST,
+            "reasoning_enabled": False,
         },
         "article_count": len(articles),
         "translation_results": {},
@@ -291,6 +353,8 @@ def main():
                 "usage": translation["usage"],
                 "total_tokens": translation["total_tokens"],
                 "finish_reason": translation["finish_reason"],
+                "model_returned": translation["model_returned"],
+                "response_id": translation["response_id"],
             })
 
             print(
@@ -301,6 +365,9 @@ def main():
             )
             print(
                 f"توکن مصرف‌شده: {translation['total_tokens']}"
+            )
+            print(
+                f"دلیل پایان پاسخ: {translation['finish_reason']}"
             )
 
         except Exception as error:
