@@ -1,12 +1,12 @@
 {
   "test_metadata": {
-    "started_at": "2026-10-09T19:32:21.125239+00:00",
-    "model": "NVIDIA: Nemotron 3.5 Lightning (free)",
+    "started_at": "2026-10-09T19:34:07.024775+00:00",
+    "model": "nvidia/nemotron-3.5-lightning:free",
     "method": "headline_translation_en_to_fa",
     "input_file": "F1_NewsAfterAIGroupingRun.json",
     "output_file": "Test_AIforContentGeneration/Test_AIforContentGeneration.json",
     "article_limit": 1,
-    "finished_at": "2026-10-09T19:32:21.315065+00:00",
+    "finished_at": "2026-10-09T19:34:22.947982+00:00",
     "failed_article_count": 1
   },
   "article_count": 1,
@@ -16,7 +16,7 @@
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/news/articles/c6y9z9r4ejzwo?at_medium=RSS&at_campaign=rss",
       "status": "error",
-      "error": "خطای HTTP 400: {\"error\":{\"message\":\"NVIDIA: Nemotron 3.5 Lightning (free) is not a valid model ID\",\"code\":400},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      "error": "پاسخ مدل به سقف توکن رسید و احتمالاً ناقص است. Model=nvidia/nemotron-3.5-lightning:free; max_tokens=256"
     }
   }
 }
