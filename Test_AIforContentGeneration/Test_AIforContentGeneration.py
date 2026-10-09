@@ -21,7 +21,7 @@ OUTPUT_FILE = SCRIPT_DIR / "Test_AIforContentGeneration.json"
 
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 API_KEY = os.getenv("OPENROUTER_API_KEY", "").strip()
-MODEL = "thinkingmachines/inkling:free"
+MODEL = "dots-studio/dots-3-note-preview:free"
 
 ARTICLES_PER_TEST = 1
 REQUEST_TIMEOUT_SECONDS = 180
