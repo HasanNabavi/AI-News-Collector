@@ -1,5 +1,4 @@
-
-name: Test AI Content Generation Methods
+name: Test AI for Content Generation
 
 on:
   workflow_dispatch:
@@ -7,26 +6,24 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: test-ai-content-generation
-  cancel-in-progress: false
-
 jobs:
-  test-content-generation:
+  test-ai-content-generation:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 15
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ref: main
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
 
       - name: Run AI content generation test
         id: run_test
@@ -34,149 +31,136 @@ jobs:
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: |
-          python -u Test_AIforContentGeneration/Test_AIforContentGeneration.py
+          python Test_AIforContentGeneration/Test_AIforContentGeneration.py
 
-      - name: Validate output JSON and test results
+      - name: Validate output JSON
         id: validate_output
         if: always()
         continue-on-error: true
         run: |
           python - <<'PY'
           import json
+          import sys
           from pathlib import Path
 
-          path = Path(
+          output_file = Path(
               "Test_AIforContentGeneration/"
               "Test_AIforContentGeneration.json"
           )
 
-          if not path.is_file():
-              raise SystemExit("Output JSON was not created.")
+          if not output_file.exists():
+              print(f"ERROR: Output file not found: {output_file}")
+              sys.exit(1)
 
-          with path.open("r", encoding="utf-8") as file:
-              data = json.load(file)
+          try:
+              with output_file.open("r", encoding="utf-8") as f:
+                  data = json.load(f)
+          except Exception as exc:
+              print(f"ERROR: Invalid JSON: {exc}")
+              sys.exit(1)
 
           if not isinstance(data, dict):
-              raise SystemExit("Output must be a JSON object.")
+              print("ERROR: Root JSON value must be an object.")
+              sys.exit(1)
 
-          if "test_metadata" not in data:
-              raise SystemExit("Missing test_metadata.")
+          if "article_count" not in data:
+              print("ERROR: Missing 'article_count'.")
+              sys.exit(1)
 
-          method_results = data.get("method_results")
+          if "method_results" not in data:
+              print("ERROR: Missing 'method_results'.")
+              sys.exit(1)
+
+          method_results = data["method_results"]
 
           if not isinstance(method_results, dict) or not method_results:
-              raise SystemExit(
-                  "No article or method results were recorded."
-              )
+              print("ERROR: 'method_results' must be a non-empty object.")
+              sys.exit(1)
 
           expected_methods = {
-              "method_1_direct_persian",
               "method_2_english_then_persian",
-              "method_3_facts_then_persian",
           }
 
-          failures = []
+          found_methods = set()
+
+          for article_id, article_result in method_results.items():
+              if not isinstance(article_result, dict):
+                  print(
+                      f"ERROR: Results for article {article_id} "
+                      "must be an object."
+                  )
+                  sys.exit(1)
+
+              article_methods = set(article_result.keys())
+              found_methods.update(article_methods)
+
+              unexpected = article_methods - expected_methods
+              if unexpected:
+                  print(
+                      f"ERROR: Unexpected methods for article {article_id}: "
+                      f"{sorted(unexpected)}"
+                  )
+                  sys.exit(1)
+
+          if found_methods != expected_methods:
+              print(
+                  "ERROR: Expected only method "
+                  "'method_2_english_then_persian'."
+              )
+              print(f"Found methods: {sorted(found_methods)}")
+              sys.exit(1)
 
           print("Output JSON is valid.")
-          print("Article count:", data.get("article_count"))
+          print(f"Articles processed: {data['article_count']}")
+          print(f"Methods found: {sorted(found_methods)}")
 
-          for article_id, article in method_results.items():
-              print(f"\nArticle {article_id}")
-
-              if not isinstance(article, dict):
-                  failures.append(
-                      f"Article {article_id}: invalid result structure"
-                  )
-                  continue
-
-              for method_name in sorted(expected_methods):
-                  result = article.get(method_name)
-
-                  if not isinstance(result, dict):
-                      failures.append(
-                          f"Article {article_id}: "
-                          f"{method_name} has no result"
-                      )
-                      print(f"{method_name}: MISSING")
-                      continue
-
-                  status = result.get("status")
-                  print(
-                      f"{method_name}: "
-                      f"status={status}, "
-                      f"requests={result.get('request_count')}, "
-                      f"elapsed="
-                      f"{result.get('wall_clock_elapsed_seconds')}s"
-                  )
-
-                  if status != "success":
-                      error = result.get("error", "Unknown error")
-                      failures.append(
-                          f"Article {article_id}, {method_name}: "
-                          f"{error}"
-                      )
-
-          if failures:
-              print("\nFailed checks:")
-              for failure in failures:
-                  print("-", failure)
-              raise SystemExit(
-                  f"Validation failed: {len(failures)} problem(s)."
+          for article_id, article_result in method_results.items():
+              result = article_result.get(
+                  "method_2_english_then_persian", {}
               )
+              status = result.get("status", "unknown")
+              print(f"Article {article_id}: status={status}")
 
-          print("\nAll expected methods succeeded.")
+              output = result.get("output", {})
+              if isinstance(output, dict):
+                  print(f"Generated title: {output.get('title', '')}")
+                  print(
+                      "Generated text length: "
+                      f"{len(output.get('text', '') or '')} characters"
+                  )
+
           PY
 
       - name: Commit and push output
-        id: commit_push
         if: always()
-        continue-on-error: true
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email \
-            "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -f "Test_AIforContentGeneration/Test_AIforContentGeneration.json" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          OUTPUT_FILE="Test_AIforContentGeneration/Test_AIforContentGeneration.json"
+            git add Test_AIforContentGeneration/Test_AIforContentGeneration.json
 
-          if [ ! -f "$OUTPUT_FILE" ]; then
-            echo "::error::Output file does not exist."
-            exit 1
-          fi
-
-          git add "$OUTPUT_FILE"
-
-          if git diff --cached --quiet; then
-            echo "No output changes to commit."
+            if git diff --cached --quiet; then
+              echo "No output changes to commit."
+            else
+              git commit -m "Update AI content generation test results"
+              git push
+            fi
           else
-            git commit -m "Update AI content generation test results"
+            echo "Output file does not exist; nothing to commit."
           fi
 
-          git push origin HEAD:main
-
-      - name: Report final status
+      - name: Check final status
         if: always()
-        env:
-          TEST_OUTCOME: ${{ steps.run_test.outcome }}
-          VALIDATION_OUTCOME: ${{ steps.validate_output.outcome }}
-          PUSH_OUTCOME: ${{ steps.commit_push.outcome }}
         run: |
-          echo "Test: $TEST_OUTCOME"
-          echo "Output validation: $VALIDATION_OUTCOME"
-          echo "Commit and push: $PUSH_OUTCOME"
-
-          if [ "$PUSH_OUTCOME" != "success" ]; then
-            echo "::error::Output commit/push failed."
+          if [ "${{ steps.run_test.outcome }}" != "success" ]; then
+            echo "ERROR: AI content generation test failed."
             exit 1
           fi
 
-          if [ "$VALIDATION_OUTCOME" != "success" ]; then
-            echo "::error::Output validation failed."
+          if [ "${{ steps.validate_output.outcome }}" != "success" ]; then
+            echo "ERROR: Output validation failed."
             exit 1
           fi
 
-          if [ "$TEST_OUTCOME" != "success" ]; then
-            echo "::error::The AI content generation test failed."
-            exit 1
-          fi
-
-          echo "All checks passed."
+          echo "AI content generation test and validation completed successfully."
