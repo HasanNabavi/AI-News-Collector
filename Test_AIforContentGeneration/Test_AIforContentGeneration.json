@@ -1,12 +1,12 @@
 {
   "test_metadata": {
-    "started_at": "2026-10-09T19:30:04.978555+00:00",
-    "model": "qwen/qwen-2.5-72b-instruct:free",
+    "started_at": "2026-10-09T19:32:21.125239+00:00",
+    "model": "NVIDIA: Nemotron 3.5 Lightning (free)",
     "method": "headline_translation_en_to_fa",
     "input_file": "F1_NewsAfterAIGroupingRun.json",
     "output_file": "Test_AIforContentGeneration/Test_AIforContentGeneration.json",
     "article_limit": 1,
-    "finished_at": "2026-10-09T19:30:05.136094+00:00",
+    "finished_at": "2026-10-09T19:32:21.315065+00:00",
     "failed_article_count": 1
   },
   "article_count": 1,
@@ -16,7 +16,7 @@
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/news/articles/c6y9z9r4ejzwo?at_medium=RSS&at_campaign=rss",
       "status": "error",
-      "error": "خطای HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen-2.5-72b-instruct\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      "error": "خطای HTTP 400: {\"error\":{\"message\":\"NVIDIA: Nemotron 3.5 Lightning (free) is not a valid model ID\",\"code\":400},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
     }
   }
 }
