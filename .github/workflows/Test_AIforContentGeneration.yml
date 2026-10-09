@@ -1,3 +1,4 @@
+
 name: Test AI Content Generation Methods
 
 on:
@@ -35,9 +36,9 @@ jobs:
         run: |
           python -u Test_AIforContentGeneration/Test_AIforContentGeneration.py
 
-      - name: Validate output JSON
-        if: always()
+      - name: Validate output JSON and test results
         id: validate_output
+        if: always()
         continue-on-error: true
         run: |
           python - <<'PY'
@@ -61,37 +62,74 @@ jobs:
           if "test_metadata" not in data:
               raise SystemExit("Missing test_metadata.")
 
-          if "method_results" not in data:
-              raise SystemExit("Missing method_results.")
+          method_results = data.get("method_results")
+
+          if not isinstance(method_results, dict) or not method_results:
+              raise SystemExit(
+                  "No article or method results were recorded."
+              )
+
+          expected_methods = {
+              "method_1_direct_persian",
+              "method_2_english_then_persian",
+              "method_3_facts_then_persian",
+          }
+
+          failures = []
 
           print("Output JSON is valid.")
           print("Article count:", data.get("article_count"))
 
-          for article_id, article in data["method_results"].items():
+          for article_id, article in method_results.items():
               print(f"\nArticle {article_id}")
 
               if not isinstance(article, dict):
+                  failures.append(
+                      f"Article {article_id}: invalid result structure"
+                  )
                   continue
 
-              for method_name, result in article.items():
-                  if not method_name.startswith("method_"):
-                      continue
+              for method_name in sorted(expected_methods):
+                  result = article.get(method_name)
 
                   if not isinstance(result, dict):
+                      failures.append(
+                          f"Article {article_id}: "
+                          f"{method_name} has no result"
+                      )
+                      print(f"{method_name}: MISSING")
                       continue
 
+                  status = result.get("status")
                   print(
                       f"{method_name}: "
-                      f"status={result.get('status')}, "
+                      f"status={status}, "
                       f"requests={result.get('request_count')}, "
                       f"elapsed="
                       f"{result.get('wall_clock_elapsed_seconds')}s"
                   )
+
+                  if status != "success":
+                      error = result.get("error", "Unknown error")
+                      failures.append(
+                          f"Article {article_id}, {method_name}: "
+                          f"{error}"
+                      )
+
+          if failures:
+              print("\nFailed checks:")
+              for failure in failures:
+                  print("-", failure)
+              raise SystemExit(
+                  f"Validation failed: {len(failures)} problem(s)."
+              )
+
+          print("\nAll expected methods succeeded.")
           PY
 
       - name: Commit and push output
-        if: always()
         id: commit_push
+        if: always()
         continue-on-error: true
         run: |
           git config user.name "github-actions[bot]"
@@ -140,3 +178,5 @@ jobs:
             echo "::error::The AI content generation test failed."
             exit 1
           fi
+
+          echo "All checks passed."
