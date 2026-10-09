@@ -1,12 +1,12 @@
 {
   "test_metadata": {
-    "started_at": "2026-10-09T18:14:58.380798+00:00",
-    "model": "thinkingmachines/inkling:free",
+    "started_at": "2026-10-09T18:22:58.247438+00:00",
+    "model": "dots-studio/dots-3-note-preview:free",
     "method": "method_2_english_then_persian",
     "input_file": "F1_NewsAfterAIGroupingRun.json",
     "output_file": "Test_AIforContentGeneration/Test_AIforContentGeneration.json",
     "article_limit": 1,
-    "finished_at": "2026-10-09T18:14:58.514750+00:00",
+    "finished_at": "2026-10-09T18:23:11.307007+00:00",
     "failed_article_count": 1
   },
   "article_count": 1,
@@ -18,10 +18,10 @@
       "method_2_english_then_persian": {
         "status": "error",
         "request_count": 1,
-        "wall_clock_elapsed_seconds": 0.13,
+        "wall_clock_elapsed_seconds": 12.93,
         "total_tokens": 0,
         "stages": [],
-        "error": "خطای HTTP 403: {\"error\":{\"message\":\"thinkingmachines/inkling:free is only available on agentic harnesses. Try plugging it into a coding agent or productivity app listed on https://openrouter.ai/apps\",\"code\":403,\"metadata\":{\"routing_funnel\":[{\"step\":\"Initial Endpoints\",\"endpoint_count\":1}],\"failed_routing_step\":\"Gate Free Endpoints by Agentic Harness\"}}}"
+        "error": "پاسخ مدل به سقف توکن رسید و احتمالاً ناقص است. Model=dots-studio/dots-3-note-preview:free; max_tokens=900; finish_reason=length; usage={\"prompt_tokens\": 716, \"completion_tokens\": 900, \"total_tokens\": 1616, \"completion_tokens_details\": {\"reasoning_tokens\": 1209, \"image_tokens\": 0, \"audio_tokens\": 0}}"
       }
     }
   }
