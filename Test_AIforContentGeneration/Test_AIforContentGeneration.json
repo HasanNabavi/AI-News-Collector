@@ -1,6 +1,6 @@
 {
   "test_metadata": {
-    "started_at": "2026-10-09T12:41:41.104566+00:00",
+    "started_at": "2026-10-09T12:41:58.720827+00:00",
     "model": "qwen/qwen3.8-27b:free",
     "input_file": "F1_NewsAfterAIGroupingRun.json",
     "output_file": "Test_AIforContentGeneration/Test_AIforContentGeneration.json",
