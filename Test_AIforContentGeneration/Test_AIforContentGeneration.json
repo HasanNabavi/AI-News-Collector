@@ -1,13 +1,14 @@
 {
   "test_metadata": {
-    "started_at": "2026-10-09T19:34:07.024775+00:00",
+    "started_at": "2026-10-09T19:40:28.459474+00:00",
     "model": "nvidia/nemotron-3.5-lightning:free",
     "method": "headline_translation_en_to_fa",
     "input_file": "F1_NewsAfterAIGroupingRun.json",
     "output_file": "Test_AIforContentGeneration/Test_AIforContentGeneration.json",
     "article_limit": 1,
-    "finished_at": "2026-10-09T19:34:22.947982+00:00",
-    "failed_article_count": 1
+    "reasoning_enabled": false,
+    "finished_at": "2026-10-09T19:40:28.980771+00:00",
+    "failed_article_count": 0
   },
   "article_count": 1,
   "translation_results": {
@@ -15,8 +16,37 @@
       "input_title": "OpenAI fires workers for 'mishandling sensitive information'",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/news/articles/c6y9z9r4ejzwo?at_medium=RSS&at_campaign=rss",
-      "status": "error",
-      "error": "پاسخ مدل به سقف توکن رسید و احتمالاً ناقص است. Model=nvidia/nemotron-3.5-lightning:free; max_tokens=256"
+      "status": "success",
+      "translated_title": "OpenAI اخراج کارکنان را به دلیل «بسیاری کردن اطلاعات حساس» اعلام کرد.",
+      "elapsed_seconds": 0.52,
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 235,
+        "completion_tokens": 24,
+        "total_tokens": 259,
+        "cost": 0,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0,
+          "upstream_inference_prompt_cost": 0,
+          "upstream_inference_completions_cost": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "total_tokens": 259,
+      "finish_reason": "stop",
+      "model_returned": "nvidia/nemotron-3.5-lightning:free",
+      "response_id": "gen-1791574828-zBAQqnUx74anvkqlWj7e"
     }
   }
 }
