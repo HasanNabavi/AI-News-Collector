@@ -21,7 +21,7 @@ API_URL = "https://openrouter.ai/api/v1/chat/completions"
 API_KEY = os.getenv("OPENROUTER_API_KEY", "").strip()
 
 # برای آزمایش مدل‌های دیگر، فقط این خط را تغییر بده.
-MODEL = "qwen/qwen-2.5-72b-instruct:free"
+MODEL = "NVIDIA: Nemotron 3.5 Lightning (free)"
 
 ARTICLES_PER_TEST = 1
 REQUEST_TIMEOUT_SECONDS = 180
