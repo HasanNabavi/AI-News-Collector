@@ -1,3 +1,4 @@
+
 import json
 import os
 import time
@@ -25,6 +26,7 @@ ARTICLES_PER_TEST = 1
 REQUEST_TIMEOUT_SECONDS = 180
 MAX_TOKENS = 1400
 TEMPERATURE = 0.2
+SAVE_ORIGINAL_TEXT = True
 
 
 # ============================================================
@@ -37,7 +39,6 @@ def utc_now():
 
 def save_json(data):
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-
     with OUTPUT_FILE.open("w", encoding="utf-8") as file:
         json.dump(data, file, ensure_ascii=False, indent=2)
 
@@ -61,17 +62,14 @@ def get_article_text(article):
 
 
 def extract_json(text):
-    text = text.strip()
+    text = str(text).strip()
 
     if text.startswith("```"):
         lines = text.splitlines()
-
         if lines and lines[0].startswith("```"):
             lines = lines[1:]
-
         if lines and lines[-1].strip() == "```":
             lines = lines[:-1]
-
         text = "\n".join(lines).strip()
 
     try:
@@ -93,7 +91,8 @@ def validate_news_output(data):
         raise ValueError("خروجی باید یک شیء JSON باشد.")
 
     for field in ("title", "text"):
-        if not isinstance(data.get(field), str) or not data[field].strip():
+        value = data.get(field)
+        if not isinstance(value, str) or not value.strip():
             raise ValueError(f"فیلد {field} خالی یا نامعتبر است.")
 
     return data
@@ -102,7 +101,6 @@ def validate_news_output(data):
 def sum_tokens(usage):
     if not isinstance(usage, dict):
         return 0
-
     return int(usage.get("total_tokens") or 0)
 
 
@@ -149,8 +147,7 @@ def call_model(messages):
 
     except urllib.error.HTTPError as error:
         error_text = error.read().decode(
-            "utf-8",
-            errors="replace",
+            "utf-8", errors="replace"
         )
         raise RuntimeError(
             f"خطای HTTP {error.code}: {error_text[:1500]}"
@@ -161,11 +158,21 @@ def call_model(messages):
             f"خطا در اتصال به OpenRouter: {error.reason}"
         ) from error
 
+    except TimeoutError as error:
+        raise RuntimeError(
+            f"مهلت {REQUEST_TIMEOUT_SECONDS} ثانیه‌ای درخواست تمام شد."
+        ) from error
+
     elapsed = round(time.time() - started, 2)
-    data = json.loads(response_text)
+
+    try:
+        data = json.loads(response_text)
+    except json.JSONDecodeError as error:
+        raise RuntimeError(
+            f"پاسخ API JSON معتبر نیست: {response_text[:1000]}"
+        ) from error
 
     choices = data.get("choices", [])
-
     if not choices:
         raise RuntimeError(
             f"پاسخ API فاقد choices است: {response_text[:1000]}"
@@ -318,6 +325,30 @@ def prompt_persian_from_facts(facts):
 
 
 # ============================================================
+# Shared result helpers
+# ============================================================
+
+def stage_info(name, response):
+    return {
+        "name": name,
+        "elapsed_seconds": response["elapsed_seconds"],
+        "tokens": response["total_tokens"],
+        "finish_reason": response["finish_reason"],
+    }
+
+
+def error_result(started, request_count, total_tokens, error, stages=None):
+    return {
+        "status": "error",
+        "request_count": request_count,
+        "wall_clock_elapsed_seconds": round(time.time() - started, 2),
+        "total_tokens": total_tokens,
+        "stages": stages or [],
+        "error": str(error),
+    }
+
+
+# ============================================================
 # Method 1: Direct Persian generation
 # ============================================================
 
@@ -325,13 +356,15 @@ def run_method_1(article, article_text):
     started = time.time()
     request_count = 0
     total_tokens = 0
+    stages = []
 
     try:
+        request_count += 1
         response = call_model(
             prompt_direct_persian(article, article_text)
         )
-        request_count += 1
         total_tokens += response["total_tokens"]
+        stages.append(stage_info("direct_persian", response))
 
         output = validate_news_output(
             extract_json(response["content"])
@@ -340,31 +373,16 @@ def run_method_1(article, article_text):
         return {
             "status": "success",
             "request_count": request_count,
-            "wall_clock_elapsed_seconds": round(
-                time.time() - started, 2
-            ),
+            "wall_clock_elapsed_seconds": round(time.time() - started, 2),
             "total_tokens": total_tokens,
-            "stages": [
-                {
-                    "name": "direct_persian",
-                    "elapsed_seconds": response["elapsed_seconds"],
-                    "tokens": response["total_tokens"],
-                    "finish_reason": response["finish_reason"],
-                }
-            ],
+            "stages": stages,
             "output": output,
         }
 
     except Exception as error:
-        return {
-            "status": "error",
-            "request_count": request_count,
-            "wall_clock_elapsed_seconds": round(
-                time.time() - started, 2
-            ),
-            "total_tokens": total_tokens,
-            "error": str(error),
-        }
+        return error_result(
+            started, request_count, total_tokens, error, stages
+        )
 
 
 # ============================================================
@@ -378,42 +396,25 @@ def run_method_2(article, article_text):
     stages = []
 
     try:
+        request_count += 1
         first = call_model(
             prompt_english_draft(article, article_text)
         )
-        request_count += 1
         total_tokens += first["total_tokens"]
-
-        stages.append(
-            {
-                "name": "english_draft",
-                "elapsed_seconds": first["elapsed_seconds"],
-                "tokens": first["total_tokens"],
-                "finish_reason": first["finish_reason"],
-            }
-        )
+        stages.append(stage_info("english_draft", first))
 
         english_draft = extract_json(first["content"])
-
         if not isinstance(english_draft, dict):
             raise ValueError("پیش‌نویس انگلیسی JSON معتبر نیست.")
 
+        request_count += 1
         second = call_model(
             prompt_persian_from_english(
                 json.dumps(english_draft, ensure_ascii=False)
             )
         )
-        request_count += 1
         total_tokens += second["total_tokens"]
-
-        stages.append(
-            {
-                "name": "persian_adaptation",
-                "elapsed_seconds": second["elapsed_seconds"],
-                "tokens": second["total_tokens"],
-                "finish_reason": second["finish_reason"],
-            }
-        )
+        stages.append(stage_info("persian_adaptation", second))
 
         output = validate_news_output(
             extract_json(second["content"])
@@ -422,9 +423,7 @@ def run_method_2(article, article_text):
         return {
             "status": "success",
             "request_count": request_count,
-            "wall_clock_elapsed_seconds": round(
-                time.time() - started, 2
-            ),
+            "wall_clock_elapsed_seconds": round(time.time() - started, 2),
             "total_tokens": total_tokens,
             "stages": stages,
             "english_draft": english_draft,
@@ -432,16 +431,9 @@ def run_method_2(article, article_text):
         }
 
     except Exception as error:
-        return {
-            "status": "error",
-            "request_count": request_count,
-            "wall_clock_elapsed_seconds": round(
-                time.time() - started, 2
-            ),
-            "total_tokens": total_tokens,
-            "stages": stages,
-            "error": str(error),
-        }
+        return error_result(
+            started, request_count, total_tokens, error, stages
+        )
 
 
 # ============================================================
@@ -455,40 +447,23 @@ def run_method_3(article, article_text):
     stages = []
 
     try:
+        request_count += 1
         first = call_model(
             prompt_extract_facts(article, article_text)
         )
-        request_count += 1
         total_tokens += first["total_tokens"]
-
-        stages.append(
-            {
-                "name": "fact_extraction",
-                "elapsed_seconds": first["elapsed_seconds"],
-                "tokens": first["total_tokens"],
-                "finish_reason": first["finish_reason"],
-            }
-        )
+        stages.append(stage_info("fact_extraction", first))
 
         facts = extract_json(first["content"])
-
         if not isinstance(facts, dict):
             raise ValueError("خروجی استخراج واقعیت‌ها معتبر نیست.")
 
+        request_count += 1
         second = call_model(
             prompt_persian_from_facts(facts)
         )
-        request_count += 1
         total_tokens += second["total_tokens"]
-
-        stages.append(
-            {
-                "name": "persian_generation",
-                "elapsed_seconds": second["elapsed_seconds"],
-                "tokens": second["total_tokens"],
-                "finish_reason": second["finish_reason"],
-            }
-        )
+        stages.append(stage_info("persian_generation", second))
 
         output = validate_news_output(
             extract_json(second["content"])
@@ -497,9 +472,7 @@ def run_method_3(article, article_text):
         return {
             "status": "success",
             "request_count": request_count,
-            "wall_clock_elapsed_seconds": round(
-                time.time() - started, 2
-            ),
+            "wall_clock_elapsed_seconds": round(time.time() - started, 2),
             "total_tokens": total_tokens,
             "stages": stages,
             "extracted_facts": facts,
@@ -507,16 +480,9 @@ def run_method_3(article, article_text):
         }
 
     except Exception as error:
-        return {
-            "status": "error",
-            "request_count": request_count,
-            "wall_clock_elapsed_seconds": round(
-                time.time() - started, 2
-            ),
-            "total_tokens": total_tokens,
-            "stages": stages,
-            "error": str(error),
-        }
+        return error_result(
+            started, request_count, total_tokens, error, stages
+        )
 
 
 # ============================================================
@@ -534,7 +500,7 @@ def main():
     if not API_KEY:
         raise RuntimeError(
             "کلید API تنظیم نشده است. "
-            "در مرحله Workflow آن را به برنامه می‌دهیم."
+            "وجود Secret با نام OPENROUTER_API_KEY را بررسی کن."
         )
 
     if not INPUT_FILE.is_file():
@@ -579,6 +545,8 @@ def main():
         "method_3_facts_then_persian": run_method_3,
     }
 
+    failed_methods = []
+
     for index, article in enumerate(articles, start=1):
         article_text = get_article_text(article)
 
@@ -587,15 +555,16 @@ def main():
             "source": article.get("source", ""),
         }
 
+        if SAVE_ORIGINAL_TEXT:
+            article_result["original_text"] = article_text
+
         if not article_text:
             article_result["status"] = "skipped"
             article_result["error"] = "متن مقاله خالی است."
             results["method_results"][str(index)] = article_result
             save_json(results)
+            failed_methods.append(f"article_{index}: متن مقاله خالی است")
             continue
-
-        if SAVE_ORIGINAL_TEXT:
-            article_result["original_text"] = article_text
 
         for method_name, method_function in methods.items():
             print(f"\nمقاله {index}: {method_name}")
@@ -612,15 +581,31 @@ def main():
 
             if method_result.get("error"):
                 print(f"Error: {method_result['error']}")
+                failed_methods.append(
+                    f"article_{index}/{method_name}: "
+                    f"{method_result['error']}"
+                )
 
             results["method_results"][str(index)] = article_result
             save_json(results)
 
     results["test_metadata"]["finished_at"] = utc_now()
+    results["test_metadata"]["failed_method_count"] = len(failed_methods)
     save_json(results)
 
     print("\nآزمایش تمام شد.")
     print(f"فایل خروجی: {OUTPUT_FILE}")
+
+    if failed_methods:
+        print("\nروش‌های ناموفق:")
+        for failure in failed_methods:
+            print(f"- {failure}")
+        raise RuntimeError(
+            f"{len(failed_methods)} مورد ناموفق بود. "
+            "جزئیات در فایل خروجی ثبت شده است."
+        )
+
+    print("هر سه روش با موفقیت اجرا شدند.")
 
 
 if __name__ == "__main__":
