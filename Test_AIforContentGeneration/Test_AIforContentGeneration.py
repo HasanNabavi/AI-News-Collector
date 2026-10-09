@@ -1,9 +1,11 @@
 
 import json
+import os
 import time
 import urllib.request
 import subprocess
 import shutil
+import platform
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -20,24 +22,16 @@ OUTPUT_FILE = SCRIPT_DIR / "Test_AIforContentGeneration.json"
 
 OLLAMA_URL = "http://127.0.0.1:11434"
 
-# Test Qwen3 only.
-MODELS = [
-    "qwen3:4b",
-]
+MODEL = "qwen3:4b"
+ARTICLES_PER_MODEL = 1
 
-# Test five complete articles.
-ARTICLES_PER_MODEL = 5
+# Allow up to two hours for one generation request.
+REQUEST_TIMEOUT_SECONDS = 7200
 
-# Maximum time allowed for one generation request.
-REQUEST_TIMEOUT_SECONDS = 300
-
-# Maximum time allowed for downloading/checking a model.
 MODEL_PULL_TIMEOUT_SECONDS = 1800
-
-# Time allowed for Ollama server startup.
 SERVER_START_TIMEOUT_SECONDS = 60
 
-# Keep original article text in the output report.
+THINKING_ENABLED = True
 SAVE_ORIGINAL_TEXT = True
 
 
@@ -50,8 +44,6 @@ def utc_now():
 
 
 def save_json(data):
-    """Save the current report, including partial results."""
-
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     temporary_file = OUTPUT_FILE.with_suffix(".tmp")
 
@@ -71,8 +63,6 @@ def get_article_text(article):
 
 
 def extract_json(text):
-    """Extract a JSON object from the model response."""
-
     text = text.strip()
 
     if text.startswith("```"):
@@ -91,10 +81,8 @@ def extract_json(text):
 
     try:
         result = json.loads(text)
-
         if isinstance(result, dict):
             return result
-
     except json.JSONDecodeError:
         pass
 
@@ -103,7 +91,6 @@ def extract_json(text):
 
     if start != -1 and end > start:
         result = json.loads(text[start:end + 1])
-
         if isinstance(result, dict):
             return result
 
@@ -114,8 +101,238 @@ def format_duration(seconds):
     return f"{seconds:.2f} seconds"
 
 
+def run_command(command, timeout=15):
+    """Run a diagnostic command without failing the whole test."""
+
+    try:
+        result = subprocess.run(
+            command,
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+            check=False,
+        )
+
+        output = (result.stdout or "").strip()
+        error = (result.stderr or "").strip()
+
+        return {
+            "available": result.returncode == 0,
+            "return_code": result.returncode,
+            "output": output[:12000],
+            "error": error[:3000] if error else None,
+        }
+
+    except FileNotFoundError:
+        return {
+            "available": False,
+            "error": "Command not found",
+        }
+
+    except Exception as error:
+        return {
+            "available": False,
+            "error": f"{type(error).__name__}: {error}",
+        }
+
+
 # ============================================================
-# Ollama connection
+# Runner resource diagnostics
+# ============================================================
+
+def read_meminfo():
+    """Read Linux RAM information in bytes."""
+
+    result = {}
+
+    try:
+        with open("/proc/meminfo", "r", encoding="utf-8") as file:
+            for line in file:
+                parts = line.split()
+
+                if len(parts) >= 2:
+                    key = parts[0].rstrip(":")
+                    result[key] = int(parts[1]) * 1024
+
+    except Exception as error:
+        return {
+            "error": f"{type(error).__name__}: {error}"
+        }
+
+    wanted = [
+        "MemTotal",
+        "MemAvailable",
+        "MemFree",
+        "Buffers",
+        "Cached",
+        "SwapTotal",
+        "SwapFree",
+    ]
+
+    return {
+        key: result[key]
+        for key in wanted
+        if key in result
+    }
+
+
+def read_cpu_model():
+    try:
+        with open("/proc/cpuinfo", "r", encoding="utf-8") as file:
+            for line in file:
+                if line.lower().startswith("model name"):
+                    return line.split(":", 1)[1].strip()
+    except Exception:
+        pass
+
+    return None
+
+
+def read_disk_info():
+    try:
+        usage = shutil.disk_usage("/")
+        return {
+            "total_bytes": usage.total,
+            "used_bytes": usage.used,
+            "free_bytes": usage.free,
+        }
+    except Exception as error:
+        return {"error": str(error)}
+
+
+def collect_runner_diagnostics():
+    print("\n" + "=" * 60, flush=True)
+    print("RUNNER RESOURCE DIAGNOSTICS", flush=True)
+    print("=" * 60, flush=True)
+
+    diagnostics = {
+        "captured_at": utc_now(),
+        "platform": platform.platform(),
+        "operating_system": platform.system(),
+        "architecture": platform.machine(),
+        "python_version": platform.python_version(),
+        "logical_cpu_count": os.cpu_count(),
+        "cpu_model": read_cpu_model(),
+        "ram": read_meminfo(),
+        "disk": read_disk_info(),
+        "lscpu": run_command(["lscpu"]),
+        "gpu_nvidia_smi": run_command(
+            ["nvidia-smi"],
+            timeout=15,
+        ),
+        "gpu_rocm_smi": run_command(
+            ["rocm-smi"],
+            timeout=15,
+        ),
+        "gpu_lspci": run_command(
+            ["bash", "-lc", "lspci | grep -Ei 'vga|3d|display'"],
+            timeout=15,
+        ),
+        "ollama_ps": run_command(["ollama", "ps"]),
+        "ollama_version": run_command(["ollama", "--version"]),
+    }
+
+    print(f"Platform: {diagnostics['platform']}", flush=True)
+    print(
+        f"Logical CPU count: {diagnostics['logical_cpu_count']}",
+        flush=True,
+    )
+    print(f"CPU model: {diagnostics['cpu_model']}", flush=True)
+
+    ram = diagnostics["ram"]
+    if "MemTotal" in ram:
+        print(
+            f"Total RAM: {ram['MemTotal'] / (1024 ** 3):.2f} GiB",
+            flush=True,
+        )
+        if "MemAvailable" in ram:
+            print(
+                "Available RAM: "
+                f"{ram['MemAvailable'] / (1024 ** 3):.2f} GiB",
+                flush=True,
+            )
+
+    disk = diagnostics["disk"]
+    if "total_bytes" in disk:
+        print(
+            f"Root filesystem free space: "
+            f"{disk['free_bytes'] / (1024 ** 3):.2f} GiB",
+            flush=True,
+        )
+
+    nvidia = diagnostics["gpu_nvidia_smi"]
+    if nvidia["available"]:
+        print("[GPU] NVIDIA GPU detected.", flush=True)
+        print(nvidia["output"], flush=True)
+    else:
+        print(
+            "[GPU] nvidia-smi unavailable. "
+            "This alone does not prove that no GPU exists.",
+            flush=True,
+        )
+        print(
+            f"nvidia-smi result: {nvidia.get('error')}",
+            flush=True,
+        )
+
+    rocm = diagnostics["gpu_rocm_smi"]
+    if rocm["available"]:
+        print("[GPU] AMD GPU tooling detected.", flush=True)
+        print(rocm["output"], flush=True)
+
+    lspci = diagnostics["gpu_lspci"]
+    if lspci["available"] and lspci.get("output"):
+        print("[GPU/Display devices]", flush=True)
+        print(lspci["output"], flush=True)
+
+    print("[OLLAMA PS BEFORE GENERATION]", flush=True)
+    print(
+        diagnostics["ollama_ps"].get("output")
+        or diagnostics["ollama_ps"].get("error")
+        or "No output",
+        flush=True,
+    )
+
+    return diagnostics
+
+
+def collect_runtime_snapshot(label):
+    """Capture RAM and Ollama process/model status."""
+
+    snapshot = {
+        "label": label,
+        "captured_at": utc_now(),
+        "ram": read_meminfo(),
+        "ollama_ps": run_command(["ollama", "ps"]),
+    }
+
+    print(f"\n[RESOURCE SNAPSHOT] {label}", flush=True)
+
+    ram = snapshot["ram"]
+    if "MemTotal" in ram and "MemAvailable" in ram:
+        used = ram["MemTotal"] - ram["MemAvailable"]
+        print(
+            f"RAM used (estimated): {used / (1024 ** 3):.2f} GiB",
+            flush=True,
+        )
+        print(
+            f"RAM available: "
+            f"{ram['MemAvailable'] / (1024 ** 3):.2f} GiB",
+            flush=True,
+        )
+
+    print(
+        snapshot["ollama_ps"].get("output")
+        or snapshot["ollama_ps"].get("error")
+        or "No Ollama process information",
+        flush=True,
+    )
+
+    return snapshot
+
+
+# ============================================================
+# Ollama connection and model setup
 # ============================================================
 
 def ollama_is_running():
@@ -133,8 +350,6 @@ def ollama_is_running():
 
 
 def start_ollama_if_needed():
-    """Start Ollama only if it is not already running."""
-
     if ollama_is_running():
         print("[OLLAMA] Server is already running.", flush=True)
         return None
@@ -167,14 +382,12 @@ def start_ollama_if_needed():
     process.terminate()
 
     raise RuntimeError(
-        f"Ollama server did not become ready within "
+        "Ollama server did not become ready within "
         f"{SERVER_START_TIMEOUT_SECONDS} seconds."
     )
 
 
 def ensure_model_available(model_name):
-    """Check/download the model using the Ollama CLI."""
-
     print(f"[MODEL] Checking model: {model_name}", flush=True)
 
     executable = shutil.which("ollama")
@@ -195,19 +408,18 @@ def ensure_model_available(model_name):
 
     except subprocess.TimeoutExpired as error:
         raise TimeoutError(
-            f"Model setup timed out after "
-            f"{MODEL_PULL_TIMEOUT_SECONDS} seconds: {model_name}"
+            "Model setup timed out after "
+            f"{MODEL_PULL_TIMEOUT_SECONDS} seconds."
         ) from error
 
     elapsed = time.monotonic() - started
 
     if result.returncode != 0:
-        error_message = (
+        raise RuntimeError(
             result.stderr.strip()
             or result.stdout.strip()
             or f"Failed to prepare model {model_name}."
         )
-        raise RuntimeError(error_message)
 
     print(
         f"[MODEL] Ready: {model_name} "
@@ -278,8 +490,6 @@ ORIGINAL ARTICLE TEXT:
 # ============================================================
 
 def call_ollama(model_name, prompt):
-    """Send one request to Ollama and return its response."""
-
     payload = {
         "model": model_name,
         "messages": [
@@ -289,10 +499,7 @@ def call_ollama(model_name, prompt):
             }
         ],
         "stream": False,
-
-        # Keep the successful diagnostic setting.
-        "think": False,
-
+        "think": THINKING_ENABLED,
         "format": "json",
         "options": {
             "temperature": 0.2,
@@ -317,7 +524,7 @@ def call_ollama(model_name, prompt):
         f"[REQUEST START] Model={model_name} "
         f"Time={utc_now()} "
         f"Timeout={REQUEST_TIMEOUT_SECONDS}s "
-        f"Think=False",
+        f"Think={THINKING_ENABLED}",
         flush=True,
     )
 
@@ -343,20 +550,27 @@ def call_ollama(model_name, prompt):
         raise
 
     message = response_data.get("message", {})
-    raw_output = message.get("content", "")
-
-    if not raw_output.strip():
-        raise ValueError("Ollama returned an empty response.")
+    raw_output = message.get("content", "") or ""
+    thinking_output = message.get("thinking", "") or ""
 
     print(
         f"[REQUEST END] Model={model_name} "
         f"Elapsed={format_duration(elapsed)} "
-        f"Time={utc_now()}",
+        f"Time={utc_now()} "
+        f"ContentChars={len(raw_output)} "
+        f"ThinkingChars={len(thinking_output)}",
         flush=True,
     )
 
+    if not raw_output.strip():
+        raise ValueError(
+            "Ollama returned empty content. "
+            f"Thinking characters: {len(thinking_output)}"
+        )
+
     return {
         "raw_output": raw_output,
+        "thinking_output": thinking_output,
         "request_elapsed_seconds": round(elapsed, 3),
         "prompt_tokens": response_data.get("prompt_eval_count"),
         "output_tokens": response_data.get("eval_count"),
@@ -366,6 +580,7 @@ def call_ollama(model_name, prompt):
             "prompt_eval_duration"
         ),
         "eval_duration_ns": response_data.get("eval_duration"),
+        "done_reason": response_data.get("done_reason"),
     }
 
 
@@ -374,8 +589,6 @@ def call_ollama(model_name, prompt):
 # ============================================================
 
 def validate_generated_content(content):
-    """Validate the required output fields."""
-
     if not isinstance(content, dict):
         raise ValueError("Output is not a JSON object.")
 
@@ -414,7 +627,7 @@ def main():
     started_at = utc_now()
 
     print("=" * 60, flush=True)
-    print("AI CONTENT GENERATION MODEL TEST", flush=True)
+    print("QWEN THINKING MODE RESOURCE TEST", flush=True)
     print("=" * 60, flush=True)
 
     if not INPUT_FILE.exists():
@@ -425,60 +638,41 @@ def main():
 
     articles = input_data.get("news", [])
 
-    # Validate the input before slicing.
     if not isinstance(articles, list):
-        raise ValueError("The input JSON must contain a 'news' list.")
+        raise ValueError("Input JSON must contain a 'news' list.")
 
     if not articles:
         raise ValueError("The input file contains no news articles.")
 
-    # Select the first five complete articles.
-    # Do not truncate or modify their scraped text.
+    # Exactly one complete article; no text truncation.
     articles = articles[:ARTICLES_PER_MODEL]
 
+    article = articles[0]
+    article_text = get_article_text(article)
+
     print(f"Input file: {INPUT_FILE}", flush=True)
-    print(f"Articles selected: {len(articles)}", flush=True)
-    print(f"Models: {', '.join(MODELS)}", flush=True)
+    print(f"Selected articles: {len(articles)}", flush=True)
+    print(f"Model: {MODEL}", flush=True)
+    print(f"Thinking enabled: {THINKING_ENABLED}", flush=True)
     print(
         f"Request timeout: {REQUEST_TIMEOUT_SECONDS} seconds",
         flush=True,
     )
-    print("Thinking mode: disabled (think=False)", flush=True)
-
-    saved_articles = []
-
-    for index, article in enumerate(articles):
-        if not isinstance(article, dict):
-            raise ValueError(
-                f"Article at index {index} is not a JSON object."
-            )
-
-        item = {
-            "article_index": index,
-            "title": article.get("title", ""),
-            "source": article.get("source", ""),
-            "category": article.get("category", ""),
-            "url": article.get("url", ""),
-            "published_at": article.get("published_at"),
-            "group_id": article.get("group_id"),
-            "original_text_characters": len(get_article_text(article)),
-        }
-
-        if SAVE_ORIGINAL_TEXT:
-            item["original_text"] = get_article_text(article)
-
-        saved_articles.append(item)
+    print(
+        f"Original text length: {len(article_text)} characters",
+        flush=True,
+    )
 
     results = {
         "test_metadata": {
             "test_name": "Test_AIforContentGeneration",
             "purpose": (
-                "Test Qwen3 content generation with thinking mode "
-                "disabled, using five complete articles."
+                "One-article Qwen3 test with thinking enabled, "
+                "two-hour request timeout, and runner diagnostics."
             ),
-            "models": MODELS,
+            "model": MODEL,
+            "think": THINKING_ENABLED,
             "temperature": 0.2,
-            "think": False,
             "articles_per_model": len(articles),
             "request_timeout_seconds": REQUEST_TIMEOUT_SECONDS,
             "started_at": started_at,
@@ -488,216 +682,196 @@ def main():
         "input_file": str(INPUT_FILE.relative_to(PROJECT_DIR)),
         "output_file": str(OUTPUT_FILE.relative_to(PROJECT_DIR)),
         "article_count": len(articles),
-        "articles": saved_articles,
+        "runner_diagnostics": None,
+        "runtime_snapshots": [],
+        "articles": [
+            {
+                "article_index": 0,
+                "title": article.get("title", ""),
+                "source": article.get("source", ""),
+                "category": article.get("category", ""),
+                "url": article.get("url", ""),
+                "published_at": article.get("published_at"),
+                "group_id": article.get("group_id"),
+                "original_text_characters": len(article_text),
+                **(
+                    {"original_text": article_text}
+                    if SAVE_ORIGINAL_TEXT else {}
+                ),
+            }
+        ],
         "model_results": {},
     }
 
     save_json(results)
     server_process = None
 
+    model_result = {
+        "model": MODEL,
+        "status": "running",
+        "think": THINKING_ENABLED,
+        "started_at": utc_now(),
+        "finished_at": None,
+        "elapsed_seconds": None,
+        "success_count": 0,
+        "error_count": 0,
+        "results": [],
+    }
+    results["model_results"][MODEL] = model_result
+    save_json(results)
+
     try:
+        # Capture runner hardware before model setup and generation.
+        results["runner_diagnostics"] = collect_runner_diagnostics()
+        save_json(results)
+
         server_process = start_ollama_if_needed()
 
-        for model_name in MODELS:
-            print("\n" + "=" * 60, flush=True)
-            print(f"MODEL: {model_name}", flush=True)
-            print("=" * 60, flush=True)
+        ensure_model_available(MODEL)
 
-            model_result = {
-                "model": model_name,
-                "status": "running",
-                "started_at": utc_now(),
-                "finished_at": None,
-                "elapsed_seconds": None,
-                "success_count": 0,
-                "error_count": 0,
-                "results": [],
-            }
+        # Capture the model placement before generation.
+        results["runtime_snapshots"].append(
+            collect_runtime_snapshot("before_generation")
+        )
+        save_json(results)
 
-            results["model_results"][model_name] = model_result
-            save_json(results)
+        title = article.get("title", "")
+        print(f"\n[ARTICLE] {title}", flush=True)
 
-            model_started = time.monotonic()
+        article_started = time.monotonic()
 
+        item_result = {
+            "article_index": 0,
+            "original_title": title,
+            "status": "error",
+            "started_at": utc_now(),
+            "finished_at": None,
+            "elapsed_seconds": None,
+            "json_valid": False,
+            "prompt_tokens": None,
+            "output_tokens": None,
+            "request_elapsed_seconds": None,
+            "total_duration_ns": None,
+            "load_duration_ns": None,
+            "prompt_eval_duration_ns": None,
+            "eval_duration_ns": None,
+            "done_reason": None,
+            "output": None,
+            "raw_output": None,
+            "thinking_output": None,
+            "error": None,
+        }
+
+        if not article_text.strip():
+            item_result["error"] = "The article has no scraped text."
+
+        else:
             try:
-                ensure_model_available(model_name)
+                response = call_ollama(
+                    MODEL,
+                    build_prompt(article),
+                )
+
+                item_result["prompt_tokens"] = response["prompt_tokens"]
+                item_result["output_tokens"] = response["output_tokens"]
+                item_result["request_elapsed_seconds"] = (
+                    response["request_elapsed_seconds"]
+                )
+                item_result["total_duration_ns"] = (
+                    response["total_duration_ns"]
+                )
+                item_result["load_duration_ns"] = (
+                    response["load_duration_ns"]
+                )
+                item_result["prompt_eval_duration_ns"] = (
+                    response["prompt_eval_duration_ns"]
+                )
+                item_result["eval_duration_ns"] = (
+                    response["eval_duration_ns"]
+                )
+                item_result["done_reason"] = response["done_reason"]
+                item_result["thinking_output"] = (
+                    response["thinking_output"]
+                )
+
+                raw_output = response["raw_output"]
+
+                try:
+                    parsed_output = extract_json(raw_output)
+                    validated_output = validate_generated_content(
+                        parsed_output
+                    )
+
+                    item_result["status"] = "success"
+                    item_result["json_valid"] = True
+                    item_result["output"] = validated_output
+
+                except Exception as error:
+                    item_result["status"] = "invalid_output"
+                    item_result["error"] = (
+                        f"{type(error).__name__}: {error}"
+                    )
+                    item_result["raw_output"] = raw_output
 
             except Exception as error:
-                error_message = f"{type(error).__name__}: {error}"
-
-                model_result["status"] = "model_setup_failed"
-                model_result["setup_error"] = error_message
-
-                for index, article in enumerate(articles):
-                    model_result["results"].append({
-                        "article_index": index,
-                        "status": "error",
-                        "error": "Model setup failed: " + error_message,
-                    })
-
-                model_result["error_count"] = len(articles)
-                model_result["finished_at"] = utc_now()
-                model_result["elapsed_seconds"] = round(
-                    time.monotonic() - model_started,
-                    3,
+                item_result["status"] = "error"
+                item_result["error"] = (
+                    f"{type(error).__name__}: {error}"
                 )
 
-                save_json(results)
+        item_result["finished_at"] = utc_now()
+        item_result["elapsed_seconds"] = round(
+            time.monotonic() - article_started,
+            3,
+        )
 
-                print(
-                    f"[MODEL SETUP FAILED] {model_name}: "
-                    f"{error_message}",
-                    flush=True,
-                )
-                continue
-
-            for index, article in enumerate(articles):
-                title = article.get("title", "")
-                article_text = get_article_text(article)
-
-                print(
-                    f"\n[{model_name}] "
-                    f"Article {index + 1}/{len(articles)}: {title}",
-                    flush=True,
-                )
-
-                article_started = time.monotonic()
-
-                item_result = {
-                    "article_index": index,
-                    "original_title": title,
-                    "status": "error",
-                    "started_at": utc_now(),
-                    "finished_at": None,
-                    "elapsed_seconds": None,
-                    "json_valid": False,
-                    "prompt_tokens": None,
-                    "output_tokens": None,
-                    "request_elapsed_seconds": None,
-                    "total_duration_ns": None,
-                    "load_duration_ns": None,
-                    "prompt_eval_duration_ns": None,
-                    "eval_duration_ns": None,
-                    "output": None,
-                    "raw_output": None,
-                    "error": None,
-                }
-
-                if not article_text.strip():
-                    item_result["error"] = (
-                        "The article has no scraped text."
-                    )
-
-                else:
-                    try:
-                        prompt = build_prompt(article)
-                        response = call_ollama(model_name, prompt)
-
-                        item_result["prompt_tokens"] = (
-                            response["prompt_tokens"]
-                        )
-                        item_result["output_tokens"] = (
-                            response["output_tokens"]
-                        )
-                        item_result["request_elapsed_seconds"] = (
-                            response["request_elapsed_seconds"]
-                        )
-                        item_result["total_duration_ns"] = (
-                            response["total_duration_ns"]
-                        )
-                        item_result["load_duration_ns"] = (
-                            response["load_duration_ns"]
-                        )
-                        item_result["prompt_eval_duration_ns"] = (
-                            response["prompt_eval_duration_ns"]
-                        )
-                        item_result["eval_duration_ns"] = (
-                            response["eval_duration_ns"]
-                        )
-
-                        raw_output = response["raw_output"]
-
-                        try:
-                            parsed_output = extract_json(raw_output)
-                            validated_output = (
-                                validate_generated_content(parsed_output)
-                            )
-
-                            item_result["status"] = "success"
-                            item_result["json_valid"] = True
-                            item_result["output"] = validated_output
-
-                        except Exception as error:
-                            item_result["status"] = "invalid_output"
-                            item_result["error"] = (
-                                f"{type(error).__name__}: {error}"
-                            )
-                            item_result["raw_output"] = raw_output
-
-                    except Exception as error:
-                        item_result["status"] = "error"
-                        item_result["error"] = (
-                            f"{type(error).__name__}: {error}"
-                        )
-
-                item_result["finished_at"] = utc_now()
-                item_result["elapsed_seconds"] = round(
-                    time.monotonic() - article_started,
-                    3,
-                )
-
-                if item_result["status"] == "success":
-                    model_result["success_count"] += 1
-
-                    print(
-                        f"[RESULT] SUCCESS | "
-                        f"Elapsed={item_result['elapsed_seconds']}s",
-                        flush=True,
-                    )
-                else:
-                    model_result["error_count"] += 1
-
-                    print(
-                        f"[RESULT] {item_result['status']} | "
-                        f"Elapsed={item_result['elapsed_seconds']}s | "
-                        f"Error={item_result['error']}",
-                        flush=True,
-                    )
-
-                model_result["results"].append(item_result)
-
-                # Save after every article so partial results survive.
-                save_json(results)
-
-            model_result["status"] = (
-                "completed_with_errors"
-                if model_result["error_count"] > 0
-                else "completed"
-            )
-
-            model_result["finished_at"] = utc_now()
-            model_result["elapsed_seconds"] = round(
-                time.monotonic() - model_started,
-                3,
-            )
-
-            save_json(results)
-
+        if item_result["status"] == "success":
+            model_result["success_count"] = 1
             print(
-                f"\n[MODEL FINISHED] {model_name} | "
-                f"Success={model_result['success_count']} | "
-                f"Errors={model_result['error_count']} | "
-                f"Elapsed={model_result['elapsed_seconds']}s",
+                f"[RESULT] SUCCESS | "
+                f"Elapsed={item_result['elapsed_seconds']}s",
+                flush=True,
+            )
+        else:
+            model_result["error_count"] = 1
+            print(
+                f"[RESULT] {item_result['status']} | "
+                f"Elapsed={item_result['elapsed_seconds']}s | "
+                f"Error={item_result['error']}",
                 flush=True,
             )
 
+        model_result["results"].append(item_result)
+        save_json(results)
+
+        # Capture RAM and Ollama model placement after generation.
+        results["runtime_snapshots"].append(
+            collect_runtime_snapshot("after_generation")
+        )
+
+        model_result["status"] = (
+            "completed"
+            if model_result["error_count"] == 0
+            else "completed_with_errors"
+        )
+
     except Exception as error:
+        model_result["status"] = "test_failed"
+        model_result["setup_error"] = (
+            f"{type(error).__name__}: {error}"
+        )
         results["test_metadata"]["fatal_error"] = (
             f"{type(error).__name__}: {error}"
         )
         raise
 
     finally:
+        model_result["finished_at"] = utc_now()
+        model_result["elapsed_seconds"] = round(
+            time.monotonic() - run_started,
+            3,
+        )
+
         results["test_metadata"]["finished_at"] = utc_now()
         results["test_metadata"]["elapsed_seconds"] = round(
             time.monotonic() - run_started,
@@ -722,14 +896,11 @@ def main():
         print("\n" + "=" * 60, flush=True)
         print("TEST FINISHED", flush=True)
         print(f"Output file: {OUTPUT_FILE}", flush=True)
-
-        for model_name, model_result in results["model_results"].items():
-            print(
-                f"{model_name}: "
-                f"{model_result['success_count']} successful, "
-                f"{model_result['error_count']} errors",
-                flush=True,
-            )
+        print(
+            f"Successes: {model_result['success_count']} | "
+            f"Errors: {model_result['error_count']}",
+            flush=True,
+        )
 
 
 if __name__ == "__main__":
