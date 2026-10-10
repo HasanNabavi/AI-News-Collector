@@ -1,52 +1,677 @@
 {
   "test_metadata": {
-    "started_at": "2026-10-09T19:50:51.548434+00:00",
-    "model": "nvidia/nemotron-3-super-120b-a12b:free",
+    "started_at": "2026-10-10T05:06:19.136851+00:00",
+    "models": {
+      "nemotron": "nvidia/nemotron-3-super-120b-a12b:free",
+      "qwen": "qwen/qwen3.8-27b:free",
+      "gemma": "google/gemma-4-31b-it:free"
+    },
+    "model": "multiple_models",
     "method": "headline_translation_en_to_fa",
     "input_file": "F1_NewsAfterAIGroupingRun.json",
     "output_file": "Test_AIforContentGeneration/Test_AIforContentGeneration.json",
-    "article_limit": 1,
+    "article_limit": 10,
+    "model_count": 3,
+    "expected_translation_count": 30,
     "reasoning_enabled": false,
-    "finished_at": "2026-10-09T19:50:52.249194+00:00",
-    "failed_article_count": 0
+    "seconds_between_requests": 3.2,
+    "finished_at": "2026-10-10T05:08:06.273437+00:00",
+    "successful_translation_count": 10,
+    "failed_translation_count": 20,
+    "failed_translations": [
+      {
+        "article": 1,
+        "model": "qwen",
+        "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      },
+      {
+        "article": 1,
+        "model": "gemma",
+        "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      },
+      {
+        "article": 2,
+        "model": "qwen",
+        "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      },
+      {
+        "article": 2,
+        "model": "gemma",
+        "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      },
+      {
+        "article": 3,
+        "model": "qwen",
+        "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      },
+      {
+        "article": 3,
+        "model": "gemma",
+        "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      },
+      {
+        "article": 4,
+        "model": "qwen",
+        "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      },
+      {
+        "article": 4,
+        "model": "gemma",
+        "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      },
+      {
+        "article": 5,
+        "model": "qwen",
+        "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      },
+      {
+        "article": 5,
+        "model": "gemma",
+        "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      },
+      {
+        "article": 6,
+        "model": "qwen",
+        "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      },
+      {
+        "article": 6,
+        "model": "gemma",
+        "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      },
+      {
+        "article": 7,
+        "model": "qwen",
+        "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      },
+      {
+        "article": 7,
+        "model": "gemma",
+        "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      },
+      {
+        "article": 8,
+        "model": "qwen",
+        "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      },
+      {
+        "article": 8,
+        "model": "gemma",
+        "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      },
+      {
+        "article": 9,
+        "model": "qwen",
+        "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      },
+      {
+        "article": 9,
+        "model": "gemma",
+        "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      },
+      {
+        "article": 10,
+        "model": "qwen",
+        "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      },
+      {
+        "article": 10,
+        "model": "gemma",
+        "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+      }
+    ]
   },
-  "article_count": 1,
+  "article_count": 10,
   "translation_results": {
     "1": {
       "input_title": "OpenAI fires workers for 'mishandling sensitive information'",
       "source": "BBC Technology",
       "url": "https://www.bbc.co.uk/news/articles/c6y9z9r4ejzwo?at_medium=RSS&at_campaign=rss",
-      "status": "success",
-      "translated_title": "OpenAI کارگران را به دلیل «سوء مدیریت اطلاعات حساس» اخراج کرد",
-      "elapsed_seconds": 0.7,
-      "http_status": 200,
-      "usage": {
-        "prompt_tokens": 235,
-        "completion_tokens": 20,
-        "total_tokens": 255,
-        "cost": 0,
-        "is_byok": false,
-        "prompt_tokens_details": {
-          "cached_tokens": 0,
-          "cache_write_tokens": 0,
-          "audio_tokens": 0,
-          "video_tokens": 0
+      "status": "error",
+      "model_results": {
+        "nemotron": {
+          "status": "success",
+          "model_requested": "nvidia/nemotron-3-super-120b-a12b:free",
+          "model_returned": "nvidia/nemotron-3-super-120b-a12b:free",
+          "translated_title": "OpenAI کارگران را به دلیل «سوء مدیریت اطلاعات حساس» اخراج کرد.",
+          "elapsed_seconds": 0.87,
+          "http_status": 200,
+          "usage": {
+            "prompt_tokens": 220,
+            "completion_tokens": 21,
+            "total_tokens": 241,
+            "cost": 0,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0,
+              "upstream_inference_prompt_cost": 0,
+              "upstream_inference_completions_cost": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          "total_tokens": 241,
+          "finish_reason": "stop",
+          "response_id": "gen-1791608779-5xth8lGqplGrN90iJacg"
         },
-        "cost_details": {
-          "upstream_inference_cost": 0,
-          "upstream_inference_prompt_cost": 0,
-          "upstream_inference_completions_cost": 0
+        "qwen": {
+          "status": "error",
+          "model_requested": "qwen/qwen3.8-27b:free",
+          "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
         },
-        "completion_tokens_details": {
-          "reasoning_tokens": 0,
-          "image_tokens": 0,
-          "audio_tokens": 0
+        "gemma": {
+          "status": "error",
+          "model_requested": "google/gemma-4-31b-it:free",
+          "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
         }
       },
+      "translated_title": "OpenAI کارگران را به دلیل «سوء مدیریت اطلاعات حساس» اخراج کرد.",
+      "total_tokens": 241,
+      "elapsed_seconds": 0.87
+    },
+    "2": {
+      "input_title": "Crypto thieves attack man in home and threaten to kill pregnant wife's baby in 'horrific' robbery",
+      "source": "BBC Technology",
+      "url": "https://www.bbc.co.uk/news/articles/c6eq84eygz0qo?at_medium=RSS&at_campaign=rss",
+      "status": "error",
+      "model_results": {
+        "nemotron": {
+          "status": "success",
+          "model_requested": "nvidia/nemotron-3-super-120b-a12b:free",
+          "model_returned": "nvidia/nemotron-3-super-120b-a12b:free",
+          "translated_title": "دزدان کریپتو در منزل مرد حمله کردند و تهدید کردند که باردار همسرش را بکشند و بچه‌اش را در یک سرقت «وحشتناک» بکشند.",
+          "elapsed_seconds": 1.38,
+          "http_status": 200,
+          "usage": {
+            "prompt_tokens": 229,
+            "completion_tokens": 45,
+            "total_tokens": 274,
+            "cost": 0,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0,
+              "upstream_inference_prompt_cost": 0,
+              "upstream_inference_completions_cost": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          "total_tokens": 274,
+          "finish_reason": "stop",
+          "response_id": "gen-1791608789-l95dpRfA2lOiNErRVZAK"
+        },
+        "qwen": {
+          "status": "error",
+          "model_requested": "qwen/qwen3.8-27b:free",
+          "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+        },
+        "gemma": {
+          "status": "error",
+          "model_requested": "google/gemma-4-31b-it:free",
+          "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+        }
+      },
+      "translated_title": "دزدان کریپتو در منزل مرد حمله کردند و تهدید کردند که باردار همسرش را بکشند و بچه‌اش را در یک سرقت «وحشتناک» بکشند.",
+      "total_tokens": 274,
+      "elapsed_seconds": 1.38
+    },
+    "3": {
+      "input_title": "Trump's AI rebrand causes 'unprecedented' demand for Slovenian website names",
+      "source": "BBC Technology",
+      "url": "https://www.bbc.co.uk/news/articles/cqx2z23xj555o?at_medium=RSS&at_campaign=rss",
+      "status": "error",
+      "model_results": {
+        "nemotron": {
+          "status": "success",
+          "model_requested": "nvidia/nemotron-3-super-120b-a12b:free",
+          "model_returned": "nvidia/nemotron-3-super-120b-a12b:free",
+          "translated_title": "برندسازی هوش مصنوعی ترامپ باعث تقاضای 'بی‌سابقه' برای نام‌های وب‌سایت سلوفنی شد",
+          "elapsed_seconds": 1.1,
+          "http_status": 200,
+          "usage": {
+            "prompt_tokens": 225,
+            "completion_tokens": 31,
+            "total_tokens": 256,
+            "cost": 0,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0,
+              "upstream_inference_prompt_cost": 0,
+              "upstream_inference_completions_cost": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          "total_tokens": 256,
+          "finish_reason": "stop",
+          "response_id": "gen-1791608801-WDFxpkCre34MUW0AUznK"
+        },
+        "qwen": {
+          "status": "error",
+          "model_requested": "qwen/qwen3.8-27b:free",
+          "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+        },
+        "gemma": {
+          "status": "error",
+          "model_requested": "google/gemma-4-31b-it:free",
+          "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+        }
+      },
+      "translated_title": "برندسازی هوش مصنوعی ترامپ باعث تقاضای 'بی‌سابقه' برای نام‌های وب‌سایت سلوفنی شد",
+      "total_tokens": 256,
+      "elapsed_seconds": 1.1
+    },
+    "4": {
+      "input_title": "AI boom could trigger market shocks, Bank of England boss warns",
+      "source": "BBC Technology",
+      "url": "https://www.bbc.co.uk/news/articles/cv8e30enrkxyo?at_medium=RSS&at_campaign=rss",
+      "status": "error",
+      "model_results": {
+        "nemotron": {
+          "status": "success",
+          "model_requested": "nvidia/nemotron-3-super-120b-a12b:free",
+          "model_returned": "nvidia/nemotron-3-super-120b-a12b:free",
+          "translated_title": "پیش‌بینی می‌شود که رشد هوش مصنوعی باعث ایجاد لرزش‌های بازار شود، رئیس بانک انگلستان هشدار داد.",
+          "elapsed_seconds": 4.88,
+          "http_status": 200,
+          "usage": {
+            "prompt_tokens": 219,
+            "completion_tokens": 29,
+            "total_tokens": 248,
+            "cost": 0,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0,
+              "upstream_inference_prompt_cost": 0,
+              "upstream_inference_completions_cost": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          "total_tokens": 248,
+          "finish_reason": "stop",
+          "response_id": "gen-1791608811-XcuNSacz8KusMUJuKMMr"
+        },
+        "qwen": {
+          "status": "error",
+          "model_requested": "qwen/qwen3.8-27b:free",
+          "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+        },
+        "gemma": {
+          "status": "error",
+          "model_requested": "google/gemma-4-31b-it:free",
+          "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+        }
+      },
+      "translated_title": "پیش‌بینی می‌شود که رشد هوش مصنوعی باعث ایجاد لرزش‌های بازار شود، رئیس بانک انگلستان هشدار داد.",
+      "total_tokens": 248,
+      "elapsed_seconds": 4.88
+    },
+    "5": {
+      "input_title": "Tiny image sparks big backlash in Nikon photo contest",
+      "source": "BBC Technology",
+      "url": "https://www.bbc.co.uk/news/articles/ck4gjn1yzprno?at_medium=RSS&at_campaign=rss",
+      "status": "error",
+      "model_results": {
+        "nemotron": {
+          "status": "success",
+          "model_requested": "nvidia/nemotron-3-super-120b-a12b:free",
+          "model_returned": "nvidia/nemotron-3-super-120b-a12b:free",
+          "translated_title": "یک تصویر کوچک، واکنش عظیمی را در مسابقه عکاسی نیکون برانگیخت",
+          "elapsed_seconds": 0.83,
+          "http_status": 200,
+          "usage": {
+            "prompt_tokens": 219,
+            "completion_tokens": 20,
+            "total_tokens": 239,
+            "cost": 0,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0,
+              "upstream_inference_prompt_cost": 0,
+              "upstream_inference_completions_cost": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          "total_tokens": 239,
+          "finish_reason": "stop",
+          "response_id": "gen-1791608826-h48AzUTo3pzA69NC3Gx5"
+        },
+        "qwen": {
+          "status": "error",
+          "model_requested": "qwen/qwen3.8-27b:free",
+          "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+        },
+        "gemma": {
+          "status": "error",
+          "model_requested": "google/gemma-4-31b-it:free",
+          "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+        }
+      },
+      "translated_title": "یک تصویر کوچک، واکنش عظیمی را در مسابقه عکاسی نیکون برانگیخت",
+      "total_tokens": 239,
+      "elapsed_seconds": 0.83
+    },
+    "6": {
+      "input_title": "The AI telling farmers when to harvest",
+      "source": "BBC Technology",
+      "url": "https://www.bbc.co.uk/news/articles/cgk53dkmyxko?at_medium=RSS&at_campaign=rss",
+      "status": "error",
+      "model_results": {
+        "nemotron": {
+          "status": "success",
+          "model_requested": "nvidia/nemotron-3-super-120b-a12b:free",
+          "model_returned": "nvidia/nemotron-3-super-120b-a12b:free",
+          "translated_title": "هوش مصنوعی به کشاورزان می‌گوید چه زمانی باید برداشت کنند",
+          "elapsed_seconds": 0.85,
+          "http_status": 200,
+          "usage": {
+            "prompt_tokens": 214,
+            "completion_tokens": 17,
+            "total_tokens": 231,
+            "cost": 0,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0,
+              "upstream_inference_prompt_cost": 0,
+              "upstream_inference_completions_cost": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          "total_tokens": 231,
+          "finish_reason": "stop",
+          "response_id": "gen-1791608837-GFbNXzTVUFMGQMngZDJF"
+        },
+        "qwen": {
+          "status": "error",
+          "model_requested": "qwen/qwen3.8-27b:free",
+          "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+        },
+        "gemma": {
+          "status": "error",
+          "model_requested": "google/gemma-4-31b-it:free",
+          "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+        }
+      },
+      "translated_title": "هوش مصنوعی به کشاورزان می‌گوید چه زمانی باید برداشت کنند",
+      "total_tokens": 231,
+      "elapsed_seconds": 0.85
+    },
+    "7": {
+      "input_title": "Regulating AI 'not the right place to start' says Bailey",
+      "source": "BBC Technology",
+      "url": "https://www.bbc.co.uk/news/articles/cvzez7k0pn40o?at_medium=RSS&at_campaign=rss",
+      "status": "error",
+      "model_results": {
+        "nemotron": {
+          "status": "success",
+          "model_requested": "nvidia/nemotron-3-super-120b-a12b:free",
+          "model_returned": "nvidia/nemotron-3-super-120b-a12b:free",
+          "translated_title": "بایلی می‌گوید تنظیم هوش مصنوعی «مکان مناسب برای شروع» نیست.",
+          "elapsed_seconds": 0.7,
+          "http_status": 200,
+          "usage": {
+            "prompt_tokens": 220,
+            "completion_tokens": 21,
+            "total_tokens": 241,
+            "cost": 0,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0,
+              "upstream_inference_prompt_cost": 0,
+              "upstream_inference_completions_cost": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          "total_tokens": 241,
+          "finish_reason": "stop",
+          "response_id": "gen-1791608847-nvjoLFtSUozR2iDYnEHI"
+        },
+        "qwen": {
+          "status": "error",
+          "model_requested": "qwen/qwen3.8-27b:free",
+          "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+        },
+        "gemma": {
+          "status": "error",
+          "model_requested": "google/gemma-4-31b-it:free",
+          "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+        }
+      },
+      "translated_title": "بایلی می‌گوید تنظیم هوش مصنوعی «مکان مناسب برای شروع» نیست.",
+      "total_tokens": 241,
+      "elapsed_seconds": 0.7
+    },
+    "8": {
+      "input_title": "WhatsApp introduces optional parental controls for teenagers",
+      "source": "BBC Technology",
+      "url": "https://www.bbc.co.uk/news/articles/cm986x65we88o?at_medium=RSS&at_campaign=rss",
+      "status": "error",
+      "model_results": {
+        "nemotron": {
+          "status": "success",
+          "model_requested": "nvidia/nemotron-3-super-120b-a12b:free",
+          "model_returned": "nvidia/nemotron-3-super-120b-a12b:free",
+          "translated_title": "واتساپ کنترل‌های اختیاری والدینی برای نوجوانان را معرفی کرد",
+          "elapsed_seconds": 0.66,
+          "http_status": 200,
+          "usage": {
+            "prompt_tokens": 215,
+            "completion_tokens": 18,
+            "total_tokens": 233,
+            "cost": 0,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0,
+              "upstream_inference_prompt_cost": 0,
+              "upstream_inference_completions_cost": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          "total_tokens": 233,
+          "finish_reason": "stop",
+          "response_id": "gen-1791608858-eomdXYnv6Ky6RgFlq4an"
+        },
+        "qwen": {
+          "status": "error",
+          "model_requested": "qwen/qwen3.8-27b:free",
+          "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+        },
+        "gemma": {
+          "status": "error",
+          "model_requested": "google/gemma-4-31b-it:free",
+          "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+        }
+      },
+      "translated_title": "واتساپ کنترل‌های اختیاری والدینی برای نوجوانان را معرفی کرد",
+      "total_tokens": 233,
+      "elapsed_seconds": 0.66
+    },
+    "9": {
+      "input_title": "OpenAI unveils AI assistant 'dots' while safety worries delay new model",
+      "source": "BBC Technology",
+      "url": "https://www.bbc.co.uk/news/articles/cw7v42rp083eo?at_medium=RSS&at_campaign=rss",
+      "status": "error",
+      "model_results": {
+        "nemotron": {
+          "status": "success",
+          "model_requested": "nvidia/nemotron-3-super-120b-a12b:free",
+          "model_returned": "nvidia/nemotron-3-super-120b-a12b:free",
+          "translated_title": "OpenAI دستیار هوشمند «داتس» را معرفی کرد؛ نگرانی‌های ایمنی انتشار مدل جدید را به تعویق انداخت",
+          "elapsed_seconds": 0.58,
+          "http_status": 200,
+          "usage": {
+            "prompt_tokens": 222,
+            "completion_tokens": 33,
+            "total_tokens": 255,
+            "cost": 0,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0,
+              "upstream_inference_prompt_cost": 0,
+              "upstream_inference_completions_cost": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          "total_tokens": 255,
+          "finish_reason": "stop",
+          "response_id": "gen-1791608868-LGnrnlUd6YGNSMQ2Ppey"
+        },
+        "qwen": {
+          "status": "error",
+          "model_requested": "qwen/qwen3.8-27b:free",
+          "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+        },
+        "gemma": {
+          "status": "error",
+          "model_requested": "google/gemma-4-31b-it:free",
+          "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+        }
+      },
+      "translated_title": "OpenAI دستیار هوشمند «داتس» را معرفی کرد؛ نگرانی‌های ایمنی انتشار مدل جدید را به تعویق انداخت",
       "total_tokens": 255,
-      "finish_reason": "stop",
-      "model_returned": "nvidia/nemotron-3-super-120b-a12b:free",
-      "response_id": "gen-1791575451-ROWbWsT7GQCuuRAMPrGU"
+      "elapsed_seconds": 0.58
+    },
+    "10": {
+      "input_title": "Three takeaways from Trump's 'Super Intelligence' summit",
+      "source": "BBC Technology",
+      "url": "https://www.bbc.co.uk/news/articles/cme30dz5vkzko?at_medium=RSS&at_campaign=rss",
+      "status": "error",
+      "model_results": {
+        "nemotron": {
+          "status": "success",
+          "model_requested": "nvidia/nemotron-3-super-120b-a12b:free",
+          "model_returned": "nvidia/nemotron-3-super-120b-a12b:free",
+          "translated_title": "سه نکته کلیدی از قمه «هوش فوق‌العاده» ترامپ",
+          "elapsed_seconds": 0.44,
+          "http_status": 200,
+          "usage": {
+            "prompt_tokens": 219,
+            "completion_tokens": 19,
+            "total_tokens": 238,
+            "cost": 0,
+            "is_byok": false,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "cache_write_tokens": 0,
+              "audio_tokens": 0,
+              "video_tokens": 0
+            },
+            "cost_details": {
+              "upstream_inference_cost": 0,
+              "upstream_inference_prompt_cost": 0,
+              "upstream_inference_completions_cost": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "image_tokens": 0,
+              "audio_tokens": 0
+            }
+          },
+          "total_tokens": 238,
+          "finish_reason": "stop",
+          "response_id": "gen-1791608879-sBYiSLrqJO02nyPcWCMt"
+        },
+        "qwen": {
+          "status": "error",
+          "model_requested": "qwen/qwen3.8-27b:free",
+          "error": "HTTP 404: {\"error\":{\"message\":\"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen3.8-27b\",\"code\":404},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+        },
+        "gemma": {
+          "status": "error",
+          "model_requested": "google/gemma-4-31b-it:free",
+          "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Google AI Studio\",\"is_byok\":false,\"provider_error_code\":\"429\",\"limit_source\":\"upstream_provider_shared_pool\",\"remedy_hint\":\"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing\"}},\"user_id\":\"user_3KSLu2aBGkw89hBqKsIo58CpjZe\"}"
+        }
+      },
+      "translated_title": "سه نکته کلیدی از قمه «هوش فوق‌العاده» ترامپ",
+      "total_tokens": 238,
+      "elapsed_seconds": 0.44
     }
   }
 }
