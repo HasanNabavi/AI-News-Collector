@@ -1,3 +1,4 @@
+
 import json
 import os
 import time
@@ -20,13 +21,20 @@ OUTPUT_FILE = SCRIPT_DIR / "Test_AIforContentGeneration.json"
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 API_KEY = os.getenv("OPENROUTER_API_KEY", "").strip()
 
-# برای آزمایش مدل‌های دیگر، فقط این خط را تغییر بده.
-MODEL = "nvidia/nemotron-3-super-120b-a12b:free"
+# سه مدل برای مقایسه روی دقیقاً همان ۱۰ عنوان
+MODELS = {
+    "nemotron": "nvidia/nemotron-3-super-120b-a12b:free",
+    "qwen": "qwen/qwen3.8-27b:free",
+    "gemma": "google/gemma-4-31b-it:free",
+}
 
-ARTICLES_PER_TEST = 1
+ARTICLES_PER_TEST = 10
 REQUEST_TIMEOUT_SECONDS = 180
 MAX_TOKENS = 256
 TEMPERATURE = 0.1
+
+# فاصله بین درخواست‌ها برای کاهش احتمال برخورد با محدودیت نرخ
+SECONDS_BETWEEN_REQUESTS = 3.2
 
 
 # ============================================================
@@ -85,6 +93,13 @@ def load_articles():
             "هیچ خبری با عنوان معتبر در فایل ورودی پیدا نشد."
         )
 
+    if len(valid_articles) < ARTICLES_PER_TEST:
+        raise ValueError(
+            f"برای تست به {ARTICLES_PER_TEST} خبر نیاز است، "
+            f"اما فقط {len(valid_articles)} خبر معتبر پیدا شد."
+        )
+
+    # همان ۱۰ خبر اول فایل F1 برای هر سه مدل استفاده می‌شوند.
     return valid_articles[:ARTICLES_PER_TEST]
 
 
@@ -92,7 +107,7 @@ def load_articles():
 # Headline translation
 # ============================================================
 
-def translate_headline(original_title):
+def translate_headline(original_title, model_id):
     if not API_KEY:
         raise RuntimeError(
             "متغیر OPENROUTER_API_KEY تنظیم نشده است."
@@ -113,7 +128,6 @@ def translate_headline(original_title):
                 "- نام اشخاص، شرکت‌ها و محصولات را درست حفظ کن.\n"
                 "- اصطلاحات تخصصی را با معادل رایج و دقیق فارسی ترجمه کن.\n"
                 "- در صورت نیاز، نام خاص را به شکل اصلی نگه دار.\n"
-                "- ترجمه باید برای مخاطب عمومی یک کانال خبری مناسب باشد.\n"
                 "- عنوان را خلاصه یا بازنویسی آزاد نکن.\n"
                 "- فقط عنوان نهایی فارسی را برگردان.\n"
                 "- هیچ توضیح، تحلیل، مقدمه، گیومه یا قالب JSON اضافه نکن."
@@ -126,7 +140,7 @@ def translate_headline(original_title):
     ]
 
     payload = {
-        "model": MODEL,
+        "model": model_id,
         "messages": messages,
         "temperature": TEMPERATURE,
         "max_tokens": MAX_TOKENS,
@@ -144,7 +158,7 @@ def translate_headline(original_title):
             "HTTP-Referer": (
                 "https://github.com/HasanNabavi/AI-News-Collector"
             ),
-            "X-Title": "AI News Headline Translation Test",
+            "X-Title": "AI News Headline Translation Comparison",
         },
         method="POST",
     )
@@ -157,6 +171,7 @@ def translate_headline(original_title):
             timeout=REQUEST_TIMEOUT_SECONDS,
         ) as response:
             status_code = response.status
+
             response_text = response.read().decode(
                 "utf-8",
                 errors="replace",
@@ -169,7 +184,7 @@ def translate_headline(original_title):
         )
 
         raise RuntimeError(
-            f"خطای HTTP {error.code}: {error_text[:2000]}"
+            f"HTTP {error.code}: {error_text[:2000]}"
         ) from error
 
     except urllib.error.URLError as error:
@@ -189,7 +204,8 @@ def translate_headline(original_title):
 
     except json.JSONDecodeError as error:
         raise RuntimeError(
-            f"پاسخ API شامل JSON معتبر نیست: {response_text[:1500]}"
+            "پاسخ API شامل JSON معتبر نیست: "
+            f"{response_text[:1500]}"
         ) from error
 
     if not isinstance(data, dict):
@@ -197,21 +213,20 @@ def translate_headline(original_title):
             f"ساختار پاسخ API معتبر نیست: {response_text[:1500]}"
         )
 
-    # ثبت دقیق خطاهای داخل پاسخ JSON، حتی اگر HTTP برابر 200 باشد.
     if data.get("error"):
-        api_error = data["error"]
-
         raise RuntimeError(
             "خطای اعلام‌شده از طرف API: "
-            + json.dumps(api_error, ensure_ascii=False)[:2000]
+            + json.dumps(
+                data["error"],
+                ensure_ascii=False,
+            )[:2000]
         )
 
     choices = data.get("choices", [])
 
     if not isinstance(choices, list) or not choices:
         raise RuntimeError(
-            "پاسخ API فاقد choices است. "
-            f"HTTP={status_code}; "
+            f"پاسخ API فاقد choices است. HTTP={status_code}; "
             f"Response={response_text[:2000]}"
         )
 
@@ -234,11 +249,11 @@ def translate_headline(original_title):
         text_parts = []
 
         for part in content:
-            if isinstance(part, dict):
-                part_text = part.get("text", "")
-
-                if isinstance(part_text, str):
-                    text_parts.append(part_text)
+            if (
+                isinstance(part, dict)
+                and isinstance(part.get("text"), str)
+            ):
+                text_parts.append(part["text"])
 
         content = "".join(text_parts)
 
@@ -255,9 +270,8 @@ def translate_headline(original_title):
     if not isinstance(usage, dict):
         usage = {}
 
-    # اطلاعات تشخیصی برای بررسی دقیق اجرای بعدی.
     diagnostics = {
-        "model_requested": MODEL,
+        "model_requested": model_id,
         "model_returned": data.get("model"),
         "http_status": status_code,
         "finish_reason": finish_reason,
@@ -280,13 +294,15 @@ def translate_headline(original_title):
         )
 
     return {
+        "status": "success",
+        "model_requested": model_id,
+        "model_returned": data.get("model"),
         "translated_title": translated_title,
         "elapsed_seconds": elapsed,
         "http_status": status_code,
         "usage": usage,
         "total_tokens": int(usage.get("total_tokens") or 0),
         "finish_reason": finish_reason,
-        "model_returned": data.get("model"),
         "response_id": data.get("id"),
     }
 
@@ -296,14 +312,14 @@ def translate_headline(original_title):
 # ============================================================
 
 def main():
-    print("=" * 60)
-    print("AI News Headline Translation Test")
-    print(f"Model: {MODEL}")
-    print(f"Max tokens: {MAX_TOKENS}")
-    print("Reasoning: disabled")
+    print("=" * 72)
+    print("AI News Headline Translation Comparison")
+    print(f"Models: {json.dumps(MODELS, ensure_ascii=False)}")
+    print(f"Articles: {ARTICLES_PER_TEST}")
+    print(f"Maximum output tokens per request: {MAX_TOKENS}")
     print(f"Input: {INPUT_FILE}")
     print(f"Output: {OUTPUT_FILE}")
-    print("=" * 60)
+    print("=" * 72)
 
     if not API_KEY:
         raise RuntimeError(
@@ -316,91 +332,187 @@ def main():
     results = {
         "test_metadata": {
             "started_at": utc_now(),
-            "model": MODEL,
+            "models": MODELS,
+
+            # برای سازگاری با اعتبارسنج فعلی workflow
+            "model": "multiple_models",
+
             "method": "headline_translation_en_to_fa",
-            "input_file": str(INPUT_FILE.relative_to(PROJECT_DIR)),
-            "output_file": str(OUTPUT_FILE.relative_to(PROJECT_DIR)),
+            "input_file": str(
+                INPUT_FILE.relative_to(PROJECT_DIR)
+            ),
+            "output_file": str(
+                OUTPUT_FILE.relative_to(PROJECT_DIR)
+            ),
             "article_limit": ARTICLES_PER_TEST,
+            "model_count": len(MODELS),
+            "expected_translation_count": (
+                len(articles) * len(MODELS)
+            ),
             "reasoning_enabled": False,
+            "seconds_between_requests": SECONDS_BETWEEN_REQUESTS,
         },
         "article_count": len(articles),
         "translation_results": {},
     }
 
     save_json(results)
-    failed_articles = []
 
-    for index, article in enumerate(articles, start=1):
+    failed_translations = []
+    request_number = 0
+    total_requests = len(articles) * len(MODELS)
+
+    for article_index, article in enumerate(
+        articles,
+        start=1,
+    ):
         original_title = article["title"].strip()
 
         article_result = {
             "input_title": original_title,
             "source": article.get("source", ""),
             "url": article.get("url", ""),
+            "status": "success",
+            "model_results": {},
         }
 
-        print(f"\nخبر {index}:")
-        print(f"عنوان اصلی: {original_title}")
+        print(f"\n{'=' * 72}")
+        print(
+            f"خبر {article_index}/{len(articles)}: "
+            f"{original_title}"
+        )
 
-        try:
-            translation = translate_headline(original_title)
+        for model_key, model_id in MODELS.items():
+            request_number += 1
 
-            article_result.update({
-                "status": "success",
-                "translated_title": translation["translated_title"],
-                "elapsed_seconds": translation["elapsed_seconds"],
-                "http_status": translation["http_status"],
-                "usage": translation["usage"],
-                "total_tokens": translation["total_tokens"],
-                "finish_reason": translation["finish_reason"],
-                "model_returned": translation["model_returned"],
-                "response_id": translation["response_id"],
-            })
+            if request_number > 1:
+                time.sleep(SECONDS_BETWEEN_REQUESTS)
 
             print(
-                f"عنوان فارسی: {translation['translated_title']}"
-            )
-            print(
-                f"زمان اجرا: {translation['elapsed_seconds']} ثانیه"
-            )
-            print(
-                f"توکن مصرف‌شده: {translation['total_tokens']}"
-            )
-            print(
-                f"دلیل پایان پاسخ: {translation['finish_reason']}"
+                f"\nمدل {model_key} "
+                f"({request_number}/{total_requests}): {model_id}"
             )
 
-        except Exception as error:
-            article_result.update({
-                "status": "error",
-                "error": str(error),
-            })
+            try:
+                translation = translate_headline(
+                    original_title,
+                    model_id,
+                )
 
-            failed_articles.append(index)
-            print(f"خطا: {error}")
+                article_result["model_results"][model_key] = (
+                    translation
+                )
 
-        results["translation_results"][str(index)] = article_result
+                print(
+                    f"ترجمه: {translation['translated_title']}"
+                )
+                print(
+                    f"زمان: {translation['elapsed_seconds']} ثانیه"
+                )
+                print(
+                    f"توکن: {translation['total_tokens']}"
+                )
 
-        # ذخیره بعد از پردازش هر خبر، حتی در صورت شکست.
+            except Exception as error:
+                error_result = {
+                    "status": "error",
+                    "model_requested": model_id,
+                    "error": str(error),
+                }
+
+                article_result["model_results"][model_key] = (
+                    error_result
+                )
+                article_result["status"] = "error"
+
+                failed_translations.append({
+                    "article": article_index,
+                    "model": model_key,
+                    "error": str(error),
+                })
+
+                print(f"خطا: {error}")
+
+            # ترجمهٔ Nemotron در سطح اصلی خبر هم ذخیره می‌شود
+            # تا اعتبارسنج فعلی workflow سازگار بماند.
+            nemotron_result = article_result[
+                "model_results"
+            ].get("nemotron")
+
+            if isinstance(nemotron_result, dict):
+                if nemotron_result.get("status") == "success":
+                    article_result["translated_title"] = (
+                        nemotron_result["translated_title"]
+                    )
+                    article_result["total_tokens"] = (
+                        nemotron_result["total_tokens"]
+                    )
+                    article_result["elapsed_seconds"] = (
+                        nemotron_result["elapsed_seconds"]
+                    )
+                else:
+                    article_result["translated_title"] = ""
+
+            results["translation_results"][
+                str(article_index)
+            ] = article_result
+
+            # ذخیرهٔ پیشرفت بعد از هر درخواست
+            save_json(results)
+
+        # موفقیت نهایی خبر مستلزم موفقیت هر سه مدل است.
+        if any(
+            article_result["model_results"].get(
+                model_key, {}
+            ).get("status") != "success"
+            for model_key in MODELS
+        ):
+            article_result["status"] = "error"
+        else:
+            article_result["status"] = "success"
+
+        results["translation_results"][
+            str(article_index)
+        ] = article_result
+
         save_json(results)
 
     results["test_metadata"]["finished_at"] = utc_now()
-    results["test_metadata"]["failed_article_count"] = len(
-        failed_articles
+
+    results["test_metadata"]["successful_translation_count"] = (
+        total_requests - len(failed_translations)
+    )
+
+    results["test_metadata"]["failed_translation_count"] = len(
+        failed_translations
+    )
+
+    results["test_metadata"]["failed_translations"] = (
+        failed_translations
     )
 
     save_json(results)
 
-    print("\nآزمایش تمام شد.")
+    print("\n" + "=" * 72)
+    print("آزمایش تمام شد.")
+    print(f"خبرها: {len(articles)}")
+    print(f"مدل‌ها: {len(MODELS)}")
+
+    print(
+        f"ترجمه‌های موفق: "
+        f"{total_requests - len(failed_translations)}"
+        f"/{total_requests}"
+    )
+
     print(f"فایل خروجی: {OUTPUT_FILE}")
 
-    if failed_articles:
+    if failed_translations:
         raise RuntimeError(
-            f"{len(failed_articles)} ترجمه ناموفق بود. "
-            "جزئیات در فایل خروجی ثبت شده است."
+            f"{len(failed_translations)} درخواست ترجمه ناموفق بود. "
+            "جزئیات هر مدل در فایل خروجی ثبت شده است."
         )
 
-    print("ترجمه عنوان با موفقیت انجام شد.")
+    print("هر ۱۰ عنوان با هر سه مدل ترجمه شد.")
 
 
 if __name__ == "__main__":
